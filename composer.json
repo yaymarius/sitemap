@@ -1,0 +1,32 @@
+{
+    "name": "refinery29/sitemap",
+    "description": "Provides components for building and writing a sitemap.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Möller",
+            "email": "andreas.moller@refinery29.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    },
+    "require-dev": {
+        "codeclimate/php-test-reporter": "0.2.0",
+        "fabpot/php-cs-fixer": "2.0.*-dev",
+        "fzaninotto/faker": "^1.5",
+        "phpunit/phpunit": "^4.8.3",
+        "refinery29/php-cs-fixer-config": "0.2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Refinery29\\Sitemap\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Refinery29\\Sitemap\\Test\\": "tests"
+        }
+    }
+}
