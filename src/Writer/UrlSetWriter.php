@@ -23,9 +23,9 @@ class UrlSetWriter
     /**
      * @param UrlWriter $urlWriter
      */
-    public function __construct(UrlWriter $urlWriter)
+    public function __construct(UrlWriter $urlWriter = null)
     {
-        $this->urlWriter = $urlWriter;
+        $this->urlWriter = $urlWriter ?: new UrlWriter();
     }
 
     /**

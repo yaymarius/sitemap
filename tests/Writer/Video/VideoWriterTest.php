@@ -25,6 +25,19 @@ use XMLWriter;
 
 class VideoWriterTest extends AbstractTestCase
 {
+    public function testConstructorCreatesRequiredWriters()
+    {
+        $writer = new VideoWriter();
+
+        $this->assertAttributeInstanceOf(PlayerLocationWriter::class, 'playerLocationWriter', $writer);
+        $this->assertAttributeInstanceOf(GalleryLocationWriter::class, 'galleryLocationWriter', $writer);
+        $this->assertAttributeInstanceOf(RestrictionWriter::class, 'restrictionWriter', $writer);
+        $this->assertAttributeInstanceOf(UploaderWriter::class, 'uploaderWriter', $writer);
+        $this->assertAttributeInstanceOf(PlatformWriter::class, 'platformWriter', $writer);
+        $this->assertAttributeInstanceOf(PriceWriter::class, 'priceWriter', $writer);
+        $this->assertAttributeInstanceOf(TagWriter::class, 'tagWriter', $writer);
+    }
+
     public function testWriteSimpleVideo()
     {
         $faker = $this->getFaker();

@@ -63,21 +63,21 @@ class VideoWriter
      * @param TagWriter             $tagWriter
      */
     public function __construct(
-        PlayerLocationWriter $playerLocationWriter,
-        GalleryLocationWriter $galleryLocationWriter,
-        RestrictionWriter $restrictionWriter,
-        UploaderWriter $uploaderWriter,
-        PlatformWriter $platformWriter,
-        PriceWriter $priceWriter,
-        TagWriter $tagWriter
+        PlayerLocationWriter $playerLocationWriter = null,
+        GalleryLocationWriter $galleryLocationWriter = null,
+        RestrictionWriter $restrictionWriter = null,
+        UploaderWriter $uploaderWriter = null,
+        PlatformWriter $platformWriter = null,
+        PriceWriter $priceWriter = null,
+        TagWriter $tagWriter = null
     ) {
-        $this->playerLocationWriter = $playerLocationWriter;
-        $this->galleryLocationWriter = $galleryLocationWriter;
-        $this->restrictionWriter = $restrictionWriter;
-        $this->uploaderWriter = $uploaderWriter;
-        $this->platformWriter = $platformWriter;
-        $this->priceWriter = $priceWriter;
-        $this->tagWriter = $tagWriter;
+        $this->playerLocationWriter = $playerLocationWriter ?: new PlayerLocationWriter();
+        $this->galleryLocationWriter = $galleryLocationWriter ?: new GalleryLocationWriter();
+        $this->restrictionWriter = $restrictionWriter ?: new RestrictionWriter();
+        $this->uploaderWriter = $uploaderWriter ?: new UploaderWriter();
+        $this->platformWriter = $platformWriter ?: new PlatformWriter();
+        $this->priceWriter = $priceWriter ?: new PriceWriter();
+        $this->tagWriter = $tagWriter ?: new TagWriter();
     }
 
     /**
