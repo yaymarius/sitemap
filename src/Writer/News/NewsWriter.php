@@ -19,9 +19,9 @@ class NewsWriter
     /**
      * @param PublicationWriter $publicationWriter
      */
-    public function __construct(PublicationWriter $publicationWriter)
+    public function __construct(PublicationWriter $publicationWriter = null)
     {
-        $this->publicationWriter = $publicationWriter;
+        $this->publicationWriter = $publicationWriter ?: new PublicationWriter();
     }
 
     /**

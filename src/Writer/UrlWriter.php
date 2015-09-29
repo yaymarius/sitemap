@@ -37,11 +37,14 @@ class UrlWriter
      * @param NewsWriter  $newsWriter
      * @param VideoWriter $videoWriter
      */
-    public function __construct(ImageWriter $imageWriter, NewsWriter $newsWriter, VideoWriter $videoWriter)
-    {
-        $this->imageWriter = $imageWriter;
-        $this->newsWriter = $newsWriter;
-        $this->videoWriter = $videoWriter;
+    public function __construct(
+        ImageWriter $imageWriter = null,
+        NewsWriter $newsWriter = null,
+        VideoWriter $videoWriter = null
+    ) {
+        $this->imageWriter = $imageWriter ?: new ImageWriter();
+        $this->newsWriter = $newsWriter ?: new NewsWriter();
+        $this->videoWriter = $videoWriter ?: new VideoWriter();
     }
 
     /**

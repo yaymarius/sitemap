@@ -18,9 +18,9 @@ class SitemapIndexWriter
     /**
      * @param SitemapWriter $sitemapWriter
      */
-    public function __construct(SitemapWriter $sitemapWriter)
+    public function __construct(SitemapWriter $sitemapWriter = null)
     {
-        $this->sitemapWriter = $sitemapWriter;
+        $this->sitemapWriter = $sitemapWriter ?: new SitemapWriter();
     }
 
     /**

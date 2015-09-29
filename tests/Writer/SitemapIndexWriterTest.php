@@ -10,6 +10,13 @@ use XMLWriter;
 
 class SitemapIndexWriterTest extends AbstractTestCase
 {
+    public function testConstructorCreatesRequiredWriter()
+    {
+        $writer = new SitemapIndexWriter();
+
+        $this->assertAttributeInstanceOf(SitemapWriter::class, 'sitemapWriter', $writer);
+    }
+
     public function testWriteSitemapIndex()
     {
         $sitemaps = [

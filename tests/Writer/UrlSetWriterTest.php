@@ -14,6 +14,13 @@ use XMLWriter;
 
 class UrlSetWriterTest extends AbstractTestCase
 {
+    public function testConstructorCreatesRequiredWriter()
+    {
+        $writer = new UrlSetWriter();
+
+        $this->assertAttributeInstanceOf(UrlWriter::class, 'urlWriter', $writer);
+    }
+
     public function testWriteUrlSet()
     {
         $urls = [

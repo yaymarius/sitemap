@@ -13,6 +13,13 @@ use XMLWriter;
 
 class NewsWriterTest extends AbstractTestCase
 {
+    public function testConstructorCreatesRequiredWriter()
+    {
+        $writer = new NewsWriter();
+
+        $this->assertAttributeInstanceOf(PublicationWriter::class, 'publicationWriter', $writer);
+    }
+
     public function testWriteSimpleNews()
     {
         $faker = $this->getFaker();

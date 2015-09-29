@@ -137,25 +137,7 @@ When you're finished building your `UrlSet`, you probably want to write it, righ
 ```php
 use Refinery29\Sitemap\Writer;
 
-$imageWriter = new Writer\Image();
-$newsWriter = new Writer\News(new Writer\Publication());
-$videoWriter = new Writer\Video(
-    new Writer\Video\PlayerLocationWriter(),
-    new Writer\Video\GalleryLocationWriter(),
-    new Writer\Video\RestrictionWriter(),
-    new Writer\Video\UploaderWriter(),
-    new Writer\Video\PlatformWriter(),
-    new Writer\Video\PriceWriter(),
-    new Writer\Video\TagWriter()
-);
-
-$urlWriter = new Writer\Url(
-    $imageWriter,
-    $newsWriter,
-    $videoWriter
-);
-
-$urlSetWriter = new Writer\UrlSet($urlWriter);
+$urlSetWriter = new Writer\UrlSet();
 
 $xml = $urlSetWriter->write($urlSet);
 ```
@@ -205,7 +187,7 @@ When you're finished building your `SitemapIndex`, you should write it like this
 ```php
 use Refinery29\Sitemap\Writer;
 
-$sitemapIndexWriter = new Writer\SitemapIndex(new Writer\Sitemap());
+$sitemapIndexWriter = new Writer\SitemapIndex();
 
 $xml = $sitemapIndexWriter->write($sitemapIndex);
 ```
