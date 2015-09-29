@@ -27,18 +27,9 @@ Run:
 $ composer require refinery29/sitemap
 ```
 
-## Usage
+## Creating a Sitemap
 
-You probably want to do one of these things
-
-* create a sitemap
-* create a sitemap index
-
-and with `refinery29/sitemap`, you can do both.
-
-### Creating a Sitemap
-
-#### `UrlSet`
+### `UrlSet`
 
 A sitemap is a set of URLs, so here's how you start:
 
@@ -49,7 +40,7 @@ use Refinery29\Sitemap\Component;
 $urlSet = new Component\UrlSet();
 ```
 
-#### `Url`
+### `Url`
 
 To a `UrlSet`, you can add `Url`s, so let's do it:
 
@@ -68,7 +59,7 @@ $urlSet->add($url);
 
 :bulb: Careful with adding too many URLs, Google imposes a limit to the number of URLs.
  
-#### `Image`
+### `Image`
 
 You may want to add an image to a `Url` so let's do it:
  
@@ -87,7 +78,7 @@ $url->addImage($image);
 
 :bulb: You can add up to 1.000 images to a `Url`.
 
-#### `News`
+### `News`
 
 You may want to add news to a `Url`, if the URL identifies a news article, for example, so let's do this, too:
  
@@ -110,7 +101,7 @@ $url->addNews($news);
 
 :bulb: `News` has many more options, have a look at the source!
 
-#### `Video`
+### `Video`
 
 You may want to add video to a `Url`, if the URL identifies a page where you can watch a video, so let's also do this:
  
@@ -130,7 +121,7 @@ $url->addNews($news);
 :bulb: `Video` has many more options, have a look at the source!
 
 
-### Writing a Sitemap
+## Writing a Sitemap
 
 When you're finished building your `UrlSet`, you probably want to write it, right, so let's do it:
 
@@ -142,11 +133,11 @@ $urlSetWriter = new Writer\UrlSet();
 $xml = $urlSetWriter->write($urlSet);
 ```
 
-### Creating a Sitemap Index
+## Creating a Sitemap Index
 
 If you have many URLs, you may want to spread your sitemaps across multiple files and index them
 
-#### `SitemapIndex`
+### `SitemapIndex`
 
 Let's create a `SitemapIndex` first:
  
@@ -156,7 +147,7 @@ use Refinery29\Sitemap\Component;
 $sitemapIndex = new Component\SitemapIndex();
 ```
 
-#### `Sitemap`
+### `Sitemap`
 
 Now, let's add a bunch of `Sitemap`s to the `SitemapIndex`:
 
@@ -180,7 +171,7 @@ $sitemapIndex->add($sitemap);
 $sitemapIndex->add($anotherSitemap);
 ```
 
-### Writing a Sitemap
+### Writing a Sitemap Index
 
 When you're finished building your `SitemapIndex`, you should write it like this:
 
