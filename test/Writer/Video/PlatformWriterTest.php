@@ -32,7 +32,7 @@ class PlatformWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:platform', implode(' ', $types), [
+        $this->expectToWriteElement($xmlWriter, 'video:platform', implode(' ', $types), [
             'relationship' => $relationship,
         ]);
 

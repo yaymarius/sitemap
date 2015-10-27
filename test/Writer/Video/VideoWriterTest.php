@@ -54,13 +54,13 @@ class VideoWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'video:video');
+        $this->expectToStartElement($xmlWriter, 'video:video');
 
-        $this->writesElement($xmlWriter, 'video:thumbnail_loc', $thumbnailLocation);
-        $this->writesElement($xmlWriter, 'video:title', $title);
-        $this->writesElement($xmlWriter, 'video:description', $description);
+        $this->expectToWriteElement($xmlWriter, 'video:thumbnail_loc', $thumbnailLocation);
+        $this->expectToWriteElement($xmlWriter, 'video:title', $title);
+        $this->expectToWriteElement($xmlWriter, 'video:description', $description);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new VideoWriter(
             $this->getPlayerLocationWriterMock(),
@@ -142,23 +142,23 @@ class VideoWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'video:video');
+        $this->expectToStartElement($xmlWriter, 'video:video');
 
-        $this->writesElement($xmlWriter, 'video:thumbnail_loc', $thumbnailLocation);
-        $this->writesElement($xmlWriter, 'video:title', $title);
-        $this->writesElement($xmlWriter, 'video:description', $description);
-        $this->writesElement($xmlWriter, 'video:content_loc', $contentLocation);
-        $this->writesElement($xmlWriter, 'video:duration', $duration);
-        $this->writesElement($xmlWriter, 'video:publication_date', $publicationDate->format('c'));
-        $this->writesElement($xmlWriter, 'video:expiration_date', $expirationDate->format('c'));
-        $this->writesElement($xmlWriter, 'video:rating', number_format($rating, 1));
-        $this->writesElement($xmlWriter, 'video:view_count', $viewCount);
-        $this->writesElement($xmlWriter, 'video:family_friendly', $familyFriendly);
-        $this->writesElement($xmlWriter, 'video:category', $category);
-        $this->writesElement($xmlWriter, 'video:requires_subscription', $requiresSubscription);
-        $this->writesElement($xmlWriter, 'video:live', $live);
+        $this->expectToWriteElement($xmlWriter, 'video:thumbnail_loc', $thumbnailLocation);
+        $this->expectToWriteElement($xmlWriter, 'video:title', $title);
+        $this->expectToWriteElement($xmlWriter, 'video:description', $description);
+        $this->expectToWriteElement($xmlWriter, 'video:content_loc', $contentLocation);
+        $this->expectToWriteElement($xmlWriter, 'video:duration', $duration);
+        $this->expectToWriteElement($xmlWriter, 'video:publication_date', $publicationDate->format('c'));
+        $this->expectToWriteElement($xmlWriter, 'video:expiration_date', $expirationDate->format('c'));
+        $this->expectToWriteElement($xmlWriter, 'video:rating', number_format($rating, 1));
+        $this->expectToWriteElement($xmlWriter, 'video:view_count', $viewCount);
+        $this->expectToWriteElement($xmlWriter, 'video:family_friendly', $familyFriendly);
+        $this->expectToWriteElement($xmlWriter, 'video:category', $category);
+        $this->expectToWriteElement($xmlWriter, 'video:requires_subscription', $requiresSubscription);
+        $this->expectToWriteElement($xmlWriter, 'video:live', $live);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $playerLocationWriter = $this->getPlayerLocationWriterSpy($xmlWriter, $playerLocation);
         $galleryLocationWriter = $this->getGalleryLocationWriterSpy($xmlWriter, $galleryLocation);

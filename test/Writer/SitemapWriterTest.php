@@ -19,11 +19,11 @@ class SitemapWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'sitemap');
+        $this->expectToStartElement($xmlWriter, 'sitemap');
 
-        $this->writesElement($xmlWriter, 'loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'loc', $location);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new SitemapWriter();
 
@@ -44,12 +44,12 @@ class SitemapWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'sitemap');
+        $this->expectToStartElement($xmlWriter, 'sitemap');
 
-        $this->writesElement($xmlWriter, 'loc', $location);
-        $this->writesElement($xmlWriter, 'lastmod', $lastModified->format('c'));
+        $this->expectToWriteElement($xmlWriter, 'loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'lastmod', $lastModified->format('c'));
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new SitemapWriter();
 

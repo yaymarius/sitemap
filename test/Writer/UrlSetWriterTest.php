@@ -33,12 +33,12 @@ class UrlSetWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'urlset');
+        $this->expectToStartElement($xmlWriter, 'urlset');
 
-        $this->writesAttribute($xmlWriter, UrlSet::XML_NAMESPACE_ATTRIBUTE, UrlSet::XML_NAMESPACE_URI);
-        $this->writesAttribute($xmlWriter, Image::XML_NAMESPACE_ATTRIBUTE, Image::XML_NAMESPACE_URI);
-        $this->writesAttribute($xmlWriter, News::XML_NAMESPACE_ATTRIBUTE, News::XML_NAMESPACE_URI);
-        $this->writesAttribute($xmlWriter, Video::XML_NAMESPACE_ATTRIBUTE, Video::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, UrlSet::XML_NAMESPACE_ATTRIBUTE, UrlSet::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, Image::XML_NAMESPACE_ATTRIBUTE, Image::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, News::XML_NAMESPACE_ATTRIBUTE, News::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, Video::XML_NAMESPACE_ATTRIBUTE, Video::XML_NAMESPACE_URI);
 
         $urlWriter = $this->getUrlWriterMock();
 
@@ -53,7 +53,7 @@ class UrlSetWriterTest extends AbstractTestCase
             ;
         }
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new UrlSetWriter($urlWriter);
 

@@ -26,11 +26,11 @@ class UrlWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'url');
+        $this->expectToStartElement($xmlWriter, 'url');
 
-        $this->writesElement($xmlWriter, 'loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'loc', $location);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new UrlWriter(
             $this->getImageWriterMock(),
@@ -84,14 +84,14 @@ class UrlWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'url');
+        $this->expectToStartElement($xmlWriter, 'url');
 
-        $this->writesElement($xmlWriter, 'loc', $location);
-        $this->writesElement($xmlWriter, 'lastmod', $lastModified->format('c'));
-        $this->writesElement($xmlWriter, 'changefreq', $changeFrequency);
-        $this->writesElement($xmlWriter, 'priority', number_format(2, $priority));
+        $this->expectToWriteElement($xmlWriter, 'loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'lastmod', $lastModified->format('c'));
+        $this->expectToWriteElement($xmlWriter, 'changefreq', $changeFrequency);
+        $this->expectToWriteElement($xmlWriter, 'priority', number_format(2, $priority));
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $imageWriter = $this->getImageWriterSpy($xmlWriter, $images);
         $newsWriter = $this->getNewsWriterSpy($xmlWriter, $news);

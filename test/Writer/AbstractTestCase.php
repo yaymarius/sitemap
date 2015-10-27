@@ -13,7 +13,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
      * @param string                                   $name
      */
-    protected function startsElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name)
+    protected function expectToStartElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -27,7 +27,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param string                                   $name
      * @param mixed                                    $value
      */
-    protected function writesAttribute(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $value)
+    protected function expectToWriteAttribute(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $value)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -42,7 +42,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
      */
-    protected function endsElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
+    protected function expectToEndElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -56,12 +56,12 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param mixed                                    $text
      * @param array                                    $attributes
      */
-    protected function writesElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $text = null, array $attributes = [])
+    protected function expectToWriteElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $text = null, array $attributes = [])
     {
-        $this->startsElement($xmlWriter, $name);
+        $this->expectToStartElement($xmlWriter, $name);
 
         foreach ($attributes as $name => $value) {
-            $this->writesAttribute($xmlWriter, $name, $value);
+            $this->expectToWriteAttribute($xmlWriter, $name, $value);
         }
 
         if ($text !== null) {
@@ -72,7 +72,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             ;
         }
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
     }
 
     /**

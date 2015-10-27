@@ -23,12 +23,12 @@ class PublicationWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'news:publication');
+        $this->expectToStartElement($xmlWriter, 'news:publication');
 
-        $this->writesElement($xmlWriter, 'news:name', $name);
-        $this->writesElement($xmlWriter, 'news:language', $language);
+        $this->expectToWriteElement($xmlWriter, 'news:name', $name);
+        $this->expectToWriteElement($xmlWriter, 'news:language', $language);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new PublicationWriter();
 

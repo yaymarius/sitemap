@@ -17,7 +17,7 @@ class TagWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:tag', $content);
+        $this->expectToWriteElement($xmlWriter, 'video:tag', $content);
 
         $writer = new TagWriter();
 

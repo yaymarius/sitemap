@@ -20,7 +20,7 @@ class PlayerLocationWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:player_loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'video:player_loc', $location);
 
         $writer = new PlayerLocationWriter();
 
@@ -46,7 +46,7 @@ class PlayerLocationWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:player_loc', $location, [
+        $this->expectToWriteElement($xmlWriter, 'video:player_loc', $location, [
             'allow_embed' => $allowEmbed,
             'autoplay' => $autoPlay,
         ]);
