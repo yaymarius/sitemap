@@ -17,7 +17,7 @@ class UploaderWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:uploader', $name);
+        $this->expectToWriteElement($xmlWriter, 'video:uploader', $name);
 
         $writer = new UploaderWriter();
 
@@ -38,7 +38,7 @@ class UploaderWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:uploader', $name, [
+        $this->expectToWriteElement($xmlWriter, 'video:uploader', $name, [
             'info' => $info,
         ]);
 

@@ -19,7 +19,7 @@ class GalleryLocationWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:gallery_loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'video:gallery_loc', $location);
 
         $writer = new GalleryLocationWriter();
 
@@ -40,7 +40,7 @@ class GalleryLocationWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:gallery_loc', $location, [
+        $this->expectToWriteElement($xmlWriter, 'video:gallery_loc', $location, [
             'title' => $title,
         ]);
 

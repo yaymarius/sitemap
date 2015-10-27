@@ -18,11 +18,11 @@ class ImageWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'image:image');
+        $this->expectToStartElement($xmlWriter, 'image:image');
 
-        $this->writesElement($xmlWriter, 'image:loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'image:loc', $location);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new ImageWriter();
 
@@ -49,15 +49,15 @@ class ImageWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->startsElement($xmlWriter, 'image:image');
+        $this->expectToStartElement($xmlWriter, 'image:image');
 
-        $this->writesElement($xmlWriter, 'image:loc', $location);
-        $this->writesElement($xmlWriter, 'image:title', $title);
-        $this->writesElement($xmlWriter, 'image:caption', $caption);
-        $this->writesElement($xmlWriter, 'image:geo_location', $geoLocation);
-        $this->writesElement($xmlWriter, 'image:licence', $licence);
+        $this->expectToWriteElement($xmlWriter, 'image:loc', $location);
+        $this->expectToWriteElement($xmlWriter, 'image:title', $title);
+        $this->expectToWriteElement($xmlWriter, 'image:caption', $caption);
+        $this->expectToWriteElement($xmlWriter, 'image:geo_location', $geoLocation);
+        $this->expectToWriteElement($xmlWriter, 'image:licence', $licence);
 
-        $this->endsElement($xmlWriter);
+        $this->expectToEndElement($xmlWriter);
 
         $writer = new ImageWriter();
 

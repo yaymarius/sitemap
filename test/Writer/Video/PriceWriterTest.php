@@ -24,7 +24,7 @@ class PriceWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:price', number_format($value, 2), [
+        $this->expectToWriteElement($xmlWriter, 'video:price', number_format($value, 2), [
             'currency' => $currency,
         ]);
 
@@ -57,7 +57,7 @@ class PriceWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->writesElement($xmlWriter, 'video:price', number_format($value, 2), [
+        $this->expectToWriteElement($xmlWriter, 'video:price', number_format($value, 2), [
             'currency' => $currency,
             'type' => $type,
             'resolution' => $resolution,
