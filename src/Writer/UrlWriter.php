@@ -110,7 +110,7 @@ class UrlWriter
      * @param XMLWriter        $xmlWriter
      * @param ImageInterface[] $images
      */
-    private function writeImages(XMlWriter $xmlWriter, array $images = [])
+    private function writeImages(XMLWriter $xmlWriter, array $images = [])
     {
         foreach ($images as $image) {
             $this->imageWriter->write($xmlWriter, $image);
@@ -121,7 +121,7 @@ class UrlWriter
      * @param XMLWriter       $xmlWriter
      * @param NewsInterface[] $news
      */
-    private function writeNews(XMlWriter $xmlWriter, array $news = [])
+    private function writeNews(XMLWriter $xmlWriter, array $news = [])
     {
         foreach ($news as $pieceOfNews) {
             $this->newsWriter->write($xmlWriter, $pieceOfNews);
@@ -132,7 +132,7 @@ class UrlWriter
      * @param XMLWriter        $xmlWriter
      * @param VideoInterface[] $videos
      */
-    private function writeVideos(XMlWriter $xmlWriter, array $videos = [])
+    private function writeVideos(XMLWriter $xmlWriter, array $videos = [])
     {
         foreach ($videos as $video) {
             $this->videoWriter->write($xmlWriter, $video);
