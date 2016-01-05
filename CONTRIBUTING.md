@@ -33,7 +33,7 @@ to automatically fix coding standard violations.
 Run
 
 ```
-$ make it
+$ make
 ```
 
 to run both coding standards check and tests!
