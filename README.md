@@ -183,4 +183,6 @@ $sitemapIndexWriter = new Writer\SitemapIndex();
 $xml = $sitemapIndexWriter->write($sitemapIndex);
 ```
 
+## Contributing
 
+Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md).
