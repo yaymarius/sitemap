@@ -8,19 +8,6 @@ This repository provides components for building and writing XML sitemaps, follo
 
 ## Installation
 
-Add this to your `composer.json`:
-
-```json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:refinery29/sitemap"
-        }
-    ]
-}
-```
-
 Run:
 
 ```
