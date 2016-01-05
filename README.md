@@ -1,8 +1,8 @@
 # sitemap
 
 [![Build Status](https://travis-ci.org/refinery29/sitemap.svg?branch=master)](https://travis-ci.org/refinery29/sitemap)
-[![Code Climate](https://codeclimate.com/repos/56097df9e30ba0204400134a/badges/20b2bfd26b3fe961243f/gpa.svg)](https://codeclimate.com/repos/56097df9e30ba0204400134a/feed)
-[![Test Coverage](https://codeclimate.com/repos/56097df9e30ba0204400134a/badges/20b2bfd26b3fe961243f/coverage.svg)](https://codeclimate.com/repos/56097df9e30ba0204400134a/coverage)
+[![Code Climate](https://codeclimate.com/github/refinery29/sitemap/badges/gpa.svg)](https://codeclimate.com/github/refinery29/sitemap)
+[![Test Coverage](https://codeclimate.com/github/refinery29/sitemap/badges/coverage.svg)](https://codeclimate.com/github/refinery29/sitemap/coverage)
 
 This repository provides components for building and writing XML sitemaps, following Google recommendations.
 
