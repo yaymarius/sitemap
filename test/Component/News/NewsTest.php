@@ -6,7 +6,6 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-
 namespace Refinery29\Sitemap\Test\Component\News;
 
 use InvalidArgumentException;
@@ -201,7 +200,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        for ($i = 0; $i < count($allowedValues); $i++) {
+        for ($i = 0; $i < count($allowedValues); ++$i) {
             yield [
                 $faker->randomElements($allowedValues, $i),
             ];
