@@ -6,7 +6,6 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-
 namespace Refinery29\Sitemap\Test\Component\Video;
 
 use BadMethodCallException;
@@ -479,7 +478,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $faker->url
         );
 
-        for ($i = 0; $i < Video::TAG_MAX_COUNT; $i++) {
+        for ($i = 0; $i < Video::TAG_MAX_COUNT; ++$i) {
             $video->addTag($this->getTagMock());
         }
 
