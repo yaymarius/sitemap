@@ -11,11 +11,11 @@ namespace Refinery29\Sitemap\Test\Component\Video;
 use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Restriction;
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
-use Refinery29\Sitemap\Test\Util\FakerTrait;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class RestrictionTest extends \PHPUnit_Framework_TestCase
 {
-    use FakerTrait;
+    use GeneratorTrait;
 
     public function testConstants()
     {

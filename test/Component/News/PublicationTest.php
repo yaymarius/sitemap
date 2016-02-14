@@ -10,11 +10,11 @@ namespace Refinery29\Sitemap\Test\Component\News;
 
 use Refinery29\Sitemap\Component\News\Publication;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
-use Refinery29\Sitemap\Test\Util\FakerTrait;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class PublicationTest extends \PHPUnit_Framework_TestCase
 {
-    use FakerTrait;
+    use GeneratorTrait;
 
     public function testImplementsInterface()
     {
