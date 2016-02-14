@@ -12,11 +12,11 @@ use BadMethodCallException;
 use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Platform;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
-use Refinery29\Sitemap\Test\Util\FakerTrait;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class PlatformTest extends \PHPUnit_Framework_TestCase
 {
-    use FakerTrait;
+    use GeneratorTrait;
 
     public function testConstants()
     {

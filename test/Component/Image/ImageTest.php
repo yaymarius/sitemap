@@ -10,11 +10,11 @@ namespace Refinery29\Sitemap\Test\Component\Image;
 
 use Refinery29\Sitemap\Component\Image\Image;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
-use Refinery29\Sitemap\Test\Util\FakerTrait;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class ImageTest extends \PHPUnit_Framework_TestCase
 {
-    use FakerTrait;
+    use GeneratorTrait;
 
     public function testConstants()
     {

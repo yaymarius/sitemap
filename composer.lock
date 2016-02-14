@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "97028c6e2b574f4a93f0de95638ad21f",
-    "content-hash": "b3d5479a21de06c6cd8f28eac4f2e26d",
+    "hash": "470f31858646d9781853360b9c844be1",
+    "content-hash": "a037e7cd120c9790d75cd7352bd75b81",
     "packages": [],
     "packages-dev": [
         {
@@ -130,7 +130,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/518194b0e92dc75e791490b36b51cce39fe80bcf",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/f59678b9896c1ff3e78b7ab418a0e8fa337d6f81",
                 "reference": "518194b0e92dc75e791490b36b51cce39fe80bcf",
                 "shasum": ""
             },
@@ -881,6 +881,65 @@
             ],
             "description": "Provides a configuration for fabpot/php-cs-fixer, used within Refinery29.",
             "time": "2016-02-01 10:51:34"
+        },
+        {
+            "name": "refinery29/test-util",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/refinery29/test-util.git",
+                "reference": "fcf182273718d431fe48d5f4fa25849d55757aa5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/refinery29/test-util/zipball/fcf182273718d431fe48d5f4fa25849d55757aa5",
+                "reference": "fcf182273718d431fe48d5f4fa25849d55757aa5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "0.2.0",
+                "fzaninotto/faker": "^1.5",
+                "phpunit/phpunit": "^4.8.18 || ^5.2.3",
+                "refinery29/php-cs-fixer-config": "0.4.1"
+            },
+            "suggest": {
+                "fzaninotto/faker": "If you want to make use of the Faker\\GeneratorTrait",
+                "phpunit/phpunit": "If you want to make use of the PHPUnit\\BuildsMocksTrait"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Refinery29\\Test\\Util\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kayla Daniels",
+                    "email": "kayla.daniels@refinery29.com"
+                },
+                {
+                    "name": "Andreas Möller",
+                    "email": "andreas.moller@refinery29.com"
+                },
+                {
+                    "name": "R29 Product & Engineering",
+                    "email": "p.e@refinery29.com"
+                }
+            ],
+            "description": "Provides helpers for testing.",
+            "keywords": [
+                "faker",
+                "test",
+                "util"
+            ],
+            "time": "2016-02-09 18:36:54"
         },
         {
             "name": "satooshi/php-coveralls",

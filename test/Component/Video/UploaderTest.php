@@ -10,11 +10,11 @@ namespace Refinery29\Sitemap\Test\Component\Video;
 
 use Refinery29\Sitemap\Component\Video\Uploader;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
-use Refinery29\Sitemap\Test\Util\FakerTrait;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class UploaderTest extends \PHPUnit_Framework_TestCase
 {
-    use FakerTrait;
+    use GeneratorTrait;
 
     public function testImplementsInterface()
     {

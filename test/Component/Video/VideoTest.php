@@ -19,11 +19,11 @@ use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Sitemap\Component\Video\Video;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
-use Refinery29\Sitemap\Test\Util\FakerTrait;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class VideoTest extends \PHPUnit_Framework_TestCase
 {
-    use FakerTrait;
+    use GeneratorTrait;
 
     public function testConstants()
     {
