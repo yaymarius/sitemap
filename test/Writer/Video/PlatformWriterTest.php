@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Test\Writer\Video;
 
-use Refinery29\Sitemap\Component\Video\Platform;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PlatformWriter;
@@ -21,14 +20,14 @@ class PlatformWriterTest extends AbstractTestCase
         $faker = $this->getFaker();
 
         $relationship = $faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]);
 
         $types = $faker->randomElements([
-            Platform::TYPE_MOBILE,
-            Platform::TYPE_TV,
-            Platform::TYPE_WEB,
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            PlatformInterface::TYPE_WEB,
         ], 2);
 
         $platform = $this->getPlatformMock(

@@ -16,7 +16,6 @@ use Refinery29\Sitemap\Component\Video\PriceInterface;
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
-use Refinery29\Sitemap\Component\Video\Video;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\GalleryLocationWriter;
@@ -92,25 +91,25 @@ class VideoWriterTest extends AbstractTestCase
         $playerLocation = $this->getPlayerLocationMock();
         $galleryLocation = $this->getGalleryLocationMock();
         $duration = $faker->numberBetween(
-            Video::DURATION_LOWER_LIMIT,
-            Video::DURATION_UPPER_LIMIT
+            VideoInterface::DURATION_LOWER_LIMIT,
+            VideoInterface::DURATION_UPPER_LIMIT
         );
         $publicationDate = $faker->dateTime;
         $expirationDate = $faker->dateTime;
         $rating = $faker->randomFloat(1, 0, 5);
         $viewCount = $faker->randomNumber();
-        $familyFriendly = Video::FAMILY_FRIENDLY_NO;
+        $familyFriendly = VideoInterface::FAMILY_FRIENDLY_NO;
         $category = $faker->word;
         $restriction = $this->getRestrictionMock();
         $requiresSubscription = $faker->randomElement([
-            Video::REQUIRES_SUBSCRIPTION_YES,
-            Video::REQUIRES_SUBSCRIPTION_NO,
+            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
+            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
         ]);
         $uploader = $this->getUploaderMock();
         $platform = $this->getPlatformMock();
         $live = $faker->randomElement([
-            Video::LIVE_NO,
-            Video::LIVE_YES,
+            VideoInterface::LIVE_NO,
+            VideoInterface::LIVE_YES,
         ]);
         $prices = [
             $this->getPriceMock(),

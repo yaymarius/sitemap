@@ -39,18 +39,18 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $publicationDate = $faker->dateTime;
         $title = $faker->sentence();
         $access = $faker->randomElement([
-            News::ACCESS_REGISTRATION,
-            News::ACCESS_SUBSCRIPTION,
+            NewsInterface::ACCESS_REGISTRATION,
+            NewsInterface::ACCESS_SUBSCRIPTION,
         ]);
         $genres = $faker->randomElements([
-            News::GENRE_BLOG,
-            News::GENRE_OP_ED,
-            News::GENRE_OPINION,
-            News::GENRE_SATIRE,
-            News::GENRE_USER_GENERATED,
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            NewsInterface::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_USER_GENERATED,
         ]);
         $keywords = $faker->words;
-        $stockTickers = $faker->words(News::STOCK_TICKERS_MAX_COUNT);
+        $stockTickers = $faker->words(NewsInterface::STOCK_TICKERS_MAX_COUNT);
 
         $news = new News(
             $publication,
@@ -120,8 +120,8 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     {
         $allowedValues = [
             null,
-            News::ACCESS_REGISTRATION,
-            News::ACCESS_SUBSCRIPTION,
+            NewsInterface::ACCESS_REGISTRATION,
+            NewsInterface::ACCESS_SUBSCRIPTION,
         ];
 
         foreach ($allowedValues as $access) {
@@ -159,8 +159,8 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $faker->dateTime,
             $faker->sentence(),
             $faker->randomElement([
-                News::ACCESS_REGISTRATION,
-                News::ACCESS_SUBSCRIPTION,
+                NewsInterface::ACCESS_REGISTRATION,
+                NewsInterface::ACCESS_SUBSCRIPTION,
             ]),
             $genres
         );
@@ -174,11 +174,11 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     public function providerCanInjectGenres()
     {
         $allowedValues = [
-            News::GENRE_BLOG,
-            News::GENRE_OP_ED,
-            News::GENRE_OPINION,
-            News::GENRE_SATIRE,
-            News::GENRE_USER_GENERATED,
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            NewsInterface::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_USER_GENERATED,
         ];
 
         $faker = $this->getFaker();
@@ -205,8 +205,8 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $faker->dateTime,
             $faker->sentence(),
             $faker->randomElement([
-                News::ACCESS_REGISTRATION,
-                News::ACCESS_SUBSCRIPTION,
+                NewsInterface::ACCESS_REGISTRATION,
+                NewsInterface::ACCESS_SUBSCRIPTION,
             ]),
             $genres
         );
@@ -218,22 +218,22 @@ class NewsTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $stockTickers = $faker->words(News::STOCK_TICKERS_MAX_COUNT + 1);
+        $stockTickers = $faker->words(NewsInterface::STOCK_TICKERS_MAX_COUNT + 1);
 
         new News(
             $this->getPublicationMock(),
             $faker->dateTime,
             $faker->sentence(),
             $faker->randomElement([
-                News::ACCESS_REGISTRATION,
-                News::ACCESS_SUBSCRIPTION,
+                NewsInterface::ACCESS_REGISTRATION,
+                NewsInterface::ACCESS_SUBSCRIPTION,
             ]),
             $faker->randomElements([
-                News::GENRE_BLOG,
-                News::GENRE_OP_ED,
-                News::GENRE_OPINION,
-                News::GENRE_SATIRE,
-                News::GENRE_USER_GENERATED,
+                NewsInterface::GENRE_BLOG,
+                NewsInterface::GENRE_OP_ED,
+                NewsInterface::GENRE_OPINION,
+                NewsInterface::GENRE_SATIRE,
+                NewsInterface::GENRE_USER_GENERATED,
             ]),
             $faker->words,
             $stockTickers
