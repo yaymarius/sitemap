@@ -16,12 +16,6 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('xmlns', UrlSet::XML_NAMESPACE_ATTRIBUTE);
-        $this->assertSame('http://www.sitemaps.org/schemas/sitemap/0.9', UrlSet::XML_NAMESPACE_URI);
-    }
-
     public function testDefaults()
     {
         $urlSet = new UrlSet();

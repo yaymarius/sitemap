@@ -13,27 +13,6 @@ use InvalidArgumentException;
 final class Price implements PriceInterface
 {
     /**
-     * Constant for minimum value.
-     */
-    const VALUE_MIN = 0.01;
-
-    /**
-     * Constants for types.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const TYPE_OWN = 'own';
-    const TYPE_RENT = 'rent';
-
-    /**
-     * Constants for resolutions.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const RESOLUTION_HD = 'HD';
-    const RESOLUTION_SD = 'SD';
-
-    /**
      * @var float
      */
     private $value;
@@ -74,11 +53,11 @@ final class Price implements PriceInterface
      */
     private function setValue($value)
     {
-        if (!is_numeric($value) || $value < self::VALUE_MIN) {
+        if (!is_numeric($value) || $value < PriceInterface::VALUE_MIN) {
             throw new InvalidArgumentException(sprintf(
                 'Parameter "%s" needs to be specified as a number greater than "%s"',
                 $value,
-                self::VALUE_MIN
+                PriceInterface::VALUE_MIN
             ));
         }
 
@@ -105,8 +84,8 @@ final class Price implements PriceInterface
         }
 
         $allowedValues = [
-            self::TYPE_OWN,
-            self::TYPE_RENT,
+            PriceInterface::TYPE_OWN,
+            PriceInterface::TYPE_RENT,
         ];
 
         if (!is_string($type) || !in_array($type, $allowedValues)) {
@@ -135,8 +114,8 @@ final class Price implements PriceInterface
         }
 
         $allowedValues = [
-            self::RESOLUTION_HD,
-            self::RESOLUTION_SD,
+            PriceInterface::RESOLUTION_HD,
+            PriceInterface::RESOLUTION_SD,
         ];
 
         if (!is_string($resolution) || !in_array($resolution, $allowedValues)) {

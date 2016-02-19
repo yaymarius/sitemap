@@ -19,11 +19,11 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testConstants()
     {
-        $this->assertSame('own', Price::TYPE_OWN);
-        $this->assertSame('rent', Price::TYPE_RENT);
+        $this->assertSame('own', PriceInterface::TYPE_OWN);
+        $this->assertSame('rent', PriceInterface::TYPE_RENT);
 
-        $this->assertSame('HD', Price::RESOLUTION_HD);
-        $this->assertSame('SD', Price::RESOLUTION_SD);
+        $this->assertSame('HD', PriceInterface::RESOLUTION_HD);
+        $this->assertSame('SD', PriceInterface::RESOLUTION_SD);
     }
 
     public function testImplementsInterface()
@@ -45,12 +45,12 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $value = $faker->randomFloat(2, 0.01);
         $currency = $faker->currencyCode;
         $type = $faker->randomElement([
-            Price::TYPE_OWN,
-            Price::TYPE_RENT,
+            PriceInterface::TYPE_OWN,
+            PriceInterface::TYPE_RENT,
         ]);
         $resolution = $faker->randomElement([
-            Price::RESOLUTION_HD,
-            Price::RESOLUTION_SD,
+            PriceInterface::RESOLUTION_HD,
+            PriceInterface::RESOLUTION_SD,
         ]);
 
         $price = new Price(
@@ -116,7 +116,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     {
         $invalidValues = [
             'foo',
-            Price::VALUE_MIN - 0.01,
+            PriceInterface::VALUE_MIN - 0.01,
         ];
 
         foreach ($invalidValues as $value) {
@@ -136,8 +136,8 @@ class PriceTest extends \PHPUnit_Framework_TestCase
             $faker->randomFloat(2, 0.01),
             $faker->currencyCode,
             $faker->randomElement([
-                Price::TYPE_OWN,
-                Price::TYPE_RENT,
+                PriceInterface::TYPE_OWN,
+                PriceInterface::TYPE_RENT,
             ]),
             'foobarbaz'
 

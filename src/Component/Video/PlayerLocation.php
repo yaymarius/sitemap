@@ -13,14 +13,6 @@ use InvalidArgumentException;
 final class PlayerLocation implements PlayerLocationInterface
 {
     /**
-     * Constants for allow embedding values.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const ALLOW_EMBED_YES = 'yes';
-    const ALLOW_EMBED_NO = 'no';
-
-    /**
      * @var string
      */
     private $location;
@@ -64,8 +56,8 @@ final class PlayerLocation implements PlayerLocationInterface
         }
 
         $allowedValues = [
-            self::ALLOW_EMBED_NO,
-            self::ALLOW_EMBED_YES,
+            PlayerLocationInterface::ALLOW_EMBED_NO,
+            PlayerLocationInterface::ALLOW_EMBED_YES,
         ];
 
         if (!in_array($allowEmbed, $allowedValues)) {

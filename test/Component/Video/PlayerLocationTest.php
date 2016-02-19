@@ -19,8 +19,8 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testConstants()
     {
-        $this->assertSame('yes', PlayerLocation::ALLOW_EMBED_YES);
-        $this->assertSame('no', PlayerLocation::ALLOW_EMBED_NO);
+        $this->assertSame('yes', PlayerLocationInterface::ALLOW_EMBED_YES);
+        $this->assertSame('no', PlayerLocationInterface::ALLOW_EMBED_NO);
     }
 
     public function testImplementsInterface()
@@ -36,8 +36,8 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
         $location = $faker->url;
         $allowEmbed = $faker->randomElement([
-            PlayerLocation::ALLOW_EMBED_NO,
-            PlayerLocation::ALLOW_EMBED_YES,
+            PlayerLocationInterface::ALLOW_EMBED_NO,
+            PlayerLocationInterface::ALLOW_EMBED_YES,
         ]);
         $autoPlay = 'play=true';
 

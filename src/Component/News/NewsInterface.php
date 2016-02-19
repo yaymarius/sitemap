@@ -16,6 +16,38 @@ use DateTime;
 interface NewsInterface
 {
     /**
+     * Constants for XML namespace attribute and URI.
+     */
+    const XML_NAMESPACE_ATTRIBUTE = 'xmlns:news';
+    const XML_NAMESPACE_URI = 'http://www.google.com/schemas/sitemap-news/0.9';
+
+    /**
+     * Constants for access types.
+     *
+     * @link https://support.google.com/news/publisher/answer/93992
+     */
+    const ACCESS_SUBSCRIPTION = 'Subscription';
+    const ACCESS_REGISTRATION = 'Registration';
+
+    /**
+     * Constants for genres.
+     *
+     * @link https://support.google.com/news/publisher/answer/93992
+     */
+    const GENRE_BLOG = 'Blog';
+    const GENRE_OP_ED = 'OpEd';
+    const GENRE_OPINION = 'Opinion';
+    const GENRE_SATIRE = 'Satire';
+    const GENRE_USER_GENERATED = 'UserGenerated';
+
+    /**
+     * Constant for maximum number of allowed stock tickers.
+     *
+     * @link https://support.google.com/news/publisher/answer/93992
+     */
+    const STOCK_TICKERS_MAX_COUNT = 5;
+
+    /**
      * @return PublicationInterface
      */
     public function getPublication();

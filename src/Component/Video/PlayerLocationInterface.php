@@ -14,6 +14,14 @@ namespace Refinery29\Sitemap\Component\Video;
 interface PlayerLocationInterface
 {
     /**
+     * Constants for allow embedding values.
+     *
+     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+     */
+    const ALLOW_EMBED_YES = 'yes';
+    const ALLOW_EMBED_NO = 'no';
+
+    /**
      * @return string
      */
     public function getLocation();

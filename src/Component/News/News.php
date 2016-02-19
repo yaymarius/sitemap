@@ -14,38 +14,6 @@ use InvalidArgumentException;
 final class News implements NewsInterface
 {
     /**
-     * Constants for XML namespace attribute and URI.
-     */
-    const XML_NAMESPACE_ATTRIBUTE = 'xmlns:news';
-    const XML_NAMESPACE_URI = 'http://www.google.com/schemas/sitemap-news/0.9';
-
-    /**
-     * Constants for access types.
-     *
-     * @link https://support.google.com/news/publisher/answer/93992
-     */
-    const ACCESS_SUBSCRIPTION = 'Subscription';
-    const ACCESS_REGISTRATION = 'Registration';
-
-    /**
-     * Constants for genres.
-     *
-     * @link https://support.google.com/news/publisher/answer/93992
-     */
-    const GENRE_BLOG = 'Blog';
-    const GENRE_OP_ED = 'OpEd';
-    const GENRE_OPINION = 'Opinion';
-    const GENRE_SATIRE = 'Satire';
-    const GENRE_USER_GENERATED = 'UserGenerated';
-
-    /**
-     * Constant for maximum number of allowed stock tickers.
-     *
-     * @link https://support.google.com/news/publisher/answer/93992
-     */
-    const STOCK_TICKERS_MAX_COUNT = 5;
-
-    /**
      * @var PublicationInterface
      */
     private $publication;
@@ -135,8 +103,8 @@ final class News implements NewsInterface
         }
 
         $allowedValues = [
-            self::ACCESS_REGISTRATION,
-            self::ACCESS_SUBSCRIPTION,
+            NewsInterface::ACCESS_REGISTRATION,
+            NewsInterface::ACCESS_SUBSCRIPTION,
         ];
 
         if (!in_array($access, $allowedValues)) {
@@ -165,11 +133,11 @@ final class News implements NewsInterface
         }
 
         $allowedValues = [
-            self::GENRE_BLOG,
-            self::GENRE_OP_ED,
-            self::GENRE_OPINION,
-            self::GENRE_SATIRE,
-            self::GENRE_USER_GENERATED,
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            NewsInterface::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_USER_GENERATED,
         ];
 
         $invalidValues = array_filter($genres, function ($genre) use ($allowedValues) {
@@ -206,11 +174,11 @@ final class News implements NewsInterface
             return;
         }
 
-        if (count($stockTickers) > self::STOCK_TICKERS_MAX_COUNT) {
+        if (count($stockTickers) > NewsInterface::STOCK_TICKERS_MAX_COUNT) {
             throw new InvalidArgumentException(sprintf(
                 'Optional parameter "%s" needs to be specified as an array with at most "%s" elements',
                 'stockTickers',
-                self::STOCK_TICKERS_MAX_COUNT
+                NewsInterface::STOCK_TICKERS_MAX_COUNT
             ));
         }
 

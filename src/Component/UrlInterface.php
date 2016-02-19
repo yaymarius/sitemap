@@ -16,6 +16,24 @@ use DateTime;
 interface UrlInterface
 {
     /**
+     * Constants for change frequencies.
+     */
+    const CHANGE_FREQUENCY_ALWAYS = 'always';
+    const CHANGE_FREQUENCY_HOURLY = 'hourly';
+    const CHANGE_FREQUENCY_DAILY = 'daily';
+    const CHANGE_FREQUENCY_WEEKLY = 'weekly';
+    const CHANGE_FREQUENCY_MONTHLY = 'monthly';
+    const CHANGE_FREQUENCY_YEARLY = 'yearly';
+    const CHANGE_FREQUENCY_NEVER = 'never';
+
+    /**
+     * Constant for maximum number of images.
+     *
+     * @link https://support.google.com/webmasters/answer/178636?hl=en
+     */
+    const IMAGE_MAX_COUNT = 1000;
+
+    /**
      * @return string
      */
     public function getLocation();

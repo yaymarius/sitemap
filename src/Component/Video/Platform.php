@@ -14,23 +14,6 @@ use InvalidArgumentException;
 final class Platform implements PlatformInterface
 {
     /**
-     * Constants for types.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const TYPE_MOBILE = 'mobile';
-    const TYPE_TV = 'tv';
-    const TYPE_WEB = 'web';
-
-    /**
-     * Constants for resolutions.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const RELATIONSHIP_ALLOW = 'allow';
-    const RELATIONSHIP_DENY = 'deny';
-
-    /**
      * @var string
      */
     private $relationship;
@@ -54,8 +37,8 @@ final class Platform implements PlatformInterface
     private function setRelationship($relationship)
     {
         $allowedValues = [
-            self::RELATIONSHIP_ALLOW,
-            self::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ];
 
         if (!is_string($relationship) || !in_array($relationship, $allowedValues)) {
@@ -80,9 +63,9 @@ final class Platform implements PlatformInterface
     public function addType($type)
     {
         $allowedValues = [
-            self::TYPE_MOBILE,
-            self::TYPE_TV,
-            self::TYPE_WEB,
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            PlatformInterface::TYPE_WEB,
         ];
 
         if (!is_string($type) || !in_array($type, $allowedValues)) {

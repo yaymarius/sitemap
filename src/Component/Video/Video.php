@@ -15,79 +15,6 @@ use InvalidArgumentException;
 class Video implements VideoInterface
 {
     /**
-     * Constants for XML namespace attribute and URI.
-     */
-    const XML_NAMESPACE_ATTRIBUTE = 'xmlns:video';
-    const XML_NAMESPACE_URI = 'http://www.google.com/schemas/sitemap-video/1.1';
-
-    /**
-     * Constant for maximum title length.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const TITLE_MAX_LENGTH = 100;
-
-    /**
-     * Constant for maximum description length.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const DESCRIPTION_MAX_LENGTH = 2048;
-
-    /**
-     * Constants for duration limits.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const DURATION_LOWER_LIMIT = 0;
-    const DURATION_UPPER_LIMIT = 28800;
-
-    /**
-     * Constants for rating minimum and maximum values.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const RATING_MIN = 0.0;
-    const RATING_MAX = 5.0;
-
-    /**
-     * Constants for subscription requirement.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const REQUIRES_SUBSCRIPTION_NO = 'no';
-    const REQUIRES_SUBSCRIPTION_YES = 'yes';
-
-    /**
-     * Constants for family friendliness.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const FAMILY_FRIENDLY_NO = 'no';
-
-    /**
-     * Constants for category maximum length.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const CATEGORY_MAX_LENGTH = 256;
-
-    /**
-     * Constants for maximum number of allowed tags.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const TAG_MAX_COUNT = 32;
-
-    /**
-     * Constants for live.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const LIVE_YES = 'yes';
-    const LIVE_NO = 'no';
-
-    /**
      * @var string
      */
     private $thumbnailLocation;
@@ -276,11 +203,11 @@ class Video implements VideoInterface
      */
     private function setTitle($title)
     {
-        if (!is_string($title) || mb_strlen($title) > self::TITLE_MAX_LENGTH) {
+        if (!is_string($title) || mb_strlen($title) > VideoInterface::TITLE_MAX_LENGTH) {
             throw new InvalidArgumentException(sprintf(
                 'Parameter "%s" needs to be specified as a string not longer than "%s" characters',
                 'title',
-                self::TITLE_MAX_LENGTH
+                VideoInterface::TITLE_MAX_LENGTH
             ));
         }
 
@@ -297,11 +224,11 @@ class Video implements VideoInterface
      */
     private function setDescription($description)
     {
-        if (!is_string($description) || mb_strlen($description) > self::DESCRIPTION_MAX_LENGTH) {
+        if (!is_string($description) || mb_strlen($description) > VideoInterface::DESCRIPTION_MAX_LENGTH) {
             throw new InvalidArgumentException(sprintf(
                 'Optional parameter "%s" needs to be specified as a string not longer than "%s" characters',
                 'description',
-                self::DESCRIPTION_MAX_LENGTH
+                VideoInterface::DESCRIPTION_MAX_LENGTH
             ));
         }
 
@@ -337,12 +264,12 @@ class Video implements VideoInterface
             return;
         }
 
-        if (!is_int($duration) || $duration <= self::DURATION_LOWER_LIMIT || $duration >= self::DURATION_UPPER_LIMIT) {
+        if (!is_int($duration) || $duration <= VideoInterface::DURATION_LOWER_LIMIT || $duration >= VideoInterface::DURATION_UPPER_LIMIT) {
             throw new InvalidArgumentException(sprintf(
                 'Optional parameter "%s" needs to be specified as an integer greater than "%s" and smaller than "%s"',
                 'duration',
-                self::DURATION_LOWER_LIMIT,
-                self::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ));
         }
 
@@ -381,12 +308,12 @@ class Video implements VideoInterface
             return;
         }
 
-        if (!is_numeric($rating) || $rating < self::RATING_MIN || $rating > self::RATING_MAX) {
+        if (!is_numeric($rating) || $rating < VideoInterface::RATING_MIN || $rating > VideoInterface::RATING_MAX) {
             throw new InvalidArgumentException(sprintf(
                 'Optional parameter "%s" needs to be specified as a number not smaller than "%s" and not greater than "%s"',
                 'rating',
-                self::RATING_MIN,
-                self::RATING_MAX
+                VideoInterface::RATING_MIN,
+                VideoInterface::RATING_MAX
             ));
         }
 
@@ -432,11 +359,11 @@ class Video implements VideoInterface
             return;
         }
 
-        if ($familyFriendly !== self::FAMILY_FRIENDLY_NO) {
+        if ($familyFriendly !== VideoInterface::FAMILY_FRIENDLY_NO) {
             throw new InvalidArgumentException(sprintf(
                 'Optional parameter "%s" needs to be specified as "%s"',
                 'familyFriendly',
-                self::FAMILY_FRIENDLY_NO
+                VideoInterface::FAMILY_FRIENDLY_NO
             ));
         }
 
@@ -453,10 +380,10 @@ class Video implements VideoInterface
      */
     public function addTag(TagInterface $tag)
     {
-        if (count($this->tags) === self::TAG_MAX_COUNT) {
+        if (count($this->tags) === VideoInterface::TAG_MAX_COUNT) {
             throw new BadMethodCallException(sprintf(
                 'Can not add more than %s tags',
-                self::TAG_MAX_COUNT
+                VideoInterface::TAG_MAX_COUNT
             ));
         }
 
@@ -477,11 +404,11 @@ class Video implements VideoInterface
             return;
         }
 
-        if (!is_string($category) || mb_strlen($category) > self::CATEGORY_MAX_LENGTH) {
+        if (!is_string($category) || mb_strlen($category) > VideoInterface::CATEGORY_MAX_LENGTH) {
             throw new InvalidArgumentException(sprintf(
                 'Optional parameter "%s" needs to be specified as a string not longer than "%s" characters',
                 'category',
-                self::CATEGORY_MAX_LENGTH
+                VideoInterface::CATEGORY_MAX_LENGTH
             ));
         }
 
@@ -521,8 +448,8 @@ class Video implements VideoInterface
         }
 
         $allowedValues = [
-            self::REQUIRES_SUBSCRIPTION_NO,
-            self::REQUIRES_SUBSCRIPTION_YES,
+            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
+            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
         ];
 
         if (!is_string($requiresSubscription) || !in_array($requiresSubscription, $allowedValues)) {
@@ -561,8 +488,8 @@ class Video implements VideoInterface
         }
 
         $allowedValues = [
-            self::LIVE_NO,
-            self::LIVE_YES,
+            VideoInterface::LIVE_NO,
+            VideoInterface::LIVE_YES,
         ];
 
         if (!is_string($live) || !in_array($live, $allowedValues)) {

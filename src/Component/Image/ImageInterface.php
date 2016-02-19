@@ -14,6 +14,12 @@ namespace Refinery29\Sitemap\Component\Image;
 interface ImageInterface
 {
     /**
+     * Constants for XML namespace attribute and URI.
+     */
+    const XML_NAMESPACE_ATTRIBUTE = 'xmlns:image';
+    const XML_NAMESPACE_URI = 'http://www.google.com/schemas/sitemap-image/1.1';
+
+    /**
      * @return string
      */
     public function getLocation();
