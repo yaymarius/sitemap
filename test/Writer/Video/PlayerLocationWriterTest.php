@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Test\Writer\Video;
 
-use Refinery29\Sitemap\Component\Video\PlayerLocation;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
 use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PlayerLocationWriter;
@@ -39,8 +38,8 @@ class PlayerLocationWriterTest extends AbstractTestCase
 
         $location = $faker->url;
         $allowEmbed = $faker->randomElement([
-            PlayerLocation::ALLOW_EMBED_NO,
-            PlayerLocation::ALLOW_EMBED_YES,
+            PlayerLocationInterface::ALLOW_EMBED_NO,
+            PlayerLocationInterface::ALLOW_EMBED_YES,
         ]);
         $autoPlay = 'play=yes';
 

@@ -14,6 +14,14 @@ namespace Refinery29\Sitemap\Component\Video;
 interface RestrictionInterface
 {
     /**
+     * Constants for relationships.
+     *
+     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+     */
+    const RELATIONSHIP_ALLOW = 'allow';
+    const RELATIONSHIP_DENY = 'deny';
+
+    /**
      * @return string
      */
     public function getRelationship();

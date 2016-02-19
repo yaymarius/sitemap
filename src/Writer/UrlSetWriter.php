@@ -8,12 +8,11 @@
  */
 namespace Refinery29\Sitemap\Writer;
 
-use Refinery29\Sitemap\Component\Image\Image;
-use Refinery29\Sitemap\Component\News\News;
+use Refinery29\Sitemap\Component\Image\ImageInterface;
+use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\UrlInterface;
-use Refinery29\Sitemap\Component\UrlSet;
 use Refinery29\Sitemap\Component\UrlSetInterface;
-use Refinery29\Sitemap\Component\Video\Video;
+use Refinery29\Sitemap\Component\Video\VideoInterface;
 use XMLWriter;
 
 /**
@@ -53,10 +52,10 @@ class UrlSetWriter
      */
     private function writeNamespaceAttributes(XMLWriter $xmlWriter)
     {
-        $xmlWriter->writeAttribute(UrlSet::XML_NAMESPACE_ATTRIBUTE, UrlSet::XML_NAMESPACE_URI);
-        $xmlWriter->writeAttribute(Image::XML_NAMESPACE_ATTRIBUTE, Image::XML_NAMESPACE_URI);
-        $xmlWriter->writeAttribute(News::XML_NAMESPACE_ATTRIBUTE, News::XML_NAMESPACE_URI);
-        $xmlWriter->writeAttribute(Video::XML_NAMESPACE_ATTRIBUTE, Video::XML_NAMESPACE_URI);
+        $xmlWriter->writeAttribute(UrlSetInterface::XML_NAMESPACE_ATTRIBUTE, UrlSetInterface::XML_NAMESPACE_URI);
+        $xmlWriter->writeAttribute(ImageInterface::XML_NAMESPACE_ATTRIBUTE, ImageInterface::XML_NAMESPACE_URI);
+        $xmlWriter->writeAttribute(NewsInterface::XML_NAMESPACE_ATTRIBUTE, NewsInterface::XML_NAMESPACE_URI);
+        $xmlWriter->writeAttribute(VideoInterface::XML_NAMESPACE_ATTRIBUTE, VideoInterface::XML_NAMESPACE_URI);
     }
 
     /**

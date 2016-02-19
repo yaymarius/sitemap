@@ -14,6 +14,27 @@ namespace Refinery29\Sitemap\Component\Video;
 interface PriceInterface
 {
     /**
+     * Constant for minimum value.
+     */
+    const VALUE_MIN = 0.01;
+
+    /**
+     * Constants for types.
+     *
+     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+     */
+    const TYPE_OWN = 'own';
+    const TYPE_RENT = 'rent';
+
+    /**
+     * Constants for resolutions.
+     *
+     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+     */
+    const RESOLUTION_HD = 'HD';
+    const RESOLUTION_SD = 'SD';
+
+    /**
      * @return float
      */
     public function getValue();

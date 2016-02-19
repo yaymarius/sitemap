@@ -19,17 +19,6 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('always', Url::CHANGE_FREQUENCY_ALWAYS);
-        $this->assertSame('hourly', Url::CHANGE_FREQUENCY_HOURLY);
-        $this->assertSame('daily', Url::CHANGE_FREQUENCY_DAILY);
-        $this->assertSame('weekly', Url::CHANGE_FREQUENCY_WEEKLY);
-        $this->assertSame('monthly', Url::CHANGE_FREQUENCY_MONTHLY);
-        $this->assertSame('yearly', Url::CHANGE_FREQUENCY_YEARLY);
-        $this->assertSame('never', Url::CHANGE_FREQUENCY_NEVER);
-    }
-
     public function testConstructorSetsValues()
     {
         $faker = $this->getFaker();

@@ -16,12 +16,6 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('xmlns:image', Image::XML_NAMESPACE_ATTRIBUTE);
-        $this->assertSame('http://www.google.com/schemas/sitemap-image/1.1', Image::XML_NAMESPACE_URI);
-    }
-
     public function testImplementsInterface()
     {
         $location = $this->getFaker()->url;

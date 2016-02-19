@@ -14,6 +14,23 @@ namespace Refinery29\Sitemap\Component\Video;
 interface PlatformInterface
 {
     /**
+     * Constants for types.
+     *
+     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+     */
+    const TYPE_MOBILE = 'mobile';
+    const TYPE_TV = 'tv';
+    const TYPE_WEB = 'web';
+
+    /**
+     * Constants for resolutions.
+     *
+     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+     */
+    const RELATIONSHIP_ALLOW = 'allow';
+    const RELATIONSHIP_DENY = 'deny';
+
+    /**
      * @return string
      */
     public function getRelationship();

@@ -18,23 +18,6 @@ class NewsTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('xmlns:news', News::XML_NAMESPACE_ATTRIBUTE);
-        $this->assertSame('http://www.google.com/schemas/sitemap-news/0.9', News::XML_NAMESPACE_URI);
-
-        $this->assertSame('Registration', News::ACCESS_REGISTRATION);
-        $this->assertSame('Subscription', News::ACCESS_SUBSCRIPTION);
-
-        $this->assertSame('Satire', News::GENRE_SATIRE);
-        $this->assertSame('Blog', News::GENRE_BLOG);
-        $this->assertSame('OpEd', News::GENRE_OP_ED);
-        $this->assertSame('Opinion', News::GENRE_OPINION);
-        $this->assertSame('UserGenerated', News::GENRE_USER_GENERATED);
-
-        $this->assertSame(5, News::STOCK_TICKERS_MAX_COUNT);
-    }
-
     public function testImplementsInterface()
     {
         $faker = $this->getFaker();

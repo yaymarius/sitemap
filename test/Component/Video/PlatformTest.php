@@ -18,23 +18,13 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('allow', Platform::RELATIONSHIP_ALLOW);
-        $this->assertSame('deny', Platform::RELATIONSHIP_DENY);
-
-        $this->assertSame('mobile', Platform::TYPE_MOBILE);
-        $this->assertSame('tv', Platform::TYPE_TV);
-        $this->assertSame('web', Platform::TYPE_WEB);
-    }
-
     public function testImplementsInterface()
     {
         $faker = $this->getFaker();
 
         $platform = new Platform($faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
         $this->assertInstanceOf(PlatformInterface::class, $platform);
@@ -45,8 +35,8 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $relationship = $faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]);
 
         $platform = new Platform($relationship);
@@ -59,8 +49,8 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $platform = new Platform($faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
         $this->assertInternalType('array', $platform->getTypes());
@@ -79,14 +69,14 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $platform = new Platform($faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
         $type = $faker->randomElement([
-            Platform::TYPE_MOBILE,
-            Platform::TYPE_TV,
-            Platform::TYPE_WEB,
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            PlatformInterface::TYPE_WEB,
         ]);
 
         $platform->addType($type);
@@ -103,14 +93,14 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $platform = new Platform($faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
         $type = $faker->randomElement([
-            Platform::TYPE_MOBILE,
-            Platform::TYPE_TV,
-            Platform::TYPE_WEB,
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            PlatformInterface::TYPE_WEB,
         ]);
 
         $platform->addType($type);
@@ -124,8 +114,8 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $platform = new Platform($faker->randomElement([
-            Platform::RELATIONSHIP_ALLOW,
-            Platform::RELATIONSHIP_DENY,
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
         $platform->addType('foobarbaz');

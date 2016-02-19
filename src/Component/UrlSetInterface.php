@@ -14,6 +14,12 @@ namespace Refinery29\Sitemap\Component;
 interface UrlSetInterface
 {
     /**
+     * Constant for XML namespace attribute and URI.
+     */
+    const XML_NAMESPACE_ATTRIBUTE = 'xmlns';
+    const XML_NAMESPACE_URI = 'http://www.sitemaps.org/schemas/sitemap/0.9';
+
+    /**
      * @param UrlInterface $url
      */
     public function addUrl(UrlInterface $url);

@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Test\Writer\Video;
 
-use Refinery29\Sitemap\Component\Video\Price;
 use Refinery29\Sitemap\Component\Video\PriceInterface;
 use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PriceWriter;
@@ -46,12 +45,12 @@ class PriceWriterTest extends AbstractTestCase
         $currency = $faker->currencyCode;
         $value = $faker->randomFloat(2, 0.01);
         $type = $faker->randomElement([
-            Price::TYPE_OWN,
-            Price::TYPE_RENT,
+            PriceInterface::TYPE_OWN,
+            PriceInterface::TYPE_RENT,
         ]);
         $resolution = $faker->randomElement([
-            Price::RESOLUTION_HD,
-            Price::RESOLUTION_SD,
+            PriceInterface::RESOLUTION_HD,
+            PriceInterface::RESOLUTION_SD,
         ]);
 
         $price = $this->getPriceMock(

@@ -11,14 +11,6 @@ namespace Refinery29\Sitemap\Component\Video;
 final class Restriction implements RestrictionInterface
 {
     /**
-     * Constants for relationships.
-     *
-     * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
-     */
-    const RELATIONSHIP_ALLOW = 'allow';
-    const RELATIONSHIP_DENY = 'deny';
-
-    /**
      * @var string
      */
     private $relationship;
@@ -42,8 +34,8 @@ final class Restriction implements RestrictionInterface
     private function setRelationship($relationship)
     {
         $allowedValues = [
-            self::RELATIONSHIP_ALLOW,
-            self::RELATIONSHIP_DENY,
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ];
 
         if (!is_string($relationship) || !in_array($relationship, $allowedValues)) {
