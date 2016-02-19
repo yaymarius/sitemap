@@ -25,29 +25,6 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('xmlns:video', Video::XML_NAMESPACE_ATTRIBUTE);
-        $this->assertSame('http://www.google.com/schemas/sitemap-video/1.1', Video::XML_NAMESPACE_URI);
-
-        $this->assertSame(100, Video::TITLE_MAX_LENGTH);
-
-        $this->assertSame(0, Video::DURATION_LOWER_LIMIT);
-        $this->assertSame(28800, Video::DURATION_UPPER_LIMIT);
-
-        $this->assertSame(0.0, Video::RATING_MIN);
-        $this->assertSame(5.0, Video::RATING_MAX);
-
-        $this->assertSame('yes', Video::REQUIRES_SUBSCRIPTION_YES);
-        $this->assertSame('no', Video::REQUIRES_SUBSCRIPTION_NO);
-
-        $this->assertSame('no', Video::FAMILY_FRIENDLY_NO);
-
-        $this->assertSame(256, Video::CATEGORY_MAX_LENGTH);
-
-        $this->assertSame(32, Video::TAG_MAX_COUNT);
-    }
-
     public function testImplementsInterface()
     {
         $faker = $this->getFaker();
@@ -73,25 +50,25 @@ class VideoTest extends \PHPUnit_Framework_TestCase
         $playerLocation = $this->getPlayerLocationMock();
         $galleryLocation = $this->getGalleryLocationMock();
         $duration = $faker->numberBetween(
-            Video::DURATION_LOWER_LIMIT,
-            Video::DURATION_UPPER_LIMIT
+            VideoInterface::DURATION_LOWER_LIMIT,
+            VideoInterface::DURATION_UPPER_LIMIT
         );
         $publicationDate = $faker->dateTime;
         $expirationDate = $faker->dateTime;
         $rating = $faker->randomFloat(1, 0, 5);
         $viewCount = $faker->randomNumber();
-        $familyFriendly = Video::FAMILY_FRIENDLY_NO;
+        $familyFriendly = VideoInterface::FAMILY_FRIENDLY_NO;
         $category = $faker->word;
         $restriction = $this->getRestrictionMock();
         $requiresSubscription = $faker->randomElement([
-            Video::REQUIRES_SUBSCRIPTION_YES,
-            Video::REQUIRES_SUBSCRIPTION_NO,
+            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
+            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
         ]);
         $uploader = $this->getUploaderMock();
         $platform = $this->getPlatformMock();
         $live = $faker->randomElement([
-            Video::LIVE_NO,
-            Video::LIVE_YES,
+            VideoInterface::LIVE_NO,
+            VideoInterface::LIVE_YES,
         ]);
 
         $video = new Video(
@@ -173,7 +150,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $title = str_repeat('a', Video::TITLE_MAX_LENGTH + 1);
+        $title = str_repeat('a', VideoInterface::TITLE_MAX_LENGTH + 1);
 
         new Video(
             $faker->url,
@@ -189,7 +166,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $description = str_repeat('a', Video::DESCRIPTION_MAX_LENGTH + 1);
+        $description = str_repeat('a', VideoInterface::DESCRIPTION_MAX_LENGTH + 1);
 
         new Video(
             $faker->url,
@@ -243,10 +220,10 @@ class VideoTest extends \PHPUnit_Framework_TestCase
     {
         $invalidValues = [
             'foo',
-            Video::DURATION_LOWER_LIMIT - 1,
-            Video::DURATION_LOWER_LIMIT,
-            Video::DURATION_UPPER_LIMIT,
-            Video::DURATION_UPPER_LIMIT + 1,
+            VideoInterface::DURATION_LOWER_LIMIT - 1,
+            VideoInterface::DURATION_LOWER_LIMIT,
+            VideoInterface::DURATION_UPPER_LIMIT,
+            VideoInterface::DURATION_UPPER_LIMIT + 1,
         ];
 
         foreach ($invalidValues as $duration) {
@@ -275,8 +252,8 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $this->getPlayerLocationMock(),
             $this->getGalleryLocationMock(),
             $faker->numberBetween(
-                Video::DURATION_LOWER_LIMIT,
-                Video::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ),
             $faker->dateTime,
             $faker->dateTime,
@@ -291,8 +268,8 @@ class VideoTest extends \PHPUnit_Framework_TestCase
     {
         $invalidValues = [
             'foo',
-            Video::RATING_MIN - 0.1,
-            Video::RATING_MAX + 0.1,
+            VideoInterface::RATING_MIN - 0.1,
+            VideoInterface::RATING_MAX + 0.1,
         ];
 
         foreach ($invalidValues as $rating) {
@@ -321,8 +298,8 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $this->getPlayerLocationMock(),
             $this->getGalleryLocationMock(),
             $faker->numberBetween(
-                Video::DURATION_LOWER_LIMIT,
-                Video::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ),
             $faker->dateTime,
             $faker->dateTime,
@@ -367,8 +344,8 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $this->getPlayerLocationMock(),
             $this->getGalleryLocationMock(),
             $faker->numberBetween(
-                Video::DURATION_LOWER_LIMIT,
-                Video::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ),
             $faker->dateTime,
             $faker->dateTime,
@@ -414,14 +391,14 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $this->getPlayerLocationMock(),
             $this->getGalleryLocationMock(),
             $faker->numberBetween(
-                Video::DURATION_LOWER_LIMIT,
-                Video::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ),
             $faker->dateTime,
             $faker->dateTime,
             $faker->randomFloat(1, 0, 5),
             $faker->randomNumber(),
-            Video::FAMILY_FRIENDLY_NO,
+            VideoInterface::FAMILY_FRIENDLY_NO,
             $faker->word,
             $this->getRestrictionMock(),
             $requiresSubscription
@@ -478,7 +455,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $faker->url
         );
 
-        for ($i = 0; $i < Video::TAG_MAX_COUNT; ++$i) {
+        for ($i = 0; $i < VideoInterface::TAG_MAX_COUNT; ++$i) {
             $video->addTag($this->getTagMock());
         }
 
@@ -491,7 +468,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $category = str_repeat('a', Video::CATEGORY_MAX_LENGTH + 1);
+        $category = str_repeat('a', VideoInterface::CATEGORY_MAX_LENGTH + 1);
 
         new Video(
             $faker->url,
@@ -501,14 +478,14 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $this->getPlayerLocationMock(),
             $this->getGalleryLocationMock(),
             $faker->numberBetween(
-                Video::DURATION_LOWER_LIMIT,
-                Video::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ),
             $faker->dateTime,
             $faker->dateTime,
             $faker->randomFloat(1, 0, 5),
             $faker->randomNumber(),
-            Video::FAMILY_FRIENDLY_NO,
+            VideoInterface::FAMILY_FRIENDLY_NO,
             $category
         );
     }
@@ -552,19 +529,19 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $this->getPlayerLocationMock(),
             $this->getGalleryLocationMock(),
             $faker->numberBetween(
-                Video::DURATION_LOWER_LIMIT,
-                Video::DURATION_UPPER_LIMIT
+                VideoInterface::DURATION_LOWER_LIMIT,
+                VideoInterface::DURATION_UPPER_LIMIT
             ),
             $faker->dateTime,
             $faker->dateTime,
             $faker->randomFloat(1, 0, 5),
             $faker->randomNumber(),
-            Video::FAMILY_FRIENDLY_NO,
+            VideoInterface::FAMILY_FRIENDLY_NO,
             $faker->word,
             $this->getRestrictionMock(),
             $faker->randomElement([
-                Video::REQUIRES_SUBSCRIPTION_YES,
-                Video::REQUIRES_SUBSCRIPTION_NO,
+                VideoInterface::REQUIRES_SUBSCRIPTION_YES,
+                VideoInterface::REQUIRES_SUBSCRIPTION_NO,
             ]),
             $this->getUploaderMock(),
             $this->getPlatformMock(),

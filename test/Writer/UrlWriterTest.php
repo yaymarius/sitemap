@@ -11,7 +11,6 @@ namespace Refinery29\Sitemap\Test\Writer;
 use DateTime;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
-use Refinery29\Sitemap\Component\Url;
 use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Sitemap\Writer\Image\ImageWriter;
@@ -54,13 +53,13 @@ class UrlWriterTest extends AbstractTestCase
         $location = $faker->url;
         $lastModified = $faker->dateTime;
         $changeFrequency = $faker->randomElement([
-            Url::CHANGE_FREQUENCY_ALWAYS,
-            Url::CHANGE_FREQUENCY_DAILY,
-            Url::CHANGE_FREQUENCY_HOURLY,
-            Url::CHANGE_FREQUENCY_MONTHLY,
-            Url::CHANGE_FREQUENCY_NEVER,
-            Url::CHANGE_FREQUENCY_WEEKLY,
-            Url::CHANGE_FREQUENCY_YEARLY,
+            UrlInterface::CHANGE_FREQUENCY_ALWAYS,
+            UrlInterface::CHANGE_FREQUENCY_DAILY,
+            UrlInterface::CHANGE_FREQUENCY_HOURLY,
+            UrlInterface::CHANGE_FREQUENCY_MONTHLY,
+            UrlInterface::CHANGE_FREQUENCY_NEVER,
+            UrlInterface::CHANGE_FREQUENCY_WEEKLY,
+            UrlInterface::CHANGE_FREQUENCY_YEARLY,
         ]);
         $priority = $faker->randomFloat(2, 0, 1);
         $images = [

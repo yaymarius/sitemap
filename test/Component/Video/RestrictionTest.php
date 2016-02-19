@@ -17,17 +17,11 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('allow', Restriction::RELATIONSHIP_ALLOW);
-        $this->assertSame('deny', Restriction::RELATIONSHIP_DENY);
-    }
-
     public function testImplementsInterface()
     {
         $restriction = new Restriction($this->getFaker()->randomElement([
-            Restriction::RELATIONSHIP_ALLOW,
-            Restriction::RELATIONSHIP_DENY,
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ]));
 
         $this->assertInstanceOf(RestrictionInterface::class, $restriction);
@@ -36,8 +30,8 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
     public function testConstructorSetsValues()
     {
         $relationship = $this->getFaker()->randomElement([
-            Restriction::RELATIONSHIP_ALLOW,
-            Restriction::RELATIONSHIP_DENY,
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ]);
 
         $restriction = new Restriction($relationship);
@@ -48,8 +42,8 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
     public function testDefaults()
     {
         $relationship = $this->getFaker()->randomElement([
-            Restriction::RELATIONSHIP_ALLOW,
-            Restriction::RELATIONSHIP_DENY,
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ]);
 
         $restriction = new Restriction($relationship);
@@ -75,8 +69,8 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         ];
 
         $relationship = $faker->randomElement([
-            Restriction::RELATIONSHIP_ALLOW,
-            Restriction::RELATIONSHIP_DENY,
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ]);
 
         $restriction = new Restriction($relationship);

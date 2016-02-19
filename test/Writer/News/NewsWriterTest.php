@@ -9,7 +9,6 @@
 namespace Refinery29\Sitemap\Test\Writer\News;
 
 use DateTime;
-use Refinery29\Sitemap\Component\News\News;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
@@ -71,10 +70,10 @@ class NewsWriterTest extends AbstractTestCase
         $publication = $this->getPublicationMock();
         $publicationDate = $faker->dateTime;
         $title = $faker->sentence;
-        $access = News::ACCESS_SUBSCRIPTION;
+        $access = NewsInterface::ACCESS_SUBSCRIPTION;
         $genres = $faker->randomElements([
-            News::GENRE_SATIRE,
-            News::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_OPINION,
         ]);
         $keywords = $faker->words;
         $stockTickers = $faker->words;

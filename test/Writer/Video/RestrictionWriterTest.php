@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Test\Writer\Video;
 
-use Refinery29\Sitemap\Component\Video\Restriction;
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\RestrictionWriter;
@@ -21,8 +20,8 @@ class RestrictionWriterTest extends AbstractTestCase
         $faker = $this->getFaker();
 
         $relationship = $faker->randomElement([
-            Restriction::RELATIONSHIP_ALLOW,
-            Restriction::RELATIONSHIP_DENY,
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ]);
 
         $countryCodes = [

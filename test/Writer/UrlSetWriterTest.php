@@ -8,12 +8,11 @@
  */
 namespace Refinery29\Sitemap\Test\Writer;
 
-use Refinery29\Sitemap\Component\Image\Image;
-use Refinery29\Sitemap\Component\News\News;
+use Refinery29\Sitemap\Component\Image\ImageInterface;
+use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\UrlInterface;
-use Refinery29\Sitemap\Component\UrlSet;
 use Refinery29\Sitemap\Component\UrlSetInterface;
-use Refinery29\Sitemap\Component\Video\Video;
+use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Sitemap\Writer\UrlSetWriter;
 use Refinery29\Sitemap\Writer\UrlWriter;
 use XMLWriter;
@@ -41,10 +40,10 @@ class UrlSetWriterTest extends AbstractTestCase
 
         $this->expectToStartElement($xmlWriter, 'urlset');
 
-        $this->expectToWriteAttribute($xmlWriter, UrlSet::XML_NAMESPACE_ATTRIBUTE, UrlSet::XML_NAMESPACE_URI);
-        $this->expectToWriteAttribute($xmlWriter, Image::XML_NAMESPACE_ATTRIBUTE, Image::XML_NAMESPACE_URI);
-        $this->expectToWriteAttribute($xmlWriter, News::XML_NAMESPACE_ATTRIBUTE, News::XML_NAMESPACE_URI);
-        $this->expectToWriteAttribute($xmlWriter, Video::XML_NAMESPACE_ATTRIBUTE, Video::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, UrlSetInterface::XML_NAMESPACE_ATTRIBUTE, UrlSetInterface::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, ImageInterface::XML_NAMESPACE_ATTRIBUTE, ImageInterface::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, NewsInterface::XML_NAMESPACE_ATTRIBUTE, NewsInterface::XML_NAMESPACE_URI);
+        $this->expectToWriteAttribute($xmlWriter, VideoInterface::XML_NAMESPACE_ATTRIBUTE, VideoInterface::XML_NAMESPACE_URI);
 
         $urlWriter = $this->getUrlWriterMock();
 
