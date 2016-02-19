@@ -174,6 +174,10 @@ $xml = $sitemapIndexWriter->write($sitemapIndex);
 
 Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
+## Code of Conduct
+
+Please have a look at [CONDUCT.md](CONDUCT.md).
+
 ## License
 
 This package is licensed using the MIT License.
