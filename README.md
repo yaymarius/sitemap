@@ -172,11 +172,11 @@ $xml = $sitemapIndexWriter->write($sitemapIndex);
 
 ## Contributing
 
-Please refer to [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Please refer to [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
 
 ## Code of Conduct
 
-Please have a look at [CONDUCT.md](CONDUCT.md).
+Please have a look at [CONDUCT.md](.github/CONDUCT.md).
 
 ## License
 
