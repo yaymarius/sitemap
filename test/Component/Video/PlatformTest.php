@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Test\Component\Video;
 
-use BadMethodCallException;
 use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Platform;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
@@ -91,7 +90,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
     public function testCanNotAddSameTypeTwice()
     {
-        $this->setExpectedException(BadMethodCallException::class);
+        $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Test\Component\Video;
 
-use BadMethodCallException;
 use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
@@ -445,7 +444,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testCanNotAddMoreThanMaximumNumberOfTags()
     {
-        $this->setExpectedException(BadMethodCallException::class);
+        $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

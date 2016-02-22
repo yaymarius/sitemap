@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
-use BadMethodCallException;
 use DateTime;
 use InvalidArgumentException;
 
@@ -381,7 +380,7 @@ final class Video implements VideoInterface
     public function addTag(TagInterface $tag)
     {
         if (count($this->tags) === VideoInterface::TAG_MAX_COUNT) {
-            throw new BadMethodCallException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Can not add more than %s tags',
                 VideoInterface::TAG_MAX_COUNT
             ));
