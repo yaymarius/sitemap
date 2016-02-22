@@ -11,10 +11,18 @@ namespace Refinery29\Sitemap\Test\Component\Image;
 use Refinery29\Sitemap\Component\Image\Image;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class ImageTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(Image::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
+    }
 
     public function testImplementsInterface()
     {

@@ -12,6 +12,7 @@ use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\PlayerLocation;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,6 +22,13 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSame('yes', PlayerLocationInterface::ALLOW_EMBED_YES);
         $this->assertSame('no', PlayerLocationInterface::ALLOW_EMBED_NO);
+    }
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(PlayerLocation::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsInterface()

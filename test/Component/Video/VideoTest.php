@@ -20,10 +20,18 @@ use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Sitemap\Component\Video\Video;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class VideoTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(Video::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
+    }
 
     public function testImplementsInterface()
     {

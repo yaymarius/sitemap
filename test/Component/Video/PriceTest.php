@@ -12,6 +12,7 @@ use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Price;
 use Refinery29\Sitemap\Component\Video\PriceInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class PriceTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,6 +25,13 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('HD', PriceInterface::RESOLUTION_HD);
         $this->assertSame('SD', PriceInterface::RESOLUTION_SD);
+    }
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(Price::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsInterface()
