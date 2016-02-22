@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
-use InvalidArgumentException;
+use Assert\Assertion;
 
 final class PlayerLocation implements PlayerLocationInterface
 {
@@ -51,22 +51,12 @@ final class PlayerLocation implements PlayerLocationInterface
      */
     private function setAllowEmbed($allowEmbed = null)
     {
-        if ($allowEmbed === null) {
-            return;
-        }
-
         $allowedValues = [
             PlayerLocationInterface::ALLOW_EMBED_NO,
             PlayerLocationInterface::ALLOW_EMBED_YES,
         ];
 
-        if (!in_array($allowEmbed, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as one of "%s"',
-                'allowEmbed',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::nullOrChoice($allowEmbed, $allowedValues);
 
         $this->allowEmbed = $allowEmbed;
     }
