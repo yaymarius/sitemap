@@ -8,7 +8,6 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
-use BadMethodCallException;
 use InvalidArgumentException;
 
 final class Platform implements PlatformInterface
@@ -77,7 +76,7 @@ final class Platform implements PlatformInterface
         }
 
         if (in_array($type, $this->types)) {
-            throw new BadMethodCallException('Can not add the same type twice');
+            throw new InvalidArgumentException('Can not add the same type twice');
         }
 
         $this->types[] = $type;

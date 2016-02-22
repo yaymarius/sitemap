@@ -18,7 +18,7 @@ final class SitemapIndex implements SitemapIndexInterface
     public function addSitemap(SitemapInterface $sitemap)
     {
         if ($this->hasSitemapWithLocation($sitemap->getLocation())) {
-            throw new \BadMethodCallException(sprintf(
+            throw new \InvalidArgumentException(sprintf(
                 'Can not add sitemap with duplicate location "%s"',
                 $sitemap->getLocation()
             ));

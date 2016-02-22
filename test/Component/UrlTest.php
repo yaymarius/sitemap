@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Test\Component;
 
-use BadMethodCallException;
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Url;
@@ -83,7 +83,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function testCanNotAddMoreThanMaximumNumberOfImages()
     {
-        $this->setExpectedException(BadMethodCallException::class);
+        $this->setExpectedException(InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
