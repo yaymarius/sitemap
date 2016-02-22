@@ -26,11 +26,9 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsImageInterface()
     {
-        $location = $this->getFaker()->url;
+        $reflectionClass = new ReflectionClass(Image::class);
 
-        $image = new Image($location);
-
-        $this->assertInstanceOf(ImageInterface::class, $image);
+        $this->assertTrue($reflectionClass->implementsInterface(ImageInterface::class));
     }
 
     public function testConstructorSetsValues()

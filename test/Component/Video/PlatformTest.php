@@ -28,14 +28,9 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPlatformInterface()
     {
-        $faker = $this->getFaker();
+        $reflectionClass = new ReflectionClass(Platform::class);
 
-        $platform = new Platform($faker->randomElement([
-            PlatformInterface::RELATIONSHIP_ALLOW,
-            PlatformInterface::RELATIONSHIP_DENY,
-        ]));
-
-        $this->assertInstanceOf(PlatformInterface::class, $platform);
+        $this->assertTrue($reflectionClass->implementsInterface(PlatformInterface::class));
     }
 
     public function testConstructorSetsValues()

@@ -28,15 +28,9 @@ class NewsTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsNewsInterface()
     {
-        $faker = $this->getFaker();
+        $reflectionClass = new ReflectionClass(News::class);
 
-        $news = new News(
-            $this->getPublicationMock(),
-            $faker->dateTime,
-            $faker->sentence
-        );
-
-        $this->assertInstanceOf(NewsInterface::class, $news);
+        $this->assertTrue($reflectionClass->implementsInterface(NewsInterface::class));
     }
 
     public function testConstructorSetsValues()

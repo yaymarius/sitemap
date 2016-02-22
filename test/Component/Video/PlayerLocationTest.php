@@ -33,9 +33,9 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPlayerLocationInterface()
     {
-        $playerLocation = new PlayerLocation($this->getFaker()->url);
+        $reflectionClass = new ReflectionClass(PlayerLocation::class);
 
-        $this->assertInstanceOf(PlayerLocationInterface::class, $playerLocation);
+        $this->assertTrue($reflectionClass->implementsInterface(PlayerLocationInterface::class));
     }
 
     public function testConstructorSetsValues()

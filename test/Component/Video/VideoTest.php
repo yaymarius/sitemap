@@ -35,16 +35,9 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsVideoInterface()
     {
-        $faker = $this->getFaker();
+        $reflectionClass = new ReflectionClass(Video::class);
 
-        $video = new Video(
-            $faker->url,
-            $faker->sentence,
-            $faker->paragraphs(5, true),
-            $faker->url
-        );
-
-        $this->assertInstanceOf(VideoInterface::class, $video);
+        $this->assertTrue($reflectionClass->implementsInterface(VideoInterface::class));
     }
 
     public function testConstructorSetsValues()
