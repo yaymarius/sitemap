@@ -51,12 +51,12 @@ final class PlayerLocation implements PlayerLocationInterface
      */
     private function setAllowEmbed($allowEmbed = null)
     {
-        $allowedValues = [
+        $choices = [
             PlayerLocationInterface::ALLOW_EMBED_NO,
             PlayerLocationInterface::ALLOW_EMBED_YES,
         ];
 
-        Assertion::nullOrChoice($allowEmbed, $allowedValues);
+        Assertion::nullOrChoice($allowEmbed, $choices);
 
         $this->allowEmbed = $allowEmbed;
     }

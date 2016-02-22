@@ -35,12 +35,12 @@ final class Platform implements PlatformInterface
      */
     private function setRelationship($relationship)
     {
-        $allowedValues = [
+        $choices = [
             PlatformInterface::RELATIONSHIP_ALLOW,
             PlatformInterface::RELATIONSHIP_DENY,
         ];
 
-        Assertion::choice($relationship, $allowedValues);
+        Assertion::choice($relationship, $choices);
 
         $this->relationship = $relationship;
     }
@@ -55,13 +55,13 @@ final class Platform implements PlatformInterface
      */
     public function addType($type)
     {
-        $allowedValues = [
+        $choices = [
             PlatformInterface::TYPE_MOBILE,
             PlatformInterface::TYPE_TV,
             PlatformInterface::TYPE_WEB,
         ];
 
-        Assertion::choice($type, $allowedValues);
+        Assertion::choice($type, $choices);
         Assertion::false(in_array($type, $this->types));
 
         $this->types[] = $type;

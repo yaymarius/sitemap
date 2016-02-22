@@ -35,12 +35,12 @@ final class Restriction implements RestrictionInterface
      */
     private function setRelationship($relationship)
     {
-        $allowedValues = [
+        $choices = [
             RestrictionInterface::RELATIONSHIP_ALLOW,
             RestrictionInterface::RELATIONSHIP_DENY,
         ];
 
-        Assertion::choice($relationship, $allowedValues);
+        Assertion::choice($relationship, $choices);
 
         $this->relationship = $relationship;
     }

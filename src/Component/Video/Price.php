@@ -73,12 +73,12 @@ final class Price implements PriceInterface
      */
     private function setType($type = null)
     {
-        $allowedValues = [
+        $choices = [
             PriceInterface::TYPE_OWN,
             PriceInterface::TYPE_RENT,
         ];
 
-        Assertion::nullOrChoice($type, $allowedValues);
+        Assertion::nullOrChoice($type, $choices);
 
         $this->type = $type;
     }
@@ -93,12 +93,12 @@ final class Price implements PriceInterface
      */
     private function setResolution($resolution = null)
     {
-        $allowedValues = [
+        $choices = [
             PriceInterface::RESOLUTION_HD,
             PriceInterface::RESOLUTION_SD,
         ];
 
-        Assertion::nullOrChoice($resolution, $allowedValues);
+        Assertion::nullOrChoice($resolution, $choices);
 
         $this->resolution = $resolution;
     }

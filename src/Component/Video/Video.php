@@ -393,12 +393,12 @@ final class Video implements VideoInterface
      */
     private function setRequiresSubscription($requiresSubscription = null)
     {
-        $allowedValues = [
+        $choices = [
             VideoInterface::REQUIRES_SUBSCRIPTION_NO,
             VideoInterface::REQUIRES_SUBSCRIPTION_YES,
         ];
 
-        Assertion::nullOrChoice($requiresSubscription, $allowedValues);
+        Assertion::nullOrChoice($requiresSubscription, $choices);
 
         $this->requiresSubscription = $requiresSubscription;
     }
@@ -423,12 +423,12 @@ final class Video implements VideoInterface
      */
     private function setLive($live = null)
     {
-        $allowedValues = [
+        $choices = [
             VideoInterface::LIVE_NO,
             VideoInterface::LIVE_YES,
         ];
 
-        Assertion::nullOrChoice($live, $allowedValues);
+        Assertion::nullOrChoice($live, $choices);
 
         $this->live = $live;
     }
