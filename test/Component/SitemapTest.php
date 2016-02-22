@@ -24,7 +24,7 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsSitemapInterface()
     {
         $sitemap = new Sitemap($this->getFaker()->url);
 

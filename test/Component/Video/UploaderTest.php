@@ -24,7 +24,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsUploaderInterface()
     {
         $uploader = new Uploader($this->getFaker()->name);
 

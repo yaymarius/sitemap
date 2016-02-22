@@ -24,7 +24,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsGalleryLocationInterface()
     {
         $galleryLocation = new GalleryLocation($this->getFaker()->url);
 

@@ -26,7 +26,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsPlatformInterface()
     {
         $faker = $this->getFaker();
 
