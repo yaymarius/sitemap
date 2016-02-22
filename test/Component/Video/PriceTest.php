@@ -34,7 +34,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsPriceInterface()
     {
         $faker = $this->getFaker();
 

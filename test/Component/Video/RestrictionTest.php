@@ -25,7 +25,7 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsRestrictionInterface()
     {
         $restriction = new Restriction($this->getFaker()->randomElement([
             RestrictionInterface::RELATIONSHIP_ALLOW,

@@ -26,7 +26,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testImplementsInterface()
+    public function testImplementsNewsInterface()
     {
         $faker = $this->getFaker();
 
