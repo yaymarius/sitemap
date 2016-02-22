@@ -36,14 +36,9 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPriceInterface()
     {
-        $faker = $this->getFaker();
+        $reflectionClass = new ReflectionClass(Price::class);
 
-        $price = new Price(
-            $faker->randomFloat(2, 0.01),
-            $faker->currencyCode
-        );
-
-        $this->assertInstanceOf(PriceInterface::class, $price);
+        $this->assertTrue($reflectionClass->implementsInterface(PriceInterface::class));
     }
 
     public function testConstructorSetsValues()

@@ -26,9 +26,9 @@ class TagTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsTagInterface()
     {
-        $tag = new Tag($this->getFaker()->word);
+        $reflectionClass = new ReflectionClass(Tag::class);
 
-        $this->assertInstanceOf(TagInterface::class, $tag);
+        $this->assertTrue($reflectionClass->implementsInterface(TagInterface::class));
     }
 
     public function testConstructorSetsValues()

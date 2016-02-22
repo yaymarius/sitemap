@@ -26,14 +26,9 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPublicationInterface()
     {
-        $faker = $this->getFaker();
+        $reflectionClass = new ReflectionClass(Publication::class);
 
-        $publication = new Publication(
-            $faker->name,
-            $faker->languageCode
-        );
-
-        $this->assertInstanceOf(PublicationInterface::class, $publication);
+        $this->assertTrue($reflectionClass->implementsInterface(PublicationInterface::class));
     }
 
     public function testConstructorSetsValues()
