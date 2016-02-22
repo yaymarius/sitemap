@@ -11,10 +11,18 @@ namespace Refinery29\Sitemap\Test\Component;
 use Refinery29\Sitemap\Component\SitemapIndex;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(SitemapIndex::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
+    }
 
     public function testDefaults()
     {

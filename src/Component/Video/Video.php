@@ -12,7 +12,7 @@ use BadMethodCallException;
 use DateTime;
 use InvalidArgumentException;
 
-class Video implements VideoInterface
+final class Video implements VideoInterface
 {
     /**
      * @var string

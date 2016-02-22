@@ -11,10 +11,18 @@ namespace Refinery29\Sitemap\Test\Component\Video;
 use Refinery29\Sitemap\Component\Video\Tag;
 use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class TagTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(Tag::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
+    }
 
     public function testImplementsInterface()
     {

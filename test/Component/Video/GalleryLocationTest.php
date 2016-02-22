@@ -11,10 +11,18 @@ namespace Refinery29\Sitemap\Test\Component\Video;
 use Refinery29\Sitemap\Component\Video\GalleryLocation;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class GalleryLocationTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(GalleryLocation::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
+    }
 
     public function testImplementsInterface()
     {

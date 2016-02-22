@@ -14,10 +14,18 @@ use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Url;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
+use ReflectionClass;
 
 class UrlTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
+
+    public function testIsFinal()
+    {
+        $reflectionClass = new ReflectionClass(Url::class);
+
+        $this->assertTrue($reflectionClass->isFinal());
+    }
 
     public function testConstructorSetsValues()
     {
@@ -79,7 +87,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url = new Url($this->getFaker()->url);
 
-        $reflection = new \ReflectionClass(Url::class);
+        $reflection = new ReflectionClass(Url::class);
 
         $property = $reflection->getProperty('images');
         $property->setAccessible(true);
