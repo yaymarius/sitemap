@@ -8,8 +8,8 @@
  */
 namespace Refinery29\Sitemap\Component\News;
 
+use Assert\Assertion;
 use DateTime;
-use InvalidArgumentException;
 
 final class News implements NewsInterface
 {
@@ -98,22 +98,12 @@ final class News implements NewsInterface
      */
     private function setAccess($access = null)
     {
-        if ($access === null) {
-            return;
-        }
-
         $allowedValues = [
             NewsInterface::ACCESS_REGISTRATION,
             NewsInterface::ACCESS_SUBSCRIPTION,
         ];
 
-        if (!in_array($access, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as one of "%s"',
-                'access',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::nullOrChoice($access, $allowedValues);
 
         $this->access = $access;
     }
@@ -128,10 +118,6 @@ final class News implements NewsInterface
      */
     private function setGenres(array $genres = [])
     {
-        if (!count($genres)) {
-            return;
-        }
-
         $allowedValues = [
             NewsInterface::GENRE_BLOG,
             NewsInterface::GENRE_OP_ED,
@@ -140,17 +126,7 @@ final class News implements NewsInterface
             NewsInterface::GENRE_USER_GENERATED,
         ];
 
-        $invalidValues = array_filter($genres, function ($genre) use ($allowedValues) {
-            return !in_array($genre, $allowedValues, true);
-        });
-
-        if (count($invalidValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as an array, and each element needs to be one of "%s"',
-                'genres',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::allChoice($genres, $allowedValues);
 
         $this->genres = $genres;
     }
@@ -170,17 +146,7 @@ final class News implements NewsInterface
      */
     private function setStockTickers(array $stockTickers = [])
     {
-        if (!count($stockTickers)) {
-            return;
-        }
-
-        if (count($stockTickers) > NewsInterface::STOCK_TICKERS_MAX_COUNT) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as an array with at most "%s" elements',
-                'stockTickers',
-                NewsInterface::STOCK_TICKERS_MAX_COUNT
-            ));
-        }
+        Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
 
         $this->stockTickers = $stockTickers;
     }

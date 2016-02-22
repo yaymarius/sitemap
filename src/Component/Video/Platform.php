@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
-use InvalidArgumentException;
+use Assert\Assertion;
 
 final class Platform implements PlatformInterface
 {
@@ -40,13 +40,7 @@ final class Platform implements PlatformInterface
             PlatformInterface::RELATIONSHIP_DENY,
         ];
 
-        if (!is_string($relationship) || !in_array($relationship, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Parameter "%s" needs to be specified as one of "%s"',
-                'relationship',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::choice($relationship, $allowedValues);
 
         $this->relationship = $relationship;
     }
@@ -67,17 +61,8 @@ final class Platform implements PlatformInterface
             PlatformInterface::TYPE_WEB,
         ];
 
-        if (!is_string($type) || !in_array($type, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Parameter "%s" needs to be specified as one of "%s"',
-                'type',
-                implode('", "', $allowedValues)
-            ));
-        }
-
-        if (in_array($type, $this->types)) {
-            throw new InvalidArgumentException('Can not add the same type twice');
-        }
+        Assertion::choice($type, $allowedValues);
+        Assertion::false(in_array($type, $this->types));
 
         $this->types[] = $type;
     }

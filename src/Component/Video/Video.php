@@ -8,8 +8,8 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
+use Assert\Assertion;
 use DateTime;
-use InvalidArgumentException;
 
 final class Video implements VideoInterface
 {
@@ -158,15 +158,13 @@ final class Video implements VideoInterface
         $this->setTitle($title);
         $this->setDescription($description);
 
-        if ($contentLocation === null && $playerLocation === null) {
-            throw new InvalidArgumentException(sprintf(
-                'At least one of parameters "%s" needs to be specified',
-                implode('", "', [
-                    'contentLocation',
-                    'playerLocation',
-                ])
-            ));
-        }
+        Assertion::false($contentLocation === null && $playerLocation === null, sprintf(
+            'At least one of parameters "%s" needs to be specified',
+            implode('", "', [
+                'contentLocation',
+                'playerLocation',
+            ])
+        ));
 
         $this->contentLocation = $contentLocation;
         $this->playerLocation = $playerLocation;
@@ -202,13 +200,7 @@ final class Video implements VideoInterface
      */
     private function setTitle($title)
     {
-        if (!is_string($title) || mb_strlen($title) > VideoInterface::TITLE_MAX_LENGTH) {
-            throw new InvalidArgumentException(sprintf(
-                'Parameter "%s" needs to be specified as a string not longer than "%s" characters',
-                'title',
-                VideoInterface::TITLE_MAX_LENGTH
-            ));
-        }
+        Assertion::maxLength($title, VideoInterface::TITLE_MAX_LENGTH);
 
         $this->title = $title;
     }
@@ -223,13 +215,7 @@ final class Video implements VideoInterface
      */
     private function setDescription($description)
     {
-        if (!is_string($description) || mb_strlen($description) > VideoInterface::DESCRIPTION_MAX_LENGTH) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as a string not longer than "%s" characters',
-                'description',
-                VideoInterface::DESCRIPTION_MAX_LENGTH
-            ));
-        }
+        Assertion::maxLength($description, VideoInterface::DESCRIPTION_MAX_LENGTH);
 
         $this->description = $description;
     }
@@ -259,17 +245,11 @@ final class Video implements VideoInterface
      */
     private function setDuration($duration = null)
     {
-        if ($duration === null) {
-            return;
-        }
+        Assertion::nullOrInteger($duration);
 
-        if (!is_int($duration) || $duration <= VideoInterface::DURATION_LOWER_LIMIT || $duration >= VideoInterface::DURATION_UPPER_LIMIT) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as an integer greater than "%s" and smaller than "%s"',
-                'duration',
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ));
+        if ($duration !== null) {
+            Assertion::greaterThan($duration, VideoInterface::DURATION_LOWER_LIMIT);
+            Assertion::lessThan($duration, VideoInterface::DURATION_UPPER_LIMIT);
         }
 
         $this->duration = $duration;
@@ -303,17 +283,11 @@ final class Video implements VideoInterface
      */
     private function setRating($rating = null)
     {
-        if ($rating === null) {
-            return;
-        }
+        Assertion::nullOrNumeric($rating);
 
-        if (!is_numeric($rating) || $rating < VideoInterface::RATING_MIN || $rating > VideoInterface::RATING_MAX) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as a number not smaller than "%s" and not greater than "%s"',
-                'rating',
-                VideoInterface::RATING_MIN,
-                VideoInterface::RATING_MAX
-            ));
+        if ($rating !== null) {
+            Assertion::greaterOrEqualThan($rating, VideoInterface::RATING_MIN);
+            Assertion::lessOrEqualThan($rating, VideoInterface::RATING_MAX);
         }
 
         $this->rating = $rating;
@@ -329,16 +303,10 @@ final class Video implements VideoInterface
      */
     private function setViewCount($viewCount = null)
     {
-        if ($viewCount === null) {
-            return;
-        }
+        Assertion::nullOrInteger($viewCount);
 
-        if (!is_int($viewCount) || $viewCount < 0) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as an integer not less than "%s"',
-                'viewCount',
-                0
-            ));
+        if ($viewCount !== null) {
+            Assertion::greaterOrEqualThan($viewCount, 0);
         }
 
         $this->viewCount = $viewCount;
@@ -354,17 +322,11 @@ final class Video implements VideoInterface
      */
     private function setFamilyFriendly($familyFriendly = null)
     {
-        if ($familyFriendly === null) {
-            return;
-        }
+        $choices = [
+            VideoInterface::FAMILY_FRIENDLY_NO,
+        ];
 
-        if ($familyFriendly !== VideoInterface::FAMILY_FRIENDLY_NO) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as "%s"',
-                'familyFriendly',
-                VideoInterface::FAMILY_FRIENDLY_NO
-            ));
-        }
+        Assertion::nullOrChoice($familyFriendly, $choices);
 
         $this->familyFriendly = $familyFriendly;
     }
@@ -379,12 +341,7 @@ final class Video implements VideoInterface
      */
     public function addTag(TagInterface $tag)
     {
-        if (count($this->tags) === VideoInterface::TAG_MAX_COUNT) {
-            throw new InvalidArgumentException(sprintf(
-                'Can not add more than %s tags',
-                VideoInterface::TAG_MAX_COUNT
-            ));
-        }
+        Assertion::lessThan(count($this->tags), VideoInterface::TAG_MAX_COUNT);
 
         $this->tags[] = $tag;
     }
@@ -399,16 +356,10 @@ final class Video implements VideoInterface
      */
     private function setCategory($category = null)
     {
-        if ($category === null) {
-            return;
-        }
+        Assertion::nullOrString($category);
 
-        if (!is_string($category) || mb_strlen($category) > VideoInterface::CATEGORY_MAX_LENGTH) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as a string not longer than "%s" characters',
-                'category',
-                VideoInterface::CATEGORY_MAX_LENGTH
-            ));
+        if ($category !== null) {
+            Assertion::maxLength($category, VideoInterface::CATEGORY_MAX_LENGTH);
         }
 
         $this->category = $category;
@@ -442,22 +393,12 @@ final class Video implements VideoInterface
      */
     private function setRequiresSubscription($requiresSubscription = null)
     {
-        if ($requiresSubscription === null) {
-            return;
-        }
-
         $allowedValues = [
             VideoInterface::REQUIRES_SUBSCRIPTION_NO,
             VideoInterface::REQUIRES_SUBSCRIPTION_YES,
         ];
 
-        if (!is_string($requiresSubscription) || !in_array($requiresSubscription, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as one of "%s"',
-                'requiresSubscription',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::nullOrChoice($requiresSubscription, $allowedValues);
 
         $this->requiresSubscription = $requiresSubscription;
     }
@@ -482,22 +423,12 @@ final class Video implements VideoInterface
      */
     private function setLive($live = null)
     {
-        if ($live === null) {
-            return;
-        }
-
         $allowedValues = [
             VideoInterface::LIVE_NO,
             VideoInterface::LIVE_YES,
         ];
 
-        if (!is_string($live) || !in_array($live, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as one of "%s"',
-                'live',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::nullOrChoice($live, $allowedValues);
 
         $this->live = $live;
     }

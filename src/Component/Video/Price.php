@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
-use InvalidArgumentException;
+use Assert\Assertion;
 
 final class Price implements PriceInterface
 {
@@ -53,13 +53,7 @@ final class Price implements PriceInterface
      */
     private function setValue($value)
     {
-        if (!is_numeric($value) || $value < PriceInterface::VALUE_MIN) {
-            throw new InvalidArgumentException(sprintf(
-                'Parameter "%s" needs to be specified as a number greater than "%s"',
-                $value,
-                PriceInterface::VALUE_MIN
-            ));
-        }
+        Assertion::greaterOrEqualThan($value, PriceInterface::VALUE_MIN);
 
         $this->value = $value;
     }
@@ -79,22 +73,12 @@ final class Price implements PriceInterface
      */
     private function setType($type = null)
     {
-        if ($type === null) {
-            return;
-        }
-
         $allowedValues = [
             PriceInterface::TYPE_OWN,
             PriceInterface::TYPE_RENT,
         ];
 
-        if (!is_string($type) || !in_array($type, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as one of "%s"',
-                'type',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::nullOrChoice($type, $allowedValues);
 
         $this->type = $type;
     }
@@ -109,22 +93,12 @@ final class Price implements PriceInterface
      */
     private function setResolution($resolution = null)
     {
-        if ($resolution === null) {
-            return;
-        }
-
         $allowedValues = [
             PriceInterface::RESOLUTION_HD,
             PriceInterface::RESOLUTION_SD,
         ];
 
-        if (!is_string($resolution) || !in_array($resolution, $allowedValues)) {
-            throw new InvalidArgumentException(sprintf(
-                'Optional parameter "%s" needs to be specified as one of "%s"',
-                'resolution',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::nullOrChoice($resolution, $allowedValues);
 
         $this->resolution = $resolution;
     }

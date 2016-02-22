@@ -8,6 +8,8 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
+use Assert\Assertion;
+
 final class Restriction implements RestrictionInterface
 {
     /**
@@ -38,13 +40,7 @@ final class Restriction implements RestrictionInterface
             RestrictionInterface::RELATIONSHIP_DENY,
         ];
 
-        if (!is_string($relationship) || !in_array($relationship, $allowedValues)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Parameter "%s" needs to be specified as one of "%s"',
-                'relationship',
-                implode('", "', $allowedValues)
-            ));
-        }
+        Assertion::choice($relationship, $allowedValues);
 
         $this->relationship = $relationship;
     }

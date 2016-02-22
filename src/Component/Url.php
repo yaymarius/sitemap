@@ -8,8 +8,8 @@
  */
 namespace Refinery29\Sitemap\Component;
 
+use Assert\Assertion;
 use DateTime;
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
@@ -94,12 +94,7 @@ final class Url implements UrlInterface
      */
     public function addImage(ImageInterface $image)
     {
-        if (count($this->images) === UrlInterface::IMAGE_MAX_COUNT) {
-            throw new InvalidArgumentException(sprintf(
-                'Can not add more than %s images',
-                UrlInterface::IMAGE_MAX_COUNT
-            ));
-        }
+        Assertion::lessThan(count($this->images), UrlInterface::IMAGE_MAX_COUNT);
 
         $this->images[] = $image;
     }
