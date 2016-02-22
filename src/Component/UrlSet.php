@@ -8,6 +8,8 @@
  */
 namespace Refinery29\Sitemap\Component;
 
+use Assert\Assertion;
+
 final class UrlSet implements UrlSetInterface
 {
     /**
@@ -17,6 +19,8 @@ final class UrlSet implements UrlSetInterface
 
     public function addUrl(UrlInterface $url)
     {
+        Assertion::lessThan(count($this->urls), UrlSetInterface::URL_MAX_COUNT);
+
         $this->urls[] = $url;
     }
 

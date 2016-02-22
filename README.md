@@ -44,7 +44,7 @@ $url = new Component\Url(
 $urlSet->add($url);
 ```
 
-:bulb: Careful with adding too many URLs, Google imposes a limit to the number of URLs.
+:bulb: Google imposes a limit of 50,000 URLs that can be added to any sitemap..
  
 ### `Image`
 
