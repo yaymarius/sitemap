@@ -490,6 +490,9 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
+     * @param XMLWriter        $xmlWriter
+     * @param PriceInterface[] $prices
+     *
      * @return \PHPUnit_Framework_MockObject_MockObject|PriceWriter
      */
     private function getPriceWriterSpy(XMLWriter $xmlWriter, array $prices)
