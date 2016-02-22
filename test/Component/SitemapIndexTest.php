@@ -58,10 +58,7 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
      */
     private function getSitemapMock($location = null)
     {
-        $sitemap = $this->getMockBuilder(SitemapInterface::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $sitemap = $this->getMockBuilder(SitemapInterface::class)->getMock();
 
         $sitemap
             ->expects($this->any())
