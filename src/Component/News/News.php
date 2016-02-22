@@ -98,12 +98,12 @@ final class News implements NewsInterface
      */
     private function setAccess($access = null)
     {
-        $allowedValues = [
+        $choices = [
             NewsInterface::ACCESS_REGISTRATION,
             NewsInterface::ACCESS_SUBSCRIPTION,
         ];
 
-        Assertion::nullOrChoice($access, $allowedValues);
+        Assertion::nullOrChoice($access, $choices);
 
         $this->access = $access;
     }
@@ -118,7 +118,7 @@ final class News implements NewsInterface
      */
     private function setGenres(array $genres = [])
     {
-        $allowedValues = [
+        $choices = [
             NewsInterface::GENRE_BLOG,
             NewsInterface::GENRE_OP_ED,
             NewsInterface::GENRE_OPINION,
@@ -126,7 +126,7 @@ final class News implements NewsInterface
             NewsInterface::GENRE_USER_GENERATED,
         ];
 
-        Assertion::allChoice($genres, $allowedValues);
+        Assertion::allChoice($genres, $choices);
 
         $this->genres = $genres;
     }
