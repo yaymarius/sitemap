@@ -20,6 +20,8 @@ use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/183668?hl=en
+ *
+ * @internal
  */
 class UrlWriter
 {

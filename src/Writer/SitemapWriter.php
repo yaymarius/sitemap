@@ -14,6 +14,8 @@ use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/75712?rd=1
+ *
+ * @internal
  */
 class SitemapWriter
 {
