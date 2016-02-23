@@ -176,7 +176,7 @@ Please refer to [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
 
 ## Code of Conduct
 
-Please have a look at [CONDUCT.md](.github/CONDUCT.md).
+Please have a look at [`CONDUCT.md`](.github/CONDUCT.md).
 
 ## License
 
