@@ -28,6 +28,8 @@ class UrlSetWriterTest extends AbstractTestCase
 
     public function testWriteUrlSet()
     {
+        $output = $this->getFaker()->text();
+
         $urls = [
             $this->getUrlMock(),
             $this->getUrlMock(),
@@ -63,10 +65,11 @@ class UrlSetWriterTest extends AbstractTestCase
         $this->expectToEndElement($xmlWriter);
 
         $this->expectToEndDocument($xmlWriter);
+        $this->expectToOutput($xmlWriter, $output);
 
         $writer = new UrlSetWriter($urlWriter);
 
-        $writer->write($urlSet, $xmlWriter);
+        $this->assertSame($output, $writer->write($urlSet, $xmlWriter));
     }
 
     /**

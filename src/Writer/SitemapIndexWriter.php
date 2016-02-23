@@ -26,6 +26,12 @@ class SitemapIndexWriter
         $this->sitemapWriter = $sitemapWriter ?: new SitemapWriter();
     }
 
+    /**
+     * @param SitemapIndexInterface $sitemapIndex
+     * @param XMLWriter             $xmlWriter
+     *
+     * @return string
+     */
     public function write(SitemapIndexInterface $sitemapIndex, XMLWriter $xmlWriter)
     {
         $xmlWriter->startDocument('1.0', 'UTF-8');
@@ -40,5 +46,7 @@ class SitemapIndexWriter
         $xmlWriter->endElement();
 
         $xmlWriter->endDocument();
+
+        return $xmlWriter->outputMemory();
     }
 }
