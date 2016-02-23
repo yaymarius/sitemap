@@ -40,6 +40,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
+        $this->expectToOpenMemory($xmlWriter);
         $this->expectToStartDocument($xmlWriter);
 
         $this->expectToWriteElement($xmlWriter, 'sitemapindex', null, [
