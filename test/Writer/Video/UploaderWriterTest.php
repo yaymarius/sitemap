@@ -27,7 +27,7 @@ class UploaderWriterTest extends AbstractTestCase
 
         $writer = new UploaderWriter();
 
-        $writer->write($xmlWriter, $uploader);
+        $writer->write($uploader, $xmlWriter);
     }
 
     public function testWriteWithAdvancedUploader()
@@ -50,7 +50,7 @@ class UploaderWriterTest extends AbstractTestCase
 
         $writer = new UploaderWriter();
 
-        $writer->write($xmlWriter, $uploader);
+        $writer->write($uploader, $xmlWriter);
     }
 
     /**

@@ -43,7 +43,7 @@ class PlatformWriterTest extends AbstractTestCase
 
         $writer = new PlatformWriter();
 
-        $writer->write($xmlWriter, $platform);
+        $writer->write($platform, $xmlWriter);
     }
 
     /**

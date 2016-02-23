@@ -17,7 +17,7 @@ use XMLWriter;
  */
 class SitemapWriter
 {
-    public function write(XMLWriter $xmlWriter, SitemapInterface $sitemap)
+    public function write(SitemapInterface $sitemap, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('sitemap');
 

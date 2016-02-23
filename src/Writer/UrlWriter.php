@@ -48,7 +48,7 @@ class UrlWriter
         $this->videoWriter = $videoWriter ?: new VideoWriter();
     }
 
-    public function write(XMLWriter $xmlWriter, UrlInterface $url)
+    public function write(UrlInterface $url, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('url');
 
@@ -110,7 +110,7 @@ class UrlWriter
     private function writeImages(XMLWriter $xmlWriter, array $images = [])
     {
         foreach ($images as $image) {
-            $this->imageWriter->write($xmlWriter, $image);
+            $this->imageWriter->write($image, $xmlWriter);
         }
     }
 
@@ -121,7 +121,7 @@ class UrlWriter
     private function writeNews(XMLWriter $xmlWriter, array $news = [])
     {
         foreach ($news as $pieceOfNews) {
-            $this->newsWriter->write($xmlWriter, $pieceOfNews);
+            $this->newsWriter->write($pieceOfNews, $xmlWriter);
         }
     }
 
@@ -132,7 +132,7 @@ class UrlWriter
     private function writeVideos(XMLWriter $xmlWriter, array $videos = [])
     {
         foreach ($videos as $video) {
-            $this->videoWriter->write($xmlWriter, $video);
+            $this->videoWriter->write($video, $xmlWriter);
         }
     }
 }

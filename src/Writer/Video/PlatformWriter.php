@@ -16,7 +16,7 @@ use XMLWriter;
  */
 class PlatformWriter
 {
-    public function write(XMLWriter $xmlWriter, PlatformInterface $platform)
+    public function write(PlatformInterface $platform, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:platform');
         $xmlWriter->writeAttribute('relationship', $platform->getRelationship());

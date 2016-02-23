@@ -33,7 +33,7 @@ class SitemapWriterTest extends AbstractTestCase
 
         $writer = new SitemapWriter();
 
-        $writer->write($xmlWriter, $sitemap);
+        $writer->write($sitemap, $xmlWriter);
     }
 
     public function testWriteAdvancedSitemap()
@@ -59,7 +59,7 @@ class SitemapWriterTest extends AbstractTestCase
 
         $writer = new SitemapWriter();
 
-        $writer->write($xmlWriter, $sitemap);
+        $writer->write($sitemap, $xmlWriter);
     }
 
     /**

@@ -46,15 +46,15 @@ class SitemapIndexWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($sitemap)
+                    $this->identicalTo($sitemap),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }
 
         $writer = new SitemapIndexWriter($sitemapWriter);
 
-        $writer->write($xmlWriter, $sitemapIndex);
+        $writer->write($sitemapIndex, $xmlWriter);
     }
 
     /**

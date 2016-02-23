@@ -16,7 +16,7 @@ use XMLWriter;
  */
 class PlayerLocationWriter
 {
-    public function write(XMLWriter $xmlWriter, PlayerLocationInterface $playerLocation)
+    public function write(PlayerLocationInterface $playerLocation, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:player_loc');
 

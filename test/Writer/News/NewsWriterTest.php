@@ -53,14 +53,14 @@ class NewsWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($publication)
+                $this->identicalTo($publication),
+                $this->identicalTo($xmlWriter)
             )
         ;
 
         $writer = new NewsWriter($publicationWriter);
 
-        $writer->write($xmlWriter, $news);
+        $writer->write($news, $xmlWriter);
     }
 
     public function testWriteAdvancedNews()
@@ -106,14 +106,14 @@ class NewsWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($publication)
+                $this->identicalTo($publication),
+                $this->identicalTo($xmlWriter)
             )
         ;
 
         $writer = new NewsWriter($publicationWriter);
 
-        $writer->write($xmlWriter, $news);
+        $writer->write($news, $xmlWriter);
     }
 
     /**

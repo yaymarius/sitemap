@@ -43,7 +43,7 @@ class RestrictionWriterTest extends AbstractTestCase
 
         $writer = new RestrictionWriter();
 
-        $writer->write($xmlWriter, $restriction);
+        $writer->write($restriction, $xmlWriter);
     }
 
     /**
