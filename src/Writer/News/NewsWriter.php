@@ -22,18 +22,11 @@ class NewsWriter
      */
     private $publicationWriter;
 
-    /**
-     * @param PublicationWriter $publicationWriter
-     */
     public function __construct(PublicationWriter $publicationWriter = null)
     {
         $this->publicationWriter = $publicationWriter ?: new PublicationWriter();
     }
 
-    /**
-     * @param XMLWriter     $xmlWriter
-     * @param NewsInterface $news
-     */
     public function write(XMLWriter $xmlWriter, NewsInterface $news)
     {
         $xmlWriter->startElement('news:news');

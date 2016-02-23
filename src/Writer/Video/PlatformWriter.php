@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class PlatformWriter
 {
-    /**
-     * @param XMLWriter         $xmlWriter
-     * @param PlatformInterface $platform
-     */
     public function write(XMLWriter $xmlWriter, PlatformInterface $platform)
     {
         $xmlWriter->startElement('video:platform');

@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class GalleryLocationWriter
 {
-    /**
-     * @param XMLWriter                $xmlWriter
-     * @param GalleryLocationInterface $galleryLocation
-     */
     public function write(XMLWriter $xmlWriter, GalleryLocationInterface $galleryLocation)
     {
         $xmlWriter->startElement('video:gallery_loc');

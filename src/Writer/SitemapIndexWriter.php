@@ -21,18 +21,11 @@ class SitemapIndexWriter
      */
     private $sitemapWriter;
 
-    /**
-     * @param SitemapWriter $sitemapWriter
-     */
     public function __construct(SitemapWriter $sitemapWriter = null)
     {
         $this->sitemapWriter = $sitemapWriter ?: new SitemapWriter();
     }
 
-    /**
-     * @param XMLWriter             $xmlWriter
-     * @param SitemapIndexInterface $sitemapIndex
-     */
     public function write(XMLWriter $xmlWriter, SitemapIndexInterface $sitemapIndex)
     {
         $xmlWriter->startElement('sitemapindex');

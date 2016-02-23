@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class UploaderWriter
 {
-    /**
-     * @param XMLWriter         $xmlWriter
-     * @param UploaderInterface $uploader
-     */
     public function write(XMLWriter $xmlWriter, UploaderInterface $uploader)
     {
         $xmlWriter->startElement('video:uploader');

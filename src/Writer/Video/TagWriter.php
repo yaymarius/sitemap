@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class TagWriter
 {
-    /**
-     * @param XMLWriter    $xmlWriter
-     * @param TagInterface $tag
-     */
     public function write(XMLWriter $xmlWriter, TagInterface $tag)
     {
         $xmlWriter->startElement('video:tag');

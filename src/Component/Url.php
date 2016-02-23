@@ -89,9 +89,6 @@ final class Url implements UrlInterface
         return $this->priority;
     }
 
-    /**
-     * @param ImageInterface $image
-     */
     public function addImage(ImageInterface $image)
     {
         Assertion::lessThan(count($this->images), UrlInterface::IMAGE_MAX_COUNT);
@@ -104,9 +101,6 @@ final class Url implements UrlInterface
         return $this->images;
     }
 
-    /**
-     * @param NewsInterface $news
-     */
     public function addNews(NewsInterface $news)
     {
         $this->news[] = $news;
@@ -117,9 +111,6 @@ final class Url implements UrlInterface
         return $this->news;
     }
 
-    /**
-     * @param VideoInterface $video
-     */
     public function addVideo(VideoInterface $video)
     {
         $this->videos[] = $video;

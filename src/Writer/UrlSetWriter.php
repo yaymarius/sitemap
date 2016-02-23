@@ -25,18 +25,11 @@ class UrlSetWriter
      */
     private $urlWriter;
 
-    /**
-     * @param UrlWriter $urlWriter
-     */
     public function __construct(UrlWriter $urlWriter = null)
     {
         $this->urlWriter = $urlWriter ?: new UrlWriter();
     }
 
-    /**
-     * @param XMLWriter       $xmlWriter
-     * @param UrlSetInterface $urlSet
-     */
     public function write(XMLWriter $xmlWriter, UrlSetInterface $urlSet)
     {
         $xmlWriter->startElement('urlset');
@@ -47,9 +40,6 @@ class UrlSetWriter
         $xmlWriter->endElement();
     }
 
-    /**
-     * @param XMLWriter $xmlWriter
-     */
     private function writeNamespaceAttributes(XMLWriter $xmlWriter)
     {
         $xmlWriter->writeAttribute(UrlSetInterface::XML_NAMESPACE_ATTRIBUTE, UrlSetInterface::XML_NAMESPACE_URI);

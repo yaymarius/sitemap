@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class RestrictionWriter
 {
-    /**
-     * @param XMLWriter            $xmlWriter
-     * @param RestrictionInterface $restriction
-     */
     public function write(XMLWriter $xmlWriter, RestrictionInterface $restriction)
     {
         $xmlWriter->startElement('video:restriction');
