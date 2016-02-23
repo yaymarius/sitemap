@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Writer\News;
 
-use DateTime;
+use DateTimeInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use XMLWriter;
 
@@ -50,7 +50,7 @@ class NewsWriter
         $xmlWriter->endElement();
     }
 
-    private function writePublicationDate(XMLWriter $xmlWriter, DateTime $publicationDate)
+    private function writePublicationDate(XMLWriter $xmlWriter, DateTimeInterface $publicationDate)
     {
         $xmlWriter->startElement('news:publication_date');
         $xmlWriter->text($publicationDate->format('c'));

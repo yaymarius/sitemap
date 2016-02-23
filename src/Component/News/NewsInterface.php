@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component\News;
 
-use DateTime;
+use DateTimeInterface;
 
 /**
  * @link https://support.google.com/news/publisher/answer/74288?hl=en#exampleentry
@@ -53,7 +53,7 @@ interface NewsInterface
     public function getPublication();
 
     /**
-     * @return DateTime
+     * @return DateTimeInterface
      */
     public function getPublicationDate();
 

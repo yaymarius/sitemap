@@ -9,7 +9,7 @@
 namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
-use DateTime;
+use DateTimeInterface;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
@@ -52,12 +52,12 @@ final class Url implements UrlInterface
     private $videos = [];
 
     /**
-     * @param string        $location
-     * @param DateTime|null $lastModified
-     * @param string|null   $changeFrequency
-     * @param string|null   $priority
+     * @param string                 $location
+     * @param DateTimeInterface|null $lastModified
+     * @param string|null            $changeFrequency
+     * @param string|null            $priority
      */
-    public function __construct($location, DateTime $lastModified = null, $changeFrequency = null, $priority = null)
+    public function __construct($location, DateTimeInterface $lastModified = null, $changeFrequency = null, $priority = null)
     {
         $this->location = $location;
         $this->lastModified = $lastModified;

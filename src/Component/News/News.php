@@ -9,7 +9,7 @@
 namespace Refinery29\Sitemap\Component\News;
 
 use Assert\Assertion;
-use DateTime;
+use DateTimeInterface;
 
 final class News implements NewsInterface
 {
@@ -19,7 +19,7 @@ final class News implements NewsInterface
     private $publication;
 
     /**
-     * @var DateTime
+     * @var DateTimeInterface
      */
     private $publicationDate;
 
@@ -50,7 +50,7 @@ final class News implements NewsInterface
 
     /**
      * @param PublicationInterface $publication
-     * @param DateTime             $publicationDate
+     * @param DateTimeInterface    $publicationDate
      * @param string               $title
      * @param string|null          $access
      * @param array                $genres
@@ -59,7 +59,7 @@ final class News implements NewsInterface
      */
     public function __construct(
         PublicationInterface $publication,
-        DateTime $publicationDate,
+        DateTimeInterface $publicationDate,
         $title,
         $access = null,
         array $genres = [],

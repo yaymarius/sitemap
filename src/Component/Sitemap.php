@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component;
 
-use DateTime;
+use DateTimeInterface;
 
 final class Sitemap implements SitemapInterface
 {
@@ -18,15 +18,15 @@ final class Sitemap implements SitemapInterface
     private $location;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      */
     private $lastModified;
 
     /**
-     * @param string        $location
-     * @param DateTime|null $lastModified
+     * @param string                 $location
+     * @param DateTimeInterface|null $lastModified
      */
-    public function __construct($location, DateTime $lastModified = null)
+    public function __construct($location, DateTimeInterface $lastModified = null)
     {
         $this->location = $location;
         $this->lastModified = $lastModified;
