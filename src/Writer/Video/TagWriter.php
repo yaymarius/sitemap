@@ -13,6 +13,8 @@ use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
+ *
+ * @internal
  */
 class TagWriter
 {
