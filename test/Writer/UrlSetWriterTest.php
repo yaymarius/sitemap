@@ -38,6 +38,8 @@ class UrlSetWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
+        $this->expectToStartDocument($xmlWriter);
+
         $this->expectToStartElement($xmlWriter, 'urlset');
 
         $this->expectToWriteAttribute($xmlWriter, UrlSetInterface::XML_NAMESPACE_ATTRIBUTE, UrlSetInterface::XML_NAMESPACE_URI);
@@ -59,6 +61,8 @@ class UrlSetWriterTest extends AbstractTestCase
         }
 
         $this->expectToEndElement($xmlWriter);
+
+        $this->expectToEndDocument($xmlWriter);
 
         $writer = new UrlSetWriter($urlWriter);
 
