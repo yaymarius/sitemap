@@ -28,6 +28,8 @@ class SitemapIndexWriter
 
     public function write(SitemapIndexInterface $sitemapIndex, XMLWriter $xmlWriter)
     {
+        $xmlWriter->startDocument('1.0', 'UTF-8');
+
         $xmlWriter->startElement('sitemapindex');
         $xmlWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
@@ -36,5 +38,7 @@ class SitemapIndexWriter
         }
 
         $xmlWriter->endElement();
+
+        $xmlWriter->endDocument();
     }
 }

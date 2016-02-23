@@ -32,12 +32,16 @@ class UrlSetWriter
 
     public function write(UrlSetInterface $urlSet, XMLWriter $xmlWriter)
     {
+        $xmlWriter->startDocument('1.0', 'UTF-8');
+
         $xmlWriter->startElement('urlset');
 
         $this->writeNamespaceAttributes($xmlWriter);
         $this->writeUrls($xmlWriter, $urlSet->getUrls());
 
         $xmlWriter->endElement();
+
+        $xmlWriter->endDocument();
     }
 
     private function writeNamespaceAttributes(XMLWriter $xmlWriter)
