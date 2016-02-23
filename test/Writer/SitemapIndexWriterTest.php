@@ -35,6 +35,8 @@ class SitemapIndexWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
+        $this->expectToStartDocument($xmlWriter);
+
         $this->expectToWriteElement($xmlWriter, 'sitemapindex', null, [
             'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9',
         ]);
@@ -51,6 +53,8 @@ class SitemapIndexWriterTest extends AbstractTestCase
                 )
             ;
         }
+
+        $this->expectToEndDocument($xmlWriter);
 
         $writer = new SitemapIndexWriter($sitemapWriter);
 
