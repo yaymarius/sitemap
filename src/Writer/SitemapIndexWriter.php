@@ -34,6 +34,7 @@ class SitemapIndexWriter
      */
     public function write(SitemapIndexInterface $sitemapIndex, XMLWriter $xmlWriter)
     {
+        $xmlWriter->openMemory();
         $xmlWriter->startDocument('1.0', 'UTF-8');
 
         $xmlWriter->startElement('sitemapindex');

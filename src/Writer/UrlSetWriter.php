@@ -38,6 +38,7 @@ class UrlSetWriter
      */
     public function write(UrlSetInterface $urlSet, XMLWriter $xmlWriter)
     {
+        $xmlWriter->openMemory();
         $xmlWriter->startDocument('1.0', 'UTF-8');
 
         $xmlWriter->startElement('urlset');
