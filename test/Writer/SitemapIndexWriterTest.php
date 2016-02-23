@@ -12,10 +12,13 @@ use Refinery29\Sitemap\Component\SitemapIndexInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 use Refinery29\Sitemap\Writer\SitemapWriter;
+use Refinery29\Test\Util\Faker\GeneratorTrait;
 use XMLWriter;
 
 class SitemapIndexWriterTest extends AbstractTestCase
 {
+    use GeneratorTrait;
+
     public function testConstructorCreatesRequiredWriter()
     {
         $writer = new SitemapIndexWriter();
@@ -25,6 +28,8 @@ class SitemapIndexWriterTest extends AbstractTestCase
 
     public function testWriteSitemapIndex()
     {
+        $output = $this->getFaker()->text();
+
         $sitemaps = [
             $this->getSitemapMock(),
             $this->getSitemapMock(),
@@ -56,9 +61,11 @@ class SitemapIndexWriterTest extends AbstractTestCase
 
         $this->expectToEndDocument($xmlWriter);
 
+        $this->expectToOutput($xmlWriter, $output);
+
         $writer = new SitemapIndexWriter($sitemapWriter);
 
-        $writer->write($sitemapIndex, $xmlWriter);
+        $this->assertSame($output, $writer->write($sitemapIndex, $xmlWriter));
     }
 
     /**

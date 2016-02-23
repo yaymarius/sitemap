@@ -110,6 +110,19 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
+     * @param string                                   $output
+     */
+    protected function expectToOutput($xmlWriter, $output)
+    {
+        $xmlWriter
+            ->expects($this->next($xmlWriter))
+            ->method('outputMemory')
+            ->willReturn($output)
+        ;
+    }
+
+    /**
      * Returns a matcher which matches the next invocation of a method on the mocked object.
      *
      * @param \PHPUnit_Framework_MockObject_MockObject $mockObject
