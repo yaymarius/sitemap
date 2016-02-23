@@ -6,9 +6,10 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace Refinery29\Sitemap\Test\Writer;
+namespace Refinery29\Sitemap\Test\Writer\Image;
 
 use Refinery29\Sitemap\Component\Image\ImageInterface;
+use Refinery29\Sitemap\Test\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Image\ImageWriter;
 use XMLWriter;
 
