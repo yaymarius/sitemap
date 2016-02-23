@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class PriceWriter
 {
-    /**
-     * @param XMLWriter      $xmlWriter
-     * @param PriceInterface $price
-     */
     public function write(XMLWriter $xmlWriter, PriceInterface $price)
     {
         $xmlWriter->startElement('video:price');

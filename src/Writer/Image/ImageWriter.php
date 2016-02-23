@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class ImageWriter
 {
-    /**
-     * @param XMLWriter      $xmlWriter
-     * @param ImageInterface $image
-     */
     public function write(XMLWriter $xmlWriter, ImageInterface $image)
     {
         $xmlWriter->startElement('image:image');

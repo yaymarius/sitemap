@@ -336,9 +336,6 @@ final class Video implements VideoInterface
         return $this->familyFriendly;
     }
 
-    /**
-     * @param TagInterface $tag
-     */
     public function addTag(TagInterface $tag)
     {
         Assertion::lessThan(count($this->tags), VideoInterface::TAG_MAX_COUNT);
@@ -375,9 +372,6 @@ final class Video implements VideoInterface
         return $this->restriction;
     }
 
-    /**
-     * @param PriceInterface $price
-     */
     public function addPrice(PriceInterface $price)
     {
         $this->prices[] = $price;

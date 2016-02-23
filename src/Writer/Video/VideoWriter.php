@@ -59,15 +59,6 @@ class VideoWriter
      */
     private $tagWriter;
 
-    /**
-     * @param PlayerLocationWriter  $playerLocationWriter
-     * @param GalleryLocationWriter $galleryLocationWriter
-     * @param RestrictionWriter     $restrictionWriter
-     * @param UploaderWriter        $uploaderWriter
-     * @param PlatformWriter        $platformWriter
-     * @param PriceWriter           $priceWriter
-     * @param TagWriter             $tagWriter
-     */
     public function __construct(
         PlayerLocationWriter $playerLocationWriter = null,
         GalleryLocationWriter $galleryLocationWriter = null,
@@ -86,10 +77,6 @@ class VideoWriter
         $this->tagWriter = $tagWriter ?: new TagWriter();
     }
 
-    /**
-     * @param XMLWriter      $xmlWriter
-     * @param VideoInterface $video
-     */
     public function write(XMLWriter $xmlWriter, VideoInterface $video)
     {
         $xmlWriter->startElement('video:video');

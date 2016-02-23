@@ -16,10 +16,6 @@ use XMLWriter;
  */
 class PublicationWriter
 {
-    /**
-     * @param XMLWriter            $xmlWriter
-     * @param PublicationInterface $publication
-     */
     public function write(XMLWriter $xmlWriter, PublicationInterface $publication)
     {
         $xmlWriter->startElement('news:publication');

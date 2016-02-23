@@ -38,11 +38,6 @@ class UrlWriter
      */
     private $videoWriter;
 
-    /**
-     * @param ImageWriter $imageWriter
-     * @param NewsWriter  $newsWriter
-     * @param VideoWriter $videoWriter
-     */
     public function __construct(
         ImageWriter $imageWriter = null,
         NewsWriter $newsWriter = null,
@@ -53,10 +48,6 @@ class UrlWriter
         $this->videoWriter = $videoWriter ?: new VideoWriter();
     }
 
-    /**
-     * @param XMLWriter    $xmlWriter
-     * @param UrlInterface $url
-     */
     public function write(XMLWriter $xmlWriter, UrlInterface $url)
     {
         $xmlWriter->startElement('url');
