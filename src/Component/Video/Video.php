@@ -9,7 +9,7 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use DateTime;
+use DateTimeInterface;
 
 final class Video implements VideoInterface
 {
@@ -49,12 +49,12 @@ final class Video implements VideoInterface
     private $duration;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      */
     private $publicationDate;
 
     /**
-     * @var DateTime|null
+     * @var DateTimeInterface|null
      */
     private $expirationDate;
 
@@ -121,8 +121,8 @@ final class Video implements VideoInterface
      * @param PlayerLocationInterface|null  $playerLocation
      * @param GalleryLocationInterface|null $galleryLocation
      * @param int|null                      $duration
-     * @param DateTime|null                 $publicationDate
-     * @param DateTime|null                 $expirationDate
+     * @param DateTimeInterface|null        $publicationDate
+     * @param DateTimeInterface|null        $expirationDate
      * @param float|null                    $rating
      * @param int|null                      $viewCount
      * @param string|null                   $familyFriendly
@@ -141,8 +141,8 @@ final class Video implements VideoInterface
         PlayerLocationInterface $playerLocation = null,
         GalleryLocationInterface $galleryLocation = null,
         $duration = null,
-        DateTime $publicationDate = null,
-        DateTime $expirationDate = null,
+        DateTimeInterface $publicationDate = null,
+        DateTimeInterface $expirationDate = null,
         $rating = null,
         $viewCount = null,
         $familyFriendly = null,

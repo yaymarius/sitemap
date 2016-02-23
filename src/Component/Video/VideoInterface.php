@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
-use DateTime;
+use DateTimeInterface;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps
@@ -124,12 +124,12 @@ interface VideoInterface
     public function getDuration();
 
     /**
-     * @return DateTime|null
+     * @return DateTimeInterface|null
      */
     public function getPublicationDate();
 
     /**
-     * @return DateTime|null
+     * @return DateTimeInterface|null
      */
     public function getExpirationDate();
 

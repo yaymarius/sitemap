@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Writer;
 
-use DateTime;
+use DateTimeInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use XMLWriter;
 
@@ -38,7 +38,7 @@ class SitemapWriter
         $xmlWriter->endElement();
     }
 
-    private function writeLastModified(XMLWriter $xmlWriter, DateTime $lastModified = null)
+    private function writeLastModified(XMLWriter $xmlWriter, DateTimeInterface $lastModified = null)
     {
         if ($lastModified === null) {
             return;

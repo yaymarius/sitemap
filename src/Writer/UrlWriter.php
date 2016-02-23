@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Writer;
 
-use DateTime;
+use DateTimeInterface;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\UrlInterface;
@@ -79,7 +79,7 @@ class UrlWriter
         $xmlWriter->endElement();
     }
 
-    private function writeLastModified(XMLWriter $xmlWriter, DateTime $lastModified = null)
+    private function writeLastModified(XMLWriter $xmlWriter, DateTimeInterface $lastModified = null)
     {
         if ($lastModified === null) {
             return;

@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Writer\Video;
 
-use DateTime;
+use DateTimeInterface;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
@@ -183,7 +183,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writePublicationDate(XMLWriter $xmlWriter, DateTime $publicationDate = null)
+    private function writePublicationDate(XMLWriter $xmlWriter, DateTimeInterface $publicationDate = null)
     {
         if ($publicationDate === null) {
             return;
@@ -194,7 +194,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writeExpirationDate(XMLWriter $xmlWriter, DateTime $expirationDate = null)
+    private function writeExpirationDate(XMLWriter $xmlWriter, DateTimeInterface $expirationDate = null)
     {
         if ($expirationDate === null) {
             return;

@@ -8,7 +8,7 @@
  */
 namespace Refinery29\Sitemap\Component;
 
-use DateTime;
+use DateTimeInterface;
 
 /**
  * @link https://support.google.com/webmasters/answer/75712?rd=1
@@ -21,7 +21,7 @@ interface SitemapInterface
     public function getLocation();
 
     /**
-     * @return DateTime|null
+     * @return DateTimeInterface|null
      */
     public function getLastModified();
 }
