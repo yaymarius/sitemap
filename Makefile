@@ -12,4 +12,4 @@ cs: composer
 
 
 test: composer
-	vendor/bin/phpunit --configuration phpunit.xml --columns max
+	vendor/bin/phpunit --configuration test/Unit/phpunit.xml --columns max
