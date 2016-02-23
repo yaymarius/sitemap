@@ -77,7 +77,7 @@ class VideoWriter
         $this->tagWriter = $tagWriter ?: new TagWriter();
     }
 
-    public function write(XMLWriter $xmlWriter, VideoInterface $video)
+    public function write(VideoInterface $video, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:video');
 
@@ -143,7 +143,7 @@ class VideoWriter
             return;
         }
 
-        $this->playerLocationWriter->write($xmlWriter, $playerLocation);
+        $this->playerLocationWriter->write($playerLocation, $xmlWriter);
     }
 
     private function writeGalleryLocation(XMLWriter $xmlWriter, GalleryLocationInterface $galleryLocation = null)
@@ -152,7 +152,7 @@ class VideoWriter
             return;
         }
 
-        $this->galleryLocationWriter->write($xmlWriter, $galleryLocation);
+        $this->galleryLocationWriter->write($galleryLocation, $xmlWriter);
     }
 
     /**
@@ -244,7 +244,7 @@ class VideoWriter
     private function writeTags(XMLWriter $xmlWriter, array $tags)
     {
         foreach ($tags as $tag) {
-            $this->tagWriter->write($xmlWriter, $tag);
+            $this->tagWriter->write($tag, $xmlWriter);
         }
     }
 
@@ -269,7 +269,7 @@ class VideoWriter
             return;
         }
 
-        $this->restrictionWriter->write($xmlWriter, $restriction);
+        $this->restrictionWriter->write($restriction, $xmlWriter);
     }
 
     /**
@@ -279,7 +279,7 @@ class VideoWriter
     private function writePrices(XMLWriter $xmlWriter, array $prices)
     {
         foreach ($prices as $price) {
-            $this->priceWriter->write($xmlWriter, $price);
+            $this->priceWriter->write($price, $xmlWriter);
         }
     }
 
@@ -304,7 +304,7 @@ class VideoWriter
             return;
         }
 
-        $this->uploaderWriter->write($xmlWriter, $uploader);
+        $this->uploaderWriter->write($uploader, $xmlWriter);
     }
 
     private function writePlatform(XMLWriter $xmlWriter, PlatformInterface $platform = null)
@@ -313,7 +313,7 @@ class VideoWriter
             return;
         }
 
-        $this->platformWriter->write($xmlWriter, $platform);
+        $this->platformWriter->write($platform, $xmlWriter);
     }
 
     /**

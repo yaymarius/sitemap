@@ -32,7 +32,7 @@ class ImageWriterTest extends AbstractTestCase
 
         $writer = new ImageWriter();
 
-        $writer->write($xmlWriter, $image);
+        $writer->write($image, $xmlWriter);
     }
 
     public function testWriteAdvancedImage()
@@ -67,7 +67,7 @@ class ImageWriterTest extends AbstractTestCase
 
         $writer = new ImageWriter();
 
-        $writer->write($xmlWriter, $image);
+        $writer->write($image, $xmlWriter);
     }
 
     /**

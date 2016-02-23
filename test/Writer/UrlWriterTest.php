@@ -43,7 +43,7 @@ class UrlWriterTest extends AbstractTestCase
             $this->getVideoWriterMock()
         );
 
-        $writer->write($xmlWriter, $url);
+        $writer->write($url, $xmlWriter);
     }
 
     public function testWriteAdvancedUrl()
@@ -108,7 +108,7 @@ class UrlWriterTest extends AbstractTestCase
             $videoWriter
         );
 
-        $writer->write($xmlWriter, $url);
+        $writer->write($url, $xmlWriter);
     }
 
     /**
@@ -209,8 +209,8 @@ class UrlWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($image)
+                    $this->identicalTo($image),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }
@@ -252,8 +252,8 @@ class UrlWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($pieceOfNews)
+                    $this->identicalTo($pieceOfNews),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }
@@ -295,8 +295,8 @@ class UrlWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($video)
+                    $this->identicalTo($video),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }

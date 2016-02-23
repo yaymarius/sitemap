@@ -29,7 +29,7 @@ class GalleryLocationWriterTest extends AbstractTestCase
 
         $writer = new GalleryLocationWriter();
 
-        $writer->write($xmlWriter, $galleryLocation);
+        $writer->write($galleryLocation, $xmlWriter);
     }
 
     public function testWriteAdvancedGalleryLocation()
@@ -52,7 +52,7 @@ class GalleryLocationWriterTest extends AbstractTestCase
 
         $writer = new GalleryLocationWriter();
 
-        $writer->write($xmlWriter, $galleryLocation);
+        $writer->write($galleryLocation, $xmlWriter);
     }
 
     /**

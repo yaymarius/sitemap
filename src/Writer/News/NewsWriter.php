@@ -27,11 +27,11 @@ class NewsWriter
         $this->publicationWriter = $publicationWriter ?: new PublicationWriter();
     }
 
-    public function write(XMLWriter $xmlWriter, NewsInterface $news)
+    public function write(NewsInterface $news, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('news:news');
 
-        $this->publicationWriter->write($xmlWriter, $news->getPublication());
+        $this->publicationWriter->write($news->getPublication(), $xmlWriter);
 
         $this->writePublicationDate($xmlWriter, $news->getPublicationDate());
         $this->writeTitle($xmlWriter, $news->getTitle());

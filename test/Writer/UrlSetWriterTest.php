@@ -52,8 +52,8 @@ class UrlSetWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($url)
+                    $this->identicalTo($url),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }
@@ -62,7 +62,7 @@ class UrlSetWriterTest extends AbstractTestCase
 
         $writer = new UrlSetWriter($urlWriter);
 
-        $writer->write($xmlWriter, $urlSet);
+        $writer->write($urlSet, $xmlWriter);
     }
 
     /**

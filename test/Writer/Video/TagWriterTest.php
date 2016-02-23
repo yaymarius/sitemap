@@ -27,7 +27,7 @@ class TagWriterTest extends AbstractTestCase
 
         $writer = new TagWriter();
 
-        $writer->write($xmlWriter, $tag);
+        $writer->write($tag, $xmlWriter);
     }
 
     /**

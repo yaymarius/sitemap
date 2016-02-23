@@ -35,7 +35,7 @@ class PriceWriterTest extends AbstractTestCase
 
         $writer = new PriceWriter();
 
-        $writer->write($xmlWriter, $price);
+        $writer->write($price, $xmlWriter);
     }
 
     public function testWriteWithAdvancedPrice()
@@ -70,7 +70,7 @@ class PriceWriterTest extends AbstractTestCase
 
         $writer = new PriceWriter();
 
-        $writer->write($xmlWriter, $price);
+        $writer->write($price, $xmlWriter);
     }
 
     /**

@@ -16,7 +16,7 @@ use XMLWriter;
  */
 class RestrictionWriter
 {
-    public function write(XMLWriter $xmlWriter, RestrictionInterface $restriction)
+    public function write(RestrictionInterface $restriction, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:restriction');
         $xmlWriter->writeAttribute('relationship', $restriction->getRelationship());

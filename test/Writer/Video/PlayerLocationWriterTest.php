@@ -29,7 +29,7 @@ class PlayerLocationWriterTest extends AbstractTestCase
 
         $writer = new PlayerLocationWriter();
 
-        $writer->write($xmlWriter, $playerLocation);
+        $writer->write($playerLocation, $xmlWriter);
     }
 
     public function testWriteAdvancedPlayerLocation()
@@ -58,7 +58,7 @@ class PlayerLocationWriterTest extends AbstractTestCase
 
         $writer = new PlayerLocationWriter();
 
-        $writer->write($xmlWriter, $playerLocation);
+        $writer->write($playerLocation, $xmlWriter);
     }
 
     /**

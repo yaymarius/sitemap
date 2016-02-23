@@ -77,7 +77,7 @@ class VideoWriterTest extends AbstractTestCase
             $this->getTagWriterMock()
         );
 
-        $writer->write($xmlWriter, $video);
+        $writer->write($video, $xmlWriter);
     }
 
     public function testWriteAdvancedVideo()
@@ -183,7 +183,7 @@ class VideoWriterTest extends AbstractTestCase
             $tagWriter
         );
 
-        $writer->write($xmlWriter, $video);
+        $writer->write($video, $xmlWriter);
     }
 
     /**
@@ -389,8 +389,8 @@ class VideoWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($galleryLocation)
+                $this->identicalTo($galleryLocation),
+                $this->identicalTo($xmlWriter)
             )
         ;
 
@@ -427,8 +427,8 @@ class VideoWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($platform)
+                $this->identicalTo($platform),
+                $this->identicalTo($xmlWriter)
             )
         ;
 
@@ -465,8 +465,8 @@ class VideoWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($playerLocation)
+                $this->identicalTo($playerLocation),
+                $this->identicalTo($xmlWriter)
             )
         ;
 
@@ -504,8 +504,8 @@ class VideoWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($price)
+                    $this->identicalTo($price),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }
@@ -543,8 +543,8 @@ class VideoWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($restriction)
+                $this->identicalTo($restriction),
+                $this->identicalTo($xmlWriter)
             )
         ;
 
@@ -582,8 +582,8 @@ class VideoWriterTest extends AbstractTestCase
                 ->expects($this->at($i))
                 ->method('write')
                 ->with(
-                    $this->identicalTo($xmlWriter),
-                    $this->identicalTo($tag)
+                    $this->identicalTo($tag),
+                    $this->identicalTo($xmlWriter)
                 )
             ;
         }
@@ -613,8 +613,8 @@ class VideoWriterTest extends AbstractTestCase
             ->expects($this->once())
             ->method('write')
             ->with(
-                $this->identicalTo($xmlWriter),
-                $this->identicalTo($uploader)
+                $this->identicalTo($uploader),
+                $this->identicalTo($xmlWriter)
             )
         ;
 

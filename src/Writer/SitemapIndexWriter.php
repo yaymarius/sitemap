@@ -26,13 +26,13 @@ class SitemapIndexWriter
         $this->sitemapWriter = $sitemapWriter ?: new SitemapWriter();
     }
 
-    public function write(XMLWriter $xmlWriter, SitemapIndexInterface $sitemapIndex)
+    public function write(SitemapIndexInterface $sitemapIndex, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('sitemapindex');
         $xmlWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
         foreach ($sitemapIndex->getSitemaps() as $sitemap) {
-            $this->sitemapWriter->write($xmlWriter, $sitemap);
+            $this->sitemapWriter->write($sitemap, $xmlWriter);
         }
 
         $xmlWriter->endElement();

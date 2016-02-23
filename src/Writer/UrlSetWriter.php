@@ -30,7 +30,7 @@ class UrlSetWriter
         $this->urlWriter = $urlWriter ?: new UrlWriter();
     }
 
-    public function write(XMLWriter $xmlWriter, UrlSetInterface $urlSet)
+    public function write(UrlSetInterface $urlSet, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('urlset');
 
@@ -55,7 +55,7 @@ class UrlSetWriter
     private function writeUrls(XMLWriter $xmlWriter, array $urls)
     {
         foreach ($urls as $url) {
-            $this->urlWriter->write($xmlWriter, $url);
+            $this->urlWriter->write($url, $xmlWriter);
         }
     }
 }

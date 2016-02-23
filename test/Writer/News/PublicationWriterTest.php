@@ -38,7 +38,7 @@ class PublicationWriterTest extends AbstractTestCase
 
         $writer = new PublicationWriter();
 
-        $writer->write($xmlWriter, $publication);
+        $writer->write($publication, $xmlWriter);
     }
 
     /**
