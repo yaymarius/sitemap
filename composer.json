@@ -7,6 +7,10 @@
         {
             "name": "Andreas Möller",
             "email": "andreas.moller@refinery29.com"
+        },
+        {
+            "name": "Ante Lucic",
+            "email": "ante.lucic@refinery29.com"
         }
     ],
     "minimum-stability": "dev",
