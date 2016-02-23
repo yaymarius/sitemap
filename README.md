@@ -102,7 +102,7 @@ $video = new Component\Video\Video(
     'http://www.example.org/img/funny-video.mov',
 );
 
-$url->addNews($news);
+$url->addVideo($video);
 ```
 
 :bulb: `Video` has many more options, have a look at the source!
