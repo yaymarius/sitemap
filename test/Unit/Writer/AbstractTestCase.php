@@ -111,6 +111,17 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
     /**
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
+     */
+    protected function expectToOpenMemory($xmlWriter)
+    {
+        $xmlWriter
+            ->expects($this->next($xmlWriter))
+            ->method('openMemory')
+        ;
+    }
+
+    /**
+     * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
      * @param string                                   $output
      */
     protected function expectToOutput($xmlWriter, $output)
