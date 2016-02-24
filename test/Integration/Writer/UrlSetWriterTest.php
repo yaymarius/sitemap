@@ -10,7 +10,6 @@ namespace Refinery29\Sitemap\Test\Integration\Writer;
 
 use Refinery29\Sitemap\Component;
 use Refinery29\Sitemap\Writer;
-use XMLWriter;
 
 class UrlSetWriterTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +30,7 @@ class UrlSetWriterTest extends \PHPUnit_Framework_TestCase
 </urlset>
 XML;
 
-        $this->assertXmlStringEqualsXmlString($expected, $writer->write($urlSet, new XMLWriter()));
+        $this->assertXmlStringEqualsXmlString($expected, $writer->write($urlSet));
     }
 
     public function testWriteSitemapWithMoreComponents()
@@ -82,6 +81,6 @@ XML;
 </urlset>
 XML;
 
-        $this->assertXmlStringEqualsXmlString($expected, $writer->write($urlSet, new XMLWriter()));
+        $this->assertXmlStringEqualsXmlString($expected, $writer->write($urlSet));
     }
 }

@@ -12,7 +12,6 @@ use DateTimeImmutable;
 use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapIndex;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
-use XMLWriter;
 
 class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,6 +36,6 @@ XML;
 
         $writer = new SitemapIndexWriter();
 
-        $this->assertXmlStringEqualsXmlString($expected, $writer->write($index, new XMLWriter()));
+        $this->assertXmlStringEqualsXmlString($expected, $writer->write($index));
     }
 }
