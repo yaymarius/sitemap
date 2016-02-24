@@ -62,9 +62,6 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         ;
     }
 
-    /**
-     * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
-     */
     protected function expectToEndElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
@@ -73,9 +70,6 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         ;
     }
 
-    /**
-     * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
-     */
     protected function expectToEndDocument(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
