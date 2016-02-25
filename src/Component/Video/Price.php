@@ -58,12 +58,12 @@ final class Price implements PriceInterface
         $this->value = $value;
     }
 
-    public function getValue()
+    public function value()
     {
         return $this->value;
     }
 
-    public function getCurrency()
+    public function currency()
     {
         return $this->currency;
     }
@@ -83,7 +83,7 @@ final class Price implements PriceInterface
         $this->type = $type;
     }
 
-    public function getType()
+    public function type()
     {
         return $this->type;
     }
@@ -103,7 +103,7 @@ final class Price implements PriceInterface
         $this->resolution = $resolution;
     }
 
-    public function getResolution()
+    public function resolution()
     {
         return $this->resolution;
     }

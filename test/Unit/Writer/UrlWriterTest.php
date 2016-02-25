@@ -135,43 +135,43 @@ class UrlWriterTest extends AbstractTestCase
 
         $url
             ->expects($this->any())
-            ->method('getLocation')
+            ->method('location')
             ->willReturn($location)
         ;
 
         $url
             ->expects($this->any())
-            ->method('getLastModified')
+            ->method('lastModified')
             ->willReturn($lastModified)
         ;
 
         $url
             ->expects($this->any())
-            ->method('getChangeFrequency')
+            ->method('changeFrequency')
             ->willReturn($changeFrequency)
         ;
 
         $url
             ->expects($this->any())
-            ->method('getPriority')
+            ->method('priority')
             ->willReturn($priority)
         ;
 
         $url
             ->expects($this->any())
-            ->method('getImages')
+            ->method('images')
             ->willReturn($images)
         ;
 
         $url
             ->expects($this->any())
-            ->method('getNews')
+            ->method('news')
             ->willReturn($news)
         ;
 
         $url
             ->expects($this->any())
-            ->method('getVideos')
+            ->method('videos')
             ->willReturn($videos)
         ;
 

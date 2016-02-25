@@ -92,26 +92,26 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $live
         );
 
-        $this->assertSame($thumbnailLocation, $video->getThumbnailLocation());
-        $this->assertSame($title, $video->getTitle());
-        $this->assertSame($description, $video->getDescription());
-        $this->assertSame($contentLocation, $video->getContentLocation());
-        $this->assertSame($playerLocation, $video->getPlayerLocation());
-        $this->assertSame($galleryLocation, $video->getGalleryLocation());
-        $this->assertSame($duration, $video->getDuration());
-        $this->assertEquals($publicationDate, $video->getPublicationDate());
-        $this->assertNotSame($publicationDate, $video->getPublicationDate());
-        $this->assertEquals($expirationDate, $video->getExpirationDate());
-        $this->assertNotSame($expirationDate, $video->getExpirationDate());
-        $this->assertSame($rating, $video->getRating());
-        $this->assertSame($viewCount, $video->getViewCount());
-        $this->assertSame($familyFriendly, $video->getFamilyFriendly());
-        $this->assertSame($category, $video->getCategory());
-        $this->assertSame($restriction, $video->getRestriction());
-        $this->assertSame($requiresSubscription, $video->getRequiresSubscription());
-        $this->assertSame($uploader, $video->getUploader());
-        $this->assertSame($platform, $video->getPlatform());
-        $this->assertSame($live, $video->getLive());
+        $this->assertSame($thumbnailLocation, $video->thumbnailLocation());
+        $this->assertSame($title, $video->title());
+        $this->assertSame($description, $video->description());
+        $this->assertSame($contentLocation, $video->contentLocation());
+        $this->assertSame($playerLocation, $video->playerLocation());
+        $this->assertSame($galleryLocation, $video->galleryLocation());
+        $this->assertSame($duration, $video->duration());
+        $this->assertEquals($publicationDate, $video->publicationDate());
+        $this->assertNotSame($publicationDate, $video->publicationDate());
+        $this->assertEquals($expirationDate, $video->expirationDate());
+        $this->assertNotSame($expirationDate, $video->expirationDate());
+        $this->assertSame($rating, $video->rating());
+        $this->assertSame($viewCount, $video->viewCount());
+        $this->assertSame($familyFriendly, $video->familyFriendly());
+        $this->assertSame($category, $video->category());
+        $this->assertSame($restriction, $video->restriction());
+        $this->assertSame($requiresSubscription, $video->requiresSubscription());
+        $this->assertSame($uploader, $video->uploader());
+        $this->assertSame($platform, $video->platform());
+        $this->assertSame($live, $video->live());
     }
 
     public function testDefaults()
@@ -125,23 +125,23 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             $faker->url
         );
 
-        $this->assertNull($video->getPlayerLocation());
-        $this->assertNull($video->getGalleryLocation());
-        $this->assertNull($video->getDuration());
-        $this->assertNull($video->getPublicationDate());
-        $this->assertNull($video->getExpirationDate());
-        $this->assertNull($video->getRating());
-        $this->assertNull($video->getViewCount());
-        $this->assertNull($video->getFamilyFriendly());
-        $this->assertInternalType('array', $video->getTags());
-        $this->assertCount(0, $video->getTags());
-        $this->assertNull($video->getCategory());
-        $this->assertNull($video->getRestriction());
-        $this->assertInternalType('array', $video->getPrices());
-        $this->assertCount(0, $video->getPrices());
-        $this->assertNull($video->getRequiresSubscription());
-        $this->assertNull($video->getUploader());
-        $this->assertNull($video->getPlatform());
+        $this->assertNull($video->playerLocation());
+        $this->assertNull($video->galleryLocation());
+        $this->assertNull($video->duration());
+        $this->assertNull($video->publicationDate());
+        $this->assertNull($video->expirationDate());
+        $this->assertNull($video->rating());
+        $this->assertNull($video->viewCount());
+        $this->assertNull($video->familyFriendly());
+        $this->assertInternalType('array', $video->tags());
+        $this->assertCount(0, $video->tags());
+        $this->assertNull($video->category());
+        $this->assertNull($video->restriction());
+        $this->assertInternalType('array', $video->prices());
+        $this->assertCount(0, $video->prices());
+        $this->assertNull($video->requiresSubscription());
+        $this->assertNull($video->uploader());
+        $this->assertNull($video->platform());
     }
 
     public function testTitleLongerThanMaxLengthIsRejected()
@@ -437,9 +437,9 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
         $video->addTag($tag);
 
-        $this->assertInternalType('array', $video->getTags());
-        $this->assertCount(1, $video->getTags());
-        $this->assertSame($tag, $video->getTags()[0]);
+        $this->assertInternalType('array', $video->tags());
+        $this->assertCount(1, $video->tags());
+        $this->assertSame($tag, $video->tags()[0]);
     }
 
     public function testCanNotAddMoreThanMaximumNumberOfTags()
@@ -505,9 +505,9 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
         $video->addPrice($price);
 
-        $this->assertInternalType('array', $video->getPrices());
-        $this->assertCount(1, $video->getPrices());
-        $this->assertSame($price, $video->getPrices()[0]);
+        $this->assertInternalType('array', $video->prices());
+        $this->assertCount(1, $video->prices());
+        $this->assertSame($price, $video->prices()[0]);
     }
 
     /**

@@ -49,11 +49,11 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             $licence
         );
 
-        $this->assertSame($location, $image->getLocation());
-        $this->assertSame($title, $image->getTitle());
-        $this->assertSame($caption, $image->getCaption());
-        $this->assertSame($geoLocation, $image->getGeoLocation());
-        $this->assertSame($licence, $image->getLicence());
+        $this->assertSame($location, $image->location());
+        $this->assertSame($title, $image->title());
+        $this->assertSame($caption, $image->caption());
+        $this->assertSame($geoLocation, $image->geoLocation());
+        $this->assertSame($licence, $image->licence());
     }
 
     public function testDefaults()
@@ -62,9 +62,9 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 
         $image = new Image($location);
 
-        $this->assertNull($image->getTitle());
-        $this->assertNull($image->getCaption());
-        $this->assertNull($image->getGeoLocation());
-        $this->assertNull($image->getLicence());
+        $this->assertNull($image->title());
+        $this->assertNull($image->caption());
+        $this->assertNull($image->geoLocation());
+        $this->assertNull($image->licence());
     }
 }

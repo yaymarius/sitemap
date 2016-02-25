@@ -58,13 +58,13 @@ class RestrictionWriterTest extends AbstractTestCase
 
         $restriction
             ->expects($this->any())
-            ->method('getRelationship')
+            ->method('relationship')
             ->willReturn($relationship)
         ;
 
         $restriction
             ->expects($this->any())
-            ->method('getCountryCodes')
+            ->method('countryCodes')
             ->willReturn($countryCodes)
         ;
 

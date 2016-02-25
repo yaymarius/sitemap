@@ -46,7 +46,7 @@ class UrlSetWriter
         $xmlWriter->startElement('urlset');
 
         $this->writeNamespaceAttributes($xmlWriter);
-        $this->writeUrls($xmlWriter, $urlSet->getUrls());
+        $this->writeUrls($xmlWriter, $urlSet->urls());
 
         $xmlWriter->endElement();
 

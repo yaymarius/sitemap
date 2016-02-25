@@ -21,17 +21,17 @@ class PriceWriter
     public function write(PriceInterface $price, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:price');
-        $xmlWriter->writeAttribute('currency', $price->getCurrency());
+        $xmlWriter->writeAttribute('currency', $price->currency());
 
-        if ($price->getType()) {
-            $xmlWriter->writeAttribute('type', $price->getType());
+        if ($price->type()) {
+            $xmlWriter->writeAttribute('type', $price->type());
         }
 
-        if ($price->getResolution()) {
-            $xmlWriter->writeAttribute('resolution', $price->getResolution());
+        if ($price->resolution()) {
+            $xmlWriter->writeAttribute('resolution', $price->resolution());
         }
 
-        $xmlWriter->text(number_format($price->getValue(), 2));
+        $xmlWriter->text(number_format($price->value(), 2));
         $xmlWriter->endElement();
     }
 }

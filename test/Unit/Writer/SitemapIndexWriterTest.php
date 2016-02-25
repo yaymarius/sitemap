@@ -80,7 +80,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
 
         $sitemapIndex
             ->expects($this->any())
-            ->method('getSitemaps')
+            ->method('sitemaps')
             ->willReturn($sitemaps)
         ;
 

@@ -22,11 +22,11 @@ class GalleryLocationWriter
     {
         $xmlWriter->startElement('video:gallery_loc');
 
-        if ($galleryLocation->getTitle()) {
-            $xmlWriter->writeAttribute('title', $galleryLocation->getTitle());
+        if ($galleryLocation->title()) {
+            $xmlWriter->writeAttribute('title', $galleryLocation->title());
         }
 
-        $xmlWriter->text($galleryLocation->getLocation());
+        $xmlWriter->text($galleryLocation->location());
         $xmlWriter->endElement();
     }
 }

@@ -33,10 +33,10 @@ interface PlatformInterface
     /**
      * @return string
      */
-    public function getRelationship();
+    public function relationship();
 
     /**
      * @return array
      */
-    public function getTypes();
+    public function types();
 }

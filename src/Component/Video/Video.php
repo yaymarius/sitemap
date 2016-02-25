@@ -190,7 +190,7 @@ final class Video implements VideoInterface
         $this->setLive($live);
     }
 
-    public function getThumbnailLocation()
+    public function thumbnailLocation()
     {
         return $this->thumbnailLocation;
     }
@@ -205,7 +205,7 @@ final class Video implements VideoInterface
         $this->title = $title;
     }
 
-    public function getTitle()
+    public function title()
     {
         return $this->title;
     }
@@ -220,22 +220,22 @@ final class Video implements VideoInterface
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function description()
     {
         return $this->description;
     }
 
-    public function getContentLocation()
+    public function contentLocation()
     {
         return $this->contentLocation;
     }
 
-    public function getPlayerLocation()
+    public function playerLocation()
     {
         return $this->playerLocation;
     }
 
-    public function getGalleryLocation()
+    public function galleryLocation()
     {
         return $this->galleryLocation;
     }
@@ -255,12 +255,12 @@ final class Video implements VideoInterface
         $this->duration = $duration;
     }
 
-    public function getDuration()
+    public function duration()
     {
         return $this->duration;
     }
 
-    public function getPublicationDate()
+    public function publicationDate()
     {
         if ($this->publicationDate === null) {
             return;
@@ -269,7 +269,7 @@ final class Video implements VideoInterface
         return clone $this->publicationDate;
     }
 
-    public function getExpirationDate()
+    public function expirationDate()
     {
         if ($this->expirationDate === null) {
             return;
@@ -293,7 +293,7 @@ final class Video implements VideoInterface
         $this->rating = $rating;
     }
 
-    public function getRating()
+    public function rating()
     {
         return $this->rating;
     }
@@ -312,7 +312,7 @@ final class Video implements VideoInterface
         $this->viewCount = $viewCount;
     }
 
-    public function getViewCount()
+    public function viewCount()
     {
         return $this->viewCount;
     }
@@ -331,7 +331,7 @@ final class Video implements VideoInterface
         $this->familyFriendly = $familyFriendly;
     }
 
-    public function getFamilyFriendly()
+    public function familyFriendly()
     {
         return $this->familyFriendly;
     }
@@ -343,7 +343,7 @@ final class Video implements VideoInterface
         $this->tags[] = $tag;
     }
 
-    public function getTags()
+    public function tags()
     {
         return $this->tags;
     }
@@ -362,12 +362,12 @@ final class Video implements VideoInterface
         $this->category = $category;
     }
 
-    public function getCategory()
+    public function category()
     {
         return $this->category;
     }
 
-    public function getRestriction()
+    public function restriction()
     {
         return $this->restriction;
     }
@@ -377,7 +377,7 @@ final class Video implements VideoInterface
         $this->prices[] = $price;
     }
 
-    public function getPrices()
+    public function prices()
     {
         return $this->prices;
     }
@@ -397,17 +397,17 @@ final class Video implements VideoInterface
         $this->requiresSubscription = $requiresSubscription;
     }
 
-    public function getRequiresSubscription()
+    public function requiresSubscription()
     {
         return $this->requiresSubscription;
     }
 
-    public function getUploader()
+    public function uploader()
     {
         return $this->uploader;
     }
 
-    public function getPlatform()
+    public function platform()
     {
         return $this->platform;
     }
@@ -427,7 +427,7 @@ final class Video implements VideoInterface
         $this->live = $live;
     }
 
-    public function getLive()
+    public function live()
     {
         return $this->live;
     }

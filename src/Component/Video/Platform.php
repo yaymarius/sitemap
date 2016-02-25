@@ -45,7 +45,7 @@ final class Platform implements PlatformInterface
         $this->relationship = $relationship;
     }
 
-    public function getRelationship()
+    public function relationship()
     {
         return $this->relationship;
     }
@@ -67,7 +67,7 @@ final class Platform implements PlatformInterface
         $this->types[] = $type;
     }
 
-    public function getTypes()
+    public function types()
     {
         return $this->types;
     }

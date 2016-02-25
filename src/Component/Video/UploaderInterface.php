@@ -16,10 +16,10 @@ interface UploaderInterface
     /**
      * @return string
      */
-    public function getName();
+    public function name();
 
     /**
      * @return string|null
      */
-    public function getInfo();
+    public function info();
 }

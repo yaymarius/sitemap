@@ -41,7 +41,7 @@ class TagWriterTest extends AbstractTestCase
 
         $tag
             ->expects($this->any())
-            ->method('getContent')
+            ->method('content')
             ->willReturn($content)
         ;
 

@@ -24,15 +24,15 @@ interface PlayerLocationInterface
     /**
      * @return string
      */
-    public function getLocation();
+    public function location();
 
     /**
      * @return string|null
      */
-    public function getAllowEmbed();
+    public function allowEmbed();
 
     /**
      * @return string|null
      */
-    public function getAutoPlay();
+    public function autoPlay();
 }

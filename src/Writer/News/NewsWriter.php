@@ -31,14 +31,14 @@ class NewsWriter
     {
         $xmlWriter->startElement('news:news');
 
-        $this->publicationWriter->write($news->getPublication(), $xmlWriter);
+        $this->publicationWriter->write($news->publication(), $xmlWriter);
 
-        $this->writePublicationDate($xmlWriter, $news->getPublicationDate());
-        $this->writeTitle($xmlWriter, $news->getTitle());
-        $this->writeAccess($xmlWriter, $news->getAccess());
-        $this->writeGenres($xmlWriter, $news->getGenres());
-        $this->writeKeywords($xmlWriter, $news->getKeywords());
-        $this->writeStockTickers($xmlWriter, $news->getStockTickers());
+        $this->writePublicationDate($xmlWriter, $news->publicationDate());
+        $this->writeTitle($xmlWriter, $news->title());
+        $this->writeAccess($xmlWriter, $news->access());
+        $this->writeGenres($xmlWriter, $news->genres());
+        $this->writeKeywords($xmlWriter, $news->keywords());
+        $this->writeStockTickers($xmlWriter, $news->stockTickers());
 
         $xmlWriter->endElement();
     }

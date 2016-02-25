@@ -41,7 +41,7 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
 
         $restriction = new Restriction($relationship);
 
-        $this->assertSame($relationship, $restriction->getRelationship());
+        $this->assertSame($relationship, $restriction->relationship());
     }
 
     public function testDefaults()
@@ -53,8 +53,8 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
 
         $restriction = new Restriction($relationship);
 
-        $this->assertInternalType('array', $restriction->getCountryCodes());
-        $this->assertCount(0, $restriction->getCountryCodes());
+        $this->assertInternalType('array', $restriction->countryCodes());
+        $this->assertCount(0, $restriction->countryCodes());
     }
 
     public function testInvalidRestrictionIsRejected()
@@ -84,6 +84,6 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
             $restriction->addCountryCode($countryCode);
         }
 
-        $this->assertSame($countryCodes, $restriction->getCountryCodes());
+        $this->assertSame($countryCodes, $restriction->countryCodes());
     }
 }

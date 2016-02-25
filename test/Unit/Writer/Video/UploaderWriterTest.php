@@ -65,13 +65,13 @@ class UploaderWriterTest extends AbstractTestCase
 
         $uploader
             ->expects($this->any())
-            ->method('getName')
+            ->method('name')
             ->willReturn($name)
         ;
 
         $uploader
             ->expects($this->any())
-            ->method('getInfo')
+            ->method('info')
             ->willReturn($info)
         ;
 

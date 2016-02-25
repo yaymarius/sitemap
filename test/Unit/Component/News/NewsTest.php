@@ -64,14 +64,14 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $stockTickers
         );
 
-        $this->assertSame($publication, $news->getPublication());
-        $this->assertEquals($publicationDate, $news->getPublicationDate());
-        $this->assertNotSame($publicationDate, $news->getPublicationDate());
-        $this->assertSame($title, $news->getTitle());
-        $this->assertSame($access, $news->getAccess());
-        $this->assertSame($genres, $news->getGenres());
-        $this->assertSame($keywords, $news->getKeywords());
-        $this->assertSame($stockTickers, $news->getStockTickers());
+        $this->assertSame($publication, $news->publication());
+        $this->assertEquals($publicationDate, $news->publicationDate());
+        $this->assertNotSame($publicationDate, $news->publicationDate());
+        $this->assertSame($title, $news->title());
+        $this->assertSame($access, $news->access());
+        $this->assertSame($genres, $news->genres());
+        $this->assertSame($keywords, $news->keywords());
+        $this->assertSame($stockTickers, $news->stockTickers());
     }
 
     public function testDefaults()
@@ -84,16 +84,16 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $faker->sentence()
         );
 
-        $this->assertNull($news->getAccess());
+        $this->assertNull($news->access());
 
-        $this->assertInternalType('array', $news->getGenres());
-        $this->assertCount(0, $news->getGenres());
+        $this->assertInternalType('array', $news->genres());
+        $this->assertCount(0, $news->genres());
 
-        $this->assertInternalType('array', $news->getKeywords());
-        $this->assertCount(0, $news->getKeywords());
+        $this->assertInternalType('array', $news->keywords());
+        $this->assertCount(0, $news->keywords());
 
-        $this->assertInternalType('array', $news->getStockTickers());
-        $this->assertCount(0, $news->getStockTickers());
+        $this->assertInternalType('array', $news->stockTickers());
+        $this->assertCount(0, $news->stockTickers());
     }
 
     /**
@@ -112,7 +112,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $access
         );
 
-        $this->assertSame($access, $news->getAccess());
+        $this->assertSame($access, $news->access());
     }
 
     /**
@@ -167,7 +167,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $genres
         );
 
-        $this->assertSame($genres, $news->getGenres());
+        $this->assertSame($genres, $news->genres());
     }
 
     /**

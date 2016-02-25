@@ -30,12 +30,12 @@ final class Uploader implements UploaderInterface
         $this->info = $info;
     }
 
-    public function getName()
+    public function name()
     {
         return $this->name;
     }
 
-    public function getInfo()
+    public function info()
     {
         return $this->info;
     }

@@ -43,11 +43,11 @@ class UrlTest extends \PHPUnit_Framework_TestCase
             $priority
         );
 
-        $this->assertSame($location, $url->getLocation());
-        $this->assertEquals($lastModified, $url->getLastModified());
-        $this->assertNotSame($lastModified, $url->getLastModified());
-        $this->assertSame($changeFrequency, $url->getChangeFrequency());
-        $this->assertSame($priority, $url->getPriority());
+        $this->assertSame($location, $url->location());
+        $this->assertEquals($lastModified, $url->lastModified());
+        $this->assertNotSame($lastModified, $url->lastModified());
+        $this->assertSame($changeFrequency, $url->changeFrequency());
+        $this->assertSame($priority, $url->priority());
     }
 
     public function testDefaults()
@@ -56,16 +56,16 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url = new Url($location);
 
-        $this->assertSame($location, $url->getLocation());
-        $this->assertNull($url->getLastModified());
-        $this->assertNull($url->getChangeFrequency());
-        $this->assertNull($url->getPriority());
-        $this->assertInternalType('array', $url->getImages());
-        $this->assertCount(0, $url->getImages());
-        $this->assertInternalType('array', $url->getNews());
-        $this->assertCount(0, $url->getNews());
-        $this->assertInternalType('array', $url->getVideos());
-        $this->assertCount(0, $url->getVideos());
+        $this->assertSame($location, $url->location());
+        $this->assertNull($url->lastModified());
+        $this->assertNull($url->changeFrequency());
+        $this->assertNull($url->priority());
+        $this->assertInternalType('array', $url->images());
+        $this->assertCount(0, $url->images());
+        $this->assertInternalType('array', $url->news());
+        $this->assertCount(0, $url->news());
+        $this->assertInternalType('array', $url->videos());
+        $this->assertCount(0, $url->videos());
     }
 
     public function testCanAddImages()
@@ -76,9 +76,9 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url->addImage($image);
 
-        $this->assertInternalType('array', $url->getImages());
-        $this->assertCount(1, $url->getImages());
-        $this->assertSame($image, $url->getImages()[0]);
+        $this->assertInternalType('array', $url->images());
+        $this->assertCount(1, $url->images());
+        $this->assertSame($image, $url->images()[0]);
     }
 
     public function testCanNotAddMoreThanMaximumNumberOfImages()
@@ -105,9 +105,9 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url->addNews($news);
 
-        $this->assertInternalType('array', $url->getNews());
-        $this->assertCount(1, $url->getNews());
-        $this->assertSame($news, $url->getNews()[0]);
+        $this->assertInternalType('array', $url->news());
+        $this->assertCount(1, $url->news());
+        $this->assertSame($news, $url->news()[0]);
     }
 
     public function testCanAddVideos()
@@ -118,9 +118,9 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url->addVideo($video);
 
-        $this->assertInternalType('array', $url->getVideos());
-        $this->assertCount(1, $url->getVideos());
-        $this->assertSame($video, $url->getVideos()[0]);
+        $this->assertInternalType('array', $url->videos());
+        $this->assertCount(1, $url->videos());
+        $this->assertSame($video, $url->videos()[0]);
     }
 
     /**

@@ -21,8 +21,8 @@ class RestrictionWriter
     public function write(RestrictionInterface $restriction, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:restriction');
-        $xmlWriter->writeAttribute('relationship', $restriction->getRelationship());
-        $xmlWriter->text(implode(' ', $restriction->getCountryCodes()));
+        $xmlWriter->writeAttribute('relationship', $restriction->relationship());
+        $xmlWriter->text(implode(' ', $restriction->countryCodes()));
         $xmlWriter->endElement();
     }
 }

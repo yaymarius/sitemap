@@ -20,11 +20,11 @@ class ImageWriter
     {
         $xmlWriter->startElement('image:image');
 
-        $this->writeLocation($xmlWriter, $image->getLocation());
-        $this->writeTitle($xmlWriter, $image->getTitle());
-        $this->writeCaption($xmlWriter, $image->getCaption());
-        $this->writeGeoLocation($xmlWriter, $image->getGeoLocation());
-        $this->writeLicence($xmlWriter, $image->getLicence());
+        $this->writeLocation($xmlWriter, $image->location());
+        $this->writeTitle($xmlWriter, $image->title());
+        $this->writeCaption($xmlWriter, $image->caption());
+        $this->writeGeoLocation($xmlWriter, $image->geoLocation());
+        $this->writeLicence($xmlWriter, $image->licence());
 
         $xmlWriter->endElement();
     }

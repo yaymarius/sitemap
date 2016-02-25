@@ -91,100 +91,100 @@ interface VideoInterface
     /**
      * @return string
      */
-    public function getThumbnailLocation();
+    public function thumbnailLocation();
 
     /**
      * @return string
      */
-    public function getTitle();
+    public function title();
 
     /**
      * @return string
      */
-    public function getDescription();
+    public function description();
 
     /**
      * @return string|null
      */
-    public function getContentLocation();
+    public function contentLocation();
 
     /**
      * @return PlayerLocationInterface|null
      */
-    public function getPlayerLocation();
+    public function playerLocation();
 
     /**
      * @return GalleryLocationInterface|null
      */
-    public function getGalleryLocation();
+    public function galleryLocation();
 
     /**
      * @return int|null
      */
-    public function getDuration();
+    public function duration();
 
     /**
      * @return DateTimeInterface|null
      */
-    public function getPublicationDate();
+    public function publicationDate();
 
     /**
      * @return DateTimeInterface|null
      */
-    public function getExpirationDate();
+    public function expirationDate();
 
     /**
      * @return float|null
      */
-    public function getRating();
+    public function rating();
 
     /**
      * @return int|null
      */
-    public function getViewCount();
+    public function viewCount();
 
     /**
      * @return string|null
      */
-    public function getFamilyFriendly();
+    public function familyFriendly();
 
     /**
      * @return TagInterface[]
      */
-    public function getTags();
+    public function tags();
 
     /**
      * @return string|null
      */
-    public function getCategory();
+    public function category();
 
     /**
      * @return RestrictionInterface|null
      */
-    public function getRestriction();
+    public function restriction();
 
     /**
      * @return PriceInterface[]
      */
-    public function getPrices();
+    public function prices();
 
     /**
      * @return string|null
      */
-    public function getRequiresSubscription();
+    public function requiresSubscription();
 
     /**
      * @return UploaderInterface|null
      */
-    public function getUploader();
+    public function uploader();
 
     /**
      * @return PlatformInterface|null
      */
-    public function getPlatform();
+    public function platform();
 
     /**
      * @return string|null
      */
-    public function getLive();
+    public function live();
 }

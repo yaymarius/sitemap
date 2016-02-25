@@ -86,31 +86,31 @@ class ImageWriterTest extends AbstractTestCase
 
         $image
             ->expects($this->any())
-            ->method('getLocation')
+            ->method('location')
             ->willReturn($location)
         ;
 
         $image
             ->expects($this->any())
-            ->method('getTitle')
+            ->method('title')
             ->willReturn($title)
         ;
 
         $image
             ->expects($this->any())
-            ->method('getCaption')
+            ->method('caption')
             ->willReturn($caption)
         ;
 
         $image
             ->expects($this->any())
-            ->method('getGeoLocation')
+            ->method('geoLocation')
             ->willReturn($geoLocation)
         ;
 
         $image
             ->expects($this->any())
-            ->method('getLicence')
+            ->method('licence')
             ->willReturn($licence)
         ;
 

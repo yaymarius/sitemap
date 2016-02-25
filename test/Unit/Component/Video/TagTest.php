@@ -37,6 +37,6 @@ class TagTest extends \PHPUnit_Framework_TestCase
 
         $tag = new Tag($content);
 
-        $this->assertSame($content, $tag->getContent());
+        $this->assertSame($content, $tag->content());
     }
 }

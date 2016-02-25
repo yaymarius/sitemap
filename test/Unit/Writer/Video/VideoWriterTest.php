@@ -238,121 +238,121 @@ class VideoWriterTest extends AbstractTestCase
 
         $video
             ->expects($this->any())
-            ->method('getThumbnailLocation')
+            ->method('thumbnailLocation')
             ->willReturn($thumbnailLocation)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getTitle')
+            ->method('title')
             ->willReturn($title)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getDescription')
+            ->method('description')
             ->willReturn($description)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getContentLocation')
+            ->method('contentLocation')
             ->willReturn($contentLocation)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getPlayerLocation')
+            ->method('playerLocation')
             ->willReturn($playerLocation)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getGalleryLocation')
+            ->method('galleryLocation')
             ->willReturn($galleryLocation)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getDuration')
+            ->method('duration')
             ->willReturn($duration)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getPublicationDate')
+            ->method('publicationDate')
             ->willReturn($publicationDate)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getExpirationDate')
+            ->method('expirationDate')
             ->willReturn($expirationDate)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getRating')
+            ->method('rating')
             ->willReturn($rating)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getViewCount')
+            ->method('viewCount')
             ->willReturn($viewCount)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getFamilyFriendly')
+            ->method('familyFriendly')
             ->willReturn($familyFriendly)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getCategory')
+            ->method('category')
             ->willReturn($category)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getRestriction')
+            ->method('restriction')
             ->willReturn($restriction)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getRequiresSubscription')
+            ->method('requiresSubscription')
             ->willReturn($requiresSubscription)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getUploader')
+            ->method('uploader')
             ->willReturn($uploader)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getPlatform')
+            ->method('platform')
             ->willReturn($platform)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getLive')
+            ->method('live')
             ->willReturn($live)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getPrices')
+            ->method('prices')
             ->willReturn($prices)
         ;
 
         $video
             ->expects($this->any())
-            ->method('getTags')
+            ->method('tags')
             ->willReturn($tags)
         ;
 

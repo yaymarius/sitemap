@@ -48,7 +48,7 @@ final class Restriction implements RestrictionInterface
     /**
      * @return string
      */
-    public function getRelationship()
+    public function relationship()
     {
         return $this->relationship;
     }
@@ -64,7 +64,7 @@ final class Restriction implements RestrictionInterface
     /**
      * @return array
      */
-    public function getCountryCodes()
+    public function countryCodes()
     {
         return $this->countryCodes;
     }

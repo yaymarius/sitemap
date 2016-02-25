@@ -21,7 +21,7 @@ class TagWriter
     public function write(TagInterface $tag, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:tag');
-        $xmlWriter->text($tag->getContent());
+        $xmlWriter->text($tag->content());
         $xmlWriter->endElement();
     }
 }

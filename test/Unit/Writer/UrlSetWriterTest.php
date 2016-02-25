@@ -90,7 +90,7 @@ class UrlSetWriterTest extends AbstractTestCase
 
         $urlSet
             ->expects($this->any())
-            ->method('getUrls')
+            ->method('urls')
             ->willReturn($urls)
         ;
 

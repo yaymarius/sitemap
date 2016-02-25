@@ -21,8 +21,8 @@ class PlatformWriter
     public function write(PlatformInterface $platform, XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:platform');
-        $xmlWriter->writeAttribute('relationship', $platform->getRelationship());
-        $xmlWriter->text(implode(' ', $platform->getTypes()));
+        $xmlWriter->writeAttribute('relationship', $platform->relationship());
+        $xmlWriter->text(implode(' ', $platform->types()));
         $xmlWriter->endElement();
     }
 }

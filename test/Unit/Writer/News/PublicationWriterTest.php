@@ -53,13 +53,13 @@ class PublicationWriterTest extends AbstractTestCase
 
         $publication
             ->expects($this->any())
-            ->method('getName')
+            ->method('name')
             ->willReturn($name)
         ;
 
         $publication
             ->expects($this->any())
-            ->method('getLanguage')
+            ->method('language')
             ->willReturn($language)
         ;
 

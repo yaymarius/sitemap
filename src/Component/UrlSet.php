@@ -24,7 +24,7 @@ final class UrlSet implements UrlSetInterface
         $this->urls[] = $url;
     }
 
-    public function getUrls()
+    public function urls()
     {
         return $this->urls;
     }

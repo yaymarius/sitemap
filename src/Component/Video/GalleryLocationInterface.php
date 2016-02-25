@@ -16,10 +16,10 @@ interface GalleryLocationInterface
     /**
      * @return string
      */
-    public function getLocation();
+    public function location();
 
     /**
      * @return string|null
      */
-    public function getTitle();
+    public function title();
 }

@@ -55,17 +55,17 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
             $autoPlay
         );
 
-        $this->assertSame($location, $playerLocation->getLocation());
-        $this->assertSame($allowEmbed, $playerLocation->getAllowEmbed());
-        $this->assertSame($autoPlay, $playerLocation->getAutoPlay());
+        $this->assertSame($location, $playerLocation->location());
+        $this->assertSame($allowEmbed, $playerLocation->allowEmbed());
+        $this->assertSame($autoPlay, $playerLocation->autoPlay());
     }
 
     public function testDefaults()
     {
         $playerLocation = new PlayerLocation($this->getFaker()->url);
 
-        $this->assertNull($playerLocation->getAllowEmbed());
-        $this->assertNull($playerLocation->getAutoPlay());
+        $this->assertNull($playerLocation->allowEmbed());
+        $this->assertNull($playerLocation->autoPlay());
     }
 
     public function testInvalidAllowEmbedIsRejected()
