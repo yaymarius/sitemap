@@ -32,5 +32,5 @@ interface UrlSetInterface
     /**
      * @return UrlInterface[]
      */
-    public function getUrls();
+    public function urls();
 }

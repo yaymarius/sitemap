@@ -36,35 +36,35 @@ interface UrlInterface
     /**
      * @return string
      */
-    public function getLocation();
+    public function location();
 
     /**
      * @return DateTimeInterface|null
      */
-    public function getLastModified();
+    public function lastModified();
 
     /**
      * @return string|null
      */
-    public function getChangeFrequency();
+    public function changeFrequency();
 
     /**
      * @return string|null
      */
-    public function getPriority();
+    public function priority();
 
     /**
      * @return Image\ImageInterface[]
      */
-    public function getImages();
+    public function images();
 
     /**
      * @return News\NewsInterface[]
      */
-    public function getNews();
+    public function news();
 
     /**
      * @return Video\VideoInterface[]
      */
-    public function getVideos();
+    public function videos();
 }

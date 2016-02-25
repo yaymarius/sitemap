@@ -30,12 +30,12 @@ final class GalleryLocation implements GalleryLocationInterface
         $this->title = $title;
     }
 
-    public function getLocation()
+    public function location()
     {
         return $this->location;
     }
 
-    public function getTitle()
+    public function title()
     {
         return $this->title;
     }

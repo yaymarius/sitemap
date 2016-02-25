@@ -65,12 +65,12 @@ final class Url implements UrlInterface
         $this->priority = $priority;
     }
 
-    public function getLocation()
+    public function location()
     {
         return $this->location;
     }
 
-    public function getLastModified()
+    public function lastModified()
     {
         if ($this->lastModified === null) {
             return;
@@ -79,12 +79,12 @@ final class Url implements UrlInterface
         return clone $this->lastModified;
     }
 
-    public function getChangeFrequency()
+    public function changeFrequency()
     {
         return $this->changeFrequency;
     }
 
-    public function getPriority()
+    public function priority()
     {
         return $this->priority;
     }
@@ -96,7 +96,7 @@ final class Url implements UrlInterface
         $this->images[] = $image;
     }
 
-    public function getImages()
+    public function images()
     {
         return $this->images;
     }
@@ -106,7 +106,7 @@ final class Url implements UrlInterface
         $this->news[] = $news;
     }
 
-    public function getNews()
+    public function news()
     {
         return $this->news;
     }
@@ -116,7 +116,7 @@ final class Url implements UrlInterface
         $this->videos[] = $video;
     }
 
-    public function getVideos()
+    public function videos()
     {
         return $this->videos;
     }

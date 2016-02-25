@@ -43,14 +43,14 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
             $title
         );
 
-        $this->assertSame($location, $galleryLocation->getLocation());
-        $this->assertSame($title, $galleryLocation->getTitle());
+        $this->assertSame($location, $galleryLocation->location());
+        $this->assertSame($title, $galleryLocation->title());
     }
 
     public function testDefaults()
     {
         $galleryLocation = new GalleryLocation($this->getFaker()->url);
 
-        $this->assertNull($galleryLocation->getTitle());
+        $this->assertNull($galleryLocation->title());
     }
 }

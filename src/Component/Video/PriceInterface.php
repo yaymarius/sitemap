@@ -37,20 +37,20 @@ interface PriceInterface
     /**
      * @return float
      */
-    public function getValue();
+    public function value();
 
     /**
      * @return string
      */
-    public function getCurrency();
+    public function currency();
 
     /**
      * @return string|null
      */
-    public function getType();
+    public function type();
 
     /**
      * @return string|null
      */
-    public function getResolution();
+    public function resolution();
 }

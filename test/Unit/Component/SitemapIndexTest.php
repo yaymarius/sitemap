@@ -29,8 +29,8 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
     {
         $index = new SitemapIndex();
 
-        $this->assertInternalType('array', $index->getSitemaps());
-        $this->assertCount(0, $index->getSitemaps());
+        $this->assertInternalType('array', $index->sitemaps());
+        $this->assertCount(0, $index->sitemaps());
     }
 
     public function testCanAddSitemap()
@@ -40,9 +40,9 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
         $index = new SitemapIndex();
         $index->addSitemap($sitemap);
 
-        $this->assertInternalType('array', $index->getSitemaps());
-        $this->assertCount(1, $index->getSitemaps());
-        $this->assertSame($sitemap, $index->getSitemaps()[0]);
+        $this->assertInternalType('array', $index->sitemaps());
+        $this->assertCount(1, $index->sitemaps());
+        $this->assertSame($sitemap, $index->sitemaps()[0]);
     }
 
     public function testCanNotAddTwoSitemapsWithSameLocation()

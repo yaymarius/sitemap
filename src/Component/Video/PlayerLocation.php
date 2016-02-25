@@ -41,7 +41,7 @@ final class PlayerLocation implements PlayerLocationInterface
         $this->autoPlay = $autoPlay;
     }
 
-    public function getLocation()
+    public function location()
     {
         return $this->location;
     }
@@ -61,12 +61,12 @@ final class PlayerLocation implements PlayerLocationInterface
         $this->allowEmbed = $allowEmbed;
     }
 
-    public function getAllowEmbed()
+    public function allowEmbed()
     {
         return $this->allowEmbed;
     }
 
-    public function getAutoPlay()
+    public function autoPlay()
     {
         return $this->autoPlay;
     }

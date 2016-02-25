@@ -22,11 +22,11 @@ class UploaderWriter
     {
         $xmlWriter->startElement('video:uploader');
 
-        if ($uploader->getInfo() !== null) {
-            $xmlWriter->writeAttribute('info', $uploader->getInfo());
+        if ($uploader->info() !== null) {
+            $xmlWriter->writeAttribute('info', $uploader->info());
         }
 
-        $xmlWriter->text($uploader->getName());
+        $xmlWriter->text($uploader->name());
 
         $xmlWriter->endElement();
     }

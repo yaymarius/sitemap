@@ -43,7 +43,7 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
             $language
         );
 
-        $this->assertSame($name, $publication->getName());
-        $this->assertSame($language, $publication->getLanguage());
+        $this->assertSame($name, $publication->name());
+        $this->assertSame($language, $publication->language());
     }
 }

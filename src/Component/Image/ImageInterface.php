@@ -22,25 +22,25 @@ interface ImageInterface
     /**
      * @return string
      */
-    public function getLocation();
+    public function location();
 
     /**
      * @return string|null
      */
-    public function getTitle();
+    public function title();
 
     /**
      * @return string|null
      */
-    public function getCaption();
+    public function caption();
 
     /**
      * @return string|null
      */
-    public function getGeoLocation();
+    public function geoLocation();
 
     /**
      * @return string|null
      */
-    public function getLicence();
+    public function licence();
 }

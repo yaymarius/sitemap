@@ -51,27 +51,27 @@ final class Image implements ImageInterface
         $this->licence = $licence;
     }
 
-    public function getLocation()
+    public function location()
     {
         return $this->location;
     }
 
-    public function getTitle()
+    public function title()
     {
         return $this->title;
     }
 
-    public function getCaption()
+    public function caption()
     {
         return $this->caption;
     }
 
-    public function getGeoLocation()
+    public function geoLocation()
     {
         return $this->geoLocation;
     }
 
-    public function getLicence()
+    public function licence()
     {
         return $this->licence;
     }

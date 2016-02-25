@@ -26,7 +26,7 @@ final class Tag implements TagInterface
     /**
      * @return string
      */
-    public function getContent()
+    public function content()
     {
         return $this->content;
     }

@@ -32,12 +32,12 @@ final class Sitemap implements SitemapInterface
         $this->lastModified = $lastModified;
     }
 
-    public function getLocation()
+    public function location()
     {
         return $this->location;
     }
 
-    public function getLastModified()
+    public function lastModified()
     {
         if ($this->lastModified === null) {
             return;

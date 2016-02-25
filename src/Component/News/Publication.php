@@ -30,12 +30,12 @@ final class Publication implements PublicationInterface
         $this->language = $language;
     }
 
-    public function getName()
+    public function name()
     {
         return $this->name;
     }
 
-    public function getLanguage()
+    public function language()
     {
         return $this->language;
     }

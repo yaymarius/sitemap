@@ -17,10 +17,10 @@ final class SitemapIndex implements SitemapIndexInterface
 
     public function addSitemap(SitemapInterface $sitemap)
     {
-        if ($this->hasSitemapWithLocation($sitemap->getLocation())) {
+        if ($this->hasSitemapWithLocation($sitemap->location())) {
             throw new \InvalidArgumentException(sprintf(
                 'Can not add sitemap with duplicate location "%s"',
-                $sitemap->getLocation()
+                $sitemap->location()
             ));
         }
 
@@ -35,7 +35,7 @@ final class SitemapIndex implements SitemapIndexInterface
     private function hasSitemapWithLocation($location)
     {
         foreach ($this->sitemaps as $sitemap) {
-            if ($sitemap->getLocation() === $location) {
+            if ($sitemap->location() === $location) {
                 return true;
             }
         }
@@ -43,7 +43,7 @@ final class SitemapIndex implements SitemapIndexInterface
         return false;
     }
 
-    public function getSitemaps()
+    public function sitemaps()
     {
         return $this->sitemaps;
     }

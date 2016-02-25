@@ -20,8 +20,8 @@ class PublicationWriter
     {
         $xmlWriter->startElement('news:publication');
 
-        $this->writeName($xmlWriter, $publication->getName());
-        $this->writeLanguage($xmlWriter, $publication->getLanguage());
+        $this->writeName($xmlWriter, $publication->name());
+        $this->writeLanguage($xmlWriter, $publication->language());
 
         $xmlWriter->endElement();
     }

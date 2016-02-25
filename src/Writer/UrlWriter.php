@@ -54,13 +54,13 @@ class UrlWriter
     {
         $xmlWriter->startElement('url');
 
-        $this->writeLocation($xmlWriter, $url->getLocation());
-        $this->writeLastModified($xmlWriter, $url->getLastModified());
-        $this->writeChangeFrequency($xmlWriter, $url->getChangeFrequency());
-        $this->writePriority($xmlWriter, $url->getPriority());
-        $this->writeImages($xmlWriter, $url->getImages());
-        $this->writeNews($xmlWriter, $url->getNews());
-        $this->writeVideos($xmlWriter, $url->getVideos());
+        $this->writeLocation($xmlWriter, $url->location());
+        $this->writeLastModified($xmlWriter, $url->lastModified());
+        $this->writeChangeFrequency($xmlWriter, $url->changeFrequency());
+        $this->writePriority($xmlWriter, $url->priority());
+        $this->writeImages($xmlWriter, $url->images());
+        $this->writeNews($xmlWriter, $url->news());
+        $this->writeVideos($xmlWriter, $url->videos());
 
         $xmlWriter->endElement();
     }

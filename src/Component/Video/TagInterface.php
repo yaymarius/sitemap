@@ -13,5 +13,5 @@ interface TagInterface
     /**
      * @return string
      */
-    public function getContent();
+    public function content();
 }

@@ -18,10 +18,10 @@ interface SitemapInterface
     /**
      * @return string
      */
-    public function getLocation();
+    public function location();
 
     /**
      * @return DateTimeInterface|null
      */
-    public function getLastModified();
+    public function lastModified();
 }

@@ -78,17 +78,17 @@ final class News implements NewsInterface
         $this->setStockTickers($stockTickers);
     }
 
-    public function getPublication()
+    public function publication()
     {
         return $this->publication;
     }
 
-    public function getPublicationDate()
+    public function publicationDate()
     {
         return clone $this->publicationDate;
     }
 
-    public function getTitle()
+    public function title()
     {
         return $this->title;
     }
@@ -108,7 +108,7 @@ final class News implements NewsInterface
         $this->access = $access;
     }
 
-    public function getAccess()
+    public function access()
     {
         return $this->access;
     }
@@ -131,12 +131,12 @@ final class News implements NewsInterface
         $this->genres = $genres;
     }
 
-    public function getGenres()
+    public function genres()
     {
         return $this->genres;
     }
 
-    public function getKeywords()
+    public function keywords()
     {
         return $this->keywords;
     }
@@ -151,7 +151,7 @@ final class News implements NewsInterface
         $this->stockTickers = $stockTickers;
     }
 
-    public function getStockTickers()
+    public function stockTickers()
     {
         return $this->stockTickers;
     }

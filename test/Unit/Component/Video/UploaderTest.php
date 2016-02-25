@@ -43,14 +43,14 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
             $info
         );
 
-        $this->assertSame($name, $videoUploader->getName());
-        $this->assertSame($info, $videoUploader->getInfo());
+        $this->assertSame($name, $videoUploader->name());
+        $this->assertSame($info, $videoUploader->info());
     }
 
     public function testDefaults()
     {
         $videoUploader = new Uploader($this->getFaker()->name);
 
-        $this->assertNull($videoUploader->getInfo());
+        $this->assertNull($videoUploader->info());
     }
 }

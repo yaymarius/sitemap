@@ -23,8 +23,8 @@ class SitemapWriter
     {
         $xmlWriter->startElement('sitemap');
 
-        $this->writeLocation($xmlWriter, $sitemap->getLocation());
-        $this->writeLastModified($xmlWriter, $sitemap->getLastModified());
+        $this->writeLocation($xmlWriter, $sitemap->location());
+        $this->writeLastModified($xmlWriter, $sitemap->lastModified());
 
         $xmlWriter->endElement();
     }

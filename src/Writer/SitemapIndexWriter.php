@@ -42,7 +42,7 @@ class SitemapIndexWriter
         $xmlWriter->startElement('sitemapindex');
         $xmlWriter->writeAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
-        foreach ($sitemapIndex->getSitemaps() as $sitemap) {
+        foreach ($sitemapIndex->sitemaps() as $sitemap) {
             $this->sitemapWriter->write($sitemap, $xmlWriter);
         }
 

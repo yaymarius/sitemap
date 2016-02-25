@@ -83,26 +83,26 @@ class VideoWriter
     {
         $xmlWriter->startElement('video:video');
 
-        $this->writeThumbnailLocation($xmlWriter, $video->getThumbnailLocation());
-        $this->writeTitle($xmlWriter, $video->getTitle());
-        $this->writeDescription($xmlWriter, $video->getDescription());
-        $this->writeContentLocation($xmlWriter, $video->getContentLocation());
-        $this->writePlayerLocation($xmlWriter, $video->getPlayerLocation());
-        $this->writeGalleryLocation($xmlWriter, $video->getGalleryLocation());
-        $this->writeDuration($xmlWriter, $video->getDuration());
-        $this->writePublicationDate($xmlWriter, $video->getPublicationDate());
-        $this->writeExpirationDate($xmlWriter, $video->getExpirationDate());
-        $this->writeRating($xmlWriter, $video->getRating());
-        $this->writeViewCount($xmlWriter, $video->getViewCount());
-        $this->writeFamilyFriendly($xmlWriter, $video->getFamilyFriendly());
-        $this->writeTags($xmlWriter, $video->getTags());
-        $this->writeCategory($xmlWriter, $video->getCategory());
-        $this->writeRestriction($xmlWriter, $video->getRestriction());
-        $this->writePrices($xmlWriter, $video->getPrices());
-        $this->writeRequiresSubscription($xmlWriter, $video->getRequiresSubscription());
-        $this->writeUploader($xmlWriter, $video->getUploader());
-        $this->writePlatform($xmlWriter, $video->getPlatform());
-        $this->writeLive($xmlWriter, $video->getLive());
+        $this->writeThumbnailLocation($xmlWriter, $video->thumbnailLocation());
+        $this->writeTitle($xmlWriter, $video->title());
+        $this->writeDescription($xmlWriter, $video->description());
+        $this->writeContentLocation($xmlWriter, $video->contentLocation());
+        $this->writePlayerLocation($xmlWriter, $video->playerLocation());
+        $this->writeGalleryLocation($xmlWriter, $video->galleryLocation());
+        $this->writeDuration($xmlWriter, $video->duration());
+        $this->writePublicationDate($xmlWriter, $video->publicationDate());
+        $this->writeExpirationDate($xmlWriter, $video->expirationDate());
+        $this->writeRating($xmlWriter, $video->rating());
+        $this->writeViewCount($xmlWriter, $video->viewCount());
+        $this->writeFamilyFriendly($xmlWriter, $video->familyFriendly());
+        $this->writeTags($xmlWriter, $video->tags());
+        $this->writeCategory($xmlWriter, $video->category());
+        $this->writeRestriction($xmlWriter, $video->restriction());
+        $this->writePrices($xmlWriter, $video->prices());
+        $this->writeRequiresSubscription($xmlWriter, $video->requiresSubscription());
+        $this->writeUploader($xmlWriter, $video->uploader());
+        $this->writePlatform($xmlWriter, $video->platform());
+        $this->writeLive($xmlWriter, $video->live());
 
         $xmlWriter->endElement();
     }

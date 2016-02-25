@@ -43,9 +43,9 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
             $lastModified
         );
 
-        $this->assertSame($location, $sitemap->getLocation());
-        $this->assertEquals($lastModified, $sitemap->getLastModified());
-        $this->assertNotSame($lastModified, $sitemap->getLastModified());
+        $this->assertSame($location, $sitemap->location());
+        $this->assertEquals($lastModified, $sitemap->lastModified());
+        $this->assertNotSame($lastModified, $sitemap->lastModified());
     }
 
     public function testDefaults()
@@ -54,7 +54,7 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
 
         $sitemap = new Sitemap($location);
 
-        $this->assertSame($location, $sitemap->getLocation());
-        $this->assertNull($sitemap->getLastModified());
+        $this->assertSame($location, $sitemap->location());
+        $this->assertNull($sitemap->lastModified());
     }
 }

@@ -16,10 +16,10 @@ interface PublicationInterface
     /**
      * @return string
      */
-    public function getName();
+    public function name();
 
     /**
      * @return string
      */
-    public function getLanguage();
+    public function language();
 }

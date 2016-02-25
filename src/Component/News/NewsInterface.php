@@ -50,35 +50,35 @@ interface NewsInterface
     /**
      * @return PublicationInterface
      */
-    public function getPublication();
+    public function publication();
 
     /**
      * @return DateTimeInterface
      */
-    public function getPublicationDate();
+    public function publicationDate();
 
     /**
      * @return string
      */
-    public function getTitle();
+    public function title();
 
     /**
      * @return string|null
      */
-    public function getAccess();
+    public function access();
 
     /**
      * @return array
      */
-    public function getGenres();
+    public function genres();
 
     /**
      * @return array
      */
-    public function getKeywords();
+    public function keywords();
 
     /**
      * @return array
      */
-    public function getStockTickers();
+    public function stockTickers();
 }

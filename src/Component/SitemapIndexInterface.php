@@ -21,5 +21,5 @@ interface SitemapIndexInterface
     /**
      * @return SitemapInterface[]
      */
-    public function getSitemaps();
+    public function sitemaps();
 }

@@ -43,7 +43,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
         $platform = new Platform($relationship);
 
-        $this->assertSame($relationship, $platform->getRelationship());
+        $this->assertSame($relationship, $platform->relationship());
     }
 
     public function testDefaults()
@@ -55,8 +55,8 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
             PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
-        $this->assertInternalType('array', $platform->getTypes());
-        $this->assertCount(0, $platform->getTypes());
+        $this->assertInternalType('array', $platform->types());
+        $this->assertCount(0, $platform->types());
     }
 
     public function testInvalidRelationshipIsRejected()
@@ -83,9 +83,9 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
         $platform->addType($type);
 
-        $this->assertInternalType('array', $platform->getTypes());
-        $this->assertCount(1, $platform->getTypes());
-        $this->assertSame($type, $platform->getTypes()[0]);
+        $this->assertInternalType('array', $platform->types());
+        $this->assertCount(1, $platform->types());
+        $this->assertSame($type, $platform->types()[0]);
     }
 
     public function testCanNotAddSameTypeTwice()

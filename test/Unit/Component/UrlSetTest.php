@@ -30,8 +30,8 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
     {
         $urlSet = new UrlSet();
 
-        $this->assertInternalType('array', $urlSet->getUrls());
-        $this->assertCount(0, $urlSet->getUrls());
+        $this->assertInternalType('array', $urlSet->urls());
+        $this->assertCount(0, $urlSet->urls());
     }
 
     public function testCanAddUrl()
@@ -41,9 +41,9 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
         $urlSet = new UrlSet();
         $urlSet->addUrl($url);
 
-        $this->assertInternalType('array', $urlSet->getUrls());
-        $this->assertCount(1, $urlSet->getUrls());
-        $this->assertSame($url, $urlSet->getUrls()[0]);
+        $this->assertInternalType('array', $urlSet->urls());
+        $this->assertCount(1, $urlSet->urls());
+        $this->assertSame($url, $urlSet->urls()[0]);
     }
 
     public function testCanAddALotOfUrls()
@@ -65,9 +65,9 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
 
         $urlSet->addUrl($url);
 
-        $this->assertInternalType('array', $urlSet->getUrls());
-        $this->assertCount(UrlSetInterface::URL_MAX_COUNT, $urlSet->getUrls());
-        $this->assertContains($url, $urlSet->getUrls());
+        $this->assertInternalType('array', $urlSet->urls());
+        $this->assertCount(UrlSetInterface::URL_MAX_COUNT, $urlSet->urls());
+        $this->assertContains($url, $urlSet->urls());
     }
 
     public function testCanNotAddMoreUrlMaxCountUrls()

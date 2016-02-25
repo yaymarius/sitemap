@@ -22,15 +22,15 @@ class PlayerLocationWriter
     {
         $xmlWriter->startElement('video:player_loc');
 
-        if ($playerLocation->getAllowEmbed()) {
-            $xmlWriter->writeAttribute('allow_embed', $playerLocation->getAllowEmbed());
+        if ($playerLocation->allowEmbed()) {
+            $xmlWriter->writeAttribute('allow_embed', $playerLocation->allowEmbed());
         }
 
-        if ($playerLocation->getAutoPlay()) {
-            $xmlWriter->writeAttribute('autoplay', $playerLocation->getAutoPlay());
+        if ($playerLocation->autoPlay()) {
+            $xmlWriter->writeAttribute('autoplay', $playerLocation->autoPlay());
         }
 
-        $xmlWriter->text($playerLocation->getLocation());
+        $xmlWriter->text($playerLocation->location());
         $xmlWriter->endElement();
     }
 }

@@ -140,43 +140,43 @@ class NewsWriterTest extends AbstractTestCase
 
         $news
             ->expects($this->any())
-            ->method('getPublication')
+            ->method('publication')
             ->willReturn($publication)
         ;
 
         $news
             ->expects($this->any())
-            ->method('getPublicationDate')
+            ->method('publicationDate')
             ->willReturn($publicationDate)
         ;
 
         $news
             ->expects($this->any())
-            ->method('getTitle')
+            ->method('title')
             ->willReturn($title)
         ;
 
         $news
             ->expects($this->any())
-            ->method('getAccess')
+            ->method('access')
             ->willReturn($access)
         ;
 
         $news
             ->expects($this->any())
-            ->method('getGenres')
+            ->method('genres')
             ->willReturn($genres)
         ;
 
         $news
             ->expects($this->any())
-            ->method('getKeywords')
+            ->method('keywords')
             ->willReturn($keywords)
         ;
 
         $news
             ->expects($this->any())
-            ->method('getStockTickers')
+            ->method('stockTickers')
             ->willReturn($stockTickers)
         ;
 

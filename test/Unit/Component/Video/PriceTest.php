@@ -63,10 +63,10 @@ class PriceTest extends \PHPUnit_Framework_TestCase
             $resolution
         );
 
-        $this->assertSame($value, $price->getValue());
-        $this->assertSame($currency, $price->getCurrency());
-        $this->assertSame($type, $price->getType());
-        $this->assertSame($resolution, $price->getResolution());
+        $this->assertSame($value, $price->value());
+        $this->assertSame($currency, $price->currency());
+        $this->assertSame($type, $price->type());
+        $this->assertSame($resolution, $price->resolution());
     }
 
     public function testDefaults()
@@ -78,8 +78,8 @@ class PriceTest extends \PHPUnit_Framework_TestCase
             $faker->currencyCode
         );
 
-        $this->assertNull($price->getType());
-        $this->assertNull($price->getResolution());
+        $this->assertNull($price->type());
+        $this->assertNull($price->resolution());
     }
 
     public function testInvalidTypeIsRejected()
