@@ -31,31 +31,6 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(ImageInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $location = $faker->url;
-        $title = $faker->sentence;
-        $caption = $faker->sentence;
-        $geoLocation = $faker->address;
-        $licence = $faker->url;
-
-        $image = new Image(
-            $location,
-            $title,
-            $caption,
-            $geoLocation,
-            $licence
-        );
-
-        $this->assertSame($location, $image->location());
-        $this->assertSame($title, $image->title());
-        $this->assertSame($caption, $image->caption());
-        $this->assertSame($geoLocation, $image->geoLocation());
-        $this->assertSame($licence, $image->licence());
-    }
-
     public function testDefaults()
     {
         $location = $this->getFaker()->url;
@@ -66,5 +41,74 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($image->caption());
         $this->assertNull($image->geoLocation());
         $this->assertNull($image->licence());
+    }
+
+    public function testConstructorSetsValue()
+    {
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $this->assertSame($location, $image->location());
+    }
+
+    public function testWithTitleClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $title = $faker->sentence;
+
+        $image = new Image($faker->url);
+
+        $instance = $image->withTitle($title);
+
+        $this->assertInstanceOf(Image::class, $instance);
+        $this->assertNotSame($image, $instance);
+        $this->assertSame($title, $instance->title());
+    }
+
+    public function testWithCaptionClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $caption = $faker->sentence;
+
+        $image = new Image($faker->url);
+
+        $instance = $image->withCaption($caption);
+
+        $this->assertInstanceOf(Image::class, $instance);
+        $this->assertNotSame($image, $instance);
+        $this->assertSame($caption, $instance->caption());
+    }
+
+    public function testWithGeoLocationClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $geoLocation = $faker->address;
+
+        $image = new Image($faker->url);
+
+        $instance = $image->withGeoLocation($geoLocation);
+
+        $this->assertInstanceOf(Image::class, $instance);
+        $this->assertNotSame($image, $instance);
+        $this->assertSame($geoLocation, $instance->geoLocation());
+    }
+
+    public function testWithLicenceClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $licence = $faker->address;
+
+        $image = new Image($faker->url);
+
+        $instance = $image->withLicence($licence);
+
+        $this->assertInstanceOf(Image::class, $instance);
+        $this->assertNotSame($image, $instance);
+        $this->assertSame($licence, $instance->licence());
     }
 }
