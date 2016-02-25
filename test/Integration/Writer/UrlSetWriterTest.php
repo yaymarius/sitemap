@@ -39,11 +39,10 @@ XML;
 
         $url = new Component\Url('http://www.example.com/foo.html');
 
-        $url->addImage(new Component\Image\Image(
-            'http://example.com/image.jpg',
-            null,
-            'Dogs playing poker'
-        ));
+        $image = new Component\Image\Image('http://example.com/image.jpg');
+        $image = $image->withCaption('Dogs playing poker');
+
+        $url->addImage($image);
 
         $url->addVideo(new Component\Video\Video(
             'http://www.example.com/thumbs/123.jpg',

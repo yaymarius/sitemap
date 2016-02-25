@@ -36,19 +36,11 @@ final class Image implements ImageInterface
     private $licence;
 
     /**
-     * @param string      $location
-     * @param string|null $title
-     * @param string|null $caption
-     * @param string|null $geoLocation
-     * @param string|null $licence
+     * @param string $location
      */
-    public function __construct($location, $title = null, $caption = null, $geoLocation = null, $licence = null)
+    public function __construct($location)
     {
         $this->location = $location;
-        $this->title = $title;
-        $this->caption = $caption;
-        $this->geoLocation = $geoLocation;
-        $this->licence = $licence;
     }
 
     public function location()
@@ -74,5 +66,61 @@ final class Image implements ImageInterface
     public function licence()
     {
         return $this->licence;
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return static
+     */
+    public function withTitle($title)
+    {
+        $instance = clone $this;
+
+        $instance->title = $title;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $caption
+     *
+     * @return static
+     */
+    public function withCaption($caption)
+    {
+        $instance = clone $this;
+
+        $instance->caption = $caption;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $geoLocation
+     *
+     * @return static
+     */
+    public function withGeoLocation($geoLocation)
+    {
+        $instance = clone $this;
+
+        $instance->geoLocation = $geoLocation;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $licence
+     *
+     * @return static
+     */
+    public function withLicence($licence)
+    {
+        $instance = clone $this;
+
+        $instance->licence = $licence;
+
+        return $instance;
     }
 }
