@@ -27,14 +27,6 @@ final class Platform implements PlatformInterface
      */
     public function __construct($relationship)
     {
-        $this->setRelationship($relationship);
-    }
-
-    /**
-     * @param string $relationship
-     */
-    private function setRelationship($relationship)
-    {
         $choices = [
             PlatformInterface::RELATIONSHIP_ALLOW,
             PlatformInterface::RELATIONSHIP_DENY,
@@ -50,10 +42,17 @@ final class Platform implements PlatformInterface
         return $this->relationship;
     }
 
+    public function types()
+    {
+        return $this->types;
+    }
+
     /**
-     * @param string $type
+     * @param array $types
+     *
+     * @return static
      */
-    public function addType($type)
+    public function withTypes(array $types)
     {
         $choices = [
             PlatformInterface::TYPE_MOBILE,
@@ -61,14 +60,13 @@ final class Platform implements PlatformInterface
             PlatformInterface::TYPE_WEB,
         ];
 
-        Assertion::choice($type, $choices);
-        Assertion::false(in_array($type, $this->types));
+        Assertion::allChoice($types, $choices);
+        Assertion::same($types, array_unique($types));
 
-        $this->types[] = $type;
-    }
+        $instance = clone $this;
 
-    public function types()
-    {
-        return $this->types;
+        $instance->types = $types;
+
+        return $instance;
     }
 }
