@@ -38,28 +38,6 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(PlayerLocationInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $location = $faker->url;
-        $allowEmbed = $faker->randomElement([
-            PlayerLocationInterface::ALLOW_EMBED_NO,
-            PlayerLocationInterface::ALLOW_EMBED_YES,
-        ]);
-        $autoPlay = 'play=true';
-
-        $playerLocation = new PlayerLocation(
-            $location,
-            $allowEmbed,
-            $autoPlay
-        );
-
-        $this->assertSame($location, $playerLocation->location());
-        $this->assertSame($allowEmbed, $playerLocation->allowEmbed());
-        $this->assertSame($autoPlay, $playerLocation->autoPlay());
-    }
-
     public function testDefaults()
     {
         $playerLocation = new PlayerLocation($this->getFaker()->url);
@@ -68,13 +46,60 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($playerLocation->autoPlay());
     }
 
-    public function testInvalidAllowEmbedIsRejected()
+    public function testConstructorSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $location = $faker->url;
+
+        $playerLocation = new PlayerLocation($location);
+
+        $this->assertSame($location, $playerLocation->location());
+    }
+
+    public function testWithAllowEmbedRejectsInvalidValues()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        new PlayerLocation(
-            $this->getFaker()->url,
-            'foobarbaz'
-        );
+        $faker = $this->getFaker();
+
+        $allowEmbed = $faker->word;
+
+        $playerLocation = new PlayerLocation($faker->url);
+
+        $playerLocation->withAllowEmbed($allowEmbed);
+    }
+
+    public function testWithAllowEmbedClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $allowEmbed = $faker->randomElement([
+            PlayerLocationInterface::ALLOW_EMBED_NO,
+            PlayerLocationInterface::ALLOW_EMBED_YES,
+        ]);
+
+        $playerLocation = new PlayerLocation($faker->url);
+
+        $instance = $playerLocation->withAllowEmbed($allowEmbed);
+
+        $this->assertInstanceOf(PlayerLocation::class, $instance);
+        $this->assertNotSame($playerLocation, $instance);
+        $this->assertSame($allowEmbed, $instance->allowEmbed());
+    }
+
+    public function testWithAutoPlayClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $autoPlay = implode('=', $faker->words(2));
+
+        $playerLocation = new PlayerLocation($faker->url);
+
+        $instance = $playerLocation->withAutoPlay($autoPlay);
+
+        $this->assertInstanceOf(PlayerLocation::class, $instance);
+        $this->assertNotSame($playerLocation, $instance);
+        $this->assertSame($autoPlay, $instance->autoPlay());
     }
 }
