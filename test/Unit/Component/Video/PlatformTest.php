@@ -32,11 +32,27 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(PlatformInterface::class));
     }
 
-    public function testConstructorSetsValues()
+    public function testDefaults()
     {
-        $faker = $this->getFaker();
+        $platform = new Platform($this->getFaker()->randomElement([
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
+        ]));
 
-        $relationship = $faker->randomElement([
+        $this->assertInternalType('array', $platform->types());
+        $this->assertCount(0, $platform->types());
+    }
+
+    public function testConstructorRejectsInvalidRelationship()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Platform('foo');
+    }
+
+    public function testConstructorSetsValue()
+    {
+        $relationship = $this->getFaker()->randomElement([
             PlatformInterface::RELATIONSHIP_ALLOW,
             PlatformInterface::RELATIONSHIP_DENY,
         ]);
@@ -46,80 +62,60 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($relationship, $platform->relationship());
     }
 
-    public function testDefaults()
-    {
-        $faker = $this->getFaker();
-
-        $platform = new Platform($faker->randomElement([
-            PlatformInterface::RELATIONSHIP_ALLOW,
-            PlatformInterface::RELATIONSHIP_DENY,
-        ]));
-
-        $this->assertInternalType('array', $platform->types());
-        $this->assertCount(0, $platform->types());
-    }
-
-    public function testInvalidRelationshipIsRejected()
+    public function testWithTypesRejectsInvalidValues()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        new Platform('foo');
-    }
-
-    public function testCanAddType()
-    {
         $faker = $this->getFaker();
+
+        $types = $faker->words;
 
         $platform = new Platform($faker->randomElement([
             PlatformInterface::RELATIONSHIP_ALLOW,
             PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
-        $type = $faker->randomElement([
+        $platform->withTypes($types);
+    }
+
+    public function testWithTypesRejectsDuplicateValues()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $types = [
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_MOBILE,
+        ];
+
+        $platform = new Platform($faker->randomElement([
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
+        ]));
+
+        $platform->withTypes($types);
+    }
+
+    public function testWithTypesClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $types = $faker->randomElements([
             PlatformInterface::TYPE_MOBILE,
             PlatformInterface::TYPE_TV,
             PlatformInterface::TYPE_WEB,
         ]);
 
-        $platform->addType($type);
-
-        $this->assertInternalType('array', $platform->types());
-        $this->assertCount(1, $platform->types());
-        $this->assertSame($type, $platform->types()[0]);
-    }
-
-    public function testCanNotAddSameTypeTwice()
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
         $platform = new Platform($faker->randomElement([
             PlatformInterface::RELATIONSHIP_ALLOW,
             PlatformInterface::RELATIONSHIP_DENY,
         ]));
 
-        $type = $faker->randomElement([
-            PlatformInterface::TYPE_MOBILE,
-            PlatformInterface::TYPE_TV,
-            PlatformInterface::TYPE_WEB,
-        ]);
+        $instance = $platform->withTypes($types);
 
-        $platform->addType($type);
-        $platform->addType($type);
-    }
-
-    public function testInvalidTypeIsRejected()
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        $platform = new Platform($faker->randomElement([
-            PlatformInterface::RELATIONSHIP_ALLOW,
-            PlatformInterface::RELATIONSHIP_DENY,
-        ]));
-
-        $platform->addType('foobarbaz');
+        $this->assertInstanceOf(Platform::class, $instance);
+        $this->assertNotSame($platform, $instance);
+        $this->assertSame($types, $instance->types());
     }
 }
