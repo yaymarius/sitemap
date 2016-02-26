@@ -52,30 +52,12 @@ final class News implements NewsInterface
      * @param PublicationInterface $publication
      * @param DateTimeInterface    $publicationDate
      * @param string               $title
-     * @param string|null          $access
-     * @param array                $genres
-     * @param array                $keywords
-     * @param array                $stockTickers
      */
-    public function __construct(
-        PublicationInterface $publication,
-        DateTimeInterface $publicationDate,
-        $title,
-        $access = null,
-        array $genres = [],
-        array $keywords = [],
-        array $stockTickers = []
-    ) {
+    public function __construct(PublicationInterface $publication, DateTimeInterface $publicationDate, $title)
+    {
         $this->publication = $publication;
         $this->publicationDate = $publicationDate;
         $this->title = $title;
-
-        $this->setAccess($access);
-        $this->setGenres($genres);
-
-        $this->keywords = $keywords;
-
-        $this->setStockTickers($stockTickers);
     }
 
     public function publication()
@@ -93,42 +75,9 @@ final class News implements NewsInterface
         return $this->title;
     }
 
-    /**
-     * @param string|null $access
-     */
-    private function setAccess($access = null)
-    {
-        $choices = [
-            NewsInterface::ACCESS_REGISTRATION,
-            NewsInterface::ACCESS_SUBSCRIPTION,
-        ];
-
-        Assertion::nullOrChoice($access, $choices);
-
-        $this->access = $access;
-    }
-
     public function access()
     {
         return $this->access;
-    }
-
-    /**
-     * @param array $genres
-     */
-    private function setGenres(array $genres = [])
-    {
-        $choices = [
-            NewsInterface::GENRE_BLOG,
-            NewsInterface::GENRE_OP_ED,
-            NewsInterface::GENRE_OPINION,
-            NewsInterface::GENRE_SATIRE,
-            NewsInterface::GENRE_USER_GENERATED,
-        ];
-
-        Assertion::allChoice($genres, $choices);
-
-        $this->genres = $genres;
     }
 
     public function genres()
@@ -141,18 +90,83 @@ final class News implements NewsInterface
         return $this->keywords;
     }
 
-    /**
-     * @param array $stockTickers
-     */
-    private function setStockTickers(array $stockTickers = [])
-    {
-        Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
-
-        $this->stockTickers = $stockTickers;
-    }
-
     public function stockTickers()
     {
         return $this->stockTickers;
+    }
+
+    /**
+     * @param string $access
+     *
+     * @return static
+     */
+    public function withAccess($access)
+    {
+        $choices = [
+            NewsInterface::ACCESS_REGISTRATION,
+            NewsInterface::ACCESS_SUBSCRIPTION,
+        ];
+
+        Assertion::nullOrChoice($access, $choices);
+
+        $instance = clone $this;
+
+        $instance->access = $access;
+
+        return $instance;
+    }
+
+    /**
+     * @param array $genres
+     *
+     * @return static
+     */
+    public function withGenres(array $genres = [])
+    {
+        $choices = [
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            NewsInterface::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_USER_GENERATED,
+        ];
+
+        Assertion::allChoice($genres, $choices);
+
+        $instance = clone $this;
+
+        $instance->genres = $genres;
+
+        return $instance;
+    }
+
+    /**
+     * @param array $keywords
+     *
+     * @return static
+     */
+    public function withKeywords(array $keywords = [])
+    {
+        $instance = clone $this;
+
+        $instance->keywords = $keywords;
+
+        return $instance;
+    }
+
+    /**
+     * @param array $stockTickers
+     *
+     * @return static
+     */
+    public function withStockTickers(array $stockTickers = [])
+    {
+        Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
+
+        $instance = clone $this;
+
+        $instance->stockTickers = $stockTickers;
+
+        return $instance;
     }
 }
