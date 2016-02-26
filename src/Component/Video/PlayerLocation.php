@@ -28,37 +28,16 @@ final class PlayerLocation implements PlayerLocationInterface
     private $autoPlay;
 
     /**
-     * @param string      $location
-     * @param string|null $allowEmbed
-     * @param string|null $autoPlay
+     * @param string $location
      */
-    public function __construct($location, $allowEmbed = null, $autoPlay = null)
+    public function __construct($location)
     {
         $this->location = $location;
-
-        $this->setAllowEmbed($allowEmbed);
-
-        $this->autoPlay = $autoPlay;
     }
 
     public function location()
     {
         return $this->location;
-    }
-
-    /**
-     * @param string|null $allowEmbed
-     */
-    private function setAllowEmbed($allowEmbed = null)
-    {
-        $choices = [
-            PlayerLocationInterface::ALLOW_EMBED_NO,
-            PlayerLocationInterface::ALLOW_EMBED_YES,
-        ];
-
-        Assertion::nullOrChoice($allowEmbed, $choices);
-
-        $this->allowEmbed = $allowEmbed;
     }
 
     public function allowEmbed()
@@ -69,5 +48,40 @@ final class PlayerLocation implements PlayerLocationInterface
     public function autoPlay()
     {
         return $this->autoPlay;
+    }
+
+    /**
+     * @param string $allowEmbed
+     *
+     * @return static
+     */
+    public function withAllowEmbed($allowEmbed)
+    {
+        $choices = [
+            PlayerLocationInterface::ALLOW_EMBED_NO,
+            PlayerLocationInterface::ALLOW_EMBED_YES,
+        ];
+
+        Assertion::nullOrChoice($allowEmbed, $choices);
+
+        $instance = clone $this;
+
+        $instance->allowEmbed = $allowEmbed;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $autoPlay
+     *
+     * @return static
+     */
+    public function withAutoPlay($autoPlay)
+    {
+        $instance = clone $this;
+
+        $instance->autoPlay = $autoPlay;
+
+        return $instance;
     }
 }

@@ -44,16 +44,19 @@ XML;
 
         $url->addImage($image);
 
+        $playerLocation = new Component\Video\PlayerLocation('http://www.example.com/videoplayer.swf?video=123');
+
+        $playerLocation = $playerLocation
+            ->withAllowEmbed(Component\Video\PlayerLocationInterface::ALLOW_EMBED_YES)
+            ->withAutoPlay('ap=1')
+        ;
+
         $url->addVideo(new Component\Video\Video(
             'http://www.example.com/thumbs/123.jpg',
             'Grilling steaks for summer',
             'Cook the perfect steak every time.',
             'http://www.example.com/video123.flv',
-            new Component\Video\PlayerLocation(
-                'http://www.example.com/videoplayer.swf?video=123',
-                Component\Video\PlayerLocationInterface::ALLOW_EMBED_YES,
-                'ap=1'
-            )
+            $playerLocation
         ));
 
         $urlSet->addUrl($url);
