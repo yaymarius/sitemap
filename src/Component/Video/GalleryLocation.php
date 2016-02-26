@@ -21,13 +21,11 @@ final class GalleryLocation implements GalleryLocationInterface
     private $title;
 
     /**
-     * @param string      $location
-     * @param string|null $title
+     * @param string $location
      */
-    public function __construct($location, $title = null)
+    public function __construct($location)
     {
         $this->location = $location;
-        $this->title = $title;
     }
 
     public function location()
@@ -38,5 +36,19 @@ final class GalleryLocation implements GalleryLocationInterface
     public function title()
     {
         return $this->title;
+    }
+
+    /**
+     * @param string $title
+     *
+     * @return static
+     */
+    public function withTitle($title)
+    {
+        $instance = clone $this;
+
+        $instance->title = $title;
+
+        return $instance;
     }
 }
