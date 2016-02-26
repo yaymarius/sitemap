@@ -33,29 +33,15 @@ final class Price implements PriceInterface
     private $resolution;
 
     /**
-     * @param float       $value
-     * @param string      $currency
-     * @param string|null $type
-     * @param string|null $resolution
+     * @param float  $value
+     * @param string $currency
      */
-    public function __construct($value, $currency, $type = null, $resolution = null)
-    {
-        $this->setValue($value);
-
-        $this->currency = $currency;
-
-        $this->setType($type);
-        $this->setResolution($resolution);
-    }
-
-    /**
-     * @param float $value
-     */
-    private function setValue($value)
+    public function __construct($value, $currency)
     {
         Assertion::greaterOrEqualThan($value, PriceInterface::VALUE_MIN);
 
         $this->value = $value;
+        $this->currency = $currency;
     }
 
     public function value()
@@ -68,43 +54,55 @@ final class Price implements PriceInterface
         return $this->currency;
     }
 
+    public function type()
+    {
+        return $this->type;
+    }
+
+    public function resolution()
+    {
+        return $this->resolution;
+    }
+
     /**
-     * @param string|null $type
+     * @param string $type
+     *
+     * @return static
      */
-    private function setType($type = null)
+    public function withType($type)
     {
         $choices = [
             PriceInterface::TYPE_OWN,
             PriceInterface::TYPE_RENT,
         ];
 
-        Assertion::nullOrChoice($type, $choices);
+        Assertion::choice($type, $choices);
 
-        $this->type = $type;
-    }
+        $instance = clone $this;
 
-    public function type()
-    {
-        return $this->type;
+        $instance->type = $type;
+
+        return $instance;
     }
 
     /**
-     * @param string|null $resolution
+     * @param string $resolution
+     *
+     * @return static
      */
-    private function setResolution($resolution = null)
+    public function withResolution($resolution)
     {
         $choices = [
             PriceInterface::RESOLUTION_HD,
             PriceInterface::RESOLUTION_SD,
         ];
 
-        Assertion::nullOrChoice($resolution, $choices);
+        Assertion::choice($resolution, $choices);
 
-        $this->resolution = $resolution;
-    }
+        $instance = clone $this;
 
-    public function resolution()
-    {
-        return $this->resolution;
+        $instance->resolution = $resolution;
+
+        return $instance;
     }
 }

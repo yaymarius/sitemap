@@ -41,34 +41,6 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(PriceInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $value = $faker->randomFloat(2, 0.01);
-        $currency = $faker->currencyCode;
-        $type = $faker->randomElement([
-            PriceInterface::TYPE_OWN,
-            PriceInterface::TYPE_RENT,
-        ]);
-        $resolution = $faker->randomElement([
-            PriceInterface::RESOLUTION_HD,
-            PriceInterface::RESOLUTION_SD,
-        ]);
-
-        $price = new Price(
-            $value,
-            $currency,
-            $type,
-            $resolution
-        );
-
-        $this->assertSame($value, $price->value());
-        $this->assertSame($currency, $price->currency());
-        $this->assertSame($type, $price->type());
-        $this->assertSame($resolution, $price->resolution());
-    }
-
     public function testDefaults()
     {
         $faker = $this->getFaker();
@@ -82,25 +54,12 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($price->resolution());
     }
 
-    public function testInvalidTypeIsRejected()
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        new Price(
-            $faker->randomFloat(2, 0.01),
-            $faker->currencyCode,
-            'foobarbaz'
-        );
-    }
-
     /**
-     * @dataProvider providerInvalidValueIsRejected
+     * @dataProvider providerInvalidValue
      *
      * @param mixed $value
      */
-    public function testInvalidValueIsRejected($value)
+    public function testConstructorRejectsInvalidValue($value)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -115,7 +74,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     /**
      * @return \Generator
      */
-    public function providerInvalidValueIsRejected()
+    public function providerInvalidValue()
     {
         $invalidValues = [
             'foo',
@@ -129,21 +88,93 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testInvalidResolutionIsRejected()
+    public function testConstructorSetsValues()
+    {
+        $faker = $this->getFaker();
+
+        $value = $faker->randomFloat(2, 0.01);
+        $currency = $faker->currencyCode;
+
+        $price = new Price(
+            $value,
+            $currency
+        );
+
+        $this->assertSame($value, $price->value());
+        $this->assertSame($currency, $price->currency());
+    }
+
+    public function testWithTypeRejectsInvalidType()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
-        new Price(
-            $faker->randomFloat(2, 0.01),
-            $faker->currencyCode,
-            $faker->randomElement([
-                PriceInterface::TYPE_OWN,
-                PriceInterface::TYPE_RENT,
-            ]),
-            'foobarbaz'
+        $type = $faker->word;
 
+        $price = new Price(
+            $faker->randomFloat(2, 0.01),
+            $faker->currencyCode
         );
+
+        $price->withType($type);
+    }
+
+    public function testWithTypeClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $type = $faker->randomElement([
+            PriceInterface::TYPE_OWN,
+            PriceInterface::TYPE_RENT,
+        ]);
+
+        $price = new Price(
+            $faker->randomFloat(2, 0.01),
+            $faker->currencyCode
+        );
+
+        $instance = $price->withType($type);
+
+        $this->assertInstanceOf(Price::class, $instance);
+        $this->assertNotSame($price, $instance);
+        $this->assertSame($type, $instance->type());
+    }
+
+    public function testWithResolutionRejectsInvalidResolution()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $resolution = $faker->word;
+
+        $price = new Price(
+            $faker->randomFloat(2, 0.01),
+            $faker->currencyCode
+        );
+
+        $price->withResolution($resolution);
+    }
+
+    public function testWithResolutionClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $resolution = $faker->randomElement([
+            PriceInterface::RESOLUTION_HD,
+            PriceInterface::RESOLUTION_SD,
+        ]);
+
+        $price = new Price(
+            $faker->randomFloat(2, 0.01),
+            $faker->currencyCode
+        );
+
+        $instance = $price->withResolution($resolution);
+
+        $this->assertInstanceOf(Price::class, $instance);
+        $this->assertNotSame($price, $instance);
+        $this->assertSame($resolution, $instance->resolution());
     }
 }
