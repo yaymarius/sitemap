@@ -33,47 +33,6 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(NewsInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $publication = $this->getPublicationMock();
-        $publicationDate = $faker->dateTime;
-        $title = $faker->sentence();
-        $access = $faker->randomElement([
-            NewsInterface::ACCESS_REGISTRATION,
-            NewsInterface::ACCESS_SUBSCRIPTION,
-        ]);
-        $genres = $faker->randomElements([
-            NewsInterface::GENRE_BLOG,
-            NewsInterface::GENRE_OP_ED,
-            NewsInterface::GENRE_OPINION,
-            NewsInterface::GENRE_SATIRE,
-            NewsInterface::GENRE_USER_GENERATED,
-        ]);
-        $keywords = $faker->words;
-        $stockTickers = $faker->words(NewsInterface::STOCK_TICKERS_MAX_COUNT);
-
-        $news = new News(
-            $publication,
-            $publicationDate,
-            $title,
-            $access,
-            $genres,
-            $keywords,
-            $stockTickers
-        );
-
-        $this->assertSame($publication, $news->publication());
-        $this->assertEquals($publicationDate, $news->publicationDate());
-        $this->assertNotSame($publicationDate, $news->publicationDate());
-        $this->assertSame($title, $news->title());
-        $this->assertSame($access, $news->access());
-        $this->assertSame($genres, $news->genres());
-        $this->assertSame($keywords, $news->keywords());
-        $this->assertSame($stockTickers, $news->stockTickers());
-    }
-
     public function testDefaults()
     {
         $faker = $this->getFaker();
@@ -96,103 +55,65 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $news->stockTickers());
     }
 
-    /**
-     * @dataProvider providerCanInjectAccess
-     *
-     * @param mixed $access
-     */
-    public function testCanInjectAccess($access)
+    public function testConstructorSetsValues()
     {
         $faker = $this->getFaker();
 
+        $publication = $this->getPublicationMock();
+        $publicationDate = $faker->dateTime;
+        $title = $faker->sentence();
+
         $news = new News(
-            $this->getPublicationMock(),
-            $faker->dateTime,
-            $faker->sentence(),
-            $access
+            $publication,
+            $publicationDate,
+            $title
         );
 
-        $this->assertSame($access, $news->access());
+        $this->assertSame($publication, $news->publication());
+        $this->assertNotSame($publicationDate, $news->publicationDate());
+        $this->assertSame($title, $news->title());
     }
 
-    /**
-     * @return \Generator
-     */
-    public function providerCanInjectAccess()
-    {
-        $allowedValues = [
-            null,
-            NewsInterface::ACCESS_REGISTRATION,
-            NewsInterface::ACCESS_SUBSCRIPTION,
-        ];
-
-        foreach ($allowedValues as $access) {
-            yield [
-                $access,
-            ];
-        }
-    }
-
-    public function testInvalidAccessIsRejected()
+    public function testWithAccessRejectsInvalidValue()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
-        new News(
-            $this->getPublicationMock(),
-            $faker->dateTime,
-            $faker->sentence(),
-            'foobarbaz'
-        );
-    }
-
-    /**
-     * @dataProvider providerCanInjectGenres
-     *
-     * @param mixed $genres
-     */
-    public function testCanInjectGenres($genres)
-    {
-        $faker = $this->getFaker();
+        $access = $faker->sentence();
 
         $news = new News(
             $this->getPublicationMock(),
             $faker->dateTime,
-            $faker->sentence(),
-            $faker->randomElement([
-                NewsInterface::ACCESS_REGISTRATION,
-                NewsInterface::ACCESS_SUBSCRIPTION,
-            ]),
-            $genres
+            $faker->sentence()
         );
 
-        $this->assertSame($genres, $news->genres());
+        $news->withAccess($access);
     }
 
-    /**
-     * @return \Generator
-     */
-    public function providerCanInjectGenres()
+    public function testWithAccessClonesObjectAndSetsValue()
     {
-        $allowedValues = [
-            NewsInterface::GENRE_BLOG,
-            NewsInterface::GENRE_OP_ED,
-            NewsInterface::GENRE_OPINION,
-            NewsInterface::GENRE_SATIRE,
-            NewsInterface::GENRE_USER_GENERATED,
-        ];
-
         $faker = $this->getFaker();
 
-        for ($i = 0; $i < count($allowedValues); ++$i) {
-            yield [
-                $faker->randomElements($allowedValues, $i),
-            ];
-        }
+        $access = $faker->randomElement([
+            NewsInterface::ACCESS_REGISTRATION,
+            NewsInterface::ACCESS_SUBSCRIPTION,
+        ]);
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $instance = $news->withAccess($access);
+
+        $this->assertInstanceOf(News::class, $instance);
+        $this->assertNotSame($news, $instance);
+        $this->assertSame($access, $instance->access());
     }
 
-    public function testInvalidGenresAreRejected()
+    public function testWithGenresRejectsInvalidValues()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -202,19 +123,60 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             'foobarbaz',
         ];
 
-        new News(
+        $news = new News(
             $this->getPublicationMock(),
             $faker->dateTime,
-            $faker->sentence(),
-            $faker->randomElement([
-                NewsInterface::ACCESS_REGISTRATION,
-                NewsInterface::ACCESS_SUBSCRIPTION,
-            ]),
-            $genres
+            $faker->sentence()
         );
+
+        $news->withGenres($genres);
     }
 
-    public function testCanNotInjectMoreThanMaximumNumberOfStockTickers()
+    public function testWithGenresClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $genres = $faker->randomElements([
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            NewsInterface::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_USER_GENERATED,
+        ]);
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $instance = $news->withGenres($genres);
+
+        $this->assertInstanceOf(News::class, $instance);
+        $this->assertNotSame($news, $instance);
+        $this->assertSame($genres, $instance->genres());
+    }
+
+    public function testWithKeywordsClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $keywords = $faker->words;
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $instance = $news->withKeywords($keywords);
+
+        $this->assertInstanceOf(News::class, $instance);
+        $this->assertNotSame($news, $instance);
+        $this->assertSame($keywords, $instance->keywords());
+    }
+
+    public function testWithStockTickersRejectsTooManyValues()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -222,24 +184,32 @@ class NewsTest extends \PHPUnit_Framework_TestCase
 
         $stockTickers = $faker->words(NewsInterface::STOCK_TICKERS_MAX_COUNT + 1);
 
-        new News(
+        $news = new News(
             $this->getPublicationMock(),
             $faker->dateTime,
-            $faker->sentence(),
-            $faker->randomElement([
-                NewsInterface::ACCESS_REGISTRATION,
-                NewsInterface::ACCESS_SUBSCRIPTION,
-            ]),
-            $faker->randomElements([
-                NewsInterface::GENRE_BLOG,
-                NewsInterface::GENRE_OP_ED,
-                NewsInterface::GENRE_OPINION,
-                NewsInterface::GENRE_SATIRE,
-                NewsInterface::GENRE_USER_GENERATED,
-            ]),
-            $faker->words,
-            $stockTickers
+            $faker->sentence()
         );
+
+        $news->withStockTickers($stockTickers);
+    }
+
+    public function testWithStockTickersClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $stockTickers = $faker->words(NewsInterface::STOCK_TICKERS_MAX_COUNT);
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $instance = $news->withStockTickers($stockTickers);
+
+        $this->assertInstanceOf(News::class, $instance);
+        $this->assertNotSame($news, $instance);
+        $this->assertSame($stockTickers, $instance->stockTickers());
     }
 
     /**
