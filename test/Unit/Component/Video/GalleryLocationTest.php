@@ -31,26 +31,36 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(GalleryLocationInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $location = $faker->url;
-        $title = $faker->sentence;
-
-        $galleryLocation = new GalleryLocation(
-            $location,
-            $title
-        );
-
-        $this->assertSame($location, $galleryLocation->location());
-        $this->assertSame($title, $galleryLocation->title());
-    }
-
     public function testDefaults()
     {
         $galleryLocation = new GalleryLocation($this->getFaker()->url);
 
         $this->assertNull($galleryLocation->title());
+    }
+
+    public function testConstructorSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $location = $faker->url;
+
+        $galleryLocation = new GalleryLocation($location);
+
+        $this->assertSame($location, $galleryLocation->location());
+    }
+
+    public function testWithTitleClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $title = $faker->sentence;
+
+        $galleryLocation = new GalleryLocation($faker->url);
+
+        $instance = $galleryLocation->withTitle($title);
+
+        $this->assertInstanceOf(GalleryLocation::class, $instance);
+        $this->assertNotSame($galleryLocation, $instance);
+        $this->assertSame($title, $instance->title());
     }
 }
