@@ -53,12 +53,13 @@ You may want to add an image to a `Url` so let's do it:
 ```php
 use Refinery29\Sitemap\Component;
 
-$image = new Component\Image\Image(
-    'http://www.example.org/img/beach.jpg',
-    'Our day at the beach',
-    'Here we are sitting at the bar, enjoying our drinks',
-    'Majorca, Canyamel'
-);
+$image = new Component\Image\Image('http://www.example.org/img/beach.jpg');
+
+$image = $image
+    ->withTitle('Our day at the beach')
+    ->withCaption('Here we are sitting at the bar, enjoying our drinks')
+    ->withGeoLocation('Majorca, Canyamel')
+;
 
 $url->addImage($image);
 ```
