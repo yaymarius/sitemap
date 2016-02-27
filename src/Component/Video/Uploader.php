@@ -21,13 +21,11 @@ final class Uploader implements UploaderInterface
     private $info;
 
     /**
-     * @param string      $name
-     * @param string|null $info
+     * @param string $name
      */
-    public function __construct($name, $info = null)
+    public function __construct($name)
     {
         $this->name = $name;
-        $this->info = $info;
     }
 
     public function name()
@@ -38,5 +36,19 @@ final class Uploader implements UploaderInterface
     public function info()
     {
         return $this->info;
+    }
+
+    /**
+     * @param string $info
+     *
+     * @return static
+     */
+    public function withInfo($info)
+    {
+        $instance = clone $this;
+
+        $instance->info = $info;
+
+        return $instance;
     }
 }

@@ -31,26 +31,36 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(UploaderInterface::class));
     }
 
-    public function testConstructorSetsValues()
+    public function testDefaults()
+    {
+        $uploader = new Uploader($this->getFaker()->name);
+
+        $this->assertNull($uploader->info());
+    }
+
+    public function testConstructorSetsValue()
     {
         $faker = $this->getFaker();
 
         $name = $faker->name;
-        $info = $faker->url;
 
-        $videoUploader = new Uploader(
-            $name,
-            $info
-        );
+        $uploader = new Uploader($name);
 
-        $this->assertSame($name, $videoUploader->name());
-        $this->assertSame($info, $videoUploader->info());
+        $this->assertSame($name, $uploader->name());
     }
 
-    public function testDefaults()
+    public function testWithInfoClonesObjectAndSetsValue()
     {
-        $videoUploader = new Uploader($this->getFaker()->name);
+        $faker = $this->getFaker();
 
-        $this->assertNull($videoUploader->info());
+        $info = $faker->sentence;
+
+        $uploader = new Uploader($faker->url);
+
+        $instance = $uploader->withInfo($info);
+
+        $this->assertInstanceOf(Uploader::class, $instance);
+        $this->assertNotSame($uploader, $instance);
+        $this->assertSame($info, $instance->info());
     }
 }
