@@ -27,14 +27,6 @@ final class Restriction implements RestrictionInterface
      */
     public function __construct($relationship)
     {
-        $this->setRelationship($relationship);
-    }
-
-    /**
-     * @param string $relationship
-     */
-    private function setRelationship($relationship)
-    {
         $choices = [
             RestrictionInterface::RELATIONSHIP_ALLOW,
             RestrictionInterface::RELATIONSHIP_DENY,
@@ -45,27 +37,27 @@ final class Restriction implements RestrictionInterface
         $this->relationship = $relationship;
     }
 
-    /**
-     * @return string
-     */
     public function relationship()
     {
         return $this->relationship;
     }
 
-    /**
-     * @param string $countryCode
-     */
-    public function addCountryCode($countryCode)
-    {
-        $this->countryCodes[] = $countryCode;
-    }
-
-    /**
-     * @return array
-     */
     public function countryCodes()
     {
         return $this->countryCodes;
+    }
+
+    /**
+     * @param array $countryCodes
+     *
+     * @return static
+     */
+    public function withCountryCodes(array $countryCodes)
+    {
+        $instance = clone $this;
+
+        $instance->countryCodes = $countryCodes;
+
+        return $instance;
     }
 }
