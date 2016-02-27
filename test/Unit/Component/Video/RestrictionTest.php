@@ -32,18 +32,6 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(RestrictionInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $relationship = $this->getFaker()->randomElement([
-            RestrictionInterface::RELATIONSHIP_ALLOW,
-            RestrictionInterface::RELATIONSHIP_DENY,
-        ]);
-
-        $restriction = new Restriction($relationship);
-
-        $this->assertSame($relationship, $restriction->relationship());
-    }
-
     public function testDefaults()
     {
         $relationship = $this->getFaker()->randomElement([
@@ -57,33 +45,46 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $restriction->countryCodes());
     }
 
-    public function testInvalidRestrictionIsRejected()
+    public function testConstructorRejectsInvalidRestriction()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        new Restriction('foobarbaz');
+        $restriction = $this->getFaker()->word;
+
+        new Restriction($restriction);
     }
 
-    public function testCanAddCountryCodes()
+    public function testConstructorSetsValue()
     {
-        $faker = $this->getFaker();
-
-        $countryCodes = [
-            $faker->unique()->countryCode,
-            $faker->unique()->countryCode,
-        ];
-
-        $relationship = $faker->randomElement([
+        $relationship = $this->getFaker()->randomElement([
             RestrictionInterface::RELATIONSHIP_ALLOW,
             RestrictionInterface::RELATIONSHIP_DENY,
         ]);
 
         $restriction = new Restriction($relationship);
 
-        foreach ($countryCodes as $countryCode) {
-            $restriction->addCountryCode($countryCode);
-        }
+        $this->assertSame($relationship, $restriction->relationship());
+    }
 
-        $this->assertSame($countryCodes, $restriction->countryCodes());
+    public function testWithCountryCodesClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $countryCodes = [
+            $faker->countryCode,
+            $faker->countryCode,
+            $faker->countryCode,
+        ];
+
+        $restriction = new Restriction($faker->randomElement([
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
+        ]));
+
+        $instance = $restriction->withCountryCodes($countryCodes);
+
+        $this->assertInstanceOf(Restriction::class, $instance);
+        $this->assertNotSame($restriction, $instance);
+        $this->assertSame($countryCodes, $instance->countryCodes());
     }
 }
