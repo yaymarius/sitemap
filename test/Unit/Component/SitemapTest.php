@@ -31,23 +31,6 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->implementsInterface(SitemapInterface::class));
     }
 
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $location = $faker->url;
-        $lastModified = $faker->dateTime;
-
-        $sitemap = new Sitemap(
-            $location,
-            $lastModified
-        );
-
-        $this->assertSame($location, $sitemap->location());
-        $this->assertEquals($lastModified, $sitemap->lastModified());
-        $this->assertNotSame($lastModified, $sitemap->lastModified());
-    }
-
     public function testDefaults()
     {
         $location = $this->getFaker()->url;
@@ -56,5 +39,32 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($location, $sitemap->location());
         $this->assertNull($sitemap->lastModified());
+    }
+
+    public function testConstructorSetsLocation()
+    {
+        $faker = $this->getFaker();
+
+        $location = $faker->url;
+
+        $sitemap = new Sitemap($location);
+
+        $this->assertSame($location, $sitemap->location());
+    }
+
+    public function testWithLastModifiedClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $lastModified = $faker->dateTime;
+
+        $sitemap = new Sitemap($faker->url);
+
+        $instance = $sitemap->withLastModified($lastModified);
+
+        $this->assertInstanceOf(Sitemap::class, $instance);
+        $this->assertNotSame($sitemap, $instance);
+        $this->assertEquals($lastModified, $instance->lastModified());
+        $this->assertNotSame($lastModified, $instance->lastModified());
     }
 }
