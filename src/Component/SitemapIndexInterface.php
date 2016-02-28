@@ -14,11 +14,6 @@ namespace Refinery29\Sitemap\Component;
 interface SitemapIndexInterface
 {
     /**
-     * @param SitemapInterface $sitemap
-     */
-    public function addSitemap(SitemapInterface $sitemap);
-
-    /**
      * @return SitemapInterface[]
      */
     public function sitemaps();

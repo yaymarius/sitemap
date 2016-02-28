@@ -10,9 +10,11 @@ namespace Refinery29\Sitemap\Test\Unit\Component;
 
 use InvalidArgumentException;
 use Refinery29\Sitemap\Component\SitemapIndex;
+use Refinery29\Sitemap\Component\SitemapIndexInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 use ReflectionClass;
+use stdClass;
 
 class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,39 +27,66 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testDefaults()
+    public function testImplementsSitemapIndexInterface()
     {
-        $index = new SitemapIndex();
+        $reflectionClass = new ReflectionClass(SitemapIndex::class);
 
-        $this->assertInternalType('array', $index->sitemaps());
-        $this->assertCount(0, $index->sitemaps());
+        $this->assertTrue($reflectionClass->implementsInterface(SitemapIndexInterface::class));
     }
 
-    public function testCanAddSitemap()
-    {
-        $sitemap = $this->getSitemapMock();
-
-        $index = new SitemapIndex();
-        $index->addSitemap($sitemap);
-
-        $this->assertInternalType('array', $index->sitemaps());
-        $this->assertCount(1, $index->sitemaps());
-        $this->assertSame($sitemap, $index->sitemaps()[0]);
-    }
-
-    public function testCanNotAddTwoSitemapsWithSameLocation()
+    /**
+     * @dataProvider providerInvalidSitemaps
+     *
+     * @param mixed $value
+     */
+    public function testConstructorRejectsInvalidValue($value)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        $location = $this->getFaker()->url;
+        new SitemapIndex($value);
+    }
 
-        $sitemap = $this->getSitemapMock($location);
-        $anotherSitemap = $this->getSitemapMock($location);
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidSitemaps()
+    {
+        $faker = $this->getFaker();
 
-        $index = new SitemapIndex();
-        $index->addSitemap($sitemap);
+        $location = $faker->url;
 
-        $index->addSitemap($anotherSitemap);
+        $values = [
+            $faker->words(),
+            [
+                $this->getSitemapMock(),
+                $this->getSitemapMock(),
+                new stdClass(),
+            ],
+            [
+                $this->getSitemapMock($location),
+                $this->getSitemapMock($location),
+            ],
+
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testConstructorSetsValue()
+    {
+        $sitemaps = [
+            $this->getSitemapMock(),
+            $this->getSitemapMock(),
+            $this->getSitemapMock(),
+        ];
+
+        $sitemapIndex = new SitemapIndex($sitemaps);
+
+        $this->assertSame($sitemaps, $sitemapIndex->sitemaps());
     }
 
     /**
@@ -67,11 +96,13 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
      */
     private function getSitemapMock($location = null)
     {
+        $location = $location ?: $this->getFaker()->unique()->url;
+
         $sitemap = $this->getMockBuilder(SitemapInterface::class)->getMock();
 
         $sitemap
             ->expects($this->any())
-            ->method('getLocation')
+            ->method('location')
             ->willReturn($location)
         ;
 
