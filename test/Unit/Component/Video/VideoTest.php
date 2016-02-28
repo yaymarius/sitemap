@@ -20,6 +20,7 @@ use Refinery29\Sitemap\Component\Video\Video;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 use ReflectionClass;
+use stdClass;
 
 class VideoTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,81 +38,6 @@ class VideoTest extends \PHPUnit_Framework_TestCase
         $reflectionClass = new ReflectionClass(Video::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(VideoInterface::class));
-    }
-
-    public function testConstructorSetsValues()
-    {
-        $faker = $this->getFaker();
-
-        $thumbnailLocation = $faker->url;
-        $title = $faker->sentence;
-        $description = $faker->paragraphs(5, true);
-        $contentLocation = $faker->url;
-        $playerLocation = $this->getPlayerLocationMock();
-        $galleryLocation = $this->getGalleryLocationMock();
-        $duration = $faker->numberBetween(
-            VideoInterface::DURATION_LOWER_LIMIT,
-            VideoInterface::DURATION_UPPER_LIMIT
-        );
-        $publicationDate = $faker->dateTime;
-        $expirationDate = $faker->dateTime;
-        $rating = $faker->randomFloat(1, 0, 5);
-        $viewCount = $faker->randomNumber();
-        $familyFriendly = VideoInterface::FAMILY_FRIENDLY_NO;
-        $category = $faker->word;
-        $restriction = $this->getRestrictionMock();
-        $requiresSubscription = $faker->randomElement([
-            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
-            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
-        ]);
-        $uploader = $this->getUploaderMock();
-        $platform = $this->getPlatformMock();
-        $live = $faker->randomElement([
-            VideoInterface::LIVE_NO,
-            VideoInterface::LIVE_YES,
-        ]);
-
-        $video = new Video(
-            $thumbnailLocation,
-            $title,
-            $description,
-            $contentLocation,
-            $playerLocation,
-            $galleryLocation,
-            $duration,
-            $publicationDate,
-            $expirationDate,
-            $rating,
-            $viewCount,
-            $familyFriendly,
-            $category,
-            $restriction,
-            $requiresSubscription,
-            $uploader,
-            $platform,
-            $live
-        );
-
-        $this->assertSame($thumbnailLocation, $video->thumbnailLocation());
-        $this->assertSame($title, $video->title());
-        $this->assertSame($description, $video->description());
-        $this->assertSame($contentLocation, $video->contentLocation());
-        $this->assertSame($playerLocation, $video->playerLocation());
-        $this->assertSame($galleryLocation, $video->galleryLocation());
-        $this->assertSame($duration, $video->duration());
-        $this->assertEquals($publicationDate, $video->publicationDate());
-        $this->assertNotSame($publicationDate, $video->publicationDate());
-        $this->assertEquals($expirationDate, $video->expirationDate());
-        $this->assertNotSame($expirationDate, $video->expirationDate());
-        $this->assertSame($rating, $video->rating());
-        $this->assertSame($viewCount, $video->viewCount());
-        $this->assertSame($familyFriendly, $video->familyFriendly());
-        $this->assertSame($category, $video->category());
-        $this->assertSame($restriction, $video->restriction());
-        $this->assertSame($requiresSubscription, $video->requiresSubscription());
-        $this->assertSame($uploader, $video->uploader());
-        $this->assertSame($platform, $video->platform());
-        $this->assertSame($live, $video->live());
     }
 
     public function testDefaults()
@@ -144,7 +70,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($video->platform());
     }
 
-    public function testTitleLongerThanMaxLengthIsRejected()
+    public function testConstructorRejectsTitleLongerThanMaxLength()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -160,7 +86,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testDescriptionLongerThanMaxLengthIsRejected()
+    public function testConstructorRejectsDescriptionLongerThanMaxLength()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -176,7 +102,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testContentAndPlayerLocationCanNotBothBeNull()
+    public function testConstructorRejectsInvalidCombinationOfContentAndPlayerLocation()
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -191,34 +117,80 @@ class VideoTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testConstructorSetsValues()
+    {
+        $faker = $this->getFaker();
+
+        $thumbnailLocation = $faker->url;
+        $title = $faker->sentence;
+        $description = $faker->paragraphs(5, true);
+        $contentLocation = $faker->url;
+        $playerLocation = $this->getPlayerLocationMock();
+
+        $video = new Video(
+            $thumbnailLocation,
+            $title,
+            $description,
+            $contentLocation,
+            $playerLocation
+        );
+
+        $this->assertSame($thumbnailLocation, $video->thumbnailLocation());
+        $this->assertSame($title, $video->title());
+        $this->assertSame($description, $video->description());
+        $this->assertSame($contentLocation, $video->contentLocation());
+        $this->assertSame($playerLocation, $video->playerLocation());
+    }
+
+    public function testWithGalleryLocationClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $galleryLocation = $this->getGalleryLocationMock();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withGalleryLocation($galleryLocation);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($galleryLocation, $instance->galleryLocation());
+    }
+
     /**
-     * @dataProvider providerInvalidDurationIsRejected
+     * @dataProvider providerInvalidDuration
      *
      * @param mixed $duration
      */
-    public function testInvalidDurationIsRejected($duration)
+    public function testWithDurationRejectsInvalidDuration($duration)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
-        new Video(
+        $video = new Video(
             $faker->url,
             $faker->sentence,
             $faker->paragraphs(5, true),
             $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $duration
+            $this->getPlayerLocationMock()
         );
+
+        $video->withDuration($duration);
     }
 
     /**
      * @return \Generator
      */
-    public function providerInvalidDurationIsRejected()
+    public function providerInvalidDuration()
     {
-        $invalidValues = [
+        $values = [
             'foo',
             VideoInterface::DURATION_LOWER_LIMIT - 1,
             VideoInterface::DURATION_LOWER_LIMIT,
@@ -226,327 +198,665 @@ class VideoTest extends \PHPUnit_Framework_TestCase
             VideoInterface::DURATION_UPPER_LIMIT + 1,
         ];
 
-        foreach ($invalidValues as $duration) {
-            yield [
-                $duration,
-            ];
-        }
-    }
-
-    /**
-     * @dataProvider providerInvalidRatingIsRejected
-     *
-     * @param mixed $rating
-     */
-    public function testInvalidRatingIsRejected($rating)
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        new Video(
-            $faker->url,
-            $faker->sentence,
-            $faker->paragraphs(5, true),
-            $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $faker->numberBetween(
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ),
-            $faker->dateTime,
-            $faker->dateTime,
-            $rating
-        );
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidRatingIsRejected()
-    {
-        $invalidValues = [
-            'foo',
-            VideoInterface::RATING_MIN - 0.1,
-            VideoInterface::RATING_MAX + 0.1,
-        ];
-
-        foreach ($invalidValues as $rating) {
-            yield [
-                $rating,
-            ];
-        }
-    }
-
-    /**
-     * @dataProvider providerInvalidViewCountIsRejected
-     *
-     * @param mixed $viewCount
-     */
-    public function testInvalidViewCountIsRejected($viewCount)
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        new Video(
-            $faker->url,
-            $faker->sentence,
-            $faker->paragraphs(5, true),
-            $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $faker->numberBetween(
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ),
-            $faker->dateTime,
-            $faker->dateTime,
-            $faker->randomFloat(1, 0, 5),
-            $viewCount
-        );
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidViewCountIsRejected()
-    {
-        $invalidValues = [
-            'foo',
-            -1,
-        ];
-
-        foreach ($invalidValues as $viewCount) {
-            yield [
-                $viewCount,
-            ];
-        }
-    }
-
-    /**
-     * @dataProvider providerInvalidFamilyFriendlyIsRejected
-     *
-     * @param mixed $familyFriendly
-     */
-    public function testInvalidFamilyFriendlyIsRejected($familyFriendly)
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        new Video(
-            $faker->url,
-            $faker->sentence,
-            $faker->paragraphs(5, true),
-            $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $faker->numberBetween(
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ),
-            $faker->dateTime,
-            $faker->dateTime,
-            $faker->randomFloat(1, 0, 5),
-            $faker->randomNumber(),
-            $familyFriendly
-        );
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidFamilyFriendlyIsRejected()
-    {
-        $invalidValues = [
-            'foo',
-            true,
-        ];
-
-        foreach ($invalidValues as $familyFriendly) {
-            yield [
-                $familyFriendly,
-            ];
-        }
-    }
-
-    /**
-     * @dataProvider providerInvalidRequiresSubscriptionIsRejected
-     *
-     * @param mixed $requiresSubscription
-     */
-    public function testInvalidRequiresSubscriptionIsRejected($requiresSubscription)
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        new Video(
-            $faker->url,
-            $faker->sentence,
-            $faker->paragraphs(5, true),
-            $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $faker->numberBetween(
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ),
-            $faker->dateTime,
-            $faker->dateTime,
-            $faker->randomFloat(1, 0, 5),
-            $faker->randomNumber(),
-            VideoInterface::FAMILY_FRIENDLY_NO,
-            $faker->word,
-            $this->getRestrictionMock(),
-            $requiresSubscription
-        );
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidRequiresSubscriptionIsRejected()
-    {
-        $invalidValues = [
-            'foobarbaz',
-            true,
-        ];
-
-        foreach ($invalidValues as $value) {
+        foreach ($values as $value) {
             yield [
                 $value,
             ];
         }
     }
 
-    public function testCanAddTag()
+    public function testWithDurationClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
+
+        $duration = $faker->numberBetween(
+            VideoInterface::DURATION_LOWER_LIMIT + 1,
+            VideoInterface::DURATION_UPPER_LIMIT - 1
+        );
 
         $video = new Video(
             $faker->url,
             $faker->sentence,
             $faker->paragraphs(5, true),
-            $faker->url
+            $faker->url,
+            $this->getPlayerLocationMock()
         );
 
-        $tag = $this->getTagMock();
+        $instance = $video->withDuration($duration);
 
-        $video->addTag($tag);
-
-        $this->assertInternalType('array', $video->tags());
-        $this->assertCount(1, $video->tags());
-        $this->assertSame($tag, $video->tags()[0]);
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($duration, $instance->duration());
     }
 
-    public function testCanNotAddMoreThanMaximumNumberOfTags()
+    public function testWithPublicationDateClonesObjectAndSetsValue()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
-
         $faker = $this->getFaker();
+
+        $publicationDate = $faker->dateTime;
 
         $video = new Video(
             $faker->url,
             $faker->sentence,
             $faker->paragraphs(5, true),
-            $faker->url
+            $faker->url,
+            $this->getPlayerLocationMock()
         );
 
-        for ($i = 0; $i < VideoInterface::TAG_MAX_COUNT; ++$i) {
-            $video->addTag($this->getTagMock());
-        }
+        $instance = $video->withPublicationDate($publicationDate);
 
-        $video->addTag($this->getTagMock());
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertEquals($publicationDate, $instance->publicationDate());
+        $this->assertNotSame($publicationDate, $instance->publicationDate());
     }
 
-    public function testCategoryLongerThanMaxLengthIsRejected()
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        $category = str_repeat('a', VideoInterface::CATEGORY_MAX_LENGTH + 1);
-
-        new Video(
-            $faker->url,
-            $faker->sentence,
-            $faker->paragraphs(5, true),
-            $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $faker->numberBetween(
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ),
-            $faker->dateTime,
-            $faker->dateTime,
-            $faker->randomFloat(1, 0, 5),
-            $faker->randomNumber(),
-            VideoInterface::FAMILY_FRIENDLY_NO,
-            $category
-        );
-    }
-
-    public function testCanAddPrice()
+    public function testWithExpirationDateClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
+
+        $expirationDate = $faker->dateTime;
 
         $video = new Video(
             $faker->url,
             $faker->sentence,
             $faker->paragraphs(5, true),
-            $faker->url
+            $faker->url,
+            $this->getPlayerLocationMock()
         );
 
-        $price = $this->getPriceMock();
+        $instance = $video->withExpirationDate($expirationDate);
 
-        $video->addPrice($price);
-
-        $this->assertInternalType('array', $video->prices());
-        $this->assertCount(1, $video->prices());
-        $this->assertSame($price, $video->prices()[0]);
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertEquals($expirationDate, $instance->expirationDate());
+        $this->assertNotSame($expirationDate, $instance->expirationDate());
     }
 
     /**
-     * @dataProvider providerInvalidLiveIsRejected
+     * @dataProvider providerInvalidRating
      *
-     * @param mixed $live
+     * @param mixed $rating
      */
-    public function testInvalidLiveIsRejected($live)
+    public function testWithRatingRejectsInvalidValue($rating)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
-        new Video(
+        $video = new Video(
             $faker->url,
             $faker->sentence,
             $faker->paragraphs(5, true),
             $faker->url,
-            $this->getPlayerLocationMock(),
-            $this->getGalleryLocationMock(),
-            $faker->numberBetween(
-                VideoInterface::DURATION_LOWER_LIMIT,
-                VideoInterface::DURATION_UPPER_LIMIT
-            ),
-            $faker->dateTime,
-            $faker->dateTime,
-            $faker->randomFloat(1, 0, 5),
-            $faker->randomNumber(),
-            VideoInterface::FAMILY_FRIENDLY_NO,
-            $faker->word,
-            $this->getRestrictionMock(),
-            $faker->randomElement([
-                VideoInterface::REQUIRES_SUBSCRIPTION_YES,
-                VideoInterface::REQUIRES_SUBSCRIPTION_NO,
-            ]),
-            $this->getUploaderMock(),
-            $this->getPlatformMock(),
-            $live
+            $this->getPlayerLocationMock()
         );
+
+        $video->withRating($rating);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidRating()
+    {
+        $values = [
+            'foo',
+            VideoInterface::RATING_MIN - 0.1,
+            VideoInterface::RATING_MAX + 0.1,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithRatingClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $rating = $faker->randomFloat(
+            2,
+            VideoInterface::RATING_MIN,
+            VideoInterface::RATING_MAX
+        );
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withRating($rating);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($rating, $instance->rating());
+    }
+
+    /**
+     * @dataProvider providerInvalidViewCount
+     *
+     * @param mixed $viewCount
+     */
+    public function testWithViewCountRejectsInvalidValue($viewCount)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withViewCount($viewCount);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidViewCount()
+    {
+        $values = [
+            'foo',
+            -1,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithViewCountClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $viewCount = $faker->numberBetween(0);
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withViewCount($viewCount);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($viewCount, $instance->viewCount());
+    }
+
+    /**
+     * @dataProvider providerInvalidFamilyFriendly
+     *
+     * @param mixed $familyFriendly
+     */
+    public function testWithFamilyFriendlyRejectsInvalidValue($familyFriendly)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withFamilyFriendly($familyFriendly);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidFamilyFriendly()
+    {
+        $values = [
+            'foo',
+            true,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithFamilyFriendlyClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $familyFriendly = VideoInterface::FAMILY_FRIENDLY_NO;
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withFamilyFriendly($familyFriendly);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($familyFriendly, $instance->familyFriendly());
+    }
+
+    /**
+     * @dataProvider providerInvalidTags
+     *
+     * @param mixed $tags
+     */
+    public function testWithTagsRejectsInvalidValue($tags)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withTags($tags);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidTags()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            $faker->words(),
+            [
+                $this->getTagMock(),
+                $this->getTagMock(),
+                new stdClass(),
+            ],
+            array_fill(
+                0,
+                VideoInterface::TAG_MAX_COUNT + 1,
+                $this->getTagMock()
+            ),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithTagsClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $tags = [
+            $this->getTagMock(),
+            $this->getTagMock(),
+            $this->getTagMock(),
+        ];
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withTags($tags);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($tags, $instance->tags());
+    }
+
+    /**
+     * @dataProvider providerInvalidCategory
+     */
+    public function testWithCategoryRejectsInvalidValue($category)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withCategory($category);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidCategory()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            $faker->boolean(),
+            $faker->randomFloat(),
+            $faker->randomNumber(),
+            $faker->words(),
+            str_repeat(
+                'a',
+                VideoInterface::CATEGORY_MAX_LENGTH + 1
+            ),
+            new stdClass(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithCategoryClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $category = $faker->sentence;
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withCategory($category);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($category, $instance->category());
+    }
+
+    public function testWithRestrictionClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $restriction = $this->getRestrictionMock();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withRestriction($restriction);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($restriction, $instance->restriction());
+    }
+
+    /**
+     * @dataProvider providerInvalidPrices
+     *
+     * @param mixed $prices
+     */
+    public function testWithPricesRejectsInvalidValue($prices)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withPrices($prices);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidPrices()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            $faker->words(),
+            [
+                $this->getPriceMock(),
+                $this->getPriceMock(),
+                new stdClass(),
+            ],
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithPricesClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $prices = [
+            $this->getPriceMock(),
+            $this->getPriceMock(),
+            $this->getPriceMock(),
+        ];
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withPrices($prices);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($prices, $instance->prices());
+    }
+
+    /**
+     * @dataProvider providerInvalidRequiresSubscription
+     *
+     * @param mixed $requiresSubscription
+     */
+    public function testWithRequiresSubscriptionRejectsInvalidValue($requiresSubscription)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withRequiresSubscription($requiresSubscription);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidRequiresSubscription()
+    {
+        $values = [
+            'foobarbaz',
+            true,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithRequiresSubscriptionClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $requiresSubscription = $faker->randomElement([
+            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
+            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
+        ]);
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withRequiresSubscription($requiresSubscription);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($requiresSubscription, $instance->requiresSubscription());
+    }
+
+    public function testWithUploaderClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $uploader = $this->getUploaderMock();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withUploader($uploader);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($uploader, $instance->uploader());
+    }
+
+    public function testWithPlatformClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $platform = $this->getPlatformMock();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withPlatform($platform);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($platform, $instance->platform());
+    }
+
+    /**
+     * @dataProvider providerInvalidLive
+     *
+     * @param mixed $live
+     */
+    public function testWithLiveRejectsInvalidValue($live)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $video->withLive($live);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidLive()
+    {
+        $values = [
+            'foobarbaz',
+            true,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithLiveClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $live = $faker->randomElement([
+            VideoInterface::LIVE_NO,
+            VideoInterface::LIVE_YES,
+        ]);
+
+        $video = new Video(
+            $faker->url,
+            $faker->sentence,
+            $faker->paragraphs(5, true),
+            $faker->url,
+            $this->getPlayerLocationMock()
+        );
+
+        $instance = $video->withLive($live);
+
+        $this->assertInstanceOf(Video::class, $instance);
+        $this->assertNotSame($video, $instance);
+        $this->assertSame($live, $instance->live());
     }
 
     /**
@@ -554,12 +864,12 @@ class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function providerInvalidLiveIsRejected()
     {
-        $invalidValues = [
+        $values = [
             'foobarbaz',
             true,
         ];
 
-        foreach ($invalidValues as $value) {
+        foreach ($values as $value) {
             yield [
                 $value,
             ];
