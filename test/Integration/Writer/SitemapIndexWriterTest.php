@@ -19,10 +19,10 @@ class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
     {
         $index = new SitemapIndex();
 
-        $index->addSitemap(new Sitemap(
-            'http://www.example.com/sitemap1.xml.gz',
-            new DateTimeImmutable('2004-10-01T18:23:17+00:00')
-        ));
+        $sitemap = new Sitemap('http://www.example.com/sitemap1.xml.gz');
+        $sitemap = $sitemap->withLastModified(new DateTimeImmutable('2004-10-01T18:23:17+00:00'));
+
+        $index->addSitemap($sitemap);
 
         $expected = <<<'XML'
 <?xml version="1.0" encoding="UTF-8"?>

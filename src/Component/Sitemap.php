@@ -23,13 +23,11 @@ final class Sitemap implements SitemapInterface
     private $lastModified;
 
     /**
-     * @param string                 $location
-     * @param DateTimeInterface|null $lastModified
+     * @param string $location
      */
-    public function __construct($location, DateTimeInterface $lastModified = null)
+    public function __construct($location)
     {
         $this->location = $location;
-        $this->lastModified = $lastModified;
     }
 
     public function location()
@@ -39,10 +37,20 @@ final class Sitemap implements SitemapInterface
 
     public function lastModified()
     {
-        if ($this->lastModified === null) {
-            return;
-        }
+        return $this->lastModified;
+    }
 
-        return clone $this->lastModified;
+    /**
+     * @param DateTimeInterface $lastModified
+     *
+     * @return static
+     */
+    public function withLastModified(DateTimeInterface $lastModified)
+    {
+        $instance = clone $this;
+
+        $instance->lastModified = clone $lastModified;
+
+        return $instance;
     }
 }
