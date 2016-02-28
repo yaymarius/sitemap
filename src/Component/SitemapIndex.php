@@ -8,39 +8,29 @@
  */
 namespace Refinery29\Sitemap\Component;
 
+use Assert\Assertion;
+
 final class SitemapIndex implements SitemapIndexInterface
 {
     /**
      * @var SitemapInterface[]
      */
-    private $sitemaps = [];
-
-    public function addSitemap(SitemapInterface $sitemap)
-    {
-        if ($this->hasSitemapWithLocation($sitemap->location())) {
-            throw new \InvalidArgumentException(sprintf(
-                'Can not add sitemap with duplicate location "%s"',
-                $sitemap->location()
-            ));
-        }
-
-        $this->sitemaps[] = $sitemap;
-    }
+    private $sitemaps;
 
     /**
-     * @param string $location
-     *
-     * @return bool
+     * @param SitemapInterface[] $sitemaps
      */
-    private function hasSitemapWithLocation($location)
+    public function __construct(array $sitemaps)
     {
-        foreach ($this->sitemaps as $sitemap) {
-            if ($sitemap->location() === $location) {
-                return true;
-            }
-        }
+        Assertion::allIsInstanceOf($sitemaps, SitemapInterface::class);
 
-        return false;
+        $locations = array_map(function (SitemapInterface $sitemap) {
+            return $sitemap->location();
+        }, $sitemaps);
+
+        Assertion::same(array_unique($locations), $locations);
+
+        $this->sitemaps = $sitemaps;
     }
 
     public function sitemaps()
