@@ -114,50 +114,21 @@ final class Video implements VideoInterface
     private $live;
 
     /**
-     * @param string                        $thumbnailLocation
-     * @param string                        $title
-     * @param string                        $description
-     * @param string|null                   $contentLocation
-     * @param PlayerLocationInterface|null  $playerLocation
-     * @param GalleryLocationInterface|null $galleryLocation
-     * @param int|null                      $duration
-     * @param DateTimeInterface|null        $publicationDate
-     * @param DateTimeInterface|null        $expirationDate
-     * @param float|null                    $rating
-     * @param int|null                      $viewCount
-     * @param string|null                   $familyFriendly
-     * @param string|null                   $category
-     * @param RestrictionInterface|null     $restriction
-     * @param string|null                   $requiresSubscription
-     * @param UploaderInterface|null        $uploader
-     * @param PlatformInterface|null        $platform
-     * @param string|null                   $live
+     * @param string                       $thumbnailLocation
+     * @param string                       $title
+     * @param string                       $description
+     * @param string|null                  $contentLocation
+     * @param PlayerLocationInterface|null $playerLocation
      */
     public function __construct(
         $thumbnailLocation,
         $title,
         $description,
         $contentLocation = null,
-        PlayerLocationInterface $playerLocation = null,
-        GalleryLocationInterface $galleryLocation = null,
-        $duration = null,
-        DateTimeInterface $publicationDate = null,
-        DateTimeInterface $expirationDate = null,
-        $rating = null,
-        $viewCount = null,
-        $familyFriendly = null,
-        $category = null,
-        RestrictionInterface $restriction = null,
-        $requiresSubscription = null,
-        UploaderInterface $uploader = null,
-        PlatformInterface $platform = null,
-        $live = null
+        PlayerLocationInterface $playerLocation = null
     ) {
-        $this->thumbnailLocation = $thumbnailLocation;
-
-        $this->setTitle($title);
-        $this->setDescription($description);
-
+        Assertion::maxLength($title, VideoInterface::TITLE_MAX_LENGTH);
+        Assertion::maxLength($description, VideoInterface::DESCRIPTION_MAX_LENGTH);
         Assertion::false($contentLocation === null && $playerLocation === null, sprintf(
             'At least one of parameters "%s" needs to be specified',
             implode('", "', [
@@ -166,28 +137,11 @@ final class Video implements VideoInterface
             ])
         ));
 
+        $this->thumbnailLocation = $thumbnailLocation;
+        $this->title = $title;
+        $this->description = $description;
         $this->contentLocation = $contentLocation;
         $this->playerLocation = $playerLocation;
-        $this->galleryLocation = $galleryLocation;
-
-        $this->setDuration($duration);
-
-        $this->publicationDate = $publicationDate;
-        $this->expirationDate = $expirationDate;
-
-        $this->setRating($rating);
-        $this->setViewCount($viewCount);
-        $this->setFamilyFriendly($familyFriendly);
-        $this->setCategory($category);
-
-        $this->restriction = $restriction;
-
-        $this->setRequiresSubscription($requiresSubscription);
-
-        $this->uploader = $uploader;
-        $this->platform = $platform;
-
-        $this->setLive($live);
     }
 
     public function thumbnailLocation()
@@ -195,29 +149,9 @@ final class Video implements VideoInterface
         return $this->thumbnailLocation;
     }
 
-    /**
-     * @param string $title
-     */
-    private function setTitle($title)
-    {
-        Assertion::maxLength($title, VideoInterface::TITLE_MAX_LENGTH);
-
-        $this->title = $title;
-    }
-
     public function title()
     {
         return $this->title;
-    }
-
-    /**
-     * @param string $description
-     */
-    private function setDescription($description)
-    {
-        Assertion::maxLength($description, VideoInterface::DESCRIPTION_MAX_LENGTH);
-
-        $this->description = $description;
     }
 
     public function description()
@@ -240,21 +174,6 @@ final class Video implements VideoInterface
         return $this->galleryLocation;
     }
 
-    /**
-     * @param int|null $duration
-     */
-    private function setDuration($duration = null)
-    {
-        Assertion::nullOrInteger($duration);
-
-        if ($duration !== null) {
-            Assertion::greaterThan($duration, VideoInterface::DURATION_LOWER_LIMIT);
-            Assertion::lessThan($duration, VideoInterface::DURATION_UPPER_LIMIT);
-        }
-
-        $this->duration = $duration;
-    }
-
     public function duration()
     {
         return $this->duration;
@@ -262,35 +181,12 @@ final class Video implements VideoInterface
 
     public function publicationDate()
     {
-        if ($this->publicationDate === null) {
-            return;
-        }
-
-        return clone $this->publicationDate;
+        return $this->publicationDate;
     }
 
     public function expirationDate()
     {
-        if ($this->expirationDate === null) {
-            return;
-        }
-
-        return clone $this->expirationDate;
-    }
-
-    /**
-     * @param float|null $rating
-     */
-    private function setRating($rating = null)
-    {
-        Assertion::nullOrNumeric($rating);
-
-        if ($rating !== null) {
-            Assertion::greaterOrEqualThan($rating, VideoInterface::RATING_MIN);
-            Assertion::lessOrEqualThan($rating, VideoInterface::RATING_MAX);
-        }
-
-        $this->rating = $rating;
+        return $this->expirationDate;
     }
 
     public function rating()
@@ -298,37 +194,9 @@ final class Video implements VideoInterface
         return $this->rating;
     }
 
-    /**
-     * @param int|null $viewCount
-     */
-    private function setViewCount($viewCount = null)
-    {
-        Assertion::nullOrInteger($viewCount);
-
-        if ($viewCount !== null) {
-            Assertion::greaterOrEqualThan($viewCount, 0);
-        }
-
-        $this->viewCount = $viewCount;
-    }
-
     public function viewCount()
     {
         return $this->viewCount;
-    }
-
-    /**
-     * @param string|null $familyFriendly
-     */
-    private function setFamilyFriendly($familyFriendly = null)
-    {
-        $choices = [
-            VideoInterface::FAMILY_FRIENDLY_NO,
-        ];
-
-        Assertion::nullOrChoice($familyFriendly, $choices);
-
-        $this->familyFriendly = $familyFriendly;
     }
 
     public function familyFriendly()
@@ -336,30 +204,9 @@ final class Video implements VideoInterface
         return $this->familyFriendly;
     }
 
-    public function addTag(TagInterface $tag)
-    {
-        Assertion::lessThan(count($this->tags), VideoInterface::TAG_MAX_COUNT);
-
-        $this->tags[] = $tag;
-    }
-
     public function tags()
     {
         return $this->tags;
-    }
-
-    /**
-     * @param string|null $category
-     */
-    private function setCategory($category = null)
-    {
-        Assertion::nullOrString($category);
-
-        if ($category !== null) {
-            Assertion::maxLength($category, VideoInterface::CATEGORY_MAX_LENGTH);
-        }
-
-        $this->category = $category;
     }
 
     public function category()
@@ -372,29 +219,9 @@ final class Video implements VideoInterface
         return $this->restriction;
     }
 
-    public function addPrice(PriceInterface $price)
-    {
-        $this->prices[] = $price;
-    }
-
     public function prices()
     {
         return $this->prices;
-    }
-
-    /**
-     * @param string|null $requiresSubscription
-     */
-    private function setRequiresSubscription($requiresSubscription = null)
-    {
-        $choices = [
-            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
-            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
-        ];
-
-        Assertion::nullOrChoice($requiresSubscription, $choices);
-
-        $this->requiresSubscription = $requiresSubscription;
     }
 
     public function requiresSubscription()
@@ -412,23 +239,253 @@ final class Video implements VideoInterface
         return $this->platform;
     }
 
+    public function live()
+    {
+        return $this->live;
+    }
+
     /**
-     * @param string|null $live
+     * @param GalleryLocationInterface $galleryLocation
+     *
+     * @return static
      */
-    private function setLive($live = null)
+    public function withGalleryLocation(GalleryLocationInterface $galleryLocation)
+    {
+        $instance = clone $this;
+
+        $instance->galleryLocation = $galleryLocation;
+
+        return $instance;
+    }
+
+    /**
+     * @param int $duration
+     *
+     * @return static
+     */
+    public function withDuration($duration)
+    {
+        Assertion::integer($duration);
+        Assertion::greaterThan($duration, VideoInterface::DURATION_LOWER_LIMIT);
+        Assertion::lessThan($duration, VideoInterface::DURATION_UPPER_LIMIT);
+
+        $instance = clone $this;
+
+        $instance->duration = $duration;
+
+        return $instance;
+    }
+
+    /**
+     * @param DateTimeInterface $publicationDate
+     *
+     * @return static
+     */
+    public function withPublicationDate(DateTimeInterface $publicationDate)
+    {
+        $instance = clone $this;
+
+        $instance->publicationDate = clone $publicationDate;
+
+        return $instance;
+    }
+
+    /**
+     * @param DateTimeInterface $expirationDate
+     *
+     * @return static
+     */
+    public function withExpirationDate(DateTimeInterface $expirationDate)
+    {
+        $instance = clone $this;
+
+        $instance->expirationDate = clone $expirationDate;
+
+        return $instance;
+    }
+
+    /**
+     * @param float $rating
+     *
+     * @return static
+     */
+    public function withRating($rating)
+    {
+        Assertion::numeric($rating);
+        Assertion::greaterOrEqualThan($rating, VideoInterface::RATING_MIN);
+        Assertion::lessOrEqualThan($rating, VideoInterface::RATING_MAX);
+
+        $instance = clone $this;
+
+        $instance->rating = $rating;
+
+        return $instance;
+    }
+
+    /**
+     * @param int $viewCount
+     *
+     * @return static
+     */
+    public function withViewCount($viewCount)
+    {
+        Assertion::integer($viewCount);
+        Assertion::greaterOrEqualThan($viewCount, 0);
+
+        $instance = clone $this;
+
+        $instance->viewCount = $viewCount;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $familyFriendly
+     *
+     * @return static
+     */
+    public function withFamilyFriendly($familyFriendly)
+    {
+        Assertion::same($familyFriendly, VideoInterface::FAMILY_FRIENDLY_NO);
+
+        $instance = clone $this;
+
+        $instance->familyFriendly = $familyFriendly;
+
+        return $instance;
+    }
+
+    /**
+     * @param TagInterface[] $tags
+     *
+     * @return static
+     */
+    public function withTags(array $tags)
+    {
+        Assertion::allIsInstanceOf($tags, TagInterface::class);
+        Assertion::lessOrEqualThan(count($tags), VideoInterface::TAG_MAX_COUNT);
+
+        $instance = clone $this;
+
+        $instance->tags = $tags;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $category
+     *
+     * @return static
+     */
+    public function withCategory($category)
+    {
+        Assertion::string($category);
+        Assertion::maxLength($category, VideoInterface::CATEGORY_MAX_LENGTH);
+
+        $instance = clone $this;
+
+        $instance->category = $category;
+
+        return $instance;
+    }
+
+    /**
+     * @param RestrictionInterface $restriction
+     *
+     * @return static
+     */
+    public function withRestriction(RestrictionInterface $restriction)
+    {
+        $instance = clone $this;
+
+        $instance->restriction = $restriction;
+
+        return $instance;
+    }
+
+    /**
+     * @param PriceInterface[] $prices
+     *
+     * @return static
+     */
+    public function withPrices($prices)
+    {
+        Assertion::allIsInstanceOf($prices, PriceInterface::class);
+
+        $instance = clone $this;
+
+        $instance->prices = $prices;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $requiresSubscription
+     *
+     * @return static
+     */
+    public function withRequiresSubscription($requiresSubscription)
+    {
+        $choices = [
+            VideoInterface::REQUIRES_SUBSCRIPTION_NO,
+            VideoInterface::REQUIRES_SUBSCRIPTION_YES,
+        ];
+
+        Assertion::choice($requiresSubscription, $choices);
+
+        $instance = clone $this;
+
+        $instance->requiresSubscription = $requiresSubscription;
+
+        return $instance;
+    }
+
+    /**
+     * @param UploaderInterface $uploader
+     *
+     * @return static
+     */
+    public function withUploader(UploaderInterface $uploader)
+    {
+        $instance = clone $this;
+
+        $instance->uploader = $uploader;
+
+        return $instance;
+    }
+
+    /**
+     * @param PlatformInterface $platform
+     *
+     * @return static
+     */
+    public function withPlatform(PlatformInterface $platform)
+    {
+        $instance = clone $this;
+
+        $instance->platform = $platform;
+
+        return $instance;
+    }
+
+    /**
+     * @param $live
+     *
+     * @return static
+     */
+    public function withLive($live)
     {
         $choices = [
             VideoInterface::LIVE_NO,
             VideoInterface::LIVE_YES,
         ];
 
-        Assertion::nullOrChoice($live, $choices);
+        Assertion::choice($live, $choices);
 
-        $this->live = $live;
-    }
+        $instance = clone $this;
 
-    public function live()
-    {
-        return $this->live;
+        $instance->live = $live;
+
+        return $instance;
     }
 }
