@@ -8,6 +8,9 @@
  */
 namespace Refinery29\Sitemap\Component\News;
 
+use Assert\Assertion;
+use InvalidArgumentException;
+
 final class Publication implements PublicationInterface
 {
     /**
@@ -23,9 +26,14 @@ final class Publication implements PublicationInterface
     /**
      * @param string $name
      * @param string $language
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($name, $language)
     {
+        Assertion::string($name);
+        Assertion::string($language);
+
         $this->name = $name;
         $this->language = $language;
     }
