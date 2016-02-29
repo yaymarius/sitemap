@@ -8,6 +8,8 @@
  */
 namespace Refinery29\Sitemap\Component\Image;
 
+use Assert\Assertion;
+
 final class Image implements ImageInterface
 {
     /**
@@ -40,6 +42,8 @@ final class Image implements ImageInterface
      */
     public function __construct($location)
     {
+        Assertion::url($location);
+
         $this->location = $location;
     }
 
