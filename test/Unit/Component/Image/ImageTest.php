@@ -8,6 +8,7 @@
  */
 namespace Refinery29\Sitemap\Test\Unit\Component\Image;
 
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\Image;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
@@ -41,6 +42,40 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($image->caption());
         $this->assertNull($image->geoLocation());
         $this->assertNull($image->licence());
+    }
+
+    /**
+     * @dataProvider providerInvalidUrl
+     *
+     * @param mixed $location
+     */
+    public function testConstructorRejectsInvalidValue($location)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Image($location);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidUrl()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            $faker->word,
+            $faker->words,
+            $faker->randomNumber(),
+            $faker->randomFloat(),
+            new \stdClass(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testConstructorSetsValue()
