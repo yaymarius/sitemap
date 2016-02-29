@@ -121,7 +121,7 @@ final class News implements NewsInterface
      *
      * @return static
      */
-    public function withGenres(array $genres = [])
+    public function withGenres(array $genres)
     {
         $choices = [
             NewsInterface::GENRE_BLOG,
@@ -145,7 +145,7 @@ final class News implements NewsInterface
      *
      * @return static
      */
-    public function withKeywords(array $keywords = [])
+    public function withKeywords(array $keywords)
     {
         $instance = clone $this;
 
@@ -159,7 +159,7 @@ final class News implements NewsInterface
      *
      * @return static
      */
-    public function withStockTickers(array $stockTickers = [])
+    public function withStockTickers(array $stockTickers)
     {
         Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
 
