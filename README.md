@@ -48,7 +48,7 @@ $urlSet->add($url);
  
 ### `Image`
 
-You may want to add an image to a `Url` so let's do it:
+You may want to add images to a `Url` so let's do it:
  
 ```php
 use Refinery29\Sitemap\Component;
@@ -61,7 +61,9 @@ $image = $image
     ->withGeoLocation('Majorca, Canyamel')
 ;
 
-$url->addImage($image);
+$url = $url->withImages([
+    $image,
+]);
 ```
 
 :bulb: You can add up to 1.000 images to a `Url`.
@@ -84,7 +86,9 @@ $news = new Component\News\News(
     'Something happened and you should know about it',
 );
 
-$url->addNews($news);
+$url = $url->withNews([
+    $news,
+]);
 ```
 
 :bulb: `News` has many more options, have a look at the source!
@@ -103,7 +107,9 @@ $video = new Component\Video\Video(
     'http://www.example.org/img/funny-video.mov',
 );
 
-$url->addVideo($video);
+$url = $url->withVideos([
+    $video,
+]);
 ```
 
 :bulb: `Video` has many more options, have a look at the source!

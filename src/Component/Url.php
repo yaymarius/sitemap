@@ -72,11 +72,7 @@ final class Url implements UrlInterface
 
     public function lastModified()
     {
-        if ($this->lastModified === null) {
-            return;
-        }
-
-        return clone $this->lastModified;
+        return $this->lastModified;
     }
 
     public function changeFrequency()
@@ -89,21 +85,9 @@ final class Url implements UrlInterface
         return $this->priority;
     }
 
-    public function addImage(ImageInterface $image)
-    {
-        Assertion::lessThan(count($this->images), UrlInterface::IMAGE_MAX_COUNT);
-
-        $this->images[] = $image;
-    }
-
     public function images()
     {
         return $this->images;
-    }
-
-    public function addNews(NewsInterface $news)
-    {
-        $this->news[] = $news;
     }
 
     public function news()
@@ -111,13 +95,99 @@ final class Url implements UrlInterface
         return $this->news;
     }
 
-    public function addVideo(VideoInterface $video)
-    {
-        $this->videos[] = $video;
-    }
-
     public function videos()
     {
         return $this->videos;
+    }
+
+    /**
+     * @param DateTimeInterface $lastModified
+     *
+     * @return static
+     */
+    public function withLastModified(DateTimeInterface $lastModified)
+    {
+        $instance = clone $this;
+
+        $instance->lastModified = clone $lastModified;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $changeFrequency
+     *
+     * @return static
+     */
+    public function withChangeFrequency($changeFrequency)
+    {
+        $instance = clone $this;
+
+        $instance->changeFrequency = $changeFrequency;
+
+        return $instance;
+    }
+
+    /**
+     * @param string $priority
+     *
+     * @return static
+     */
+    public function withPriority($priority)
+    {
+        $instance = clone $this;
+
+        $instance->priority = $priority;
+
+        return $instance;
+    }
+
+    /**
+     * @param ImageInterface[] $images
+     *
+     * @return static
+     */
+    public function withImages(array $images)
+    {
+        Assertion::allIsInstanceOf($images, ImageInterface::class);
+        Assertion::lessOrEqualThan(count($this->images), UrlInterface::IMAGE_MAX_COUNT);
+
+        $instance = clone $this;
+
+        $instance->images = $images;
+
+        return $instance;
+    }
+
+    /**
+     * @param NewsInterface[] $news
+     *
+     * @return static
+     */
+    public function withNews(array $news)
+    {
+        Assertion::allIsInstanceOf($news, NewsInterface::class);
+
+        $instance = clone $this;
+
+        $instance->news = $news;
+
+        return $instance;
+    }
+
+    /**
+     * @param VideoInterface[] $videos
+     *
+     * @return static
+     */
+    public function withVideos(array $videos)
+    {
+        Assertion::allIsInstanceOf($videos, VideoInterface::class);
+
+        $instance = clone $this;
+
+        $instance->videos = $videos;
+
+        return $instance;
     }
 }

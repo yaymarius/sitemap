@@ -12,9 +12,11 @@ use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Url;
+use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 use ReflectionClass;
+use stdClass;
 
 class UrlTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,27 +29,11 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    public function testConstructorSetsValues()
+    public function testImplementsUrlInterface()
     {
-        $faker = $this->getFaker();
+        $reflectionClass = new ReflectionClass(Url::class);
 
-        $location = $faker->url;
-        $lastModified = $faker->dateTime;
-        $changeFrequency = $faker->word;
-        $priority = $faker->randomFloat(1, 0, 1);
-
-        $url = new Url(
-            $location,
-            $lastModified,
-            $changeFrequency,
-            $priority
-        );
-
-        $this->assertSame($location, $url->location());
-        $this->assertEquals($lastModified, $url->lastModified());
-        $this->assertNotSame($lastModified, $url->lastModified());
-        $this->assertSame($changeFrequency, $url->changeFrequency());
-        $this->assertSame($priority, $url->priority());
+        $this->assertTrue($reflectionClass->implementsInterface(UrlInterface::class));
     }
 
     public function testDefaults()
@@ -56,7 +42,6 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $url = new Url($location);
 
-        $this->assertSame($location, $url->location());
         $this->assertNull($url->lastModified());
         $this->assertNull($url->changeFrequency());
         $this->assertNull($url->priority());
@@ -68,59 +53,239 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $url->videos());
     }
 
-    public function testCanAddImages()
+    public function testConstructorSetsValue()
     {
-        $image = $this->getImageMock();
+        $location = $this->getFaker()->url;
 
-        $url = new Url($this->getFaker()->url);
+        $url = new Url($location);
 
-        $url->addImage($image);
-
-        $this->assertInternalType('array', $url->images());
-        $this->assertCount(1, $url->images());
-        $this->assertSame($image, $url->images()[0]);
+        $this->assertSame($location, $url->location());
     }
 
-    public function testCanNotAddMoreThanMaximumNumberOfImages()
+    public function testWithLastModifiedClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $lastModified = $faker->dateTime;
+
+        $url = new Url($faker->url);
+
+        $instance = $url->withLastModified($lastModified);
+
+        $this->assertInstanceOf(Url::class, $instance);
+        $this->assertNotSame($url, $instance);
+        $this->assertEquals($lastModified, $instance->lastModified());
+        $this->assertNotSame($lastModified, $instance->lastModified());
+    }
+
+    public function testWithChangeFrequencyClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $changeFrequency = $faker->randomElement([
+            UrlInterface::CHANGE_FREQUENCY_ALWAYS,
+            UrlInterface::CHANGE_FREQUENCY_HOURLY,
+            UrlInterface::CHANGE_FREQUENCY_DAILY,
+            UrlInterface::CHANGE_FREQUENCY_WEEKLY,
+            UrlInterface::CHANGE_FREQUENCY_MONTHLY,
+            UrlInterface::CHANGE_FREQUENCY_YEARLY,
+            UrlInterface::CHANGE_FREQUENCY_NEVER,
+        ]);
+
+        $url = new Url($faker->url);
+
+        $instance = $url->withChangeFrequency($changeFrequency);
+
+        $this->assertInstanceOf(Url::class, $instance);
+        $this->assertNotSame($url, $instance);
+        $this->assertSame($changeFrequency, $instance->changeFrequency());
+    }
+
+    public function testWithPriorityClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $priority = $faker->randomFloat(
+            2,
+            0.0,
+            1.0
+        );
+
+        $url = new Url($faker->url);
+
+        $instance = $url->withPriority($priority);
+
+        $this->assertInstanceOf(Url::class, $instance);
+        $this->assertNotSame($url, $instance);
+        $this->assertSame($priority, $instance->priority());
+    }
+
+    /**
+     * @dataProvider providerInvalidImages
+     *
+     * @param mixed $images
+     */
+    public function testWithImagesRejectsInvalidValue($images)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        $url = new Url($this->getFaker()->url);
+        $faker = $this->getFaker();
 
-        $reflection = new ReflectionClass(Url::class);
+        $url = new Url($faker->url);
 
-        $property = $reflection->getProperty('images');
-        $property->setAccessible(true);
-
-        $property->setValue($url, range(1, 1000));
-
-        $url->addImage($this->getImageMock());
+        $url->withImages($images);
     }
 
-    public function testCanAddNews()
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidImages()
     {
-        $news = $this->getNewsMock();
+        $values = [
+            $this->getFaker()->words,
+            [
+                $this->getImageMock(),
+                $this->getImageMock(),
+                new stdClass(),
+            ],
+        ];
 
-        $url = new Url($this->getFaker()->url);
-
-        $url->addNews($news);
-
-        $this->assertInternalType('array', $url->news());
-        $this->assertCount(1, $url->news());
-        $this->assertSame($news, $url->news()[0]);
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
-    public function testCanAddVideos()
+    public function testWithImagesClonesObjectAndSetsValue()
     {
-        $video = $this->getVideoMock();
+        $faker = $this->getFaker();
 
-        $url = new Url($this->getFaker()->url);
+        $images = [
+            $this->getImageMock(),
+            $this->getImageMock(),
+            $this->getImageMock(),
+        ];
 
-        $url->addVideo($video);
+        $url = new Url($faker->url);
 
-        $this->assertInternalType('array', $url->videos());
-        $this->assertCount(1, $url->videos());
-        $this->assertSame($video, $url->videos()[0]);
+        $instance = $url->withImages($images);
+
+        $this->assertInstanceOf(Url::class, $instance);
+        $this->assertNotSame($url, $instance);
+        $this->assertSame($images, $instance->images());
+    }
+
+    /**
+     * @dataProvider providerInvalidNews
+     *
+     * @param mixed $news
+     */
+    public function testWithNewsRejectsInvalidValue($news)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $url = new Url($faker->url);
+
+        $url->withNews($news);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidNews()
+    {
+        $values = [
+            $this->getFaker()->words,
+            [
+                $this->getNewsMock(),
+                $this->getNewsMock(),
+                new stdClass(),
+            ],
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithNewsClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $news = [
+            $this->getNewsMock(),
+            $this->getNewsMock(),
+            $this->getNewsMock(),
+        ];
+
+        $url = new Url($faker->url);
+
+        $instance = $url->withNews($news);
+
+        $this->assertInstanceOf(Url::class, $instance);
+        $this->assertNotSame($url, $instance);
+        $this->assertSame($news, $instance->news());
+    }
+
+    /**
+     * @dataProvider providerInvalidVideos
+     *
+     * @param mixed $videos
+     */
+    public function testWithVideosRejectsInvalidValue($videos)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $url = new Url($faker->url);
+
+        $url->withVideos($videos);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidVideos()
+    {
+        $values = [
+            $this->getFaker()->words,
+            [
+                $this->getVideoMock(),
+                $this->getVideoMock(),
+                new stdClass(),
+            ],
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    public function testWithVideosClonesObjectAndSetsValue()
+    {
+        $faker = $this->getFaker();
+
+        $videos = [
+            $this->getVideoMock(),
+            $this->getVideoMock(),
+            $this->getVideoMock(),
+        ];
+
+        $url = new Url($faker->url);
+
+        $instance = $url->withVideos($videos);
+
+        $this->assertInstanceOf(Url::class, $instance);
+        $this->assertNotSame($url, $instance);
+        $this->assertSame($videos, $instance->videos());
     }
 
     /**

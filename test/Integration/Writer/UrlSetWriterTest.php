@@ -42,7 +42,9 @@ XML;
         $image = new Component\Image\Image('http://example.com/image.jpg');
         $image = $image->withCaption('Dogs playing poker');
 
-        $url->addImage($image);
+        $url = $url->withImages([
+            $image,
+        ]);
 
         $playerLocation = new Component\Video\PlayerLocation('http://www.example.com/videoplayer.swf?video=123');
 
@@ -51,13 +53,17 @@ XML;
             ->withAutoPlay('ap=1')
         ;
 
-        $url->addVideo(new Component\Video\Video(
+        $video = new Component\Video\Video(
             'http://www.example.com/thumbs/123.jpg',
             'Grilling steaks for summer',
             'Cook the perfect steak every time.',
             'http://www.example.com/video123.flv',
             $playerLocation
-        ));
+        );
+
+        $url = $url->withVideos([
+            $video,
+        ]);
 
         $urlSet->addUrl($url);
 
