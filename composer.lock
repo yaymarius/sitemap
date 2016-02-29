@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91307add473716267ec47d929012c835",
-    "content-hash": "bca3f5e71e0a54bd5395626701808dd2",
+    "hash": "dfd9f3cb0945ed8c31754a1921e4ab07",
+    "content-hash": "61cbf76ea1095bd88a6d01a9852d4f6a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -184,7 +184,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/11088fbb819088308d297c34860b3dde5411fc9a",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/7876ff1df77e519083c3fc72c38eb9085342a994",
                 "reference": "518194b0e92dc75e791490b36b51cce39fe80bcf",
                 "shasum": ""
             },
@@ -938,16 +938,16 @@
         },
         {
             "name": "refinery29/test-util",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/refinery29/test-util.git",
-                "reference": "fcf182273718d431fe48d5f4fa25849d55757aa5"
+                "reference": "59fa8a798a84b2bb9ebbdd550d94de293900c79f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/refinery29/test-util/zipball/fcf182273718d431fe48d5f4fa25849d55757aa5",
-                "reference": "fcf182273718d431fe48d5f4fa25849d55757aa5",
+                "url": "https://api.github.com/repos/refinery29/test-util/zipball/59fa8a798a84b2bb9ebbdd550d94de293900c79f",
+                "reference": "59fa8a798a84b2bb9ebbdd550d94de293900c79f",
                 "shasum": ""
             },
             "require": {
@@ -993,7 +993,7 @@
                 "test",
                 "util"
             ],
-            "time": "2016-02-09 18:36:54"
+            "time": "2016-02-29 17:27:33"
         },
         {
             "name": "satooshi/php-coveralls",
