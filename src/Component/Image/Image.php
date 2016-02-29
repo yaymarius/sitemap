@@ -9,6 +9,7 @@
 namespace Refinery29\Sitemap\Component\Image;
 
 use Assert\Assertion;
+use InvalidArgumentException;
 
 final class Image implements ImageInterface
 {
@@ -39,6 +40,8 @@ final class Image implements ImageInterface
 
     /**
      * @param string $location
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($location)
     {
@@ -75,10 +78,14 @@ final class Image implements ImageInterface
     /**
      * @param string $title
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withTitle($title)
     {
+        Assertion::string($title);
+
         $instance = clone $this;
 
         $instance->title = $title;
@@ -89,10 +96,14 @@ final class Image implements ImageInterface
     /**
      * @param string $caption
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withCaption($caption)
     {
+        Assertion::string($caption);
+
         $instance = clone $this;
 
         $instance->caption = $caption;
@@ -103,10 +114,14 @@ final class Image implements ImageInterface
     /**
      * @param string $geoLocation
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withGeoLocation($geoLocation)
     {
+        Assertion::string($geoLocation);
+
         $instance = clone $this;
 
         $instance->geoLocation = $geoLocation;
@@ -117,10 +132,14 @@ final class Image implements ImageInterface
     /**
      * @param string $licence
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withLicence($licence)
     {
+        Assertion::string($licence);
+
         $instance = clone $this;
 
         $instance->licence = $licence;

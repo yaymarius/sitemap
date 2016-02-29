@@ -87,6 +87,45 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($location, $image->location());
     }
 
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $title
+     */
+    public function testWithTitleRejectsInvalidValue($title)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withTitle($title);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidString()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            null,
+            $faker->boolean(),
+            $faker->words,
+            $faker->randomNumber(),
+            $faker->randomFloat(),
+            new \stdClass(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
     public function testWithTitleClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -100,6 +139,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Image::class, $instance);
         $this->assertNotSame($image, $instance);
         $this->assertSame($title, $instance->title());
+    }
+
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $caption
+     */
+    public function testWithCaptionRejectsInvalidValue($caption)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withCaption($caption);
     }
 
     public function testWithCaptionClonesObjectAndSetsValue()
@@ -117,6 +172,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($caption, $instance->caption());
     }
 
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $geoLocation
+     */
+    public function testWithGeoLocationRejectsInvalidValue($geoLocation)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withGeoLocation($geoLocation);
+    }
+
     public function testWithGeoLocationClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -130,6 +201,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Image::class, $instance);
         $this->assertNotSame($image, $instance);
         $this->assertSame($geoLocation, $instance->geoLocation());
+    }
+
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $licence
+     */
+    public function testWithLicenceRejectsInvalidValue($licence)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withLicence($licence);
     }
 
     public function testWithLicenceClonesObjectAndSetsValue()
