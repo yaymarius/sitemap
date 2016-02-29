@@ -8,6 +8,7 @@
  */
 namespace Refinery29\Sitemap\Test\Unit\Component\News;
 
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\News\Publication;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
@@ -29,6 +30,40 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
         $reflectionClass = new ReflectionClass(Publication::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(PublicationInterface::class));
+    }
+
+    /**
+     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
+     *
+     * @param mixed $name
+     */
+    public function testConstructorRejectsInvalidName($name)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $language = $this->getFaker()->languageCode;
+
+        new Publication(
+            $name,
+            $language
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
+     *
+     * @param mixed $language
+     */
+    public function testConstructorRejectsInvalidLanguage($language)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $name = $this->getFaker()->sentence();
+
+        new Publication(
+            $name,
+            $language
+        );
     }
 
     public function testConstructorSetsValues()
