@@ -25,11 +25,6 @@ interface UrlSetInterface
     const URL_MAX_COUNT = 50000;
 
     /**
-     * @param UrlInterface $url
-     */
-    public function addUrl(UrlInterface $url);
-
-    /**
      * @return UrlInterface[]
      */
     public function urls();

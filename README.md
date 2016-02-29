@@ -16,20 +16,9 @@ $ composer require refinery29/sitemap
 
 ## Creating a Sitemap
 
-### `UrlSet`
-
-A sitemap is a set of URLs, so here's how you start:
-
-
-```php
-use Refinery29\Sitemap\Component;
-
-$urlSet = new Component\UrlSet();
-```
-
 ### `Url`
 
-To a `UrlSet`, you can add `Url`s, so let's do it:
+Let's create a `Url`:
 
 ```php
 use Refinery29\Sitemap\Component;
@@ -114,6 +103,18 @@ $url = $url->withVideos([
 
 :bulb: `Video` has many more options, have a look at the source!
 
+### `UrlSet`
+
+Now, let's create a `UrlSet` using the previously created `Url`:
+
+
+```php
+use Refinery29\Sitemap\Component;
+
+$urlSet = new Component\UrlSet([
+    $url,
+]);
+```
 
 ## Writing a Sitemap
 
