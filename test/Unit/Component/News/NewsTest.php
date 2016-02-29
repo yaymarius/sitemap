@@ -56,7 +56,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidString
+     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
      *
      * @param mixed $title
      */
@@ -71,29 +71,6 @@ class NewsTest extends \PHPUnit_Framework_TestCase
             $faker->dateTime,
             $title
         );
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidString()
-    {
-        $faker = $this->getFaker();
-
-        $values = [
-            null,
-            $faker->boolean(),
-            $faker->words,
-            $faker->randomNumber(),
-            $faker->randomFloat(),
-            new \stdClass(),
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
     }
 
     public function testConstructorSetsValues()
@@ -199,7 +176,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidString
+     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
      *
      * @param mixed $keyword
      */
@@ -244,7 +221,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidString
+     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
      *
      * @param mixed $stockTicker
      */
