@@ -56,7 +56,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
+     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $title
      */
@@ -176,7 +176,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
+     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $keyword
      */
@@ -221,7 +221,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Unit\Component\DataProvider::providerInvalidString
+     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $stockTicker
      */

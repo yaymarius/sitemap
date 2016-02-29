@@ -6,18 +6,18 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace Refinery29\Sitemap\Test\Unit\Component;
+namespace Refinery29\Sitemap\Test\Util\DataProvider;
 
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class DataProvider
+class InvalidString
 {
     use GeneratorTrait;
 
     /**
      * @return \Generator
      */
-    public function providerInvalidString()
+    public function data()
     {
         $faker = $this->getFaker();
 
