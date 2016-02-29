@@ -10,6 +10,7 @@ namespace Refinery29\Sitemap\Component\News;
 
 use Assert\Assertion;
 use DateTimeInterface;
+use InvalidArgumentException;
 
 final class News implements NewsInterface
 {
@@ -55,6 +56,8 @@ final class News implements NewsInterface
      */
     public function __construct(PublicationInterface $publication, DateTimeInterface $publicationDate, $title)
     {
+        Assertion::string($title);
+
         $this->publication = $publication;
         $this->publicationDate = $publicationDate;
         $this->title = $title;
@@ -98,6 +101,8 @@ final class News implements NewsInterface
     /**
      * @param string $access
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withAccess($access)
@@ -118,6 +123,8 @@ final class News implements NewsInterface
 
     /**
      * @param array $genres
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */
@@ -143,10 +150,14 @@ final class News implements NewsInterface
     /**
      * @param array $keywords
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withKeywords(array $keywords)
     {
+        Assertion::allString($keywords);
+
         $instance = clone $this;
 
         $instance->keywords = $keywords;
@@ -157,10 +168,13 @@ final class News implements NewsInterface
     /**
      * @param array $stockTickers
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withStockTickers(array $stockTickers)
     {
+        Assertion::allString($stockTickers);
         Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
 
         $instance = clone $this;

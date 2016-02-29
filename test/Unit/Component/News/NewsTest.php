@@ -55,6 +55,47 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $news->stockTickers());
     }
 
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $title
+     */
+    public function testConstructorRejectsInvalidTitle($title)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $title
+        );
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidString()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            null,
+            $faker->boolean(),
+            $faker->words,
+            $faker->randomNumber(),
+            $faker->randomFloat(),
+            new \stdClass(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
     public function testConstructorSetsValues()
     {
         $faker = $this->getFaker();
@@ -157,6 +198,32 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($genres, $instance->genres());
     }
 
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $keyword
+     */
+    public function testWithKeywordsRejectsInvalidValues($keyword)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $keywords = [
+            $faker->word,
+            $faker->word,
+            $keyword,
+        ];
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $news->withKeywords($keywords);
+    }
+
     public function testWithKeywordsClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -174,6 +241,32 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(News::class, $instance);
         $this->assertNotSame($news, $instance);
         $this->assertSame($keywords, $instance->keywords());
+    }
+
+    /**
+     * @dataProvider providerInvalidString
+     *
+     * @param mixed $stockTicker
+     */
+    public function testWithStockTickersRejectsInvalidValues($stockTicker)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $stockTickers = [
+            $faker->word,
+            $faker->word,
+            $stockTicker,
+        ];
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $news->withStockTickers($stockTickers);
     }
 
     public function testWithStockTickersRejectsTooManyValues()
