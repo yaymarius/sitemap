@@ -15,9 +15,9 @@ class UrlSetWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testWriteSimpleSitemap()
     {
-        $urlSet = new Component\UrlSet();
-
-        $urlSet->addUrl(new Component\Url('http://www.example.com/foo.html'));
+        $urlSet = new Component\UrlSet([
+            new Component\Url('http://www.example.com/foo.html'),
+        ]);
 
         $writer = new Writer\UrlSetWriter();
 
@@ -35,8 +35,6 @@ XML;
 
     public function testWriteSitemapWithMoreComponents()
     {
-        $urlSet = new Component\UrlSet();
-
         $url = new Component\Url('http://www.example.com/foo.html');
 
         $image = new Component\Image\Image('http://example.com/image.jpg');
@@ -65,7 +63,9 @@ XML;
             $video,
         ]);
 
-        $urlSet->addUrl($url);
+        $urlSet = new Component\UrlSet([
+           $url,
+        ]);
 
         $writer = new Writer\UrlSetWriter();
 

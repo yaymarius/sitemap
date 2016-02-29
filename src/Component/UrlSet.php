@@ -15,13 +15,14 @@ final class UrlSet implements UrlSetInterface
     /**
      * @var UrlInterface[]
      */
-    private $urls = [];
+    private $urls;
 
-    public function addUrl(UrlInterface $url)
+    public function __construct(array $urls)
     {
-        Assertion::lessThan(count($this->urls), UrlSetInterface::URL_MAX_COUNT);
+        Assertion::allIsInstanceOf($urls, UrlInterface::class);
+        Assertion::lessOrEqualThan(count($urls), UrlSetInterface::URL_MAX_COUNT);
 
-        $this->urls[] = $url;
+        $this->urls = $urls;
     }
 
     public function urls()
