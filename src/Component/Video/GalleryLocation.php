@@ -8,6 +8,9 @@
  */
 namespace Refinery29\Sitemap\Component\Video;
 
+use Assert\Assertion;
+use InvalidArgumentException;
+
 final class GalleryLocation implements GalleryLocationInterface
 {
     /**
@@ -22,9 +25,13 @@ final class GalleryLocation implements GalleryLocationInterface
 
     /**
      * @param string $location
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($location)
     {
+        Assertion::url($location);
+
         $this->location = $location;
     }
 
