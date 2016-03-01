@@ -24,7 +24,7 @@
         "fzaninotto/faker": "^1.5",
         "phpunit/phpunit": "^4.8.23",
         "refinery29/php-cs-fixer-config": "0.4.0",
-        "refinery29/test-util": "0.3.1"
+        "refinery29/test-util": "0.3.2"
     },
     "autoload": {
         "psr-4": {

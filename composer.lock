@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dfd9f3cb0945ed8c31754a1921e4ab07",
-    "content-hash": "61cbf76ea1095bd88a6d01a9852d4f6a",
+    "hash": "b5b8af1ad2d54ebbdbe050a2160bd23e",
+    "content-hash": "3f2361fd7d8bc4aebf526d45162feec4",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -938,22 +938,23 @@
         },
         {
             "name": "refinery29/test-util",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/refinery29/test-util.git",
-                "reference": "59fa8a798a84b2bb9ebbdd550d94de293900c79f"
+                "reference": "c20db792b4321761bc2757f9ca30fe20575c4c06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/refinery29/test-util/zipball/59fa8a798a84b2bb9ebbdd550d94de293900c79f",
-                "reference": "59fa8a798a84b2bb9ebbdd550d94de293900c79f",
+                "url": "https://api.github.com/repos/refinery29/test-util/zipball/c20db792b4321761bc2757f9ca30fe20575c4c06",
+                "reference": "c20db792b4321761bc2757f9ca30fe20575c4c06",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5"
             },
             "require-dev": {
+                "beberlei/assert": "^2.4",
                 "codeclimate/php-test-reporter": "0.2.0",
                 "fzaninotto/faker": "^1.5",
                 "phpunit/phpunit": "^4.8.18 || ^5.2.3",
@@ -993,7 +994,7 @@
                 "test",
                 "util"
             ],
-            "time": "2016-02-29 17:27:33"
+            "time": "2016-03-01 11:26:54"
         },
         {
             "name": "satooshi/php-coveralls",
