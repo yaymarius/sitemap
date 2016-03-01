@@ -9,6 +9,7 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Tag;
 use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
@@ -30,6 +31,18 @@ class TagTest extends \PHPUnit_Framework_TestCase
         $reflectionClass = new ReflectionClass(Tag::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(TagInterface::class));
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     *
+     * @param mixed $content
+     */
+    public function testConstructorRejectsInvalidContent($content)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Tag($content);
     }
 
     public function testConstructorSetsValues()
