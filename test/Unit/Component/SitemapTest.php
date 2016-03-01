@@ -9,6 +9,7 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
@@ -40,6 +41,18 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($location, $sitemap->location());
         $this->assertNull($sitemap->lastModified());
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
+     *
+     * @param mixed $location
+     */
+    public function testConstructorRejectsInvalidLocation($location)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Sitemap($location);
     }
 
     public function testConstructorSetsLocation()
