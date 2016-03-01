@@ -9,6 +9,7 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
+use InvalidArgumentException;
 
 final class PlayerLocation implements PlayerLocationInterface
 {
@@ -29,9 +30,13 @@ final class PlayerLocation implements PlayerLocationInterface
 
     /**
      * @param string $location
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($location)
     {
+        Assertion::url($location);
+
         $this->location = $location;
     }
 
