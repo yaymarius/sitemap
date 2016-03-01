@@ -45,13 +45,33 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $restriction->countryCodes());
     }
 
-    public function testConstructorRejectsInvalidRestriction()
+    /**
+     * @dataProvider providerInvalidRestriction
+     *
+     * @param mixed $restriction
+     */
+    public function testConstructorRejectsInvalidRestriction($restriction)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        $restriction = $this->getFaker()->word;
-
         new Restriction($restriction);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidRestriction()
+    {
+        $values = [
+            null,
+            $this->getFaker()->sentence(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testConstructorSetsValue()

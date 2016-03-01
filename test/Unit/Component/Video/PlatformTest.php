@@ -43,11 +43,33 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $platform->types());
     }
 
-    public function testConstructorRejectsInvalidRelationship()
+    /**
+     * @dataProvider providerInvalidRelationship
+     *
+     * @param mixed $relationship
+     */
+    public function testConstructorRejectsInvalidRelationship($relationship)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        new Platform('foo');
+        new Platform($relationship);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidRelationship()
+    {
+        $values = [
+            null,
+            $this->getFaker()->sentence(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testConstructorSetsValue()

@@ -104,13 +104,16 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($currency, $price->currency());
     }
 
-    public function testWithTypeRejectsInvalidType()
+    /**
+     * @dataProvider providerInvalidType
+     *
+     * @param mixed $type
+     */
+    public function testWithTypeRejectsInvalidType($type)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
-
-        $type = $faker->word;
 
         $price = new Price(
             $faker->randomFloat(2, 0.01),
@@ -118,6 +121,23 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         );
 
         $price->withType($type);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidType()
+    {
+        $values = [
+            null,
+            $this->getFaker()->sentence(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testWithTypeClonesObjectAndSetsValue()
@@ -141,13 +161,16 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($type, $instance->type());
     }
 
-    public function testWithResolutionRejectsInvalidResolution()
+    /**
+     * @dataProvider providerInvalidResolution
+     *
+     * @param mixed $resolution
+     */
+    public function testWithResolutionRejectsInvalidResolution($resolution)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
-
-        $resolution = $faker->word;
 
         $price = new Price(
             $faker->randomFloat(2, 0.01),
@@ -155,6 +178,23 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         );
 
         $price->withResolution($resolution);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidResolution()
+    {
+        $values = [
+            null,
+            $this->getFaker()->sentence(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testWithResolutionClonesObjectAndSetsValue()
