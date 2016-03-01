@@ -54,8 +54,6 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $location = $faker->url;
-
         $values = [
             $faker->words(),
             [
@@ -63,11 +61,6 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
                 $this->getSitemapMock(),
                 new stdClass(),
             ],
-            [
-                $this->getSitemapMock($location),
-                $this->getSitemapMock($location),
-            ],
-
         ];
 
         foreach ($values as $value) {
@@ -91,22 +84,10 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param string|null $location
-     *
      * @return \PHPUnit_Framework_MockObject_MockObject|SitemapInterface
      */
-    private function getSitemapMock($location = null)
+    private function getSitemapMock()
     {
-        $location = $location ?: $this->getFaker()->unique()->url;
-
-        $sitemap = $this->getMockBuilder(SitemapInterface::class)->getMock();
-
-        $sitemap
-            ->expects($this->any())
-            ->method('location')
-            ->willReturn($location)
-        ;
-
-        return $sitemap;
+        return $this->getMockBuilder(SitemapInterface::class)->getMock();
     }
 }
