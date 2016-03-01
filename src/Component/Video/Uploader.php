@@ -9,6 +9,9 @@
 
 namespace Refinery29\Sitemap\Component\Video;
 
+use Assert\Assertion;
+use InvalidArgumentException;
+
 final class Uploader implements UploaderInterface
 {
     /**
@@ -23,9 +26,13 @@ final class Uploader implements UploaderInterface
 
     /**
      * @param string $name
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($name)
     {
+        Assertion::string($name);
+
         $this->name = $name;
     }
 
@@ -42,10 +49,14 @@ final class Uploader implements UploaderInterface
     /**
      * @param string $info
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withInfo($info)
     {
+        Assertion::string($info);
+
         $instance = clone $this;
 
         $instance->info = $info;
