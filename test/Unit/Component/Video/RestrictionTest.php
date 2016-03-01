@@ -87,6 +87,31 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($relationship, $restriction->relationship());
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     *
+     * @param mixed $countryCode
+     */
+    public function testWithCountryCodeRejectsInvalidCountryCodes($countryCode)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $countryCodes = [
+            $faker->countryCode,
+            $countryCode,
+        ];
+
+        $restriction = new Restriction(
+            $faker->randomElement([
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
+        ]));
+
+        $restriction->withCountryCodes($countryCodes);
+    }
+
     public function testWithCountryCodesClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
