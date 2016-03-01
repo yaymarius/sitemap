@@ -54,17 +54,11 @@ final class Url implements UrlInterface
     private $videos = [];
 
     /**
-     * @param string                 $location
-     * @param DateTimeInterface|null $lastModified
-     * @param string|null            $changeFrequency
-     * @param string|null            $priority
+     * @param string $location
      */
-    public function __construct($location, DateTimeInterface $lastModified = null, $changeFrequency = null, $priority = null)
+    public function __construct($location)
     {
         $this->location = $location;
-        $this->lastModified = $lastModified;
-        $this->changeFrequency = $changeFrequency;
-        $this->priority = $priority;
     }
 
     public function location()
