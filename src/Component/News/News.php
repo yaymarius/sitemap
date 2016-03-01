@@ -53,6 +53,8 @@ final class News implements NewsInterface
      * @param PublicationInterface $publication
      * @param DateTimeInterface    $publicationDate
      * @param string               $title
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct(PublicationInterface $publication, DateTimeInterface $publicationDate, $title)
     {

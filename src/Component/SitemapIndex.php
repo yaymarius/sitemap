@@ -9,6 +9,7 @@
 namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
+use InvalidArgumentException;
 
 final class SitemapIndex implements SitemapIndexInterface
 {
@@ -19,6 +20,8 @@ final class SitemapIndex implements SitemapIndexInterface
 
     /**
      * @param SitemapInterface[] $sitemaps
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct(array $sitemaps)
     {

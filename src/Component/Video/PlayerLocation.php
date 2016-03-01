@@ -58,6 +58,8 @@ final class PlayerLocation implements PlayerLocationInterface
     /**
      * @param string $allowEmbed
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withAllowEmbed($allowEmbed)
