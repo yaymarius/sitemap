@@ -46,6 +46,18 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($playerLocation->autoPlay());
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
+     *
+     * @param mixed $location
+     */
+    public function testConstructorRejectsInvalidLocation($location)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new PlayerLocation($location);
+    }
+
     public function testConstructorSetsValue()
     {
         $faker = $this->getFaker();
