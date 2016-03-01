@@ -54,10 +54,14 @@ final class Restriction implements RestrictionInterface
     /**
      * @param array $countryCodes
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withCountryCodes(array $countryCodes)
     {
+        Assertion::allString($countryCodes);
+
         $instance = clone $this;
 
         $instance->countryCodes = $countryCodes;
