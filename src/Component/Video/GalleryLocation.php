@@ -48,10 +48,14 @@ final class GalleryLocation implements GalleryLocationInterface
     /**
      * @param string $title
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withTitle($title)
     {
+        Assertion::string($title);
+
         $instance = clone $this;
 
         $instance->title = $title;

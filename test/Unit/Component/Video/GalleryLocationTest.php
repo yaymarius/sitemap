@@ -62,6 +62,22 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($location, $galleryLocation->location());
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * 
+     * @param mixed $title
+     */
+    public function testWithTitleRejectsInvalidValue($title)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $galleryLocation = new GalleryLocation($location);
+
+        $galleryLocation->withTitle($title);
+    }
+
     public function testWithTitleClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
