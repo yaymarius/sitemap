@@ -45,7 +45,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidUrl
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
      *
      * @param mixed $location
      */
@@ -54,28 +54,6 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(InvalidArgumentException::class);
 
         new Image($location);
-    }
-
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidUrl()
-    {
-        $faker = $this->getFaker();
-
-        $values = [
-            $faker->word,
-            $faker->words,
-            $faker->randomNumber(),
-            $faker->randomFloat(),
-            new \stdClass(),
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
     }
 
     public function testConstructorSetsValue()
@@ -88,7 +66,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $title
      */
@@ -119,7 +97,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $caption
      */
@@ -150,7 +128,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $geoLocation
      */
@@ -181,7 +159,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Sitemap\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
      *
      * @param mixed $licence
      */
