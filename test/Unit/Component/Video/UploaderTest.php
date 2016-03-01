@@ -9,6 +9,7 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Uploader;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
@@ -39,6 +40,18 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($uploader->info());
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     *
+     * @param mixed $name
+     */
+    public function testConstructorRejectsInvalidName($name)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Uploader($name);
+    }
+
     public function testConstructorSetsValue()
     {
         $faker = $this->getFaker();
@@ -48,6 +61,20 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
         $uploader = new Uploader($name);
 
         $this->assertSame($name, $uploader->name());
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     *
+     * @param mixed $info
+     */
+    public function testWithInfoRejectsInvalidInfo($info)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $uploader = new Uploader($this->getFaker()->url);
+
+        $uploader->withInfo($info);
     }
 
     public function testWithInfoClonesObjectAndSetsValue()
