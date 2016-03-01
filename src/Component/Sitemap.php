@@ -9,7 +9,9 @@
 
 namespace Refinery29\Sitemap\Component;
 
+use Assert\Assertion;
 use DateTimeInterface;
+use InvalidArgumentException;
 
 final class Sitemap implements SitemapInterface
 {
@@ -25,9 +27,13 @@ final class Sitemap implements SitemapInterface
 
     /**
      * @param string $location
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($location)
     {
+        Assertion::url($location);
+
         $this->location = $location;
     }
 
