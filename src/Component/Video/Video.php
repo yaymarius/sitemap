@@ -10,6 +10,7 @@ namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
 use DateTimeInterface;
+use InvalidArgumentException;
 
 final class Video implements VideoInterface
 {
@@ -119,6 +120,8 @@ final class Video implements VideoInterface
      * @param string                       $description
      * @param string|null                  $contentLocation
      * @param PlayerLocationInterface|null $playerLocation
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct(
         $thumbnailLocation,
@@ -261,6 +264,8 @@ final class Video implements VideoInterface
     /**
      * @param int $duration
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withDuration($duration)
@@ -307,6 +312,8 @@ final class Video implements VideoInterface
     /**
      * @param float $rating
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withRating($rating)
@@ -325,6 +332,8 @@ final class Video implements VideoInterface
     /**
      * @param int $viewCount
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withViewCount($viewCount)
@@ -342,6 +351,8 @@ final class Video implements VideoInterface
     /**
      * @param string $familyFriendly
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withFamilyFriendly($familyFriendly)
@@ -357,6 +368,8 @@ final class Video implements VideoInterface
 
     /**
      * @param TagInterface[] $tags
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */
@@ -374,6 +387,8 @@ final class Video implements VideoInterface
 
     /**
      * @param string $category
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */
@@ -406,6 +421,8 @@ final class Video implements VideoInterface
     /**
      * @param PriceInterface[] $prices
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withPrices($prices)
@@ -421,6 +438,8 @@ final class Video implements VideoInterface
 
     /**
      * @param string $requiresSubscription
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */
@@ -469,7 +488,9 @@ final class Video implements VideoInterface
     }
 
     /**
-     * @param $live
+     * @param string $live
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */

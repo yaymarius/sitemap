@@ -9,6 +9,7 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
+use InvalidArgumentException;
 
 final class Price implements PriceInterface
 {
@@ -35,6 +36,8 @@ final class Price implements PriceInterface
     /**
      * @param float  $value
      * @param string $currency
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($value, $currency)
     {
@@ -67,6 +70,8 @@ final class Price implements PriceInterface
     /**
      * @param string $type
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withType($type)
@@ -87,6 +92,8 @@ final class Price implements PriceInterface
 
     /**
      * @param string $resolution
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */

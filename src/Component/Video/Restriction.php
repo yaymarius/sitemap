@@ -24,6 +24,8 @@ final class Restriction implements RestrictionInterface
 
     /**
      * @param string $relationship
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($relationship)
     {

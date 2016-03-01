@@ -9,6 +9,7 @@
 namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
+use InvalidArgumentException;
 
 final class UrlSet implements UrlSetInterface
 {
@@ -17,6 +18,11 @@ final class UrlSet implements UrlSetInterface
      */
     private $urls;
 
+    /**
+     * @param array[] $urls
+     *
+     * @throws InvalidArgumentException
+     */
     public function __construct(array $urls)
     {
         Assertion::allIsInstanceOf($urls, UrlInterface::class);

@@ -10,6 +10,7 @@ namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
 use DateTimeInterface;
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
@@ -145,6 +146,8 @@ final class Url implements UrlInterface
     /**
      * @param ImageInterface[] $images
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withImages(array $images)
@@ -162,6 +165,8 @@ final class Url implements UrlInterface
     /**
      * @param NewsInterface[] $news
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withNews(array $news)
@@ -177,6 +182,8 @@ final class Url implements UrlInterface
 
     /**
      * @param VideoInterface[] $videos
+     *
+     * @throws InvalidArgumentException
      *
      * @return static
      */
