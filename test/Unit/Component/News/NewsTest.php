@@ -92,13 +92,16 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($title, $news->title());
     }
 
-    public function testWithAccessRejectsInvalidValue()
+    /**
+     * @dataProvider providerInvalidAccess
+     *
+     * @param mixed $access
+     */
+    public function testWithAccessRejectsInvalidValue($access)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
-
-        $access = $faker->sentence();
 
         $news = new News(
             $this->getPublicationMock(),
@@ -107,6 +110,23 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         );
 
         $news->withAccess($access);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidAccess()
+    {
+        $values = [
+            null,
+            $this->getFaker()->sentence(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testWithAccessClonesObjectAndSetsValue()

@@ -69,17 +69,37 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($location, $playerLocation->location());
     }
 
-    public function testWithAllowEmbedRejectsInvalidValues()
+    /**
+     * @dataProvider providerInvalidAllowEmbed
+     *
+     * @param $allowEmbed
+     */
+    public function testWithAllowEmbedRejectsInvalidValues($allowEmbed)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
-        $allowEmbed = $faker->word;
-
         $playerLocation = new PlayerLocation($faker->url);
 
         $playerLocation->withAllowEmbed($allowEmbed);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidAllowEmbed()
+    {
+        $values = [
+            null,
+            $this->getFaker()->sentence(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testWithAllowEmbedClonesObjectAndSetsValue()

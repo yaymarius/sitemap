@@ -69,7 +69,7 @@ final class PlayerLocation implements PlayerLocationInterface
             PlayerLocationInterface::ALLOW_EMBED_YES,
         ];
 
-        Assertion::nullOrChoice($allowEmbed, $choices);
+        Assertion::choice($allowEmbed, $choices);
 
         $instance = clone $this;
 
