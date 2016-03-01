@@ -28,12 +28,6 @@ final class SitemapIndex implements SitemapIndexInterface
     {
         Assertion::allIsInstanceOf($sitemaps, SitemapInterface::class);
 
-        $locations = array_map(function (SitemapInterface $sitemap) {
-            return $sitemap->location();
-        }, $sitemaps);
-
-        Assertion::same(array_unique($locations), $locations);
-
         $this->sitemaps = $sitemaps;
     }
 
