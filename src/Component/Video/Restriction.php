@@ -9,6 +9,7 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
+use InvalidArgumentException;
 
 final class Restriction implements RestrictionInterface
 {
