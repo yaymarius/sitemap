@@ -9,6 +9,9 @@
 
 namespace Refinery29\Sitemap\Component\Video;
 
+use Assert\Assertion;
+use InvalidArgumentException;
+
 final class Tag implements TagInterface
 {
     /**
@@ -18,9 +21,13 @@ final class Tag implements TagInterface
 
     /**
      * @param string $content
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($content)
     {
+        Assertion::string($content);
+
         $this->content = $content;
     }
 
