@@ -22,5 +22,8 @@ class UrlInterfaceTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('monthly', UrlInterface::CHANGE_FREQUENCY_MONTHLY);
         $this->assertSame('yearly', UrlInterface::CHANGE_FREQUENCY_YEARLY);
         $this->assertSame('never', UrlInterface::CHANGE_FREQUENCY_NEVER);
+
+        $this->assertSame(0.0, UrlInterface::PRIORITY_MIN);
+        $this->assertSame(1.0, UrlInterface::PRIORITY_MAX);
     }
 }

@@ -13,11 +13,14 @@ use DateTimeInterface;
 
 /**
  * @link https://support.google.com/webmasters/answer/183668?hl=en
+ * @link http://www.sitemaps.org/protocol.html#xmlTagDefinitions
  */
 interface UrlInterface
 {
     /**
      * Constants for change frequencies.
+     *
+     * @link http://www.sitemaps.org/protocol.html#xmlTagDefinitions
      */
     const CHANGE_FREQUENCY_ALWAYS = 'always';
     const CHANGE_FREQUENCY_HOURLY = 'hourly';
@@ -26,6 +29,14 @@ interface UrlInterface
     const CHANGE_FREQUENCY_MONTHLY = 'monthly';
     const CHANGE_FREQUENCY_YEARLY = 'yearly';
     const CHANGE_FREQUENCY_NEVER = 'never';
+
+    /**
+     * Constants for minimum and maximum priority.
+     *
+     * @link http://www.sitemaps.org/protocol.html#xmlTagDefinitions
+     */
+    const PRIORITY_MIN = 0.0;
+    const PRIORITY_MAX = 1.0;
 
     /**
      * Constant for maximum number of images.
