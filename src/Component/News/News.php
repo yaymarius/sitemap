@@ -114,7 +114,7 @@ final class News implements NewsInterface
             NewsInterface::ACCESS_SUBSCRIPTION,
         ];
 
-        Assertion::nullOrChoice($access, $choices);
+        Assertion::choice($access, $choices);
 
         $instance = clone $this;
 
