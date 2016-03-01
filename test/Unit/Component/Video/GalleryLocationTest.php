@@ -8,6 +8,7 @@
  */
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
+use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\GalleryLocation;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
@@ -36,6 +37,18 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
         $galleryLocation = new GalleryLocation($this->getFaker()->url);
 
         $this->assertNull($galleryLocation->title());
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
+     *
+     * @param mixed $location
+     */
+    public function testConstructorRejectsInvalidLocation($location)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new GalleryLocation($location);
     }
 
     public function testConstructorSetsValue()
