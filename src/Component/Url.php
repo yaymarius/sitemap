@@ -55,9 +55,13 @@ final class Url implements UrlInterface
 
     /**
      * @param string $location
+     *
+     * @throws InvalidArgumentException
      */
     public function __construct($location)
     {
+        Assertion::url($location);
+
         $this->location = $location;
     }
 
@@ -113,10 +117,24 @@ final class Url implements UrlInterface
     /**
      * @param string $changeFrequency
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withChangeFrequency($changeFrequency)
     {
+        $choices = [
+            UrlInterface::CHANGE_FREQUENCY_ALWAYS,
+            UrlInterface::CHANGE_FREQUENCY_HOURLY,
+            UrlInterface::CHANGE_FREQUENCY_DAILY,
+            UrlInterface::CHANGE_FREQUENCY_WEEKLY,
+            UrlInterface::CHANGE_FREQUENCY_MONTHLY,
+            UrlInterface::CHANGE_FREQUENCY_YEARLY,
+            UrlInterface::CHANGE_FREQUENCY_NEVER,
+        ];
+
+        Assertion::choice($changeFrequency, $choices);
+
         $instance = clone $this;
 
         $instance->changeFrequency = $changeFrequency;
@@ -127,10 +145,17 @@ final class Url implements UrlInterface
     /**
      * @param string $priority
      *
+     * @throws InvalidArgumentException
+     *
      * @return static
      */
     public function withPriority($priority)
     {
+        Assertion::float($priority);
+        Assertion::greaterOrEqualThan($priority, UrlInterface::PRIORITY_MIN);
+        Assertion::lessOrEqualThan($priority, UrlInterface::PRIORITY_MAX);
+        Assertion::same($priority, round($priority, 2));
+
         $instance = clone $this;
 
         $instance->priority = $priority;
