@@ -31,9 +31,6 @@ final class Tag implements TagInterface
         $this->content = $content;
     }
 
-    /**
-     * @return string
-     */
     public function content()
     {
         return $this->content;
