@@ -536,6 +536,8 @@ class VideoTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerInvalidCategory
+     *
+     * @param mixed $category
      */
     public function testWithCategoryRejectsInvalidValue($category)
     {
