@@ -14,30 +14,51 @@ Run:
 $ composer require refinery29/sitemap
 ```
 
-## Creating a Sitemap
+## Content
+
+### Components
+
+This package provides all of the components we need to build a sitemap or a sitemap index. 
+
+The components are immutable objects, that is, their mutators clone the instance, then set the values. This helps preventing issues with unwillingly modifying a graph of components.
+
+There are two different types of graphs we are interested in building:
+
+* `Component\UrlSet` (represents a set of URLs)
+* `Component\SiteMapIndex` (represents a set of sitemaps) 
+ 
+### Writers
+
+Once a graph of components has been build, they need to passed to a writer so they can be turned into XML.
+
+There are two different types of writers:
+
+* `Writer\UrlSetWriter` (turns a `Component\UrlSet` into XML)
+* `Writer\SitemapIndexWriter` (turns a `Component\SitemapIndex` into XML)
+
+## Creating a sitemap
 
 ### `Url`
 
-Let's create a `Url`:
+Before we can create a sitemap, we need `Url`s, so let's create one:
 
 ```php
 use Refinery29\Sitemap\Component;
 
-$url = new Component\Url(
-    'http://www.example.org/foo/bar.html',
-    new DateTime(),
-    Component\Url::CHANGE_FREQUENCY_MONTHLY,
-    0.8
-);
+$url = new Component\Url('http://www.example.org/foo/bar.html');
 
-$urlSet->add($url);
+$url = $url
+    ->withLastModified(new DateTime()),
+    ->withChangeFrequency(Component\Url::CHANGE_FREQUENCY_MONTHLY)
+    ->withPriority(0.8)
+;
 ```
 
-:bulb: Google imposes a limit of 50,000 URLs that can be added to any sitemap..
+:bulb: Google imposes a limit of 50,000 URLs that can be added to any sitemap.
  
 ### `Image`
 
-You may want to add images to a `Url` so let's do it:
+We may want to add images to a `Url` so let's create one:
  
 ```php
 use Refinery29\Sitemap\Component;
@@ -49,17 +70,21 @@ $image = $image
     ->withCaption('Here we are sitting at the bar, enjoying our drinks')
     ->withGeoLocation('Majorca, Canyamel')
 ;
+```
 
+We can now add the image:
+
+```php
 $url = $url->withImages([
     $image,
 ]);
 ```
 
-:bulb: You can add up to 1.000 images to a `Url`.
+:bulb: We can attach up to 1.000 images to a `Url`.
 
 ### `News`
 
-You may want to add news to a `Url`, if the URL identifies a news article, for example, so let's do this, too:
+We may want to add news to a `Url`, if the URL identifies a news article, for example, so let's do this, too:
  
 ```php
 use Refinery29\Sitemap\Component;
@@ -84,7 +109,7 @@ $url = $url->withNews([
 
 ### `Video`
 
-You may want to add video to a `Url`, if the URL identifies a page where you can watch a video, so let's also do this:
+We may want to add video to a `Url`, if the URL identifies a page where you can watch a video, so let's also do this:
  
 ```php
 use Refinery29\Sitemap\Component;
@@ -118,7 +143,7 @@ $urlSet = new Component\UrlSet([
 
 ## Writing a Sitemap
 
-When you're finished building your `UrlSet`, you probably want to write it, right, so let's do it:
+When we're finished building a `UrlSet`, we probably want to write it, so let's do it:
 
 ```php
 use Refinery29\Sitemap\Writer;
@@ -130,22 +155,11 @@ $xml = $urlSetWriter->write($urlSet);
 
 ## Creating a Sitemap Index
 
-If you have many URLs, you may want to spread your sitemaps across multiple files and index them
-
-### `SitemapIndex`
-
-Let's create a `SitemapIndex` first:
- 
-```php
-use Refinery29\Sitemap\Component;
-
-$sitemapIndex = new Component\SitemapIndex();
-```
+If we have many URLs, we may want to spread our sitemaps across multiple files and index them.
 
 ### `Sitemap`
 
-Now, let's add a bunch of `Sitemap`s to the `SitemapIndex`:
-
+Before we can create a `SitemapIndex`, we need a few `Sitemap`s, so let's create them:
 
 ```php
 use Refinery29\Sitemap\Component;
@@ -161,14 +175,24 @@ $anotherSitemap = new Component\Sitemap(
     'http://www.example.org/news.xml',
     $lastModified
 );
+```
 
-$sitemapIndex->add($sitemap);
-$sitemapIndex->add($anotherSitemap);
+### `SitemapIndex`
+
+Let's create a `SitemapIndex` using the previously created `Sitemap`s:
+ 
+```php
+use Refinery29\Sitemap\Component;
+
+$sitemapIndex = new Component\SitemapIndex([
+    $sitemap,
+    $anotherSitemap,
+]);
 ```
 
 ### Writing a Sitemap Index
 
-When you're finished building your `SitemapIndex`, you should write it like this:
+When we're finished building a `SitemapIndex`, we probably want to write, so let's do it:
 
 ```php
 use Refinery29\Sitemap\Writer;
