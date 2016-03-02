@@ -54,6 +54,18 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $url->videos());
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
+     *
+     * @param mixed $location
+     */
+    public function testConstructorRejectsInvalidLocation($location)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Url($location);
+    }
+
     public function testConstructorSetsValue()
     {
         $location = $this->getFaker()->url;
@@ -79,6 +91,44 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertNotSame($lastModified, $instance->lastModified());
     }
 
+    /**
+     * @dataProvider providerInvalidChangeFrequency
+     *
+     * @param mixed $changeFrequency
+     */
+    public function testWithChangeFrequencyRejectsInvalidChangeFrequency($changeFrequency)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $url = new Url($this->getFaker()->url);
+
+        $url->withChangeFrequency($changeFrequency);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidChangeFrequency()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            null,
+            $faker->boolean(),
+            $faker->words,
+            $faker->randomNumber(),
+            $faker->randomFloat(),
+            $faker->sentence(),
+            new stdClass(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
     public function testWithChangeFrequencyClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -100,6 +150,45 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Url::class, $instance);
         $this->assertNotSame($url, $instance);
         $this->assertSame($changeFrequency, $instance->changeFrequency());
+    }
+
+    /**
+     * @dataProvider providerInvalidPriority
+     *
+     * @param mixed $priority
+     */
+    public function testWithPriorityRejectsInvalidPriority($priority)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $url = new Url($this->getFaker()->url);
+
+        $url->withPriority($priority);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerInvalidPriority()
+    {
+        $faker = $this->getFaker();
+
+        $values = [
+            null,
+            $faker->boolean(),
+            $faker->words,
+            $faker->sentence(),
+            UrlInterface::PRIORITY_MIN - 0.1,
+            UrlInterface::PRIORITY_MAX + 0.1,
+            0.123456,
+            new stdClass(),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testWithPriorityClonesObjectAndSetsValue()
