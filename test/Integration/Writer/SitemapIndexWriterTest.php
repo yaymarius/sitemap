@@ -21,8 +21,11 @@ class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
         $sitemap = new Sitemap('http://www.example.com/sitemap1.xml.gz');
         $sitemap = $sitemap->withLastModified(new DateTimeImmutable('2004-10-01T18:23:17+00:00'));
 
+        $anotherSitemap = new Sitemap('http://www.example.com/sitemap2.xml.gz');
+
         $index = new SitemapIndex([
             $sitemap,
+            $anotherSitemap,
         ]);
 
         $expected = <<<'XML'
@@ -31,6 +34,9 @@ class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
     <sitemap>
         <loc>http://www.example.com/sitemap1.xml.gz</loc>
         <lastmod>2004-10-01T18:23:17+00:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://www.example.com/sitemap2.xml.gz</loc>
     </sitemap>
 </sitemapindex>
 XML;
