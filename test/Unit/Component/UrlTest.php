@@ -180,7 +180,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
             $faker->sentence(),
             UrlInterface::PRIORITY_MIN - 0.1,
             UrlInterface::PRIORITY_MAX + 0.1,
-            0.123456,
+            0.12,
             new stdClass(),
         ];
 
