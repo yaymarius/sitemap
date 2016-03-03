@@ -102,7 +102,7 @@ class UrlWriter
         }
 
         $xmlWriter->startElement('priority');
-        $xmlWriter->text(number_format(2, $priority));
+        $xmlWriter->text(number_format($priority, 1));
         $xmlWriter->endElement();
     }
 
