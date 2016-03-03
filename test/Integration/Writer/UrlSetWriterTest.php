@@ -137,6 +137,7 @@ XML;
         ;
 
         $url = $url
+            ->withPriority(0.8)
             ->withImages([
                 $image,
                 $anotherImage,
@@ -161,6 +162,7 @@ XML;
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
         <loc>http://www.example.com/foo.html</loc>
+        <priority>0.8</priority>
         <image:image>
             <image:loc>http://example.com/image.jpg</image:loc>
             <image:caption>Dogs playing poker</image:caption>
