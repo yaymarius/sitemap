@@ -154,7 +154,7 @@ final class Url implements UrlInterface
         Assertion::float($priority);
         Assertion::greaterOrEqualThan($priority, UrlInterface::PRIORITY_MIN);
         Assertion::lessOrEqualThan($priority, UrlInterface::PRIORITY_MAX);
-        Assertion::same($priority, round($priority, 2));
+        Assertion::same($priority, round($priority, 1));
 
         $instance = clone $this;
 
