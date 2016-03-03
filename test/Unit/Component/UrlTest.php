@@ -196,7 +196,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $priority = $faker->randomFloat(
-            2,
+            1,
             0.0,
             1.0
         );
