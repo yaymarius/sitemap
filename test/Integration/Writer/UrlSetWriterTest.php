@@ -192,7 +192,7 @@ XML;
             <video:description>Cook the perfect steak every time.</video:description>
             <video:content_loc>http://www.example.com/video123.flv</video:content_loc>
         </video:video>
-            <video:video>
+        <video:video>
             <video:thumbnail_loc>http://www.example.com/thumbs/234.jpg</video:thumbnail_loc>
             <video:title>Driving to the park</video:title>
             <video:description>When driving to the park, you need to be careful to turn at the right intersection, otherwise you miss it</video:description>
