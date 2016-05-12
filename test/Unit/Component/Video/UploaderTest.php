@@ -41,7 +41,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $name
      */
@@ -64,7 +64,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $info
      */
