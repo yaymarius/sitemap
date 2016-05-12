@@ -41,7 +41,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data()
      *
      * @param mixed $location
      */
@@ -64,7 +64,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $title
      */

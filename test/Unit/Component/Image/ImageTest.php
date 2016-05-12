@@ -46,7 +46,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data()
      *
      * @param mixed $location
      */
@@ -67,7 +67,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $title
      */
@@ -98,7 +98,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $caption
      */
@@ -129,7 +129,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $geoLocation
      */
@@ -160,7 +160,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $licence
      */
