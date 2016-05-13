@@ -169,7 +169,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $duration
      */
-    public function testWithDurationRejectsInvalidDuration($duration)
+    public function testWithDurationRejectsInvalidValue($duration)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

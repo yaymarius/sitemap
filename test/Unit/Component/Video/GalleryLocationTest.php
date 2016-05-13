@@ -45,7 +45,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $location
      */
-    public function testConstructorRejectsInvalidLocation($location)
+    public function testConstructorRejectsInvalidValue($location)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

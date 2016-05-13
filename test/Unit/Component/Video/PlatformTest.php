@@ -49,7 +49,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $relationship
      */
-    public function testConstructorRejectsInvalidRelationship($relationship)
+    public function testConstructorRejectsInvalidValue($relationship)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

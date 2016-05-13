@@ -51,7 +51,7 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $restriction
      */
-    public function testConstructorRejectsInvalidRestriction($restriction)
+    public function testConstructorRejectsInvalidValue($restriction)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

@@ -45,7 +45,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $name
      */
-    public function testConstructorRejectsInvalidName($name)
+    public function testConstructorRejectsInvalidValue($name)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -80,7 +80,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $info
      */
-    public function testWithInfoRejectsInvalidInfo($info)
+    public function testWithInfoRejectsInvalidValue($info)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
