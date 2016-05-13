@@ -38,7 +38,19 @@ class TagTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $content
      */
-    public function testConstructorRejectsInvalidContent($content)
+    public function testConstructorRejectsInvalidValue($content)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Tag($content);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $content
+     */
+    public function testConstructorRejectsBlankString($content)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

@@ -51,11 +51,45 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $name
+     */
+    public function testConstructorRejectsBlankName($name)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $language = $this->getFaker()->languageCode;
+
+        new Publication(
+            $name,
+            $language
+        );
+    }
+
+    /**
      * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $language
      */
     public function testConstructorRejectsInvalidLanguage($language)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $name = $this->getFaker()->sentence();
+
+        new Publication(
+            $name,
+            $language
+        );
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $language
+     */
+    public function testConstructorRejectsBlankLanguage($language)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

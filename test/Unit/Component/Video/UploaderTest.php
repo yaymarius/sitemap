@@ -52,6 +52,18 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
         new Uploader($name);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $name
+     */
+    public function testConstructorRejectsBlankString($name)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        new Uploader($name);
+    }
+
     public function testConstructorSetsValue()
     {
         $faker = $this->getFaker();
@@ -69,6 +81,20 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      * @param mixed $info
      */
     public function testWithInfoRejectsInvalidInfo($info)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $uploader = new Uploader($this->getFaker()->url);
+
+        $uploader->withInfo($info);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $info
+     */
+    public function testWithInfoRejectsBlankString($info)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

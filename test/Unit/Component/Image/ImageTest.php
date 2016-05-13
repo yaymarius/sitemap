@@ -82,6 +82,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $image->withTitle($title);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $title
+     */
+    public function testWithTitleRejectsEmptyString($title)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withTitle($title);
+    }
+
     public function testWithTitleClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -103,6 +119,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      * @param mixed $caption
      */
     public function testWithCaptionRejectsInvalidValue($caption)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withCaption($caption);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $caption
+     */
+    public function testWithCaptionRejectsEmptyString($caption)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -144,6 +176,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $image->withGeoLocation($geoLocation);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $geoLocation
+     */
+    public function testWithGeoLocationRejectsBlankString($geoLocation)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withGeoLocation($geoLocation);
+    }
+
     public function testWithGeoLocationClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -165,6 +213,22 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      * @param mixed $licence
      */
     public function testWithLicenceRejectsInvalidValue($licence)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $image = new Image($location);
+
+        $image->withLicence($licence);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $licence
+     */
+    public function testWithLicenceRejectsBlankString($licence)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

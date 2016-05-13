@@ -74,6 +74,24 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $title
+     */
+    public function testConstructorRejectsBlankTitle($title)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $title
+        );
+    }
+
     public function testConstructorSetsValues()
     {
         $faker = $this->getFaker();
@@ -222,6 +240,32 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $news->withKeywords($keywords);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $keyword
+     */
+    public function testWithKeywordsRejectsBlankValues($keyword)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $keywords = [
+            $faker->word,
+            $faker->word,
+            $keyword,
+        ];
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $news->withKeywords($keywords);
+    }
+
     public function testWithKeywordsClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -247,6 +291,32 @@ class NewsTest extends \PHPUnit_Framework_TestCase
      * @param mixed $stockTicker
      */
     public function testWithStockTickersRejectsInvalidValues($stockTicker)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $stockTickers = [
+            $faker->word,
+            $faker->word,
+            $stockTicker,
+        ];
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $news->withStockTickers($stockTickers);
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $stockTicker
+     */
+    public function testWithStockTickersRejectsBlankValues($stockTicker)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
