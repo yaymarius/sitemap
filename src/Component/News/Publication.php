@@ -33,7 +33,9 @@ final class Publication implements PublicationInterface
     public function __construct($name, $language)
     {
         Assertion::string($name);
+        Assertion::notBlank($name);
         Assertion::string($language);
+        Assertion::notBlank($language);
 
         $this->name = $name;
         $this->language = $language;

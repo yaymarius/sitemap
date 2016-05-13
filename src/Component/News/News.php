@@ -60,6 +60,7 @@ final class News implements NewsInterface
     public function __construct(PublicationInterface $publication, DateTimeInterface $publicationDate, $title)
     {
         Assertion::string($title);
+        Assertion::notBlank($title);
 
         $this->publication = $publication;
         $this->publicationDate = $publicationDate;
@@ -160,6 +161,7 @@ final class News implements NewsInterface
     public function withKeywords(array $keywords)
     {
         Assertion::allString($keywords);
+        Assertion::allNotBlank($keywords);
 
         $instance = clone $this;
 
@@ -178,6 +180,7 @@ final class News implements NewsInterface
     public function withStockTickers(array $stockTickers)
     {
         Assertion::allString($stockTickers);
+        Assertion::allNotBlank($stockTickers);
         Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
 
         $instance = clone $this;

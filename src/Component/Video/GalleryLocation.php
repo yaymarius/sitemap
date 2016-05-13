@@ -56,6 +56,7 @@ final class GalleryLocation implements GalleryLocationInterface
     public function withTitle($title)
     {
         Assertion::string($title);
+        Assertion::notBlank($title);
 
         $instance = clone $this;
 

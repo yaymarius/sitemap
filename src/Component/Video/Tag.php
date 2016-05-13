@@ -27,6 +27,7 @@ final class Tag implements TagInterface
     public function __construct($content)
     {
         Assertion::string($content);
+        Assertion::notBlank($content);
 
         $this->content = $content;
     }

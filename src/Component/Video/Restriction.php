@@ -61,6 +61,7 @@ final class Restriction implements RestrictionInterface
     public function withCountryCodes(array $countryCodes)
     {
         Assertion::allString($countryCodes);
+        Assertion::allNotBlank($countryCodes);
 
         $instance = clone $this;
 
