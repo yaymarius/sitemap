@@ -110,7 +110,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $type
      */
-    public function testWithTypeRejectsInvalidType($type)
+    public function testWithTypeRejectsInvalidValue($type)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -167,7 +167,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $resolution
      */
-    public function testWithResolutionRejectsInvalidResolution($resolution)
+    public function testWithResolutionRejectsInvalidValue($resolution)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 

@@ -59,7 +59,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $location
      */
-    public function testConstructorRejectsInvalidLocation($location)
+    public function testConstructorRejectsInvalidValue($location)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -96,7 +96,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $changeFrequency
      */
-    public function testWithChangeFrequencyRejectsInvalidChangeFrequency($changeFrequency)
+    public function testWithChangeFrequencyRejectsInvalidValue($changeFrequency)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -157,7 +157,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      *
      * @param mixed $priority
      */
-    public function testWithPriorityRejectsInvalidPriority($priority)
+    public function testWithPriorityRejectsInvalidValue($priority)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
