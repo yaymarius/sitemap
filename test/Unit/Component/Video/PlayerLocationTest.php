@@ -71,7 +71,7 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidAllowEmbed
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param $allowEmbed
      */
@@ -86,14 +86,45 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
         $playerLocation->withAllowEmbed($allowEmbed);
     }
 
+    public function testWithAllowEmbedRejectsUnknownValues()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $allowEmbed = $faker->sentence();
+
+        $playerLocation = new PlayerLocation($faker->url);
+
+        $playerLocation->withAllowEmbed($allowEmbed);
+    }
+
+    /**
+     * @dataProvider providerAllowEmbed
+     *
+     * @param string $allowEmbed
+     */
+    public function testWithAllowEmbedClonesObjectAndSetsValue($allowEmbed)
+    {
+        $faker = $this->getFaker();
+
+        $playerLocation = new PlayerLocation($faker->url);
+
+        $instance = $playerLocation->withAllowEmbed($allowEmbed);
+
+        $this->assertInstanceOf(PlayerLocation::class, $instance);
+        $this->assertNotSame($playerLocation, $instance);
+        $this->assertSame($allowEmbed, $instance->allowEmbed());
+    }
+
     /**
      * @return \Generator
      */
-    public function providerInvalidAllowEmbed()
+    public function providerAllowEmbed()
     {
         $values = [
-            null,
-            $this->getFaker()->sentence(),
+            PlayerLocationInterface::ALLOW_EMBED_NO,
+            PlayerLocationInterface::ALLOW_EMBED_YES,
         ];
 
         foreach ($values as $value) {
@@ -103,22 +134,22 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testWithAllowEmbedClonesObjectAndSetsValue()
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $autoPlay
+     */
+    public function testWithAutoPlayRejectsInvalidValue($autoPlay)
     {
         $faker = $this->getFaker();
 
-        $allowEmbed = $faker->randomElement([
-            PlayerLocationInterface::ALLOW_EMBED_NO,
-            PlayerLocationInterface::ALLOW_EMBED_YES,
-        ]);
-
         $playerLocation = new PlayerLocation($faker->url);
 
-        $instance = $playerLocation->withAllowEmbed($allowEmbed);
+        $instance = $playerLocation->withAutoPlay($autoPlay);
 
         $this->assertInstanceOf(PlayerLocation::class, $instance);
         $this->assertNotSame($playerLocation, $instance);
-        $this->assertSame($allowEmbed, $instance->allowEmbed());
+        $this->assertSame($autoPlay, $instance->autoPlay());
     }
 
     public function testWithAutoPlayClonesObjectAndSetsValue()

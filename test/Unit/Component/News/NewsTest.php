@@ -112,7 +112,7 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidAccess
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $access
      */
@@ -132,30 +132,13 @@ class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \Generator
+     * @dataProvider providerAccess
+     *
+     * @param string $access
      */
-    public function providerInvalidAccess()
-    {
-        $values = [
-            null,
-            $this->getFaker()->sentence(),
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
-    }
-
-    public function testWithAccessClonesObjectAndSetsValue()
+    public function testWithAccessClonesObjectAndSetsValue($access)
     {
         $faker = $this->getFaker();
-
-        $access = $faker->randomElement([
-            NewsInterface::ACCESS_REGISTRATION,
-            NewsInterface::ACCESS_SUBSCRIPTION,
-        ]);
 
         $news = new News(
             $this->getPublicationMock(),
@@ -170,14 +153,59 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($access, $instance->access());
     }
 
-    public function testWithGenresRejectsInvalidValues()
+    /**
+     * @return \Generator
+     */
+    public function providerAccess()
+    {
+        $values = [
+            NewsInterface::ACCESS_REGISTRATION,
+            NewsInterface::ACCESS_SUBSCRIPTION,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $genre
+     */
+    public function testWithGenresRejectsInvalidValues($genre)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
         $genres = [
-            'foobarbaz',
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            $genre,
+        ];
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $news->withGenres($genres);
+    }
+
+    public function testWithGenresRejectsUnknownValues()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $genres = [
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            $faker->sentence(),
         ];
 
         $news = new News(

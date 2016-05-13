@@ -47,7 +47,7 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidRestriction
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $restriction
      */
@@ -58,14 +58,35 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         new Restriction($restriction);
     }
 
+    public function testConstructorRejectsUnknownValue()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $relationship = $this->getFaker()->sentence();
+
+        new Restriction($relationship);
+    }
+
+    /**
+     * @dataProvider providerRelationship
+     *
+     * @param string $relationship
+     */
+    public function testConstructorSetsValue($relationship)
+    {
+        $restriction = new Restriction($relationship);
+
+        $this->assertSame($relationship, $restriction->relationship());
+    }
+
     /**
      * @return \Generator
      */
-    public function providerInvalidRestriction()
+    public function providerRelationship()
     {
         $values = [
-            null,
-            $this->getFaker()->sentence(),
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
         ];
 
         foreach ($values as $value) {
@@ -73,18 +94,6 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
                 $value,
             ];
         }
-    }
-
-    public function testConstructorSetsValue()
-    {
-        $relationship = $this->getFaker()->randomElement([
-            RestrictionInterface::RELATIONSHIP_ALLOW,
-            RestrictionInterface::RELATIONSHIP_DENY,
-        ]);
-
-        $restriction = new Restriction($relationship);
-
-        $this->assertSame($relationship, $restriction->relationship());
     }
 
     /**

@@ -10,6 +10,7 @@
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
 use InvalidArgumentException;
+use Refinery29\CS\Config\Refinery29;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Url;
@@ -92,7 +93,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidChangeFrequency
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $changeFrequency
      */
@@ -106,42 +107,13 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \Generator
+     * @dataProvider providerChangeFrequency
+     *
+     * @param string $changeFrequency
      */
-    public function providerInvalidChangeFrequency()
+    public function testWithChangeFrequencyClonesObjectAndSetsValue($changeFrequency)
     {
         $faker = $this->getFaker();
-
-        $values = [
-            null,
-            $faker->boolean(),
-            $faker->words,
-            $faker->randomNumber(),
-            $faker->randomFloat(),
-            $faker->sentence(),
-            new stdClass(),
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
-    }
-
-    public function testWithChangeFrequencyClonesObjectAndSetsValue()
-    {
-        $faker = $this->getFaker();
-
-        $changeFrequency = $faker->randomElement([
-            UrlInterface::CHANGE_FREQUENCY_ALWAYS,
-            UrlInterface::CHANGE_FREQUENCY_HOURLY,
-            UrlInterface::CHANGE_FREQUENCY_DAILY,
-            UrlInterface::CHANGE_FREQUENCY_WEEKLY,
-            UrlInterface::CHANGE_FREQUENCY_MONTHLY,
-            UrlInterface::CHANGE_FREQUENCY_YEARLY,
-            UrlInterface::CHANGE_FREQUENCY_NEVER,
-        ]);
 
         $url = new Url($faker->url);
 
@@ -153,7 +125,29 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidPriority
+     * @return \Generator
+     */
+    public function providerChangeFrequency()
+    {
+        $values = [
+            UrlInterface::CHANGE_FREQUENCY_ALWAYS,
+            UrlInterface::CHANGE_FREQUENCY_HOURLY,
+            UrlInterface::CHANGE_FREQUENCY_DAILY,
+            UrlInterface::CHANGE_FREQUENCY_WEEKLY,
+            UrlInterface::CHANGE_FREQUENCY_MONTHLY,
+            UrlInterface::CHANGE_FREQUENCY_YEARLY,
+            UrlInterface::CHANGE_FREQUENCY_NEVER,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidFloat::data()
      *
      * @param mixed $priority
      */
@@ -167,21 +161,27 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerOutOfBoundsPriority
+     *
+     * @param mixed $priority
+     */
+    public function testWithPriorityRejectsOutOfBoundsValue($priority)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $url = new Url($this->getFaker()->url);
+
+        $url->withPriority($priority);
+    }
+
+    /**
      * @return \Generator
      */
-    public function providerInvalidPriority()
+    public function providerOutOfBoundsPriority()
     {
-        $faker = $this->getFaker();
-
         $values = [
-            null,
-            $faker->boolean(),
-            $faker->words,
-            $faker->sentence(),
             UrlInterface::PRIORITY_MIN - 0.1,
             UrlInterface::PRIORITY_MAX + 0.1,
-            0.12,
-            new stdClass(),
         ];
 
         foreach ($values as $value) {
@@ -191,15 +191,14 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testWithPriorityClonesObjectAndSetsValue()
+    /**
+     * @dataProvider providerPriority
+     *
+     * @param float $priority
+     */
+    public function testWithPriorityClonesObjectAndSetsValue($priority)
     {
         $faker = $this->getFaker();
-
-        $priority = $faker->randomFloat(
-            1,
-            0.0,
-            1.0
-        );
 
         $url = new Url($faker->url);
 
@@ -208,6 +207,28 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Url::class, $instance);
         $this->assertNotSame($url, $instance);
         $this->assertSame($priority, $instance->priority());
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerPriority()
+    {
+        $values = [
+            UrlInterface::PRIORITY_MAX,
+            UrlInterface::PRIORITY_MIN,
+            $this->getFaker()->randomFloat(
+                1,
+                UrlInterface::PRIORITY_MIN,
+                UrlInterface::PRIORITY_MAX
+            ),
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     /**

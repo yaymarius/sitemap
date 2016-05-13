@@ -19,15 +19,6 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 
-    public function testConstants()
-    {
-        $this->assertSame('own', PriceInterface::TYPE_OWN);
-        $this->assertSame('rent', PriceInterface::TYPE_RENT);
-
-        $this->assertSame('HD', PriceInterface::RESOLUTION_HD);
-        $this->assertSame('SD', PriceInterface::RESOLUTION_SD);
-    }
-
     public function testIsFinal()
     {
         $reflectionClass = new ReflectionClass(Price::class);
@@ -64,11 +55,9 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
-        $faker = $this->getFaker();
-
         new Price(
             $value,
-            $faker->currencyCode
+            $this->getFaker()->currencyCode
         );
     }
 
@@ -103,7 +92,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidType
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $type
      */
@@ -121,34 +110,40 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $price->withType($type);
     }
 
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidType()
+    public function testWithTypeRejectsUnknownValue()
     {
-        $values = [
-            null,
-            $this->getFaker()->sentence(),
-        ];
+        $this->setExpectedException(InvalidArgumentException::class);
 
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
-    }
-
-    public function testWithTypeClonesObjectAndSetsValue()
-    {
         $faker = $this->getFaker();
 
-        $type = $faker->randomElement([
-            PriceInterface::TYPE_OWN,
-            PriceInterface::TYPE_RENT,
-        ]);
+        $type = $this->getFaker()->sentence();
 
         $price = new Price(
             $faker->randomFloat(2, PriceInterface::VALUE_MIN),
+            $faker->randomFloat(
+                2,
+                PriceInterface::VALUE_MIN
+            ),
+            $faker->currencyCode
+        );
+
+        $price->withType($type);
+    }
+
+    /**
+     * @dataProvider providerType
+     *
+     * @param string $type
+     */
+    public function testWithTypeClonesObjectAndSetsValue($type)
+    {
+        $faker = $this->getFaker();
+
+        $price = new Price(
+            $faker->randomFloat(
+                2,
+                PriceInterface::VALUE_MIN
+            ),
             $faker->currencyCode
         );
 
@@ -160,7 +155,24 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidResolution
+     * @return \Generator
+     */
+    public function providerType()
+    {
+        $values = [
+            PriceInterface::TYPE_OWN,
+            PriceInterface::TYPE_RENT,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
+    }
+
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $resolution
      */
@@ -178,34 +190,36 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $price->withResolution($resolution);
     }
 
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidResolution()
+    public function testWithResolutionRejectsUnknownValue()
     {
-        $values = [
-            null,
-            $this->getFaker()->sentence(),
-        ];
+        $this->setExpectedException(InvalidArgumentException::class);
 
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
-    }
-
-    public function testWithResolutionClonesObjectAndSetsValue()
-    {
         $faker = $this->getFaker();
 
-        $resolution = $faker->randomElement([
-            PriceInterface::RESOLUTION_HD,
-            PriceInterface::RESOLUTION_SD,
-        ]);
+        $resolution = $faker->sentence();
 
         $price = new Price(
             $faker->randomFloat(2, PriceInterface::VALUE_MIN),
+            $faker->currencyCode
+        );
+
+        $price->withResolution($resolution);
+    }
+
+    /**
+     * @dataProvider providerResolution
+     *
+     * @param string $resolution
+     */
+    public function testWithResolutionClonesObjectAndSetsValue($resolution)
+    {
+        $faker = $this->getFaker();
+
+        $price = new Price(
+            $faker->randomFloat(
+                2,
+                PriceInterface::VALUE_MIN
+            ),
             $faker->currencyCode
         );
 
@@ -214,5 +228,22 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Price::class, $instance);
         $this->assertNotSame($price, $instance);
         $this->assertSame($resolution, $instance->resolution());
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerResolution()
+    {
+        $values = [
+            PriceInterface::RESOLUTION_HD,
+            PriceInterface::RESOLUTION_SD,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 }
