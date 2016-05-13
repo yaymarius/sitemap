@@ -32,6 +32,7 @@ final class Uploader implements UploaderInterface
     public function __construct($name)
     {
         Assertion::string($name);
+        Assertion::notBlank($name);
 
         $this->name = $name;
     }
@@ -56,6 +57,7 @@ final class Uploader implements UploaderInterface
     public function withInfo($info)
     {
         Assertion::string($info);
+        Assertion::notBlank($info);
 
         $instance = clone $this;
 

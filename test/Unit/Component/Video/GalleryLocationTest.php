@@ -79,6 +79,22 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
         $galleryLocation->withTitle($title);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $title
+     */
+    public function testWithTitleRejectsBlankString($title)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $location = $this->getFaker()->url;
+
+        $galleryLocation = new GalleryLocation($location);
+
+        $galleryLocation->withTitle($title);
+    }
+
     public function testWithTitleClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();

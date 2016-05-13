@@ -86,6 +86,7 @@ final class Image implements ImageInterface
     public function withTitle($title)
     {
         Assertion::string($title);
+        Assertion::notBlank($title);
 
         $instance = clone $this;
 
@@ -104,6 +105,7 @@ final class Image implements ImageInterface
     public function withCaption($caption)
     {
         Assertion::string($caption);
+        Assertion::notBlank($caption);
 
         $instance = clone $this;
 
@@ -122,6 +124,7 @@ final class Image implements ImageInterface
     public function withGeoLocation($geoLocation)
     {
         Assertion::string($geoLocation);
+        Assertion::notBlank($geoLocation);
 
         $instance = clone $this;
 
@@ -140,6 +143,7 @@ final class Image implements ImageInterface
     public function withLicence($licence)
     {
         Assertion::string($licence);
+        Assertion::notBlank($licence);
 
         $instance = clone $this;
 

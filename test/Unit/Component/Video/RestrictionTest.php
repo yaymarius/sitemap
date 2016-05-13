@@ -112,6 +112,31 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
         $restriction->withCountryCodes($countryCodes);
     }
 
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     *
+     * @param mixed $countryCode
+     */
+    public function testWithCountryCodeRejectsBlankCountryCodes($countryCode)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $countryCodes = [
+            $faker->countryCode,
+            $countryCode,
+        ];
+
+        $restriction = new Restriction(
+            $faker->randomElement([
+            RestrictionInterface::RELATIONSHIP_ALLOW,
+            RestrictionInterface::RELATIONSHIP_DENY,
+        ]));
+
+        $restriction->withCountryCodes($countryCodes);
+    }
+
     public function testWithCountryCodesClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
