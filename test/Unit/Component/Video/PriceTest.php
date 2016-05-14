@@ -120,10 +120,6 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
         $price = new Price(
             $faker->randomFloat(2, PriceInterface::VALUE_MIN),
-            $faker->randomFloat(
-                2,
-                PriceInterface::VALUE_MIN
-            ),
             $faker->currencyCode
         );
 
