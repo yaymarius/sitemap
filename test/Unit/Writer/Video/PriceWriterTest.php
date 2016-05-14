@@ -21,7 +21,7 @@ class PriceWriterTest extends AbstractTestCase
         $faker = $this->getFaker();
 
         $currency = $faker->currencyCode;
-        $value = $faker->randomFloat(2, 0.01);
+        $value = $faker->randomFloat(2, PriceInterface::VALUE_MIN);
 
         $price = $this->getPriceMock(
             $currency,
@@ -44,7 +44,7 @@ class PriceWriterTest extends AbstractTestCase
         $faker = $this->getFaker();
 
         $currency = $faker->currencyCode;
-        $value = $faker->randomFloat(2, 0.01);
+        $value = $faker->randomFloat(2, PriceInterface::VALUE_MIN);
         $type = $faker->randomElement([
             PriceInterface::TYPE_OWN,
             PriceInterface::TYPE_RENT,

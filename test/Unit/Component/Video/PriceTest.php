@@ -47,7 +47,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $price = new Price(
-            $faker->randomFloat(2, 0.01),
+            $faker->randomFloat(2, PriceInterface::VALUE_MIN),
             $faker->currencyCode
         );
 
@@ -93,7 +93,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $value = $faker->randomFloat(2, 0.01);
+        $value = $faker->randomFloat(2, PriceInterface::VALUE_MIN);
         $currency = $faker->currencyCode;
 
         $price = new Price(
@@ -117,7 +117,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $price = new Price(
-            $faker->randomFloat(2, 0.01),
+            $faker->randomFloat(2, PriceInterface::VALUE_MIN),
             $faker->currencyCode
         );
 
@@ -151,7 +151,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $price = new Price(
-            $faker->randomFloat(2, 0.01),
+            $faker->randomFloat(2, PriceInterface::VALUE_MIN),
             $faker->currencyCode
         );
 
@@ -174,7 +174,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $faker = $this->getFaker();
 
         $price = new Price(
-            $faker->randomFloat(2, 0.01),
+            $faker->randomFloat(2, PriceInterface::VALUE_MIN),
             $faker->currencyCode
         );
 
@@ -208,7 +208,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $price = new Price(
-            $faker->randomFloat(2, 0.01),
+            $faker->randomFloat(2, PriceInterface::VALUE_MIN),
             $faker->currencyCode
         );
 
