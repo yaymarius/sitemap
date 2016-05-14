@@ -97,7 +97,11 @@ class VideoWriterTest extends AbstractTestCase
         );
         $publicationDate = $faker->dateTime;
         $expirationDate = $faker->dateTime;
-        $rating = $faker->randomFloat(1, 0, 5);
+        $rating = $faker->randomFloat(
+            1,
+            0,
+            5
+        );
         $viewCount = $faker->randomNumber();
         $familyFriendly = VideoInterface::FAMILY_FRIENDLY_NO;
         $category = $faker->word;

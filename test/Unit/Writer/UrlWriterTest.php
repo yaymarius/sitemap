@@ -62,7 +62,11 @@ class UrlWriterTest extends AbstractTestCase
             UrlInterface::CHANGE_FREQUENCY_WEEKLY,
             UrlInterface::CHANGE_FREQUENCY_YEARLY,
         ]);
-        $priority = $faker->randomFloat(2, 0, 1);
+        $priority = $faker->randomFloat(
+            2,
+            0,
+            1
+        );
         $images = [
             $this->getImageMock(),
             $this->getImageMock(),
