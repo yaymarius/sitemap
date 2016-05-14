@@ -99,8 +99,8 @@ class VideoWriterTest extends AbstractTestCase
         $expirationDate = $faker->dateTime;
         $rating = $faker->randomFloat(
             1,
-            0,
-            5
+            VideoInterface::RATING_MIN,
+            VideoInterface::RATING_MAX
         );
         $viewCount = $faker->randomNumber();
         $familyFriendly = VideoInterface::FAMILY_FRIENDLY_NO;
