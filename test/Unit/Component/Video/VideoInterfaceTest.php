@@ -26,6 +26,8 @@ class VideoInterfaceTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(0.0, VideoInterface::RATING_MIN);
         $this->assertSame(5.0, VideoInterface::RATING_MAX);
 
+        $this->assertSame(0, VideoInterface::VIEW_COUNT_MIN);
+
         $this->assertSame('yes', VideoInterface::REQUIRES_SUBSCRIPTION_YES);
         $this->assertSame('no', VideoInterface::REQUIRES_SUBSCRIPTION_NO);
 

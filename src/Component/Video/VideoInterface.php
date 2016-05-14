@@ -53,6 +53,11 @@ interface VideoInterface
     const RATING_MAX = 5.0;
 
     /**
+     * Constant for minimum view count value.
+     */
+    const VIEW_COUNT_MIN = 0;
+
+    /**
      * Constants for subscription requirement.
      *
      * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
