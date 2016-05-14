@@ -340,7 +340,7 @@ final class Video implements VideoInterface
     public function withViewCount($viewCount)
     {
         Assertion::integer($viewCount);
-        Assertion::greaterOrEqualThan($viewCount, 0);
+        Assertion::greaterOrEqualThan($viewCount, VideoInterface::VIEW_COUNT_MIN);
 
         $instance = clone $this;
 

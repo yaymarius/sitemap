@@ -368,7 +368,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
     {
         $values = [
             'foo',
-            -1,
+            VideoInterface::VIEW_COUNT_MIN - 1,
         ];
 
         foreach ($values as $value) {
@@ -382,7 +382,7 @@ class VideoTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $viewCount = $faker->numberBetween(0);
+        $viewCount = $faker->numberBetween(VideoInterface::VIEW_COUNT_MIN);
 
         $video = new Video(
             $faker->url,
