@@ -189,6 +189,31 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $news->withGenres($genres);
     }
 
+    /**
+     * @dataProvider providerGenre
+     *
+     * @param string $genre
+     */
+    public function testWithGenresRejectsDuplicateValues($genre)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $genres = [
+            $genre,
+            $genre,
+        ];
+
+        $news = new News(
+            $this->getPublicationMock(),
+            $faker->dateTime,
+            $faker->sentence()
+        );
+
+        $news->withGenres($genres);
+    }
+
     public function testWithGenresClonesObjectAndSetsValue()
     {
         $faker = $this->getFaker();
@@ -212,6 +237,26 @@ class NewsTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(News::class, $instance);
         $this->assertNotSame($news, $instance);
         $this->assertSame($genres, $instance->genres());
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerGenre()
+    {
+        $values = [
+            NewsInterface::GENRE_BLOG,
+            NewsInterface::GENRE_OP_ED,
+            NewsInterface::GENRE_OPINION,
+            NewsInterface::GENRE_SATIRE,
+            NewsInterface::GENRE_USER_GENERATED,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     /**
