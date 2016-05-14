@@ -53,7 +53,7 @@ interface VideoInterface
     const RATING_MAX = 5.0;
 
     /**
-     * Constant for minimum view count value.
+     * Constant for view count minimum value.
      */
     const VIEW_COUNT_MIN = 0;
 
