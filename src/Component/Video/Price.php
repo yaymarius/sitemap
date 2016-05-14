@@ -42,6 +42,7 @@ final class Price implements PriceInterface
      */
     public function __construct($value, $currency)
     {
+        Assertion::float($value);
         Assertion::greaterOrEqualThan($value, PriceInterface::VALUE_MIN);
 
         $this->value = $value;

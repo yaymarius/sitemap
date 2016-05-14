@@ -56,7 +56,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidValue
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidFloat::data()
      *
      * @param mixed $value
      */
@@ -72,21 +72,18 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidValue()
+    public function testConstructorRejectsTooSmallValue()
     {
-        $invalidValues = [
-            'foo',
-            PriceInterface::VALUE_MIN - 0.01,
-        ];
+        $this->setExpectedException(InvalidArgumentException::class);
 
-        foreach ($invalidValues as $value) {
-            yield [
-                $value,
-            ];
-        }
+        $value = PriceInterface::VALUE_MIN - 0.01;
+
+        $faker = $this->getFaker();
+
+        new Price(
+            $value,
+            $faker->currencyCode
+        );
     }
 
     public function testConstructorSetsValues()
