@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
 use InvalidArgumentException;
-use Refinery29\CS\Config\Refinery29;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Url;
