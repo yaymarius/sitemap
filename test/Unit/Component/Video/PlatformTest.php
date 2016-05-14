@@ -45,7 +45,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider providerInvalidRelationship
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $relationship
      */
@@ -57,13 +57,25 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerRelationship
+     *
+     * @param string $relationship
+     */
+    public function testConstructorSetsValue($relationship)
+    {
+        $platform = new Platform($relationship);
+
+        $this->assertSame($relationship, $platform->relationship());
+    }
+
+    /**
      * @return \Generator
      */
-    public function providerInvalidRelationship()
+    public function providerRelationship()
     {
         $values = [
-            null,
-            $this->getFaker()->sentence(),
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
         ];
 
         foreach ($values as $value) {
@@ -73,35 +85,12 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testConstructorSetsValue()
-    {
-        $relationship = $this->getFaker()->randomElement([
-            PlatformInterface::RELATIONSHIP_ALLOW,
-            PlatformInterface::RELATIONSHIP_DENY,
-        ]);
-
-        $platform = new Platform($relationship);
-
-        $this->assertSame($relationship, $platform->relationship());
-    }
-
-    public function testWithTypesRejectsInvalidValues()
-    {
-        $this->setExpectedException(InvalidArgumentException::class);
-
-        $faker = $this->getFaker();
-
-        $types = $faker->words;
-
-        $platform = new Platform($faker->randomElement([
-            PlatformInterface::RELATIONSHIP_ALLOW,
-            PlatformInterface::RELATIONSHIP_DENY,
-        ]));
-
-        $platform->withTypes($types);
-    }
-
-    public function testWithTypesRejectsDuplicateValues()
+    /**
+     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     *
+     * @param mixed $type
+     */
+    public function testWithTypesRejectsInvalidValues($type)
     {
         $this->setExpectedException(InvalidArgumentException::class);
 
@@ -109,7 +98,8 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
         $types = [
             PlatformInterface::TYPE_MOBILE,
-            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            $type,
         ];
 
         $platform = new Platform($faker->randomElement([
@@ -118,6 +108,68 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
         ]));
 
         $platform->withTypes($types);
+    }
+
+    public function testWithTypesRejectsUnknownValues()
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $types = [
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            $faker->sentence(),
+        ];
+
+        $platform = new Platform($faker->randomElement([
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
+        ]));
+
+        $platform->withTypes($types);
+    }
+
+    /**
+     * @dataProvider providerType
+     *
+     * @param string $type
+     */
+    public function testWithTypesRejectsDuplicateValues($type)
+    {
+        $this->setExpectedException(InvalidArgumentException::class);
+
+        $faker = $this->getFaker();
+
+        $types = [
+            $type,
+            $type,
+        ];
+
+        $platform = new Platform($faker->randomElement([
+            PlatformInterface::RELATIONSHIP_ALLOW,
+            PlatformInterface::RELATIONSHIP_DENY,
+        ]));
+
+        $platform->withTypes($types);
+    }
+
+    /**
+     * @return \Generator
+     */
+    public function providerType()
+    {
+        $values = [
+            PlatformInterface::TYPE_MOBILE,
+            PlatformInterface::TYPE_TV,
+            PlatformInterface::TYPE_WEB,
+        ];
+
+        foreach ($values as $value) {
+            yield [
+                $value,
+            ];
+        }
     }
 
     public function testWithTypesClonesObjectAndSetsValue()

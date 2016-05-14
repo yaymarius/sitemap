@@ -28,41 +28,30 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($reflectionClass->isFinal());
     }
 
-    /**
-     * @dataProvider providerInvalidUrls
-     *
-     * @param mixed $urls
-     */
-    public function testConstructorRejectsInvalidValue($urls)
+    public function testConstructorRejectsInvalidValue()
     {
         $this->setExpectedException(InvalidArgumentException::class);
+
+        $urls = [
+            $this->getUrlMock(),
+            $this->getUrlMock(),
+            new stdClass(),
+        ];
 
         new UrlSet($urls);
     }
 
-    /**
-     * @return \Generator
-     */
-    public function providerInvalidUrls()
+    public function testConstructorRejectsTooManyValues()
     {
-        $values = [
-            [
-                $this->getUrlMock(),
-                $this->getUrlMock(),
-                new stdClass(),
-            ],
-            array_fill(
-                0,
-                UrlSetInterface::URL_MAX_COUNT + 1,
-                $this->getUrlMock()
-            ),
-        ];
+        $this->setExpectedException(InvalidArgumentException::class);
 
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        $urls = array_fill(
+            0,
+            UrlSetInterface::URL_MAX_COUNT + 1,
+            $this->getUrlMock()
+        );
+
+        new UrlSet($urls);
     }
 
     public function testConstructorSetsValue()
