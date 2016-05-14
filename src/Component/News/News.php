@@ -143,6 +143,7 @@ final class News implements NewsInterface
         ];
 
         Assertion::allChoice($genres, $choices);
+        Assertion::same($genres, array_unique($genres));
 
         $instance = clone $this;
 
