@@ -64,8 +64,8 @@ class UrlWriterTest extends AbstractTestCase
         ]);
         $priority = $faker->randomFloat(
             2,
-            0,
-            1
+            UrlInterface::PRIORITY_MIN,
+            UrlInterface::PRIORITY_MAX
         );
         $images = [
             $this->getImageMock(),
