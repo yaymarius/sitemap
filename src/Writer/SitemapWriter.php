@@ -9,9 +9,7 @@
 
 namespace Refinery29\Sitemap\Writer;
 
-use DateTimeInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/75712?rd=1
@@ -20,7 +18,7 @@ use XMLWriter;
  */
 class SitemapWriter
 {
-    public function write(SitemapInterface $sitemap, XMLWriter $xmlWriter)
+    public function write(SitemapInterface $sitemap, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('sitemap');
 
@@ -30,14 +28,14 @@ class SitemapWriter
         $xmlWriter->endElement();
     }
 
-    private function writeLocation(XMLWriter $xmlWriter, $location)
+    private function writeLocation(\XMLWriter $xmlWriter, $location)
     {
         $xmlWriter->startElement('loc');
         $xmlWriter->text($location);
         $xmlWriter->endElement();
     }
 
-    private function writeLastModified(XMLWriter $xmlWriter, DateTimeInterface $lastModified = null)
+    private function writeLastModified(\XMLWriter $xmlWriter, \DateTimeInterface $lastModified = null)
     {
         if ($lastModified === null) {
             return;

@@ -14,7 +14,6 @@ use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 use Refinery29\Sitemap\Writer\SitemapWriter;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use XMLWriter;
 
 class SitemapIndexWriterTest extends AbstractTestCase
 {
@@ -105,10 +104,10 @@ class SitemapIndexWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

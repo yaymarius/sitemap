@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Platform;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class PlatformTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Platform::class);
+        $reflectionClass = new \ReflectionClass(Platform::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsPlatformInterface()
     {
-        $reflectionClass = new ReflectionClass(Platform::class);
+        $reflectionClass = new \ReflectionClass(Platform::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(PlatformInterface::class));
     }
@@ -51,7 +49,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($relationship)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Platform($relationship);
     }
@@ -92,7 +90,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTypesRejectsInvalidValues($type)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -112,7 +110,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
 
     public function testWithTypesRejectsUnknownValues()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -137,7 +135,7 @@ class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTypesRejectsDuplicateValues($type)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class PlayerLocation implements PlayerLocationInterface
 {
@@ -32,7 +31,7 @@ final class PlayerLocation implements PlayerLocationInterface
     /**
      * @param string $location
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($location)
     {
@@ -59,7 +58,7 @@ final class PlayerLocation implements PlayerLocationInterface
     /**
      * @param string $allowEmbed
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

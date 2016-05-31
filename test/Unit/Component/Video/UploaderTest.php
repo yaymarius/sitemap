@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Uploader;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class UploaderTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Uploader::class);
+        $reflectionClass = new \ReflectionClass(Uploader::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsUploaderInterface()
     {
-        $reflectionClass = new ReflectionClass(Uploader::class);
+        $reflectionClass = new \ReflectionClass(Uploader::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(UploaderInterface::class));
     }
@@ -47,7 +45,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($name)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Uploader($name);
     }
@@ -59,7 +57,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankString($name)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Uploader($name);
     }
@@ -82,7 +80,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithInfoRejectsInvalidValue($info)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $uploader = new Uploader($this->getFaker()->url);
 
@@ -96,7 +94,7 @@ class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithInfoRejectsBlankString($info)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $uploader = new Uploader($this->getFaker()->url);
 

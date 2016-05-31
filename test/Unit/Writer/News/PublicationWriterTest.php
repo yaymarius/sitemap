@@ -12,7 +12,6 @@ namespace Refinery29\Sitemap\Test\Unit\Writer\News;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\News\PublicationWriter;
-use XMLWriter;
 
 class PublicationWriterTest extends AbstractTestCase
 {
@@ -68,10 +67,10 @@ class PublicationWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

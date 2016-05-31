@@ -10,8 +10,6 @@
 namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
-use DateTimeInterface;
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
@@ -56,7 +54,7 @@ final class Url implements UrlInterface
     /**
      * @param string $location
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($location)
     {
@@ -101,11 +99,11 @@ final class Url implements UrlInterface
     }
 
     /**
-     * @param DateTimeInterface $lastModified
+     * @param \DateTimeInterface $lastModified
      *
      * @return static
      */
-    public function withLastModified(DateTimeInterface $lastModified)
+    public function withLastModified(\DateTimeInterface $lastModified)
     {
         $instance = clone $this;
 
@@ -117,7 +115,7 @@ final class Url implements UrlInterface
     /**
      * @param string $changeFrequency
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -145,7 +143,7 @@ final class Url implements UrlInterface
     /**
      * @param string $priority
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -166,7 +164,7 @@ final class Url implements UrlInterface
     /**
      * @param ImageInterface[] $images
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -185,7 +183,7 @@ final class Url implements UrlInterface
     /**
      * @param NewsInterface[] $news
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -203,7 +201,7 @@ final class Url implements UrlInterface
     /**
      * @param VideoInterface[] $videos
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

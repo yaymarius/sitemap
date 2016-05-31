@@ -9,7 +9,6 @@
 
 namespace Refinery29\Sitemap\Writer\Video;
 
-use DateTimeInterface;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
@@ -18,7 +17,6 @@ use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -80,7 +78,7 @@ class VideoWriter
         $this->tagWriter = $tagWriter ?: new TagWriter();
     }
 
-    public function write(VideoInterface $video, XMLWriter $xmlWriter)
+    public function write(VideoInterface $video, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:video');
 
@@ -108,28 +106,28 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writeThumbnailLocation(XMLWriter $xmlWriter, $thumbnailLocation)
+    private function writeThumbnailLocation(\XMLWriter $xmlWriter, $thumbnailLocation)
     {
         $xmlWriter->startElement('video:thumbnail_loc');
         $xmlWriter->text($thumbnailLocation);
         $xmlWriter->endElement();
     }
 
-    private function writeTitle(XMLWriter $xmlWriter, $title)
+    private function writeTitle(\XMLWriter $xmlWriter, $title)
     {
         $xmlWriter->startElement('video:title');
         $xmlWriter->text($title);
         $xmlWriter->endElement();
     }
 
-    private function writeDescription(XMLWriter $xmlWriter, $description)
+    private function writeDescription(\XMLWriter $xmlWriter, $description)
     {
         $xmlWriter->startElement('video:description');
         $xmlWriter->text($description);
         $xmlWriter->endElement();
     }
 
-    private function writeContentLocation(XMLWriter $xmlWriter, $contentLocation = null)
+    private function writeContentLocation(\XMLWriter $xmlWriter, $contentLocation = null)
     {
         if ($contentLocation === null) {
             return;
@@ -140,7 +138,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writePlayerLocation(XMLWriter $xmlWriter, PlayerLocationInterface $playerLocation = null)
+    private function writePlayerLocation(\XMLWriter $xmlWriter, PlayerLocationInterface $playerLocation = null)
     {
         if ($playerLocation === null) {
             return;
@@ -149,7 +147,7 @@ class VideoWriter
         $this->playerLocationWriter->write($playerLocation, $xmlWriter);
     }
 
-    private function writeGalleryLocation(XMLWriter $xmlWriter, GalleryLocationInterface $galleryLocation = null)
+    private function writeGalleryLocation(\XMLWriter $xmlWriter, GalleryLocationInterface $galleryLocation = null)
     {
         if ($galleryLocation === null) {
             return;
@@ -159,10 +157,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter $xmlWriter
-     * @param int|null  $duration
+     * @param \XMLWriter $xmlWriter
+     * @param int|null   $duration
      */
-    private function writeDuration(XMLWriter $xmlWriter, $duration = null)
+    private function writeDuration(\XMLWriter $xmlWriter, $duration = null)
     {
         if ($duration === null) {
             return;
@@ -173,7 +171,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writePublicationDate(XMLWriter $xmlWriter, DateTimeInterface $publicationDate = null)
+    private function writePublicationDate(\XMLWriter $xmlWriter, \DateTimeInterface $publicationDate = null)
     {
         if ($publicationDate === null) {
             return;
@@ -184,7 +182,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writeExpirationDate(XMLWriter $xmlWriter, DateTimeInterface $expirationDate = null)
+    private function writeExpirationDate(\XMLWriter $xmlWriter, \DateTimeInterface $expirationDate = null)
     {
         if ($expirationDate === null) {
             return;
@@ -196,10 +194,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter  $xmlWriter
+     * @param \XMLWriter $xmlWriter
      * @param float|null $rating
      */
-    private function writeRating(XMLWriter $xmlWriter, $rating = null)
+    private function writeRating(\XMLWriter $xmlWriter, $rating = null)
     {
         if ($rating === null) {
             return;
@@ -211,10 +209,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter $xmlWriter
-     * @param int|null  $viewCount
+     * @param \XMLWriter $xmlWriter
+     * @param int|null   $viewCount
      */
-    private function writeViewCount(XMLWriter $xmlWriter, $viewCount = null)
+    private function writeViewCount(\XMLWriter $xmlWriter, $viewCount = null)
     {
         if ($viewCount === null) {
             return;
@@ -226,10 +224,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter   $xmlWriter
+     * @param \XMLWriter  $xmlWriter
      * @param string|null $familyFriendly
      */
-    private function writeFamilyFriendly(XMLWriter $xmlWriter, $familyFriendly = null)
+    private function writeFamilyFriendly(\XMLWriter $xmlWriter, $familyFriendly = null)
     {
         if ($familyFriendly === null) {
             return;
@@ -241,10 +239,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter      $xmlWriter
+     * @param \XMLWriter     $xmlWriter
      * @param TagInterface[] $tags
      */
-    private function writeTags(XMLWriter $xmlWriter, array $tags)
+    private function writeTags(\XMLWriter $xmlWriter, array $tags)
     {
         foreach ($tags as $tag) {
             $this->tagWriter->write($tag, $xmlWriter);
@@ -252,10 +250,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter   $xmlWriter
+     * @param \XMLWriter  $xmlWriter
      * @param string|null $category
      */
-    private function writeCategory(XMLWriter $xmlWriter, $category = null)
+    private function writeCategory(\XMLWriter $xmlWriter, $category = null)
     {
         if ($category === null) {
             return;
@@ -266,7 +264,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writeRestriction(XMLWriter $xmlWriter, RestrictionInterface $restriction = null)
+    private function writeRestriction(\XMLWriter $xmlWriter, RestrictionInterface $restriction = null)
     {
         if ($restriction === null) {
             return;
@@ -276,10 +274,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter        $xmlWriter
+     * @param \XMLWriter       $xmlWriter
      * @param PriceInterface[] $prices
      */
-    private function writePrices(XMLWriter $xmlWriter, array $prices)
+    private function writePrices(\XMLWriter $xmlWriter, array $prices)
     {
         foreach ($prices as $price) {
             $this->priceWriter->write($price, $xmlWriter);
@@ -287,10 +285,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter   $xmlWriter
+     * @param \XMLWriter  $xmlWriter
      * @param string|null $requiresSubscription
      */
-    private function writeRequiresSubscription(XMLWriter $xmlWriter, $requiresSubscription = null)
+    private function writeRequiresSubscription(\XMLWriter $xmlWriter, $requiresSubscription = null)
     {
         if ($requiresSubscription === null) {
             return;
@@ -301,7 +299,7 @@ class VideoWriter
         $xmlWriter->endElement();
     }
 
-    private function writeUploader(XMLWriter $xmlWriter, UploaderInterface $uploader = null)
+    private function writeUploader(\XMLWriter $xmlWriter, UploaderInterface $uploader = null)
     {
         if ($uploader === null) {
             return;
@@ -310,7 +308,7 @@ class VideoWriter
         $this->uploaderWriter->write($uploader, $xmlWriter);
     }
 
-    private function writePlatform(XMLWriter $xmlWriter, PlatformInterface $platform = null)
+    private function writePlatform(\XMLWriter $xmlWriter, PlatformInterface $platform = null)
     {
         if ($platform === null) {
             return;
@@ -320,10 +318,10 @@ class VideoWriter
     }
 
     /**
-     * @param XMLWriter   $xmlWriter
+     * @param \XMLWriter  $xmlWriter
      * @param string|null $live
      */
-    private function writeLive(XMLWriter $xmlWriter, $live = null)
+    private function writeLive(\XMLWriter $xmlWriter, $live = null)
     {
         if ($live === null) {
             return;

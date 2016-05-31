@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Image;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\Image;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class ImageTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Image::class);
+        $reflectionClass = new \ReflectionClass(Image::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsImageInterface()
     {
-        $reflectionClass = new ReflectionClass(Image::class);
+        $reflectionClass = new \ReflectionClass(Image::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(ImageInterface::class));
     }
@@ -52,7 +50,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Image($location);
     }
@@ -73,7 +71,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsInvalidValue($title)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -89,7 +87,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsEmptyString($title)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -120,7 +118,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCaptionRejectsInvalidValue($caption)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -136,7 +134,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCaptionRejectsEmptyString($caption)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -167,7 +165,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithGeoLocationRejectsInvalidValue($geoLocation)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -183,7 +181,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithGeoLocationRejectsBlankString($geoLocation)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -214,7 +212,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithLicenceRejectsInvalidValue($licence)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -230,7 +228,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithLicenceRejectsBlankString($licence)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 

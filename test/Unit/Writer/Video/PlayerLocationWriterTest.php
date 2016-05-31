@@ -12,7 +12,6 @@ namespace Refinery29\Sitemap\Test\Unit\Writer\Video;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PlayerLocationWriter;
-use XMLWriter;
 
 class PlayerLocationWriterTest extends AbstractTestCase
 {
@@ -95,10 +94,10 @@ class PlayerLocationWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

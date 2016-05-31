@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class Uploader implements UploaderInterface
 {
@@ -27,7 +26,7 @@ final class Uploader implements UploaderInterface
     /**
      * @param string $name
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($name)
     {
@@ -50,7 +49,7 @@ final class Uploader implements UploaderInterface
     /**
      * @param string $info
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

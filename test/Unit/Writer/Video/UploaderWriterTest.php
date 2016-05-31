@@ -12,7 +12,6 @@ namespace Refinery29\Sitemap\Test\Unit\Writer\Video;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\UploaderWriter;
-use XMLWriter;
 
 class UploaderWriterTest extends AbstractTestCase
 {
@@ -80,10 +79,10 @@ class UploaderWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

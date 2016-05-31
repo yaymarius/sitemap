@@ -9,13 +9,10 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\UrlSet;
 use Refinery29\Sitemap\Component\UrlSetInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
-use stdClass;
 
 class UrlSetTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,19 +20,19 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(UrlSet::class);
+        $reflectionClass = new \ReflectionClass(UrlSet::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testConstructorRejectsInvalidValue()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $urls = [
             $this->getUrlMock(),
             $this->getUrlMock(),
-            new stdClass(),
+            new \stdClass(),
         ];
 
         new UrlSet($urls);
@@ -43,7 +40,7 @@ class UrlSetTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsTooManyValues()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $urls = array_fill(
             0,

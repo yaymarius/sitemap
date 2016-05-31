@@ -10,8 +10,6 @@
 namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
-use DateTimeInterface;
-use InvalidArgumentException;
 
 final class Sitemap implements SitemapInterface
 {
@@ -21,14 +19,14 @@ final class Sitemap implements SitemapInterface
     private $location;
 
     /**
-     * @var DateTimeInterface|null
+     * @var \DateTimeInterface|null
      */
     private $lastModified;
 
     /**
      * @param string $location
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($location)
     {
@@ -48,11 +46,11 @@ final class Sitemap implements SitemapInterface
     }
 
     /**
-     * @param DateTimeInterface $lastModified
+     * @param \DateTimeInterface $lastModified
      *
      * @return static
      */
-    public function withLastModified(DateTimeInterface $lastModified)
+    public function withLastModified(\DateTimeInterface $lastModified)
     {
         $instance = clone $this;
 

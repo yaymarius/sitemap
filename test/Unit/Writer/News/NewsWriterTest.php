@@ -9,13 +9,11 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Writer\News;
 
-use DateTime;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\News\NewsWriter;
 use Refinery29\Sitemap\Writer\News\PublicationWriter;
-use XMLWriter;
 
 class NewsWriterTest extends AbstractTestCase
 {
@@ -119,7 +117,7 @@ class NewsWriterTest extends AbstractTestCase
 
     /**
      * @param PublicationInterface $publication
-     * @param DateTime             $publicationDate
+     * @param \DateTime            $publicationDate
      * @param string               $title
      * @param string               $access
      * @param array                $genres
@@ -130,7 +128,7 @@ class NewsWriterTest extends AbstractTestCase
      */
     private function getNewsMock(
         PublicationInterface $publication,
-        DateTime $publicationDate,
+        \DateTime $publicationDate,
         $title,
         $access = null,
         array $genres = [],
@@ -201,10 +199,10 @@ class NewsWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

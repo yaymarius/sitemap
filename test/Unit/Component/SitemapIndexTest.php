@@ -9,13 +9,10 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\SitemapIndex;
 use Refinery29\Sitemap\Component\SitemapIndexInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
-use stdClass;
 
 class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,14 +20,14 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(SitemapIndex::class);
+        $reflectionClass = new \ReflectionClass(SitemapIndex::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsSitemapIndexInterface()
     {
-        $reflectionClass = new ReflectionClass(SitemapIndex::class);
+        $reflectionClass = new \ReflectionClass(SitemapIndex::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(SitemapIndexInterface::class));
     }
@@ -42,7 +39,7 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($value)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new SitemapIndex($value);
     }
@@ -59,7 +56,7 @@ class SitemapIndexTest extends \PHPUnit_Framework_TestCase
             [
                 $this->getSitemapMock(),
                 $this->getSitemapMock(),
-                new stdClass(),
+                new \stdClass(),
             ],
         ];
 

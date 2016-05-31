@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer\Video;
 
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -19,7 +18,7 @@ use XMLWriter;
  */
 class RestrictionWriter
 {
-    public function write(RestrictionInterface $restriction, XMLWriter $xmlWriter)
+    public function write(RestrictionInterface $restriction, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:restriction');
         $xmlWriter->writeAttribute('relationship', $restriction->relationship());

@@ -12,7 +12,6 @@ namespace Refinery29\Sitemap\Test\Unit\Writer\Video;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\GalleryLocationWriter;
-use XMLWriter;
 
 class GalleryLocationWriterTest extends AbstractTestCase
 {
@@ -82,10 +81,10 @@ class GalleryLocationWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

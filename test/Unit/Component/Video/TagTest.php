@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Tag;
 use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class TagTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class TagTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Tag::class);
+        $reflectionClass = new \ReflectionClass(Tag::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsTagInterface()
     {
-        $reflectionClass = new ReflectionClass(Tag::class);
+        $reflectionClass = new \ReflectionClass(Tag::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(TagInterface::class));
     }
@@ -40,7 +38,7 @@ class TagTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($content)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Tag($content);
     }
@@ -52,7 +50,7 @@ class TagTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankString($content)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Tag($content);
     }

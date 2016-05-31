@@ -9,7 +9,6 @@
 
 namespace Refinery29\Sitemap\Test\Integration\Writer;
 
-use DateTimeImmutable;
 use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapIndex;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
@@ -19,7 +18,7 @@ class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
     public function testWriteCreatesXml()
     {
         $sitemap = new Sitemap('http://www.example.com/sitemap1.xml.gz');
-        $sitemap = $sitemap->withLastModified(new DateTimeImmutable('2004-10-01T18:23:17+00:00'));
+        $sitemap = $sitemap->withLastModified(new \DateTimeImmutable('2004-10-01T18:23:17+00:00'));
 
         $anotherSitemap = new Sitemap('http://www.example.com/sitemap2.xml.gz');
 

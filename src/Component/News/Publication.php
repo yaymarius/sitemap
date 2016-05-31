@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\News;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class Publication implements PublicationInterface
 {
@@ -28,7 +27,7 @@ final class Publication implements PublicationInterface
      * @param string $name
      * @param string $language
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($name, $language)
     {

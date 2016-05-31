@@ -9,10 +9,8 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Writer;
 
-use DateTime;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Sitemap\Writer\SitemapWriter;
-use XMLWriter;
 
 class SitemapWriterTest extends AbstractTestCase
 {
@@ -64,12 +62,12 @@ class SitemapWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param string        $location
-     * @param DateTime|null $lastModified
+     * @param string         $location
+     * @param \DateTime|null $lastModified
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|SitemapInterface
      */
-    private function getSitemapMock($location, DateTime $lastModified = null)
+    private function getSitemapMock($location, \DateTime $lastModified = null)
     {
         $sitemap = $this->getMockBuilder(SitemapInterface::class)->getMock();
 
@@ -89,10 +87,10 @@ class SitemapWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

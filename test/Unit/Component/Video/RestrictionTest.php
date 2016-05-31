@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Restriction;
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class RestrictionTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Restriction::class);
+        $reflectionClass = new \ReflectionClass(Restriction::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsRestrictionInterface()
     {
-        $reflectionClass = new ReflectionClass(Restriction::class);
+        $reflectionClass = new \ReflectionClass(Restriction::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(RestrictionInterface::class));
     }
@@ -53,14 +51,14 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($restriction)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Restriction($restriction);
     }
 
     public function testConstructorRejectsUnknownValue()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $relationship = $this->getFaker()->sentence();
 
@@ -103,7 +101,7 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCountryCodeRejectsInvalidCountryCodes($countryCode)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -128,7 +126,7 @@ class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCountryCodeRejectsBlankCountryCodes($countryCode)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

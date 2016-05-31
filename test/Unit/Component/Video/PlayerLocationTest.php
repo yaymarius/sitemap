@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\PlayerLocation;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,14 +25,14 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(PlayerLocation::class);
+        $reflectionClass = new \ReflectionClass(PlayerLocation::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsPlayerLocationInterface()
     {
-        $reflectionClass = new ReflectionClass(PlayerLocation::class);
+        $reflectionClass = new \ReflectionClass(PlayerLocation::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(PlayerLocationInterface::class));
     }
@@ -54,7 +52,7 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidLocation($location)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new PlayerLocation($location);
     }
@@ -77,7 +75,7 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithAllowEmbedRejectsInvalidValues($allowEmbed)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -88,7 +86,7 @@ class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testWithAllowEmbedRejectsUnknownValues()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

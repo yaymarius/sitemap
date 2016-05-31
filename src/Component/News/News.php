@@ -10,8 +10,6 @@
 namespace Refinery29\Sitemap\Component\News;
 
 use Assert\Assertion;
-use DateTimeInterface;
-use InvalidArgumentException;
 
 final class News implements NewsInterface
 {
@@ -21,7 +19,7 @@ final class News implements NewsInterface
     private $publication;
 
     /**
-     * @var DateTimeInterface
+     * @var \DateTimeInterface
      */
     private $publicationDate;
 
@@ -52,12 +50,12 @@ final class News implements NewsInterface
 
     /**
      * @param PublicationInterface $publication
-     * @param DateTimeInterface    $publicationDate
+     * @param \DateTimeInterface   $publicationDate
      * @param string               $title
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
-    public function __construct(PublicationInterface $publication, DateTimeInterface $publicationDate, $title)
+    public function __construct(PublicationInterface $publication, \DateTimeInterface $publicationDate, $title)
     {
         Assertion::string($title);
         Assertion::notBlank($title);
@@ -105,7 +103,7 @@ final class News implements NewsInterface
     /**
      * @param string $access
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -128,7 +126,7 @@ final class News implements NewsInterface
     /**
      * @param array $genres
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -155,7 +153,7 @@ final class News implements NewsInterface
     /**
      * @param array $keywords
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -174,7 +172,7 @@ final class News implements NewsInterface
     /**
      * @param array $stockTickers
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

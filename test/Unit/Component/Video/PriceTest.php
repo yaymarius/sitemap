@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\Price;
 use Refinery29\Sitemap\Component\Video\PriceInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class PriceTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Price::class);
+        $reflectionClass = new \ReflectionClass(Price::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsPriceInterface()
     {
-        $reflectionClass = new ReflectionClass(Price::class);
+        $reflectionClass = new \ReflectionClass(Price::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(PriceInterface::class));
     }
@@ -56,7 +54,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($value)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Price(
             $value,
@@ -66,7 +64,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsTooSmallValue()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $value = PriceInterface::VALUE_MIN - 0.01;
 
@@ -104,7 +102,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTypeRejectsInvalidValue($type)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -121,7 +119,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testWithTypeRejectsUnknownValue()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -183,7 +181,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithResolutionRejectsInvalidValue($resolution)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -200,7 +198,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testWithResolutionRejectsUnknownValue()
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

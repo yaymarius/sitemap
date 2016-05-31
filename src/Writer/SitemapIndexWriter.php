@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer;
 
 use Refinery29\Sitemap\Component\SitemapIndexInterface;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/75712?rd=1
@@ -29,13 +28,13 @@ class SitemapIndexWriter
 
     /**
      * @param SitemapIndexInterface $sitemapIndex
-     * @param XMLWriter             $xmlWriter
+     * @param \XMLWriter            $xmlWriter
      *
      * @return string
      */
-    public function write(SitemapIndexInterface $sitemapIndex, XMLWriter $xmlWriter = null)
+    public function write(SitemapIndexInterface $sitemapIndex, \XMLWriter $xmlWriter = null)
     {
-        $xmlWriter = $xmlWriter ?: new XMLWriter();
+        $xmlWriter = $xmlWriter ?: new \XMLWriter();
 
         $xmlWriter->openMemory();
         $xmlWriter->startDocument('1.0', 'UTF-8');
