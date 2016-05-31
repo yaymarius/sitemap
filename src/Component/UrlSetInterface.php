@@ -21,7 +21,7 @@ interface UrlSetInterface
     const XML_NAMESPACE_URI = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
     /**
-     * Constant for the maximum number of URLs which can be added to a UrlSet
+     * Constant for the maximum number of URLs which can be added to a UrlSet.
      */
     const URL_MAX_COUNT = 50000;
 
