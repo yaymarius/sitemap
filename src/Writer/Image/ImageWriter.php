@@ -10,14 +10,13 @@
 namespace Refinery29\Sitemap\Writer\Image;
 
 use Refinery29\Sitemap\Component\Image\ImageInterface;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/178636?hl=en
  */
 class ImageWriter
 {
-    public function write(ImageInterface $image, XMLWriter $xmlWriter)
+    public function write(ImageInterface $image, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('image:image');
 
@@ -30,14 +29,14 @@ class ImageWriter
         $xmlWriter->endElement();
     }
 
-    private function writeLocation(XMLWriter $xmlWriter, $location)
+    private function writeLocation(\XMLWriter $xmlWriter, $location)
     {
         $xmlWriter->startElement('image:loc');
         $xmlWriter->text($location);
         $xmlWriter->endElement();
     }
 
-    private function writeTitle(XMLWriter $xmlWriter, $title = null)
+    private function writeTitle(\XMLWriter $xmlWriter, $title = null)
     {
         if ($title === null) {
             return;
@@ -48,7 +47,7 @@ class ImageWriter
         $xmlWriter->endElement();
     }
 
-    private function writeCaption(XMLWriter $xmlWriter, $caption = null)
+    private function writeCaption(\XMLWriter $xmlWriter, $caption = null)
     {
         if ($caption === null) {
             return;
@@ -59,7 +58,7 @@ class ImageWriter
         $xmlWriter->endElement();
     }
 
-    private function writeGeoLocation(XMLWriter $xmlWriter, $geoLocation = null)
+    private function writeGeoLocation(\XMLWriter $xmlWriter, $geoLocation = null)
     {
         if ($geoLocation === null) {
             return;
@@ -70,7 +69,7 @@ class ImageWriter
         $xmlWriter->endElement();
     }
 
-    private function writeLicence(XMLWriter $xmlWriter, $licence = null)
+    private function writeLicence(\XMLWriter $xmlWriter, $licence = null)
     {
         if ($licence === null) {
             return;

@@ -9,7 +9,6 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Writer\Video;
 
-use DateTime;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
@@ -27,7 +26,6 @@ use Refinery29\Sitemap\Writer\Video\RestrictionWriter;
 use Refinery29\Sitemap\Writer\Video\TagWriter;
 use Refinery29\Sitemap\Writer\Video\UploaderWriter;
 use Refinery29\Sitemap\Writer\Video\VideoWriter;
-use XMLWriter;
 
 class VideoWriterTest extends AbstractTestCase
 {
@@ -199,8 +197,8 @@ class VideoWriterTest extends AbstractTestCase
      * @param PlayerLocationInterface|null  $playerLocation
      * @param GalleryLocationInterface|null $galleryLocation
      * @param int|null                      $duration
-     * @param DateTime|null                 $publicationDate
-     * @param DateTime|null                 $expirationDate
+     * @param \DateTime|null                $publicationDate
+     * @param \DateTime|null                $expirationDate
      * @param float|null                    $rating
      * @param int|null                      $viewCount
      * @param string|null                   $familyFriendly
@@ -225,8 +223,8 @@ class VideoWriterTest extends AbstractTestCase
         PlayerLocationInterface $playerLocation = null,
         GalleryLocationInterface $galleryLocation = null,
         $duration = null,
-        DateTime $publicationDate = null,
-        DateTime $expirationDate = null,
+        \DateTime $publicationDate = null,
+        \DateTime $expirationDate = null,
         $rating = null,
         $viewCount = null,
         $familyFriendly = null,
@@ -381,12 +379,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter                $xmlWriter
+     * @param \XMLWriter               $xmlWriter
      * @param GalleryLocationInterface $galleryLocation
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|GalleryLocationWriter
      */
-    private function getGalleryLocationWriterSpy(XMLWriter $xmlWriter, GalleryLocationInterface $galleryLocation)
+    private function getGalleryLocationWriterSpy(\XMLWriter $xmlWriter, GalleryLocationInterface $galleryLocation)
     {
         $galleryLocationWriter = $this->getGalleryLocationWriterMock();
 
@@ -419,12 +417,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter         $xmlWriter
+     * @param \XMLWriter        $xmlWriter
      * @param PlatformInterface $platform
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|PlatformWriter
      */
-    private function getPlatformWriterSpy(XMLWriter $xmlWriter, PlatformInterface $platform)
+    private function getPlatformWriterSpy(\XMLWriter $xmlWriter, PlatformInterface $platform)
     {
         $platformWriter = $this->getPlatformWriterMock();
 
@@ -457,12 +455,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter               $xmlWriter
+     * @param \XMLWriter              $xmlWriter
      * @param PlayerLocationInterface $playerLocation
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|PlayerLocationWriter
      */
-    private function getPlayerLocationWriterSpy(XMLWriter $xmlWriter, PlayerLocationInterface $playerLocation)
+    private function getPlayerLocationWriterSpy(\XMLWriter $xmlWriter, PlayerLocationInterface $playerLocation)
     {
         $playerLocationWriter = $this->getPlayerLocationWriterMock();
 
@@ -495,12 +493,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter        $xmlWriter
+     * @param \XMLWriter       $xmlWriter
      * @param PriceInterface[] $prices
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|PriceWriter
      */
-    private function getPriceWriterSpy(XMLWriter $xmlWriter, array $prices)
+    private function getPriceWriterSpy(\XMLWriter $xmlWriter, array $prices)
     {
         $priceWriter = $this->getPriceWriterMock();
 
@@ -535,12 +533,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter            $xmlWriter
+     * @param \XMLWriter           $xmlWriter
      * @param RestrictionInterface $restriction
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|RestrictionWriter
      */
-    private function getRestrictionWriterSpy(XMLWriter $xmlWriter, RestrictionInterface $restriction)
+    private function getRestrictionWriterSpy(\XMLWriter $xmlWriter, RestrictionInterface $restriction)
     {
         $restrictionWriter = $this->getRestrictionWriterMock();
 
@@ -573,12 +571,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter $xmlWriter
-     * @param array     $tags
+     * @param \XMLWriter $xmlWriter
+     * @param array      $tags
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|TagWriter
      */
-    private function getTagWriterSpy(XMLWriter $xmlWriter, array $tags)
+    private function getTagWriterSpy(\XMLWriter $xmlWriter, array $tags)
     {
         $tagWriter = $this->getTagWriterMock();
 
@@ -605,12 +603,12 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter         $xmlWriter
+     * @param \XMLWriter        $xmlWriter
      * @param UploaderInterface $uploader
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|UploaderWriter
      */
-    private function getUploaderWriterSpy(XMLWriter $xmlWriter, UploaderInterface $uploader)
+    private function getUploaderWriterSpy(\XMLWriter $xmlWriter, UploaderInterface $uploader)
     {
         $uploaderWriter = $this->getUploaderWriterMock();
 
@@ -635,10 +633,10 @@ class VideoWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

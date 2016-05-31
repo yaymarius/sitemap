@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class GalleryLocation implements GalleryLocationInterface
 {
@@ -27,7 +26,7 @@ final class GalleryLocation implements GalleryLocationInterface
     /**
      * @param string $location
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($location)
     {
@@ -49,7 +48,7 @@ final class GalleryLocation implements GalleryLocationInterface
     /**
      * @param string $title
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

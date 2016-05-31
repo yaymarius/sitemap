@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer\Video;
 
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -19,7 +18,7 @@ use XMLWriter;
  */
 class GalleryLocationWriter
 {
-    public function write(GalleryLocationInterface $galleryLocation, XMLWriter $xmlWriter)
+    public function write(GalleryLocationInterface $galleryLocation, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:gallery_loc');
 

@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer\Video;
 
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -19,7 +18,7 @@ use XMLWriter;
  */
 class PlayerLocationWriter
 {
-    public function write(PlayerLocationInterface $playerLocation, XMLWriter $xmlWriter)
+    public function write(PlayerLocationInterface $playerLocation, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:player_loc');
 

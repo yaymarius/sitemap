@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer\Video;
 
 use Refinery29\Sitemap\Component\Video\TagInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -19,7 +18,7 @@ use XMLWriter;
  */
 class TagWriter
 {
-    public function write(TagInterface $tag, XMLWriter $xmlWriter)
+    public function write(TagInterface $tag, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:tag');
         $xmlWriter->text($tag->content());

@@ -9,7 +9,6 @@
 
 namespace Refinery29\Sitemap\Test\Integration\Writer;
 
-use DateTimeImmutable;
 use Refinery29\Sitemap\Component;
 use Refinery29\Sitemap\Writer;
 
@@ -55,7 +54,7 @@ XML;
                 'The National Park Gazette',
                 'en_US'
             ),
-            new DateTimeImmutable('2016-02-29T12:00:00+00:00'),
+            new \DateTimeImmutable('2016-02-29T12:00:00+00:00'),
             'Drive to Park ends well'
         );
 
@@ -115,8 +114,8 @@ XML;
         $anotherVideo = $anotherVideo
             ->withGalleryLocation($galleryLocation)
             ->withDuration(65)
-            ->withPublicationDate(new DateTimeImmutable('2016-03-01T15:39:12+00:00'))
-            ->withExpirationDate(new DateTimeImmutable('2016-12-31T00:00:00+00:00'))
+            ->withPublicationDate(new \DateTimeImmutable('2016-03-01T15:39:12+00:00'))
+            ->withExpirationDate(new \DateTimeImmutable('2016-12-31T00:00:00+00:00'))
             ->withRating(3.5)
             ->withViewCount(9000)
             ->withTags([

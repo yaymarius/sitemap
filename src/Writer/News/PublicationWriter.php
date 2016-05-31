@@ -10,14 +10,13 @@
 namespace Refinery29\Sitemap\Writer\News;
 
 use Refinery29\Sitemap\Component\News\PublicationInterface;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/news/publisher/answer/74288?hl=en#exampleentry
  */
 class PublicationWriter
 {
-    public function write(PublicationInterface $publication, XMLWriter $xmlWriter)
+    public function write(PublicationInterface $publication, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('news:publication');
 
@@ -27,14 +26,14 @@ class PublicationWriter
         $xmlWriter->endElement();
     }
 
-    private function writeName(XMLWriter $xmlWriter, $name)
+    private function writeName(\XMLWriter $xmlWriter, $name)
     {
         $xmlWriter->startElement('news:name');
         $xmlWriter->text($name);
         $xmlWriter->endElement();
     }
 
-    private function writeLanguage(XMLWriter $xmlWriter, $language)
+    private function writeLanguage(\XMLWriter $xmlWriter, $language)
     {
         $xmlWriter->startElement('news:language');
         $xmlWriter->text($language);

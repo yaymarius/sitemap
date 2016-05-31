@@ -9,15 +9,12 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\Url;
 use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
-use stdClass;
 
 class UrlTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,14 +22,14 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Url::class);
+        $reflectionClass = new \ReflectionClass(Url::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsUrlInterface()
     {
-        $reflectionClass = new ReflectionClass(Url::class);
+        $reflectionClass = new \ReflectionClass(Url::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(UrlInterface::class));
     }
@@ -61,7 +58,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Url($location);
     }
@@ -98,7 +95,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithChangeFrequencyRejectsInvalidValue($changeFrequency)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
@@ -152,7 +149,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithPriorityRejectsInvalidValue($priority)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
@@ -166,7 +163,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithPriorityRejectsOutOfBoundsValue($priority)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
@@ -237,7 +234,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithImagesRejectsInvalidValue($images)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -256,7 +253,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
             [
                 $this->getImageMock(),
                 $this->getImageMock(),
-                new stdClass(),
+                new \stdClass(),
             ],
         ];
 
@@ -293,7 +290,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithNewsRejectsInvalidValue($news)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -312,7 +309,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
             [
                 $this->getNewsMock(),
                 $this->getNewsMock(),
-                new stdClass(),
+                new \stdClass(),
             ],
         ];
 
@@ -349,7 +346,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithVideosRejectsInvalidValue($videos)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -368,7 +365,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
             [
                 $this->getVideoMock(),
                 $this->getVideoMock(),
-                new stdClass(),
+                new \stdClass(),
             ],
         ];
 

@@ -12,7 +12,6 @@ namespace Refinery29\Sitemap\Test\Unit\Writer\Image;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Image\ImageWriter;
-use XMLWriter;
 
 class ImageWriterTest extends AbstractTestCase
 {
@@ -119,10 +118,10 @@ class ImageWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

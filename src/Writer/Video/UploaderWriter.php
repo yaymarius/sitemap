@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer\Video;
 
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -19,7 +18,7 @@ use XMLWriter;
  */
 class UploaderWriter
 {
-    public function write(UploaderInterface $uploader, XMLWriter $xmlWriter)
+    public function write(UploaderInterface $uploader, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:uploader');
 

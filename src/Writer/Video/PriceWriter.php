@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Writer\Video;
 
 use Refinery29\Sitemap\Component\Video\PriceInterface;
-use XMLWriter;
 
 /**
  * @link https://developers.google.com/webmasters/videosearch/sitemaps#video-sitemap-tag-definitions
@@ -19,7 +18,7 @@ use XMLWriter;
  */
 class PriceWriter
 {
-    public function write(PriceInterface $price, XMLWriter $xmlWriter)
+    public function write(PriceInterface $price, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('video:price');
         $xmlWriter->writeAttribute('currency', $price->currency());

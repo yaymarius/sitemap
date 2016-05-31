@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class SitemapTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Sitemap::class);
+        $reflectionClass = new \ReflectionClass(Sitemap::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsSitemapInterface()
     {
-        $reflectionClass = new ReflectionClass(Sitemap::class);
+        $reflectionClass = new \ReflectionClass(Sitemap::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(SitemapInterface::class));
     }
@@ -50,7 +48,7 @@ class SitemapTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new Sitemap($location);
     }

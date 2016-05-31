@@ -9,7 +9,6 @@
 
 namespace Refinery29\Sitemap\Writer;
 
-use DateTimeInterface;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\UrlInterface;
@@ -17,7 +16,6 @@ use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Sitemap\Writer\Image\ImageWriter;
 use Refinery29\Sitemap\Writer\News\NewsWriter;
 use Refinery29\Sitemap\Writer\Video\VideoWriter;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/183668?hl=en
@@ -51,7 +49,7 @@ class UrlWriter
         $this->videoWriter = $videoWriter ?: new VideoWriter();
     }
 
-    public function write(UrlInterface $url, XMLWriter $xmlWriter)
+    public function write(UrlInterface $url, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('url');
 
@@ -66,14 +64,14 @@ class UrlWriter
         $xmlWriter->endElement();
     }
 
-    private function writeLocation(XMLWriter $xmlWriter, $location)
+    private function writeLocation(\XMLWriter $xmlWriter, $location)
     {
         $xmlWriter->startElement('loc');
         $xmlWriter->text($location);
         $xmlWriter->endElement();
     }
 
-    private function writeLastModified(XMLWriter $xmlWriter, DateTimeInterface $lastModified = null)
+    private function writeLastModified(\XMLWriter $xmlWriter, \DateTimeInterface $lastModified = null)
     {
         if ($lastModified === null) {
             return;
@@ -84,7 +82,7 @@ class UrlWriter
         $xmlWriter->endElement();
     }
 
-    private function writeChangeFrequency(XMLWriter $xmlWriter, $changeFrequency = null)
+    private function writeChangeFrequency(\XMLWriter $xmlWriter, $changeFrequency = null)
     {
         if ($changeFrequency === null) {
             return;
@@ -95,7 +93,7 @@ class UrlWriter
         $xmlWriter->endElement();
     }
 
-    private function writePriority(XMLWriter $xmlWriter, $priority = null)
+    private function writePriority(\XMLWriter $xmlWriter, $priority = null)
     {
         if ($priority === null) {
             return;
@@ -107,10 +105,10 @@ class UrlWriter
     }
 
     /**
-     * @param XMLWriter        $xmlWriter
+     * @param \XMLWriter       $xmlWriter
      * @param ImageInterface[] $images
      */
-    private function writeImages(XMLWriter $xmlWriter, array $images = [])
+    private function writeImages(\XMLWriter $xmlWriter, array $images = [])
     {
         foreach ($images as $image) {
             $this->imageWriter->write($image, $xmlWriter);
@@ -118,10 +116,10 @@ class UrlWriter
     }
 
     /**
-     * @param XMLWriter       $xmlWriter
+     * @param \XMLWriter      $xmlWriter
      * @param NewsInterface[] $news
      */
-    private function writeNews(XMLWriter $xmlWriter, array $news = [])
+    private function writeNews(\XMLWriter $xmlWriter, array $news = [])
     {
         foreach ($news as $pieceOfNews) {
             $this->newsWriter->write($pieceOfNews, $xmlWriter);
@@ -129,10 +127,10 @@ class UrlWriter
     }
 
     /**
-     * @param XMLWriter        $xmlWriter
+     * @param \XMLWriter       $xmlWriter
      * @param VideoInterface[] $videos
      */
-    private function writeVideos(XMLWriter $xmlWriter, array $videos = [])
+    private function writeVideos(\XMLWriter $xmlWriter, array $videos = [])
     {
         foreach ($videos as $video) {
             $this->videoWriter->write($video, $xmlWriter);

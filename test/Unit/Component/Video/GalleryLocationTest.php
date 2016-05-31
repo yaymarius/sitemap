@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\Video\GalleryLocation;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class GalleryLocationTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(GalleryLocation::class);
+        $reflectionClass = new \ReflectionClass(GalleryLocation::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsGalleryLocationInterface()
     {
-        $reflectionClass = new ReflectionClass(GalleryLocation::class);
+        $reflectionClass = new \ReflectionClass(GalleryLocation::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(GalleryLocationInterface::class));
     }
@@ -47,7 +45,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         new GalleryLocation($location);
     }
@@ -70,7 +68,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsInvalidValue($title)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -86,7 +84,7 @@ class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsBlankString($title)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 

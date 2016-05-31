@@ -9,7 +9,6 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Writer;
 
-use DateTime;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\UrlInterface;
@@ -18,7 +17,6 @@ use Refinery29\Sitemap\Writer\Image\ImageWriter;
 use Refinery29\Sitemap\Writer\News\NewsWriter;
 use Refinery29\Sitemap\Writer\UrlWriter;
 use Refinery29\Sitemap\Writer\Video\VideoWriter;
-use XMLWriter;
 
 class UrlWriterTest extends AbstractTestCase
 {
@@ -118,7 +116,7 @@ class UrlWriterTest extends AbstractTestCase
 
     /**
      * @param string           $location
-     * @param DateTime|null    $lastModified
+     * @param \DateTime|null   $lastModified
      * @param string|null      $changeFrequency
      * @param float|null       $priority
      * @param ImageInterface[] $images
@@ -129,7 +127,7 @@ class UrlWriterTest extends AbstractTestCase
      */
     private function getUrlMock(
         $location,
-        DateTime $lastModified = null,
+        \DateTime $lastModified = null,
         $changeFrequency = null,
         $priority = null,
         array $images = [],
@@ -200,12 +198,12 @@ class UrlWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter        $xmlWriter
+     * @param \XMLWriter       $xmlWriter
      * @param ImageInterface[] $images
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|ImageWriter
      */
-    private function getImageWriterSpy(XMLWriter $xmlWriter, array $images = [])
+    private function getImageWriterSpy(\XMLWriter $xmlWriter, array $images = [])
     {
         $imageWriter = $this->getImageWriterMock();
 
@@ -243,12 +241,12 @@ class UrlWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter       $xmlWriter
+     * @param \XMLWriter      $xmlWriter
      * @param NewsInterface[] $news
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|NewsWriter
      */
-    private function getNewsWriterSpy(XMLWriter $xmlWriter, array $news = [])
+    private function getNewsWriterSpy(\XMLWriter $xmlWriter, array $news = [])
     {
         $newsWriter = $this->getNewsWriterMock();
 
@@ -286,12 +284,12 @@ class UrlWriterTest extends AbstractTestCase
     }
 
     /**
-     * @param XMLWriter        $xmlWriter
+     * @param \XMLWriter       $xmlWriter
      * @param VideoInterface[] $videos
      *
      * @return \PHPUnit_Framework_MockObject_MockObject|VideoWriter
      */
-    private function getVideoWriterSpy(XMLWriter $xmlWriter, array $videos = [])
+    private function getVideoWriterSpy(\XMLWriter $xmlWriter, array $videos = [])
     {
         $videoWriter = $this->getVideoWriterMock();
 
@@ -310,10 +308,10 @@ class UrlWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

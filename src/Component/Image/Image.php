@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\Image;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class Image implements ImageInterface
 {
@@ -42,7 +41,7 @@ final class Image implements ImageInterface
     /**
      * @param string $location
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($location)
     {
@@ -79,7 +78,7 @@ final class Image implements ImageInterface
     /**
      * @param string $title
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -98,7 +97,7 @@ final class Image implements ImageInterface
     /**
      * @param string $caption
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -117,7 +116,7 @@ final class Image implements ImageInterface
     /**
      * @param string $geoLocation
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -136,7 +135,7 @@ final class Image implements ImageInterface
     /**
      * @param string $licence
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

@@ -9,9 +9,7 @@
 
 namespace Refinery29\Sitemap\Writer\News;
 
-use DateTimeInterface;
 use Refinery29\Sitemap\Component\News\NewsInterface;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/news/publisher/answer/74288?hl=en#exampleentry
@@ -28,7 +26,7 @@ class NewsWriter
         $this->publicationWriter = $publicationWriter ?: new PublicationWriter();
     }
 
-    public function write(NewsInterface $news, XMLWriter $xmlWriter)
+    public function write(NewsInterface $news, \XMLWriter $xmlWriter)
     {
         $xmlWriter->startElement('news:news');
 
@@ -44,21 +42,21 @@ class NewsWriter
         $xmlWriter->endElement();
     }
 
-    private function writePublicationDate(XMLWriter $xmlWriter, DateTimeInterface $publicationDate)
+    private function writePublicationDate(\XMLWriter $xmlWriter, \DateTimeInterface $publicationDate)
     {
         $xmlWriter->startElement('news:publication_date');
         $xmlWriter->text($publicationDate->format('c'));
         $xmlWriter->endElement();
     }
 
-    private function writeTitle(XMLWriter $xmlWriter, $title)
+    private function writeTitle(\XMLWriter $xmlWriter, $title)
     {
         $xmlWriter->startElement('news:title');
         $xmlWriter->text($title);
         $xmlWriter->endElement();
     }
 
-    private function writeAccess(XMLWriter $xmlWriter, $access = null)
+    private function writeAccess(\XMLWriter $xmlWriter, $access = null)
     {
         if ($access === null) {
             return;
@@ -69,7 +67,7 @@ class NewsWriter
         $xmlWriter->endElement();
     }
 
-    private function writeGenres(XMLWriter $xmlWriter, array $genres)
+    private function writeGenres(\XMLWriter $xmlWriter, array $genres)
     {
         if (count($genres) === 0) {
             return;
@@ -80,7 +78,7 @@ class NewsWriter
         $xmlWriter->endElement();
     }
 
-    private function writeKeywords(XMLWriter $xmlWriter, array $keywords)
+    private function writeKeywords(\XMLWriter $xmlWriter, array $keywords)
     {
         if (count($keywords) === 0) {
             return;
@@ -91,7 +89,7 @@ class NewsWriter
         $xmlWriter->endElement();
     }
 
-    private function writeStockTickers(XMLWriter $xmlWriter, array $stockTickers)
+    private function writeStockTickers(\XMLWriter $xmlWriter, array $stockTickers)
     {
         if (count($stockTickers) === 0) {
             return;

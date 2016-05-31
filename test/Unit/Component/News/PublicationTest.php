@@ -9,11 +9,9 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Component\News;
 
-use InvalidArgumentException;
 use Refinery29\Sitemap\Component\News\Publication;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
-use ReflectionClass;
 
 class PublicationTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,14 +19,14 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new ReflectionClass(Publication::class);
+        $reflectionClass = new \ReflectionClass(Publication::class);
 
         $this->assertTrue($reflectionClass->isFinal());
     }
 
     public function testImplementsPublicationInterface()
     {
-        $reflectionClass = new ReflectionClass(Publication::class);
+        $reflectionClass = new \ReflectionClass(Publication::class);
 
         $this->assertTrue($reflectionClass->implementsInterface(PublicationInterface::class));
     }
@@ -40,7 +38,7 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidName($name)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $language = $this->getFaker()->languageCode;
 
@@ -57,7 +55,7 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankName($name)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $language = $this->getFaker()->languageCode;
 
@@ -74,7 +72,7 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidLanguage($language)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $name = $this->getFaker()->sentence();
 
@@ -91,7 +89,7 @@ class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankLanguage($language)
     {
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException(\InvalidArgumentException::class);
 
         $name = $this->getFaker()->sentence();
 

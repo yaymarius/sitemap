@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class Restriction implements RestrictionInterface
 {
@@ -27,7 +26,7 @@ final class Restriction implements RestrictionInterface
     /**
      * @param string $relationship
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($relationship)
     {
@@ -54,7 +53,7 @@ final class Restriction implements RestrictionInterface
     /**
      * @param array $countryCodes
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

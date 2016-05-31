@@ -14,7 +14,6 @@ use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\UrlSetInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
-use XMLWriter;
 
 /**
  * @link https://support.google.com/webmasters/answer/183668?hl=en
@@ -33,13 +32,13 @@ class UrlSetWriter
 
     /**
      * @param UrlSetInterface $urlSet
-     * @param XMLWriter       $xmlWriter
+     * @param \XMLWriter      $xmlWriter
      *
      * @return string
      */
-    public function write(UrlSetInterface $urlSet, XMLWriter $xmlWriter = null)
+    public function write(UrlSetInterface $urlSet, \XMLWriter $xmlWriter = null)
     {
-        $xmlWriter = $xmlWriter ?: new XMLWriter();
+        $xmlWriter = $xmlWriter ?: new \XMLWriter();
 
         $xmlWriter->openMemory();
         $xmlWriter->startDocument('1.0', 'UTF-8');
@@ -56,7 +55,7 @@ class UrlSetWriter
         return $xmlWriter->outputMemory();
     }
 
-    private function writeNamespaceAttributes(XMLWriter $xmlWriter)
+    private function writeNamespaceAttributes(\XMLWriter $xmlWriter)
     {
         $xmlWriter->writeAttribute(UrlSetInterface::XML_NAMESPACE_ATTRIBUTE, UrlSetInterface::XML_NAMESPACE_URI);
         $xmlWriter->writeAttribute(ImageInterface::XML_NAMESPACE_ATTRIBUTE, ImageInterface::XML_NAMESPACE_URI);
@@ -65,10 +64,10 @@ class UrlSetWriter
     }
 
     /**
-     * @param XMLWriter      $xmlWriter
+     * @param \XMLWriter     $xmlWriter
      * @param UrlInterface[] $urls
      */
-    private function writeUrls(XMLWriter $xmlWriter, array $urls)
+    private function writeUrls(\XMLWriter $xmlWriter, array $urls)
     {
         foreach ($urls as $url) {
             $this->urlWriter->write($url, $xmlWriter);

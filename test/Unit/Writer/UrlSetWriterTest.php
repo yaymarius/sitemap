@@ -16,7 +16,6 @@ use Refinery29\Sitemap\Component\UrlSetInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Sitemap\Writer\UrlSetWriter;
 use Refinery29\Sitemap\Writer\UrlWriter;
-use XMLWriter;
 
 class UrlSetWriterTest extends AbstractTestCase
 {
@@ -110,10 +109,10 @@ class UrlSetWriterTest extends AbstractTestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|XMLWriter
+     * @return \PHPUnit_Framework_MockObject_MockObject|\XMLWriter
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(XMLWriter::class)->getMock();
+        return $this->getMockBuilder(\XMLWriter::class)->getMock();
     }
 }

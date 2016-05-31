@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class UrlSet implements UrlSetInterface
 {
@@ -22,7 +21,7 @@ final class UrlSet implements UrlSetInterface
     /**
      * @param array[] $urls
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct(array $urls)
     {

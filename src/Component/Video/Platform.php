@@ -10,7 +10,6 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use InvalidArgumentException;
 
 final class Platform implements PlatformInterface
 {
@@ -27,7 +26,7 @@ final class Platform implements PlatformInterface
     /**
      * @param string $relationship
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct($relationship)
     {
@@ -54,7 +53,7 @@ final class Platform implements PlatformInterface
     /**
      * @param array $types
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

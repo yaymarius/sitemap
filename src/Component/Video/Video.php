@@ -10,8 +10,6 @@
 namespace Refinery29\Sitemap\Component\Video;
 
 use Assert\Assertion;
-use DateTimeInterface;
-use InvalidArgumentException;
 
 final class Video implements VideoInterface
 {
@@ -51,12 +49,12 @@ final class Video implements VideoInterface
     private $duration;
 
     /**
-     * @var DateTimeInterface|null
+     * @var \DateTimeInterface|null
      */
     private $publicationDate;
 
     /**
-     * @var DateTimeInterface|null
+     * @var \DateTimeInterface|null
      */
     private $expirationDate;
 
@@ -122,7 +120,7 @@ final class Video implements VideoInterface
      * @param string|null                  $contentLocation
      * @param PlayerLocationInterface|null $playerLocation
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function __construct(
         $thumbnailLocation,
@@ -265,7 +263,7 @@ final class Video implements VideoInterface
     /**
      * @param int $duration
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -283,11 +281,11 @@ final class Video implements VideoInterface
     }
 
     /**
-     * @param DateTimeInterface $publicationDate
+     * @param \DateTimeInterface $publicationDate
      *
      * @return static
      */
-    public function withPublicationDate(DateTimeInterface $publicationDate)
+    public function withPublicationDate(\DateTimeInterface $publicationDate)
     {
         $instance = clone $this;
 
@@ -297,11 +295,11 @@ final class Video implements VideoInterface
     }
 
     /**
-     * @param DateTimeInterface $expirationDate
+     * @param \DateTimeInterface $expirationDate
      *
      * @return static
      */
-    public function withExpirationDate(DateTimeInterface $expirationDate)
+    public function withExpirationDate(\DateTimeInterface $expirationDate)
     {
         $instance = clone $this;
 
@@ -313,7 +311,7 @@ final class Video implements VideoInterface
     /**
      * @param float $rating
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -333,7 +331,7 @@ final class Video implements VideoInterface
     /**
      * @param int $viewCount
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -352,7 +350,7 @@ final class Video implements VideoInterface
     /**
      * @param string $familyFriendly
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -370,7 +368,7 @@ final class Video implements VideoInterface
     /**
      * @param TagInterface[] $tags
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -389,7 +387,7 @@ final class Video implements VideoInterface
     /**
      * @param string $category
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -422,7 +420,7 @@ final class Video implements VideoInterface
     /**
      * @param PriceInterface[] $prices
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -440,7 +438,7 @@ final class Video implements VideoInterface
     /**
      * @param string $requiresSubscription
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */
@@ -491,7 +489,7 @@ final class Video implements VideoInterface
     /**
      * @param string $live
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @return static
      */

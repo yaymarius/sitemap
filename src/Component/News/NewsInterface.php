@@ -9,8 +9,6 @@
 
 namespace Refinery29\Sitemap\Component\News;
 
-use DateTimeInterface;
-
 /**
  * @link https://support.google.com/news/publisher/answer/74288?hl=en#exampleentry
  */
@@ -54,7 +52,7 @@ interface NewsInterface
     public function publication();
 
     /**
-     * @return DateTimeInterface
+     * @return \DateTimeInterface
      */
     public function publicationDate();
 
