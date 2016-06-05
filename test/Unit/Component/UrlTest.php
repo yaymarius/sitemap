@@ -400,7 +400,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     private function getImageMock()
     {
-        return $this->getMockBuilder(ImageInterface::class)->getMock();
+        return $this->getMock(ImageInterface::class);
     }
 
     /**
@@ -408,7 +408,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     private function getNewsMock()
     {
-        return $this->getMockBuilder(NewsInterface::class)->getMock();
+        return $this->getMock(NewsInterface::class);
     }
 
     /**
@@ -416,6 +416,6 @@ class UrlTest extends \PHPUnit_Framework_TestCase
      */
     private function getVideoMock()
     {
-        return $this->getMockBuilder(VideoInterface::class)->getMock();
+        return $this->getMock(VideoInterface::class);
     }
 }

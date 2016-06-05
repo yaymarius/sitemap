@@ -70,7 +70,7 @@ class PlayerLocationWriterTest extends AbstractTestCase
      */
     private function getPlayerLocationMock($location, $allowEmbed = null, $autoPlay = null)
     {
-        $playerLocation = $this->getMockBuilder(PlayerLocationInterface::class)->getMock();
+        $playerLocation = $this->getMock(PlayerLocationInterface::class);
 
         $playerLocation
             ->expects($this->any())
@@ -98,6 +98,6 @@ class PlayerLocationWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }

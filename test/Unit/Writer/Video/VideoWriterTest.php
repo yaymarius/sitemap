@@ -237,7 +237,7 @@ class VideoWriterTest extends AbstractTestCase
         array $prices = [],
         array $tags = []
     ) {
-        $video = $this->getMockBuilder(VideoInterface::class)->getMock();
+        $video = $this->getMock(VideoInterface::class);
 
         $video
             ->expects($this->any())
@@ -367,7 +367,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getGalleryLocationMock()
     {
-        return $this->getMockBuilder(GalleryLocationInterface::class)->getMock();
+        return $this->getMock(GalleryLocationInterface::class);
     }
 
     /**
@@ -375,7 +375,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getGalleryLocationWriterMock()
     {
-        return $this->getMockBuilder(GalleryLocationWriter::class)->getMock();
+        return $this->getMock(GalleryLocationWriter::class);
     }
 
     /**
@@ -405,7 +405,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getPlatformMock()
     {
-        return $this->getMockBuilder(PlatformInterface::class)->getMock();
+        return $this->getMock(PlatformInterface::class);
     }
 
     /**
@@ -413,7 +413,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getPlatformWriterMock()
     {
-        return $this->getMockBuilder(PlatformWriter::class)->getMock();
+        return $this->getMock(PlatformWriter::class);
     }
 
     /**
@@ -443,7 +443,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getPlayerLocationMock()
     {
-        return $this->getMockBuilder(PlayerLocationInterface::class)->getMock();
+        return $this->getMock(PlayerLocationInterface::class);
     }
 
     /**
@@ -451,7 +451,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getPlayerLocationWriterMock()
     {
-        return $this->getMockBuilder(PlayerLocationWriter::class)->getMock();
+        return $this->getMock(PlayerLocationWriter::class);
     }
 
     /**
@@ -481,7 +481,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getPriceMock()
     {
-        return $this->getMockBuilder(PriceInterface::class)->getMock();
+        return $this->getMock(PriceInterface::class);
     }
 
     /**
@@ -489,7 +489,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getPriceWriterMock()
     {
-        return $this->getMockBuilder(PriceWriter::class)->getMock();
+        return $this->getMock(PriceWriter::class);
     }
 
     /**
@@ -521,7 +521,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getRestrictionMock()
     {
-        return $this->getMockBuilder(RestrictionInterface::class)->getMock();
+        return $this->getMock(RestrictionInterface::class);
     }
 
     /**
@@ -529,7 +529,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getRestrictionWriterMock()
     {
-        return $restrictionWriter = $this->getMockBuilder(RestrictionWriter::class)->getMock();
+        return $restrictionWriter = $this->getMock(RestrictionWriter::class);
     }
 
     /**
@@ -559,7 +559,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getTagMock()
     {
-        return $this->getMockBuilder(TagInterface::class)->getMock();
+        return $this->getMock(TagInterface::class);
     }
 
     /**
@@ -567,7 +567,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getTagWriterMock()
     {
-        return $this->getMockBuilder(TagWriter::class)->getMock();
+        return $this->getMock(TagWriter::class);
     }
 
     /**
@@ -599,7 +599,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getUploaderMock()
     {
-        return $this->getMockBuilder(UploaderInterface::class)->getMock();
+        return $this->getMock(UploaderInterface::class);
     }
 
     /**
@@ -629,7 +629,7 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getUploaderWriterMock()
     {
-        return $this->getMockBuilder(UploaderWriter::class)->getMock();
+        return $this->getMock(UploaderWriter::class);
     }
 
     /**
@@ -637,6 +637,6 @@ class VideoWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }

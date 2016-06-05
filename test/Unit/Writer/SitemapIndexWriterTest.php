@@ -76,7 +76,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
      */
     private function getSitemapIndexMock(array $sitemaps = [])
     {
-        $sitemapIndex = $this->getMockBuilder(SitemapIndexInterface::class)->getMock();
+        $sitemapIndex = $this->getMock(SitemapIndexInterface::class);
 
         $sitemapIndex
             ->expects($this->any())
@@ -92,7 +92,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
      */
     private function getSitemapMock()
     {
-        return $this->getMockBuilder(SitemapInterface::class)->getMock();
+        return $this->getMock(SitemapInterface::class);
     }
 
     /**
@@ -100,7 +100,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
      */
     private function getSitemapWriterMock()
     {
-        return $this->getMockBuilder(SitemapWriter::class)->getMock();
+        return $this->getMock(SitemapWriter::class);
     }
 
     /**
@@ -108,6 +108,6 @@ class SitemapIndexWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }

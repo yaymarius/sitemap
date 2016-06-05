@@ -54,7 +54,7 @@ class RestrictionWriterTest extends AbstractTestCase
      */
     private function getRestrictionMock($relationship, array $countryCodes)
     {
-        $restriction = $this->getMockBuilder(RestrictionInterface::class)->getMock();
+        $restriction = $this->getMock(RestrictionInterface::class);
 
         $restriction
             ->expects($this->any())
@@ -76,6 +76,6 @@ class RestrictionWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }
