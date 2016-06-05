@@ -61,7 +61,7 @@ class UploaderWriterTest extends AbstractTestCase
      */
     private function getUploaderMock($name, $info = null)
     {
-        $uploader = $this->getMockBuilder(UploaderInterface::class)->getMock();
+        $uploader = $this->getMock(UploaderInterface::class);
 
         $uploader
             ->expects($this->any())
@@ -83,6 +83,6 @@ class UploaderWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }

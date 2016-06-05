@@ -134,7 +134,7 @@ class UrlWriterTest extends AbstractTestCase
         array $news = [],
         array $videos = []
     ) {
-        $url = $this->getMockBuilder(UrlInterface::class)->getMock();
+        $url = $this->getMock(UrlInterface::class);
 
         $url
             ->expects($this->any())
@@ -186,7 +186,7 @@ class UrlWriterTest extends AbstractTestCase
      */
     private function getImageMock()
     {
-        return $this->getMockBuilder(ImageInterface::class)->getMock();
+        return $this->getMock(ImageInterface::class);
     }
 
     /**
@@ -194,7 +194,7 @@ class UrlWriterTest extends AbstractTestCase
      */
     private function getImageWriterMock()
     {
-        return $this->getMockBuilder(ImageWriter::class)->getMock();
+        return $this->getMock(ImageWriter::class);
     }
 
     /**
@@ -226,7 +226,7 @@ class UrlWriterTest extends AbstractTestCase
      */
     private function getNewsMock()
     {
-        return $this->getMockBuilder(NewsInterface::class)->getMock();
+        return $this->getMock(NewsInterface::class);
     }
 
     /**
@@ -269,7 +269,7 @@ class UrlWriterTest extends AbstractTestCase
      */
     private function getVideoMock()
     {
-        return $this->getMockBuilder(VideoInterface::class)->getMock();
+        return $this->getMock(VideoInterface::class);
     }
 
     /**
@@ -312,6 +312,6 @@ class UrlWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }

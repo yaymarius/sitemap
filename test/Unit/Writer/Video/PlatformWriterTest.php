@@ -54,7 +54,7 @@ class PlatformWriterTest extends AbstractTestCase
      */
     private function getPlatformMock($relationship, array $types)
     {
-        $platform = $this->getMockBuilder(PlatformInterface::class)->getMock();
+        $platform = $this->getMock(PlatformInterface::class);
 
         $platform
             ->expects($this->any())
@@ -76,6 +76,6 @@ class PlatformWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMockBuilder(\XMLWriter::class)->getMock();
+        return $this->getMock(\XMLWriter::class);
     }
 }
