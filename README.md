@@ -48,7 +48,7 @@ use Refinery29\Sitemap\Component;
 $url = new Component\Url('http://www.example.org/foo/bar.html');
 
 $url = $url
-    ->withLastModified(new DateTime()),
+    ->withLastModified(new DateTime())
     ->withChangeFrequency(Component\Url::CHANGE_FREQUENCY_MONTHLY)
     ->withPriority(0.8)
 ;
@@ -148,7 +148,7 @@ When we're finished building a `UrlSet`, we probably want to write it, so let's 
 ```php
 use Refinery29\Sitemap\Writer;
 
-$urlSetWriter = new Writer\UrlSet();
+$urlSetWriter = new Writer\UrlSetWriter();
 
 $xml = $urlSetWriter->write($urlSet);
 ```
