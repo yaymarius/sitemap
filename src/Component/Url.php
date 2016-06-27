@@ -141,7 +141,7 @@ final class Url implements UrlInterface
     }
 
     /**
-     * @param string $priority
+     * @param float $priority
      *
      * @throws \InvalidArgumentException
      *
