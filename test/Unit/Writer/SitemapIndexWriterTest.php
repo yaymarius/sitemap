@@ -56,8 +56,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($sitemap),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         $this->expectToEndDocument($xmlWriter);
@@ -81,8 +80,7 @@ class SitemapIndexWriterTest extends AbstractTestCase
         $sitemapIndex
             ->expects($this->any())
             ->method('sitemaps')
-            ->willReturn($sitemaps)
-        ;
+            ->willReturn($sitemaps);
 
         return $sitemapIndex;
     }

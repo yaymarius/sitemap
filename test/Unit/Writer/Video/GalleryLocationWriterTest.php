@@ -68,14 +68,12 @@ class GalleryLocationWriterTest extends AbstractTestCase
         $galleryLocation
             ->expects($this->any())
             ->method('location')
-            ->willReturn($location)
-        ;
+            ->willReturn($location);
 
         $galleryLocation
             ->expects($this->any())
             ->method('title')
-            ->willReturn($title)
-        ;
+            ->willReturn($title);
 
         return $galleryLocation;
     }

@@ -29,8 +29,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->identicalTo($version),
                 $this->identicalTo($charset)
-            )
-        ;
+            );
     }
 
     /**
@@ -42,8 +41,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $xmlWriter
             ->expects($this->next($xmlWriter))
             ->method('startElement')
-            ->with($this->identicalTo($name))
-        ;
+            ->with($this->identicalTo($name));
     }
 
     /**
@@ -59,24 +57,21 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->identicalTo($name),
                 $this->identicalTo($value)
-            )
-        ;
+            );
     }
 
     protected function expectToEndElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
-            ->method('endElement')
-        ;
+            ->method('endElement');
     }
 
     protected function expectToEndDocument(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
-            ->method('endDocument')
-        ;
+            ->method('endDocument');
     }
 
     /**
@@ -97,8 +92,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             $xmlWriter
                 ->expects($this->next($xmlWriter))
                 ->method('text')
-                ->with($this->identicalTo($text))
-            ;
+                ->with($this->identicalTo($text));
         }
 
         $this->expectToEndElement($xmlWriter);
@@ -111,8 +105,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
-            ->method('openMemory')
-        ;
+            ->method('openMemory');
     }
 
     /**
@@ -124,8 +117,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $xmlWriter
             ->expects($this->next($xmlWriter))
             ->method('outputMemory')
-            ->willReturn($output)
-        ;
+            ->willReturn($output);
     }
 
     /**

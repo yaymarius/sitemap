@@ -74,14 +74,12 @@ class SitemapWriterTest extends AbstractTestCase
         $sitemap
             ->expects($this->any())
             ->method('location')
-            ->willReturn($location)
-        ;
+            ->willReturn($location);
 
         $sitemap
             ->expects($this->any())
             ->method('lastModified')
-            ->willReturn($lastModified)
-        ;
+            ->willReturn($lastModified);
 
         return $sitemap;
     }

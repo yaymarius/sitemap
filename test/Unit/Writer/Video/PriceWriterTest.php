@@ -94,26 +94,22 @@ class PriceWriterTest extends AbstractTestCase
         $price
             ->expects($this->any())
             ->method('currency')
-            ->willReturn($currency)
-        ;
+            ->willReturn($currency);
 
         $price
             ->expects($this->any())
             ->method('value')
-            ->willReturn($value)
-        ;
+            ->willReturn($value);
 
         $price
             ->expects($this->any())
             ->method('type')
-            ->willReturn($type)
-        ;
+            ->willReturn($type);
 
         $price
             ->expects($this->any())
             ->method('resolution')
-            ->willReturn($resolution)
-        ;
+            ->willReturn($resolution);
 
         return $price;
     }

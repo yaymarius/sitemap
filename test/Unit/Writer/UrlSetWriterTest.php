@@ -58,8 +58,7 @@ class UrlSetWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($url),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         $this->expectToEndElement($xmlWriter);
@@ -91,8 +90,7 @@ class UrlSetWriterTest extends AbstractTestCase
         $urlSet
             ->expects($this->any())
             ->method('urls')
-            ->willReturn($urls)
-        ;
+            ->willReturn($urls);
 
         return $urlSet;
     }
@@ -104,8 +102,7 @@ class UrlSetWriterTest extends AbstractTestCase
     {
         return $this->getMockBuilder(UrlWriter::class)
             ->disableOriginalConstructor()
-            ->getMock()
-        ;
+            ->getMock();
     }
 
     /**
