@@ -139,44 +139,37 @@ class UrlWriterTest extends AbstractTestCase
         $url
             ->expects($this->any())
             ->method('location')
-            ->willReturn($location)
-        ;
+            ->willReturn($location);
 
         $url
             ->expects($this->any())
             ->method('lastModified')
-            ->willReturn($lastModified)
-        ;
+            ->willReturn($lastModified);
 
         $url
             ->expects($this->any())
             ->method('changeFrequency')
-            ->willReturn($changeFrequency)
-        ;
+            ->willReturn($changeFrequency);
 
         $url
             ->expects($this->any())
             ->method('priority')
-            ->willReturn($priority)
-        ;
+            ->willReturn($priority);
 
         $url
             ->expects($this->any())
             ->method('images')
-            ->willReturn($images)
-        ;
+            ->willReturn($images);
 
         $url
             ->expects($this->any())
             ->method('news')
-            ->willReturn($news)
-        ;
+            ->willReturn($news);
 
         $url
             ->expects($this->any())
             ->method('videos')
-            ->willReturn($videos)
-        ;
+            ->willReturn($videos);
 
         return $url;
     }
@@ -214,8 +207,7 @@ class UrlWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($image),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         return $imageWriter;
@@ -236,8 +228,7 @@ class UrlWriterTest extends AbstractTestCase
     {
         return $this->getMockBuilder(NewsWriter::class)
             ->disableOriginalConstructor()
-            ->getMock()
-        ;
+            ->getMock();
     }
 
     /**
@@ -257,8 +248,7 @@ class UrlWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($pieceOfNews),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         return $newsWriter;
@@ -279,8 +269,7 @@ class UrlWriterTest extends AbstractTestCase
     {
         return $this->getMockBuilder(VideoWriter::class)
             ->disableOriginalConstructor()
-            ->getMock()
-        ;
+            ->getMock();
     }
 
     /**
@@ -300,8 +289,7 @@ class UrlWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($video),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         return $videoWriter;

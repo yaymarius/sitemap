@@ -46,8 +46,7 @@ XML;
             ->withTitle('Herbert')
             ->withCaption('Big dog plays his cards')
             ->withGeoLocation('At the table')
-            ->withLicence('Public Domain')
-        ;
+            ->withLicence('Public Domain');
 
         $news = new Component\News\News(
             new Component\News\Publication(
@@ -72,8 +71,7 @@ XML;
             ->withStockTickers([
                 'GM',
                 'AAPL',
-            ])
-        ;
+            ]);
 
         $video = new Component\Video\Video(
             'http://www.example.com/thumbs/123.jpg',
@@ -85,8 +83,7 @@ XML;
         $playerLocation = new Component\Video\PlayerLocation('http://www.example.com/videoplayer.swf?video=234');
         $playerLocation = $playerLocation
             ->withAllowEmbed(Component\Video\PlayerLocationInterface::ALLOW_EMBED_YES)
-            ->withAutoPlay('ap=1')
-        ;
+            ->withAutoPlay('ap=1');
 
         $anotherVideo = new Component\Video\Video(
             'http://www.example.com/thumbs/234.jpg',
@@ -132,8 +129,7 @@ XML;
             ->withRequiresSubscription(Component\Video\VideoInterface::REQUIRES_SUBSCRIPTION_NO)
             ->withUploader(new Component\Video\Uploader('Jane Doe'))
             ->withPlatform($platform)
-            ->withLive(Component\Video\VideoInterface::LIVE_NO)
-        ;
+            ->withLive(Component\Video\VideoInterface::LIVE_NO);
 
         $url = $url
             ->withPriority(0.8)
@@ -147,8 +143,7 @@ XML;
             ->withVideos([
                 $video,
                 $anotherVideo,
-            ])
-        ;
+            ]);
 
         $urlSet = new Component\UrlSet([
            $url,

@@ -242,122 +242,102 @@ class VideoWriterTest extends AbstractTestCase
         $video
             ->expects($this->any())
             ->method('thumbnailLocation')
-            ->willReturn($thumbnailLocation)
-        ;
+            ->willReturn($thumbnailLocation);
 
         $video
             ->expects($this->any())
             ->method('title')
-            ->willReturn($title)
-        ;
+            ->willReturn($title);
 
         $video
             ->expects($this->any())
             ->method('description')
-            ->willReturn($description)
-        ;
+            ->willReturn($description);
 
         $video
             ->expects($this->any())
             ->method('contentLocation')
-            ->willReturn($contentLocation)
-        ;
+            ->willReturn($contentLocation);
 
         $video
             ->expects($this->any())
             ->method('playerLocation')
-            ->willReturn($playerLocation)
-        ;
+            ->willReturn($playerLocation);
 
         $video
             ->expects($this->any())
             ->method('galleryLocation')
-            ->willReturn($galleryLocation)
-        ;
+            ->willReturn($galleryLocation);
 
         $video
             ->expects($this->any())
             ->method('duration')
-            ->willReturn($duration)
-        ;
+            ->willReturn($duration);
 
         $video
             ->expects($this->any())
             ->method('publicationDate')
-            ->willReturn($publicationDate)
-        ;
+            ->willReturn($publicationDate);
 
         $video
             ->expects($this->any())
             ->method('expirationDate')
-            ->willReturn($expirationDate)
-        ;
+            ->willReturn($expirationDate);
 
         $video
             ->expects($this->any())
             ->method('rating')
-            ->willReturn($rating)
-        ;
+            ->willReturn($rating);
 
         $video
             ->expects($this->any())
             ->method('viewCount')
-            ->willReturn($viewCount)
-        ;
+            ->willReturn($viewCount);
 
         $video
             ->expects($this->any())
             ->method('familyFriendly')
-            ->willReturn($familyFriendly)
-        ;
+            ->willReturn($familyFriendly);
 
         $video
             ->expects($this->any())
             ->method('category')
-            ->willReturn($category)
-        ;
+            ->willReturn($category);
 
         $video
             ->expects($this->any())
             ->method('restriction')
-            ->willReturn($restriction)
-        ;
+            ->willReturn($restriction);
 
         $video
             ->expects($this->any())
             ->method('requiresSubscription')
-            ->willReturn($requiresSubscription)
-        ;
+            ->willReturn($requiresSubscription);
 
         $video
             ->expects($this->any())
             ->method('uploader')
-            ->willReturn($uploader)
-        ;
+            ->willReturn($uploader);
 
         $video
             ->expects($this->any())
             ->method('platform')
-            ->willReturn($platform)
-        ;
+            ->willReturn($platform);
 
         $video
             ->expects($this->any())
             ->method('live')
-            ->willReturn($live)
-        ;
+            ->willReturn($live);
 
         $video
             ->expects($this->any())
             ->method('prices')
-            ->willReturn($prices)
-        ;
+            ->willReturn($prices);
 
         $video
             ->expects($this->any())
             ->method('tags')
-            ->willReturn($tags)
-        ;
+            ->willReturn($tags);
 
         return $video;
     }
@@ -394,8 +374,7 @@ class VideoWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($galleryLocation),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         return $galleryLocationWriter;
     }
@@ -432,8 +411,7 @@ class VideoWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($platform),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         return $platformWriter;
     }
@@ -470,8 +448,7 @@ class VideoWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($playerLocation),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         return $playerLocationWriter;
     }
@@ -509,8 +486,7 @@ class VideoWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($price),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         return $priceWriter;
@@ -548,8 +524,7 @@ class VideoWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($restriction),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         return $restrictionWriter;
     }
@@ -587,8 +562,7 @@ class VideoWriterTest extends AbstractTestCase
                 ->with(
                     $this->identicalTo($tag),
                     $this->identicalTo($xmlWriter)
-                )
-            ;
+                );
         }
 
         return $tagWriter;
@@ -618,8 +592,7 @@ class VideoWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($uploader),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         return $uploaderWriter;
     }

@@ -59,14 +59,12 @@ class PlatformWriterTest extends AbstractTestCase
         $platform
             ->expects($this->any())
             ->method('relationship')
-            ->willReturn($relationship)
-        ;
+            ->willReturn($relationship);
 
         $platform
             ->expects($this->any())
             ->method('types')
-            ->willReturn($types)
-        ;
+            ->willReturn($types);
 
         return $platform;
     }

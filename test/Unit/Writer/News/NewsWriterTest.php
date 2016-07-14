@@ -54,8 +54,7 @@ class NewsWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($publication),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         $writer = new NewsWriter($publicationWriter);
 
@@ -107,8 +106,7 @@ class NewsWriterTest extends AbstractTestCase
             ->with(
                 $this->identicalTo($publication),
                 $this->identicalTo($xmlWriter)
-            )
-        ;
+            );
 
         $writer = new NewsWriter($publicationWriter);
 
@@ -140,44 +138,37 @@ class NewsWriterTest extends AbstractTestCase
         $news
             ->expects($this->any())
             ->method('publication')
-            ->willReturn($publication)
-        ;
+            ->willReturn($publication);
 
         $news
             ->expects($this->any())
             ->method('publicationDate')
-            ->willReturn($publicationDate)
-        ;
+            ->willReturn($publicationDate);
 
         $news
             ->expects($this->any())
             ->method('title')
-            ->willReturn($title)
-        ;
+            ->willReturn($title);
 
         $news
             ->expects($this->any())
             ->method('access')
-            ->willReturn($access)
-        ;
+            ->willReturn($access);
 
         $news
             ->expects($this->any())
             ->method('genres')
-            ->willReturn($genres)
-        ;
+            ->willReturn($genres);
 
         $news
             ->expects($this->any())
             ->method('keywords')
-            ->willReturn($keywords)
-        ;
+            ->willReturn($keywords);
 
         $news
             ->expects($this->any())
             ->method('stockTickers')
-            ->willReturn($stockTickers)
-        ;
+            ->willReturn($stockTickers);
 
         return $news;
     }

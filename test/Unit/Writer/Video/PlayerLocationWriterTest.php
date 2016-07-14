@@ -75,20 +75,17 @@ class PlayerLocationWriterTest extends AbstractTestCase
         $playerLocation
             ->expects($this->any())
             ->method('location')
-            ->willReturn($location)
-        ;
+            ->willReturn($location);
 
         $playerLocation
             ->expects($this->any())
             ->method('allowEmbed')
-            ->willReturn($allowEmbed)
-        ;
+            ->willReturn($allowEmbed);
 
         $playerLocation
             ->expects($this->any())
             ->method('autoPlay')
-            ->willReturn($autoPlay)
-        ;
+            ->willReturn($autoPlay);
 
         return $playerLocation;
     }
