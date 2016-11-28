@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1894e47ba8eea83285f232d024e5be07",
-    "content-hash": "5a15c5c304ca847d0fcadb20d41f97d8",
+    "hash": "7959c5e3793ea995f964e47f0ae8d208",
+    "content-hash": "728fadd7428c1bbab915b055756d46a3",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1041,30 +1041,27 @@
         },
         {
             "name": "refinery29/test-util",
-            "version": "0.4.3",
+            "version": "0.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/refinery29/test-util.git",
-                "reference": "a81600f3d51c85982e6980a0e6824acbfc0263f0"
+                "reference": "0b17af63e14c339e9187daf722f44539d665794b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/refinery29/test-util/zipball/a81600f3d51c85982e6980a0e6824acbfc0263f0",
-                "reference": "a81600f3d51c85982e6980a0e6824acbfc0263f0",
+                "url": "https://api.github.com/repos/refinery29/test-util/zipball/0b17af63e14c339e9187daf722f44539d665794b",
+                "reference": "0b17af63e14c339e9187daf722f44539d665794b",
                 "shasum": ""
             },
             "require": {
                 "fzaninotto/faker": "^1.6.0",
-                "php": ">=5.5"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "beberlei/assert": "^2.5.0",
-                "codeclimate/php-test-reporter": "0.2.0",
-                "phpunit/phpunit": "^4.8.18 || ^5.2.3",
-                "refinery29/php-cs-fixer-config": "0.4.11"
-            },
-            "suggest": {
-                "phpunit/phpunit": "If you want to make use of the PHPUnit\\BuildsMocksTrait"
+                "beberlei/assert": "^2.6.5",
+                "codeclimate/php-test-reporter": "0.3.2",
+                "phpunit/phpunit": "^5.6.1",
+                "refinery29/php-cs-fixer-config": "0.4.20"
             },
             "type": "library",
             "autoload": {
@@ -1078,25 +1075,25 @@
             ],
             "authors": [
                 {
-                    "name": "Kayla Daniels",
-                    "email": "kayla.daniels@refinery29.com"
-                },
-                {
                     "name": "Andreas Möller",
                     "email": "andreas.moller@refinery29.com"
                 },
                 {
                     "name": "R29 Product & Engineering",
                     "email": "p.e@refinery29.com"
+                },
+                {
+                    "name": "Graham Daniels",
+                    "email": "graham.daniels@refinery29.com"
                 }
             ],
-            "description": "Provides helpers for testing.",
+            "description": "Provides a test helper, generic data providers, and assertions.",
             "keywords": [
                 "faker",
                 "test",
                 "util"
             ],
-            "time": "2016-05-15 20:56:52"
+            "time": "2016-10-31 17:52:01"
         },
         {
             "name": "satooshi/php-coveralls",
