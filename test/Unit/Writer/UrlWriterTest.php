@@ -226,9 +226,7 @@ final class UrlWriterTest extends AbstractTestCase
      */
     private function getNewsWriterMock()
     {
-        return $this->getMockBuilder(NewsWriter::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        return $this->createMock(NewsWriter::class);
     }
 
     /**
@@ -267,9 +265,7 @@ final class UrlWriterTest extends AbstractTestCase
      */
     private function getVideoWriterMock()
     {
-        return $this->getMockBuilder(VideoWriter::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        return $this->createMock(VideoWriter::class);
     }
 
     /**

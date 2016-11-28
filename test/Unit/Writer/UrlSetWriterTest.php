@@ -100,9 +100,7 @@ final class UrlSetWriterTest extends AbstractTestCase
      */
     private function getUrlWriterMock()
     {
-        return $this->getMockBuilder(UrlWriter::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        return $this->createMock(UrlWriter::class);
     }
 
     /**
