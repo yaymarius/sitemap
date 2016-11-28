@@ -11,11 +11,11 @@ namespace Refinery29\Sitemap\Test\Unit\Component;
 
 use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapInterface;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class SitemapTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testIsFinal()
     {

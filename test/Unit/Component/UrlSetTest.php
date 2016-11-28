@@ -12,11 +12,11 @@ namespace Refinery29\Sitemap\Test\Unit\Component;
 use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\UrlSet;
 use Refinery29\Sitemap\Component\UrlSetInterface;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class UrlSetTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testIsFinal()
     {

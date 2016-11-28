@@ -9,12 +9,12 @@
 
 namespace Refinery29\Sitemap\Test\Unit\Writer;
 
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 use SplObjectStorage;
 
 abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     /**
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter

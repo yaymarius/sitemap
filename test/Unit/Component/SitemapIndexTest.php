@@ -12,11 +12,11 @@ namespace Refinery29\Sitemap\Test\Unit\Component;
 use Refinery29\Sitemap\Component\SitemapIndex;
 use Refinery29\Sitemap\Component\SitemapIndexInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testIsFinal()
     {

@@ -11,11 +11,11 @@ namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
 use Refinery29\Sitemap\Component\Video\Price;
 use Refinery29\Sitemap\Component\Video\PriceInterface;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class PriceTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testIsFinal()
     {

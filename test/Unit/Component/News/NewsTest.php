@@ -12,11 +12,11 @@ namespace Refinery29\Sitemap\Test\Unit\Component\News;
 use Refinery29\Sitemap\Component\News\News;
 use Refinery29\Sitemap\Component\News\NewsInterface;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class NewsTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testIsFinal()
     {
