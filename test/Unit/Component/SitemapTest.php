@@ -26,9 +26,7 @@ final class SitemapTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsSitemapInterface()
     {
-        $reflectionClass = new \ReflectionClass(Sitemap::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(SitemapInterface::class));
+        $this->assertImplements(SitemapInterface::class, Sitemap::class);
     }
 
     public function testDefaults()

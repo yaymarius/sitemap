@@ -26,9 +26,7 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPlatformInterface()
     {
-        $reflectionClass = new \ReflectionClass(Platform::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(PlatformInterface::class));
+        $this->assertImplements(PlatformInterface::class, Platform::class);
     }
 
     public function testDefaults()

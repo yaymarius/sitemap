@@ -27,9 +27,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsNewsInterface()
     {
-        $reflectionClass = new \ReflectionClass(News::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(NewsInterface::class));
+        $this->assertImplements(NewsInterface::class, News::class);
     }
 
     public function testDefaults()

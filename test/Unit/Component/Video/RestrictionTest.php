@@ -26,9 +26,7 @@ final class RestrictionTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsRestrictionInterface()
     {
-        $reflectionClass = new \ReflectionClass(Restriction::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(RestrictionInterface::class));
+        $this->assertImplements(RestrictionInterface::class, Restriction::class);
     }
 
     public function testDefaults()

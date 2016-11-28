@@ -33,9 +33,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsVideoInterface()
     {
-        $reflectionClass = new \ReflectionClass(Video::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(VideoInterface::class));
+        $this->assertImplements(VideoInterface::class, Video::class);
     }
 
     public function testDefaults()

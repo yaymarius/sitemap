@@ -32,9 +32,7 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPlayerLocationInterface()
     {
-        $reflectionClass = new \ReflectionClass(PlayerLocation::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(PlayerLocationInterface::class));
+        $this->assertImplements(PlayerLocationInterface::class, PlayerLocation::class);
     }
 
     public function testDefaults()

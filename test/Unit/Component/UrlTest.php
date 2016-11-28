@@ -29,9 +29,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsUrlInterface()
     {
-        $reflectionClass = new \ReflectionClass(Url::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(UrlInterface::class));
+        $this->assertImplements(UrlInterface::class, Url::class);
     }
 
     public function testDefaults()

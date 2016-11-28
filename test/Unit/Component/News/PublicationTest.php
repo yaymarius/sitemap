@@ -26,9 +26,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPublicationInterface()
     {
-        $reflectionClass = new \ReflectionClass(Publication::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(PublicationInterface::class));
+        $this->assertImplements(PublicationInterface::class, Publication::class);
     }
 
     /**

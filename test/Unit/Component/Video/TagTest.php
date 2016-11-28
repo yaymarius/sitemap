@@ -26,9 +26,7 @@ final class TagTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsTagInterface()
     {
-        $reflectionClass = new \ReflectionClass(Tag::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(TagInterface::class));
+        $this->assertImplements(TagInterface::class, Tag::class);
     }
 
     /**
