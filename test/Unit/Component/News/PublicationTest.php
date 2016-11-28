@@ -19,9 +19,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Publication::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Publication::class);
     }
 
     public function testImplementsPublicationInterface()

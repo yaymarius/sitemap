@@ -19,9 +19,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Uploader::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Uploader::class);
     }
 
     public function testImplementsUploaderInterface()

@@ -22,9 +22,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Url::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Url::class);
     }
 
     public function testImplementsUrlInterface()

@@ -26,9 +26,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Video::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Video::class);
     }
 
     public function testImplementsVideoInterface()
