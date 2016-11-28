@@ -160,16 +160,10 @@ final class PriceTest extends \PHPUnit_Framework_TestCase
      */
     public function providerType()
     {
-        $values = [
+        return $this->provideData([
             PriceInterface::TYPE_OWN,
             PriceInterface::TYPE_RENT,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
@@ -242,15 +236,9 @@ final class PriceTest extends \PHPUnit_Framework_TestCase
      */
     public function providerResolution()
     {
-        $values = [
+        return $this->provideData([
             PriceInterface::RESOLUTION_HD,
             PriceInterface::RESOLUTION_SD,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 }

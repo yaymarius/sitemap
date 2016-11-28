@@ -123,7 +123,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function providerChangeFrequency()
     {
-        $values = [
+        return $this->provideData([
             UrlInterface::CHANGE_FREQUENCY_ALWAYS,
             UrlInterface::CHANGE_FREQUENCY_HOURLY,
             UrlInterface::CHANGE_FREQUENCY_DAILY,
@@ -131,13 +131,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
             UrlInterface::CHANGE_FREQUENCY_MONTHLY,
             UrlInterface::CHANGE_FREQUENCY_YEARLY,
             UrlInterface::CHANGE_FREQUENCY_NEVER,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
@@ -173,16 +167,10 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function providerOutOfBoundsPriority()
     {
-        $values = [
+        return $this->provideData([
             UrlInterface::PRIORITY_MIN - 0.1,
             UrlInterface::PRIORITY_MAX + 0.1,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
@@ -208,7 +196,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function providerPriority()
     {
-        $values = [
+        return $this->provideData([
             UrlInterface::PRIORITY_MAX,
             UrlInterface::PRIORITY_MIN,
             $this->getFaker()->randomFloat(
@@ -216,13 +204,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
                 UrlInterface::PRIORITY_MIN,
                 UrlInterface::PRIORITY_MAX
             ),
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
@@ -246,20 +228,14 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function providerInvalidImages()
     {
-        $values = [
+        return $this->provideData([
             $this->getFaker()->words,
             [
                 $this->getImageMock(),
                 $this->getImageMock(),
                 new \stdClass(),
             ],
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithImagesClonesObjectAndSetsValue()
@@ -302,20 +278,14 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function providerInvalidNews()
     {
-        $values = [
+        return $this->provideData([
             $this->getFaker()->words,
             [
                 $this->getNewsMock(),
                 $this->getNewsMock(),
                 new \stdClass(),
             ],
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithNewsClonesObjectAndSetsValue()
@@ -358,20 +328,14 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function providerInvalidVideos()
     {
-        $values = [
+        return $this->provideData([
             $this->getFaker()->words,
             [
                 $this->getVideoMock(),
                 $this->getVideoMock(),
                 new \stdClass(),
             ],
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithVideosClonesObjectAndSetsValue()

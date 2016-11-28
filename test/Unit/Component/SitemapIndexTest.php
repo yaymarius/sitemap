@@ -49,20 +49,14 @@ final class SitemapIndexTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $values = [
+        return $this->provideData([
             $faker->words(),
             [
                 $this->getSitemapMock(),
                 $this->getSitemapMock(),
                 new \stdClass(),
             ],
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testConstructorSetsValue()

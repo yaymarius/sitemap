@@ -208,18 +208,12 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function providerOutOfBoundsDuration()
     {
-        $values = [
+        return $this->provideData([
             VideoInterface::DURATION_LOWER_LIMIT - 1,
             VideoInterface::DURATION_LOWER_LIMIT,
             VideoInterface::DURATION_UPPER_LIMIT,
             VideoInterface::DURATION_UPPER_LIMIT + 1,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithDurationClonesObjectAndSetsValue()
@@ -339,16 +333,10 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function providerOutOfBoundsRating()
     {
-        $values = [
+        return $this->provideData([
             VideoInterface::RATING_MIN - 0.1,
             VideoInterface::RATING_MAX + 0.1,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithRatingClonesObjectAndSetsValue()
@@ -780,16 +768,10 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function providerRequiresSubscription()
     {
-        $values = [
+        return $this->provideData([
             VideoInterface::REQUIRES_SUBSCRIPTION_NO,
             VideoInterface::REQUIRES_SUBSCRIPTION_YES,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithUploaderClonesObjectAndSetsValue()
@@ -904,16 +886,10 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function providerLive()
     {
-        $values = [
+        return $this->provideData([
             VideoInterface::LIVE_NO,
             VideoInterface::LIVE_YES,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
