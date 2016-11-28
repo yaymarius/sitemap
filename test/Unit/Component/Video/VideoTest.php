@@ -923,7 +923,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getGalleryLocationMock()
     {
-        return $this->getMock(GalleryLocationInterface::class);
+        return $this->createMock(GalleryLocationInterface::class);
     }
 
     /**
@@ -931,7 +931,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getPlatformMock()
     {
-        return $this->getMock(PlatformInterface::class);
+        return $this->createMock(PlatformInterface::class);
     }
 
     /**
@@ -939,7 +939,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getPlayerLocationMock()
     {
-        return $this->getMock(PlayerLocationInterface::class);
+        return $this->createMock(PlayerLocationInterface::class);
     }
 
     /**
@@ -947,7 +947,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getPriceMock()
     {
-        return $this->getMock(PriceInterface::class);
+        return $this->createMock(PriceInterface::class);
     }
 
     /**
@@ -955,7 +955,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getRestrictionMock()
     {
-        return $this->getMock(RestrictionInterface::class);
+        return $this->createMock(RestrictionInterface::class);
     }
 
     /**
@@ -963,7 +963,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getTagMock()
     {
-        return $this->getMock(TagInterface::class);
+        return $this->createMock(TagInterface::class);
     }
 
     /**
@@ -971,6 +971,6 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     private function getUploaderMock()
     {
-        return $this->getMock(UploaderInterface::class);
+        return $this->createMock(UploaderInterface::class);
     }
 }

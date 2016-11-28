@@ -37,7 +37,7 @@ final class TagWriterTest extends AbstractTestCase
      */
     private function getTagMock($content)
     {
-        $tag = $this->getMock(TagInterface::class);
+        $tag = $this->createMock(TagInterface::class);
 
         $tag
             ->expects($this->any())
@@ -52,6 +52,6 @@ final class TagWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }

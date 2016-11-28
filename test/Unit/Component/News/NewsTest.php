@@ -449,6 +449,6 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     private function getPublicationMock()
     {
-        return $this->getMock(PublicationInterface::class);
+        return $this->createMock(PublicationInterface::class);
     }
 }

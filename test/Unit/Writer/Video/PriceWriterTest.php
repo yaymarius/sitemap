@@ -89,7 +89,7 @@ final class PriceWriterTest extends AbstractTestCase
      */
     private function getPriceMock($currency, $value, $type = null, $resolution = null)
     {
-        $price = $this->getMock(PriceInterface::class);
+        $price = $this->createMock(PriceInterface::class);
 
         $price
             ->expects($this->any())
@@ -119,6 +119,6 @@ final class PriceWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }
