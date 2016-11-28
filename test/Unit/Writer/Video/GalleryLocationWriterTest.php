@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\GalleryLocationWriter;
 
-class GalleryLocationWriterTest extends AbstractTestCase
+final class GalleryLocationWriterTest extends AbstractTestCase
 {
     public function testWriteSimpleGalleryLocation()
     {

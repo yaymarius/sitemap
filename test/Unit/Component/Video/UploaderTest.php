@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\Uploader;
 use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class UploaderTest extends \PHPUnit_Framework_TestCase
+final class UploaderTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 

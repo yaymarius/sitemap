@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\News\Publication;
 use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class PublicationTest extends \PHPUnit_Framework_TestCase
+final class PublicationTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 

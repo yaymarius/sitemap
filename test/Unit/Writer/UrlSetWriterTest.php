@@ -17,7 +17,7 @@ use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Sitemap\Writer\UrlSetWriter;
 use Refinery29\Sitemap\Writer\UrlWriter;
 
-class UrlSetWriterTest extends AbstractTestCase
+final class UrlSetWriterTest extends AbstractTestCase
 {
     public function testConstructorCreatesRequiredWriter()
     {

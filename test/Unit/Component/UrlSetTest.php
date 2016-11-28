@@ -14,7 +14,7 @@ use Refinery29\Sitemap\Component\UrlSet;
 use Refinery29\Sitemap\Component\UrlSetInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class UrlSetTest extends \PHPUnit_Framework_TestCase
+final class UrlSetTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 

@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\PlayerLocation;
 use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class PlayerLocationTest extends \PHPUnit_Framework_TestCase
+final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 

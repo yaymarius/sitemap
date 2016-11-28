@@ -15,7 +15,7 @@ use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 use Refinery29\Sitemap\Writer\SitemapWriter;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class SitemapIndexWriterTest extends AbstractTestCase
+final class SitemapIndexWriterTest extends AbstractTestCase
 {
     use GeneratorTrait;
 

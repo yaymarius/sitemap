@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\UploaderInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\UploaderWriter;
 
-class UploaderWriterTest extends AbstractTestCase
+final class UploaderWriterTest extends AbstractTestCase
 {
     public function testWriteWithSimpleUploader()
     {

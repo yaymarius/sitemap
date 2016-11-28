@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\Tag;
 use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class TagTest extends \PHPUnit_Framework_TestCase
+final class TagTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 

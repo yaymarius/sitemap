@@ -12,7 +12,7 @@ namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Test\Util\Faker\GeneratorTrait;
 
-class RestrictionInterfaceTest extends \PHPUnit_Framework_TestCase
+final class RestrictionInterfaceTest extends \PHPUnit_Framework_TestCase
 {
     use GeneratorTrait;
 

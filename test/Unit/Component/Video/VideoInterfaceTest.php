@@ -11,7 +11,7 @@ namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 
-class VideoInterfaceTest extends \PHPUnit_Framework_TestCase
+final class VideoInterfaceTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstants()
     {

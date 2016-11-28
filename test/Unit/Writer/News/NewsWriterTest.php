@@ -15,7 +15,7 @@ use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\News\NewsWriter;
 use Refinery29\Sitemap\Writer\News\PublicationWriter;
 
-class NewsWriterTest extends AbstractTestCase
+final class NewsWriterTest extends AbstractTestCase
 {
     public function testConstructorCreatesRequiredWriter()
     {
