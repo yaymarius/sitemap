@@ -10,11 +10,11 @@
 namespace Refinery29\Sitemap\Test\Unit\Component\Video;
 
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
+use Refinery29\Test\Util\TestHelper;
 
 class RestrictionInterfaceTest extends \PHPUnit_Framework_TestCase
 {
-    use GeneratorTrait;
+    use TestHelper;
 
     public function testConstants()
     {

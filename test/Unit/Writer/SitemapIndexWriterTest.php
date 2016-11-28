@@ -13,12 +13,9 @@ use Refinery29\Sitemap\Component\SitemapIndexInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 use Refinery29\Sitemap\Writer\SitemapWriter;
-use Refinery29\Test\Util\Faker\GeneratorTrait;
 
 class SitemapIndexWriterTest extends AbstractTestCase
 {
-    use GeneratorTrait;
-
     public function testConstructorCreatesRequiredWriter()
     {
         $writer = new SitemapIndexWriter();
