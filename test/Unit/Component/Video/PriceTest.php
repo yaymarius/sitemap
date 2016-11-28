@@ -24,9 +24,7 @@ final class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsPriceInterface()
     {
-        $reflectionClass = new \ReflectionClass(Price::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(PriceInterface::class));
+        $this->assertImplements(PriceInterface::class, Price::class);
     }
 
     public function testDefaults()

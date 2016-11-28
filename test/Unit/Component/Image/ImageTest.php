@@ -24,9 +24,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsImageInterface()
     {
-        $reflectionClass = new \ReflectionClass(Image::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(ImageInterface::class));
+        $this->assertImplements(ImageInterface::class, Image::class);
     }
 
     public function testDefaults()

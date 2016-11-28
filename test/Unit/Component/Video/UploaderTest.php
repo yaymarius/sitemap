@@ -24,9 +24,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
 
     public function testImplementsUploaderInterface()
     {
-        $reflectionClass = new \ReflectionClass(Uploader::class);
-
-        $this->assertTrue($reflectionClass->implementsInterface(UploaderInterface::class));
+        $this->assertImplements(UploaderInterface::class, Uploader::class);
     }
 
     public function testDefaults()
