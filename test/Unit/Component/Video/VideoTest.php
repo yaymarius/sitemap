@@ -162,7 +162,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidInteger::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidInteger::data()
      *
      * @param mixed $duration
      */
@@ -293,7 +293,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidFloat::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidFloat::data()
      *
      * @param mixed $rating
      */
@@ -379,7 +379,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidInteger::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidInteger::data()
      *
      * @param mixed $viewCount
      */
@@ -441,7 +441,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $familyFriendly
      */
@@ -503,7 +503,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $tag
      */
@@ -579,7 +579,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $category
      */
@@ -713,7 +713,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $requiresSubscription
      */
@@ -837,7 +837,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $live
      */

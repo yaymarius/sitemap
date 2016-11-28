@@ -55,7 +55,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $title
      */
@@ -73,7 +73,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $title
      */
@@ -110,7 +110,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $access
      */
@@ -169,7 +169,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $genre
      */
@@ -286,7 +286,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $keyword
      */
@@ -312,7 +312,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $keyword
      */
@@ -357,7 +357,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $stockTicker
      */
@@ -383,7 +383,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $stockTicker
      */

@@ -52,7 +52,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidUrl::data()
      *
      * @param mixed $location
      */
@@ -89,7 +89,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $changeFrequency
      */
@@ -143,7 +143,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidFloat::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidFloat::data()
      *
      * @param mixed $priority
      */

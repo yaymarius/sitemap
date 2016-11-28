@@ -42,7 +42,7 @@ final class SitemapTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidUrl::data()
      *
      * @param mixed $location
      */
