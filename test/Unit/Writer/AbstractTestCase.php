@@ -21,7 +21,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param string                                   $version
      * @param string                                   $charset
      */
-    protected function expectToStartDocument(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $version = '1.0', $charset = 'UTF-8')
+    final protected function expectToStartDocument(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $version = '1.0', $charset = 'UTF-8')
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -36,7 +36,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
      * @param string                                   $name
      */
-    protected function expectToStartElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name)
+    final protected function expectToStartElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -49,7 +49,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param string                                   $name
      * @param mixed                                    $value
      */
-    protected function expectToWriteAttribute(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $value)
+    final protected function expectToWriteAttribute(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $value)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -60,14 +60,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             );
     }
 
-    protected function expectToEndElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
+    final protected function expectToEndElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
             ->method('endElement');
     }
 
-    protected function expectToEndDocument(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
+    final protected function expectToEndDocument(\PHPUnit_Framework_MockObject_MockObject $xmlWriter)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -80,7 +80,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param mixed                                    $text
      * @param array                                    $attributes
      */
-    protected function expectToWriteElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $text = null, array $attributes = [])
+    final protected function expectToWriteElement(\PHPUnit_Framework_MockObject_MockObject $xmlWriter, $name, $text = null, array $attributes = [])
     {
         $this->expectToStartElement($xmlWriter, $name);
 
@@ -101,7 +101,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
      */
-    protected function expectToOpenMemory($xmlWriter)
+    final protected function expectToOpenMemory($xmlWriter)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -112,7 +112,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param \PHPUnit_Framework_MockObject_MockObject $xmlWriter
      * @param string                                   $output
      */
-    protected function expectToOutput($xmlWriter, $output)
+    final protected function expectToOutput($xmlWriter, $output)
     {
         $xmlWriter
             ->expects($this->next($xmlWriter))
@@ -127,7 +127,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return \PHPUnit_Framework_MockObject_Matcher_InvokedAtIndex
      */
-    protected function next(\PHPUnit_Framework_MockObject_MockObject $mockObject)
+    final protected function next(\PHPUnit_Framework_MockObject_MockObject $mockObject)
     {
         static $invocations;
 
