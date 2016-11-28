@@ -20,9 +20,7 @@ final class UrlSetTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(UrlSet::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(UrlSet::class);
     }
 
     public function testConstructorRejectsInvalidValue()

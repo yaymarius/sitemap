@@ -19,9 +19,7 @@ final class RestrictionTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Restriction::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Restriction::class);
     }
 
     public function testImplementsRestrictionInterface()

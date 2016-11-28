@@ -19,9 +19,7 @@ final class PriceTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Price::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Price::class);
     }
 
     public function testImplementsPriceInterface()

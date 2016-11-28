@@ -19,9 +19,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Image::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Image::class);
     }
 
     public function testImplementsImageInterface()

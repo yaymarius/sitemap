@@ -19,9 +19,7 @@ final class TagTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(Tag::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(Tag::class);
     }
 
     public function testImplementsTagInterface()

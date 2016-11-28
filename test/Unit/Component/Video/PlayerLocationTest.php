@@ -25,9 +25,7 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-        $reflectionClass = new \ReflectionClass(PlayerLocation::class);
-
-        $this->assertTrue($reflectionClass->isFinal());
+        $this->assertFinal(PlayerLocation::class);
     }
 
     public function testImplementsPlayerLocationInterface()
