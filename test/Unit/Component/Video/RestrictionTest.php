@@ -78,16 +78,10 @@ final class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function providerRelationship()
     {
-        $values = [
+        return $this->provideData([
             RestrictionInterface::RELATIONSHIP_ALLOW,
             RestrictionInterface::RELATIONSHIP_DENY,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**

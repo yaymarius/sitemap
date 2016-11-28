@@ -152,16 +152,10 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function providerAccess()
     {
-        $values = [
+        return $this->provideData([
             NewsInterface::ACCESS_REGISTRATION,
             NewsInterface::ACCESS_SUBSCRIPTION,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
@@ -266,19 +260,13 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function providerGenre()
     {
-        $values = [
+        return $this->provideData([
             NewsInterface::GENRE_BLOG,
             NewsInterface::GENRE_OP_ED,
             NewsInterface::GENRE_OPINION,
             NewsInterface::GENRE_SATIRE,
             NewsInterface::GENRE_USER_GENERATED,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**

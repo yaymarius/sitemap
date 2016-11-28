@@ -67,16 +67,10 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function providerRelationship()
     {
-        $values = [
+        return $this->provideData([
             PlatformInterface::RELATIONSHIP_ALLOW,
             PlatformInterface::RELATIONSHIP_DENY,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
@@ -153,17 +147,11 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function providerType()
     {
-        $values = [
+        return $this->provideData([
             PlatformInterface::TYPE_MOBILE,
             PlatformInterface::TYPE_TV,
             PlatformInterface::TYPE_WEB,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     public function testWithTypesClonesObjectAndSetsValue()

@@ -116,16 +116,10 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function providerAllowEmbed()
     {
-        $values = [
+        return $this->provideData([
             PlayerLocationInterface::ALLOW_EMBED_NO,
             PlayerLocationInterface::ALLOW_EMBED_YES,
-        ];
-
-        foreach ($values as $value) {
-            yield [
-                $value,
-            ];
-        }
+        ]);
     }
 
     /**
