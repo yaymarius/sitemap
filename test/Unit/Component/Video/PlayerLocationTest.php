@@ -52,7 +52,7 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidLocation($location)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new PlayerLocation($location);
     }
@@ -75,7 +75,7 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithAllowEmbedRejectsInvalidValues($allowEmbed)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -86,7 +86,7 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
 
     public function testWithAllowEmbedRejectsUnknownValues()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

@@ -45,7 +45,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Uploader($name);
     }
@@ -57,7 +57,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankString($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Uploader($name);
     }
@@ -80,7 +80,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithInfoRejectsInvalidValue($info)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $uploader = new Uploader($this->getFaker()->url);
 
@@ -94,7 +94,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithInfoRejectsBlankString($info)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $uploader = new Uploader($this->getFaker()->url);
 

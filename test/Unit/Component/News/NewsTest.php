@@ -61,7 +61,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidTitle($title)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -79,7 +79,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankTitle($title)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -116,7 +116,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithAccessRejectsInvalidValue($access)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -175,7 +175,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithGenresRejectsInvalidValues($genre)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -196,7 +196,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
 
     public function testWithGenresRejectsUnknownValues()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -222,7 +222,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithGenresRejectsDuplicateValues($genre)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -292,7 +292,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithKeywordsRejectsInvalidValues($keyword)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -318,7 +318,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithKeywordsRejectsBlankValues($keyword)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -363,7 +363,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithStockTickersRejectsInvalidValues($stockTicker)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -389,7 +389,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithStockTickersRejectsBlankValues($stockTicker)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -410,7 +410,7 @@ final class NewsTest extends \PHPUnit_Framework_TestCase
 
     public function testWithStockTickersRejectsTooManyValues()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

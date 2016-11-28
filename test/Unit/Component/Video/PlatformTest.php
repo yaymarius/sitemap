@@ -49,7 +49,7 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($relationship)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Platform($relationship);
     }
@@ -90,7 +90,7 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTypesRejectsInvalidValues($type)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -110,7 +110,7 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
 
     public function testWithTypesRejectsUnknownValues()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -135,7 +135,7 @@ final class PlatformTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTypesRejectsDuplicateValues($type)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

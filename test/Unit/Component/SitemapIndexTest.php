@@ -39,7 +39,7 @@ final class SitemapIndexTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($value)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new SitemapIndex($value);
     }

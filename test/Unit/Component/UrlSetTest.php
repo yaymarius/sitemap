@@ -27,7 +27,7 @@ final class UrlSetTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsInvalidValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $urls = [
             $this->getUrlMock(),
@@ -40,7 +40,7 @@ final class UrlSetTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsTooManyValues()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $urls = array_fill(
             0,

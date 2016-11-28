@@ -58,7 +58,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Url($location);
     }
@@ -95,7 +95,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithChangeFrequencyRejectsInvalidValue($changeFrequency)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
@@ -149,7 +149,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithPriorityRejectsInvalidValue($priority)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
@@ -163,7 +163,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithPriorityRejectsOutOfBoundsValue($priority)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $url = new Url($this->getFaker()->url);
 
@@ -234,7 +234,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithImagesRejectsInvalidValue($images)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -290,7 +290,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithNewsRejectsInvalidValue($news)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -346,7 +346,7 @@ final class UrlTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithVideosRejectsInvalidValue($videos)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

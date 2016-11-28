@@ -38,7 +38,7 @@ final class TagTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($content)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Tag($content);
     }
@@ -50,7 +50,7 @@ final class TagTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankString($content)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Tag($content);
     }
