@@ -69,7 +69,7 @@ final class SitemapWriterTest extends AbstractTestCase
      */
     private function getSitemapMock($location, \DateTime $lastModified = null)
     {
-        $sitemap = $this->getMock(SitemapInterface::class);
+        $sitemap = $this->createMock(SitemapInterface::class);
 
         $sitemap
             ->expects($this->any())
@@ -89,6 +89,6 @@ final class SitemapWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }

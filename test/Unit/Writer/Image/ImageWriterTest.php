@@ -82,7 +82,7 @@ final class ImageWriterTest extends AbstractTestCase
      */
     private function getImageMock($location, $title = null, $caption = null, $geoLocation = null, $licence = null)
     {
-        $image = $this->getMock(ImageInterface::class);
+        $image = $this->createMock(ImageInterface::class);
 
         $image
             ->expects($this->any())
@@ -117,6 +117,6 @@ final class ImageWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }

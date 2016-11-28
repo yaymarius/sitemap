@@ -75,7 +75,7 @@ final class UrlSetWriterTest extends AbstractTestCase
      */
     private function getUrlMock()
     {
-        return $this->getMock(UrlInterface::class);
+        return $this->createMock(UrlInterface::class);
     }
 
     /**
@@ -85,7 +85,7 @@ final class UrlSetWriterTest extends AbstractTestCase
      */
     private function getUrlSetMock(array $urls = [])
     {
-        $urlSet = $this->getMock(UrlSetInterface::class);
+        $urlSet = $this->createMock(UrlSetInterface::class);
 
         $urlSet
             ->expects($this->any())
@@ -110,6 +110,6 @@ final class UrlSetWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }

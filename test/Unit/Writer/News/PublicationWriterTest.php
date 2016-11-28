@@ -49,7 +49,7 @@ final class PublicationWriterTest extends AbstractTestCase
      */
     private function getPublicationMock($name, $language)
     {
-        $publication = $this->getMock(PublicationInterface::class);
+        $publication = $this->createMock(PublicationInterface::class);
 
         $publication
             ->expects($this->any())
@@ -69,6 +69,6 @@ final class PublicationWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }

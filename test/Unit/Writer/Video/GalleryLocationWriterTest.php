@@ -63,7 +63,7 @@ final class GalleryLocationWriterTest extends AbstractTestCase
      */
     private function getGalleryLocationMock($location, $title = null)
     {
-        $galleryLocation = $this->getMock(GalleryLocationInterface::class);
+        $galleryLocation = $this->createMock(GalleryLocationInterface::class);
 
         $galleryLocation
             ->expects($this->any())
@@ -83,6 +83,6 @@ final class GalleryLocationWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }

@@ -69,6 +69,6 @@ final class UrlSetTest extends \PHPUnit_Framework_TestCase
      */
     private function getUrlMock()
     {
-        return $this->getMock(UrlInterface::class);
+        return $this->createMock(UrlInterface::class);
     }
 }

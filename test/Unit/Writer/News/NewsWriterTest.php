@@ -133,7 +133,7 @@ final class NewsWriterTest extends AbstractTestCase
         array $keywords = [],
         array $stockTickers = []
     ) {
-        $news = $this->getMock(NewsInterface::class);
+        $news = $this->createMock(NewsInterface::class);
 
         $news
             ->expects($this->any())
@@ -178,7 +178,7 @@ final class NewsWriterTest extends AbstractTestCase
      */
     private function getPublicationMock()
     {
-        return $this->getMock(PublicationInterface::class);
+        return $this->createMock(PublicationInterface::class);
     }
 
     /**
@@ -186,7 +186,7 @@ final class NewsWriterTest extends AbstractTestCase
      */
     private function getPublicationWriterMock()
     {
-        return $this->getMock(PublicationWriter::class);
+        return $this->createMock(PublicationWriter::class);
     }
 
     /**
@@ -194,6 +194,6 @@ final class NewsWriterTest extends AbstractTestCase
      */
     private function getXmlWriterMock()
     {
-        return $this->getMock(\XMLWriter::class);
+        return $this->createMock(\XMLWriter::class);
     }
 }
