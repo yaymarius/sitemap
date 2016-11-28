@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Image\ImageWriter;
 
-class ImageWriterTest extends AbstractTestCase
+final class ImageWriterTest extends AbstractTestCase
 {
     public function testWriteSimpleImage()
     {

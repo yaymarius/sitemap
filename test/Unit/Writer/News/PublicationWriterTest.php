@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\News\PublicationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\News\PublicationWriter;
 
-class PublicationWriterTest extends AbstractTestCase
+final class PublicationWriterTest extends AbstractTestCase
 {
     public function testWritePublication()
     {

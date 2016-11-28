@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class SitemapTest extends \PHPUnit_Framework_TestCase
+final class SitemapTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

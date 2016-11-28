@@ -14,7 +14,7 @@ use Refinery29\Sitemap\Component\SitemapIndexInterface;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class SitemapIndexTest extends \PHPUnit_Framework_TestCase
+final class SitemapIndexTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

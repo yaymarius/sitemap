@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\PlayerLocationInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PlayerLocationWriter;
 
-class PlayerLocationWriterTest extends AbstractTestCase
+final class PlayerLocationWriterTest extends AbstractTestCase
 {
     public function testWriteSimplePlayerLocation()
     {

@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Sitemap;
 use Refinery29\Sitemap\Component\SitemapIndex;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 
-class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
+final class SitemapIndexWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testWriteCreatesXml()
     {

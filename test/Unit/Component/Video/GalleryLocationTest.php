@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\GalleryLocation;
 use Refinery29\Sitemap\Component\Video\GalleryLocationInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class GalleryLocationTest extends \PHPUnit_Framework_TestCase
+final class GalleryLocationTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

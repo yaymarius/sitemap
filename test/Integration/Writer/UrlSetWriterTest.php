@@ -12,7 +12,7 @@ namespace Refinery29\Sitemap\Test\Integration\Writer;
 use Refinery29\Sitemap\Component;
 use Refinery29\Sitemap\Writer;
 
-class UrlSetWriterTest extends \PHPUnit_Framework_TestCase
+final class UrlSetWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testWriteSimpleSitemap()
     {

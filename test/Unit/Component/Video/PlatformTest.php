@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\Platform;
 use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class PlatformTest extends \PHPUnit_Framework_TestCase
+final class PlatformTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

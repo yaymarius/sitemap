@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\PlatformInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PlatformWriter;
 
-class PlatformWriterTest extends AbstractTestCase
+final class PlatformWriterTest extends AbstractTestCase
 {
     public function testWritePlatform()
     {

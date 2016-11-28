@@ -12,7 +12,7 @@ namespace Refinery29\Sitemap\Test\Unit\Writer;
 use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Sitemap\Writer\SitemapWriter;
 
-class SitemapWriterTest extends AbstractTestCase
+final class SitemapWriterTest extends AbstractTestCase
 {
     public function testWriteSimpleSitemap()
     {

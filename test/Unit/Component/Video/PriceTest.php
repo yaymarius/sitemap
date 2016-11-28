@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\Price;
 use Refinery29\Sitemap\Component\Video\PriceInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class PriceTest extends \PHPUnit_Framework_TestCase
+final class PriceTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

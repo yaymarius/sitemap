@@ -27,7 +27,7 @@ use Refinery29\Sitemap\Writer\Video\TagWriter;
 use Refinery29\Sitemap\Writer\Video\UploaderWriter;
 use Refinery29\Sitemap\Writer\Video\VideoWriter;
 
-class VideoWriterTest extends AbstractTestCase
+final class VideoWriterTest extends AbstractTestCase
 {
     public function testConstructorCreatesRequiredWriters()
     {

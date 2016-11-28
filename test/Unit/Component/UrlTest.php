@@ -16,7 +16,7 @@ use Refinery29\Sitemap\Component\UrlInterface;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class UrlTest extends \PHPUnit_Framework_TestCase
+final class UrlTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

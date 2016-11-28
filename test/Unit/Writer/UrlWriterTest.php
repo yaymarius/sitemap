@@ -18,7 +18,7 @@ use Refinery29\Sitemap\Writer\News\NewsWriter;
 use Refinery29\Sitemap\Writer\UrlWriter;
 use Refinery29\Sitemap\Writer\Video\VideoWriter;
 
-class UrlWriterTest extends AbstractTestCase
+final class UrlWriterTest extends AbstractTestCase
 {
     public function testWriteSimpleUrl()
     {

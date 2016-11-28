@@ -11,7 +11,7 @@ namespace Refinery29\Sitemap\Test\Unit\Component\Image;
 
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 
-class ImageInterfaceTest extends \PHPUnit_Framework_TestCase
+final class ImageInterfaceTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstants()
     {

@@ -20,7 +20,7 @@ use Refinery29\Sitemap\Component\Video\Video;
 use Refinery29\Sitemap\Component\Video\VideoInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class VideoTest extends \PHPUnit_Framework_TestCase
+final class VideoTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

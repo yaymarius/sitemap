@@ -14,7 +14,7 @@ use Refinery29\Sitemap\Component\SitemapInterface;
 use Refinery29\Sitemap\Writer\SitemapIndexWriter;
 use Refinery29\Sitemap\Writer\SitemapWriter;
 
-class SitemapIndexWriterTest extends AbstractTestCase
+final class SitemapIndexWriterTest extends AbstractTestCase
 {
     public function testConstructorCreatesRequiredWriter()
     {

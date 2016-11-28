@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\RestrictionWriter;
 
-class RestrictionWriterTest extends AbstractTestCase
+final class RestrictionWriterTest extends AbstractTestCase
 {
     public function testWriteRestriction()
     {

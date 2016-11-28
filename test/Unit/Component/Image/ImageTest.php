@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Image\Image;
 use Refinery29\Sitemap\Component\Image\ImageInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class ImageTest extends \PHPUnit_Framework_TestCase
+final class ImageTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

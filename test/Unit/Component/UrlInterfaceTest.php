@@ -11,7 +11,7 @@ namespace Refinery29\Sitemap\Test\Unit\Component;
 
 use Refinery29\Sitemap\Component\UrlInterface;
 
-class UrlInterfaceTest extends \PHPUnit_Framework_TestCase
+final class UrlInterfaceTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstants()
     {

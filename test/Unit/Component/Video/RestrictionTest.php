@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\Restriction;
 use Refinery29\Sitemap\Component\Video\RestrictionInterface;
 use Refinery29\Test\Util\TestHelper;
 
-class RestrictionTest extends \PHPUnit_Framework_TestCase
+final class RestrictionTest extends \PHPUnit_Framework_TestCase
 {
     use TestHelper;
 

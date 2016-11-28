@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\TagInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\TagWriter;
 
-class TagWriterTest extends AbstractTestCase
+final class TagWriterTest extends AbstractTestCase
 {
     public function testWriteWithSimpleUploader()
     {

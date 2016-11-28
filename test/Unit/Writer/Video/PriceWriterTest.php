@@ -13,7 +13,7 @@ use Refinery29\Sitemap\Component\Video\PriceInterface;
 use Refinery29\Sitemap\Test\Unit\Writer\AbstractTestCase;
 use Refinery29\Sitemap\Writer\Video\PriceWriter;
 
-class PriceWriterTest extends AbstractTestCase
+final class PriceWriterTest extends AbstractTestCase
 {
     public function testWriteWithSimplePrice()
     {
