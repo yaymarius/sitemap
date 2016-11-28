@@ -32,7 +32,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $name
      */
@@ -49,7 +49,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $name
      */
@@ -66,7 +66,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $language
      */
@@ -83,7 +83,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $language
      */

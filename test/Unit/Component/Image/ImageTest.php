@@ -44,7 +44,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidUrl::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidUrl::data()
      *
      * @param mixed $location
      */
@@ -65,7 +65,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $title
      */
@@ -81,7 +81,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $title
      */
@@ -112,7 +112,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $caption
      */
@@ -128,7 +128,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $caption
      */
@@ -159,7 +159,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $geoLocation
      */
@@ -175,7 +175,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $geoLocation
      */
@@ -206,7 +206,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $licence
      */
@@ -222,7 +222,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $licence
      */

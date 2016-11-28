@@ -39,7 +39,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $name
      */
@@ -51,7 +51,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $name
      */
@@ -74,7 +74,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\InvalidString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\InvalidString::data()
      *
      * @param mixed $info
      */
@@ -88,7 +88,7 @@ final class UploaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider Refinery29\Test\Util\DataProvider\BlankString::data()
+     * @dataProvider \Refinery29\Test\Util\DataProvider\BlankString::data()
      *
      * @param mixed $info
      */
