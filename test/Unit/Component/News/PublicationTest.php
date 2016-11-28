@@ -38,7 +38,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $language = $this->getFaker()->languageCode;
 
@@ -55,7 +55,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankName($name)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $language = $this->getFaker()->languageCode;
 
@@ -72,7 +72,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidLanguage($language)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $name = $this->getFaker()->sentence();
 
@@ -89,7 +89,7 @@ final class PublicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsBlankLanguage($language)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $name = $this->getFaker()->sentence();
 

@@ -51,14 +51,14 @@ final class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($restriction)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Restriction($restriction);
     }
 
     public function testConstructorRejectsUnknownValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $relationship = $this->getFaker()->sentence();
 
@@ -101,7 +101,7 @@ final class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCountryCodeRejectsInvalidCountryCodes($countryCode)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -126,7 +126,7 @@ final class RestrictionTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCountryCodeRejectsBlankCountryCodes($countryCode)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

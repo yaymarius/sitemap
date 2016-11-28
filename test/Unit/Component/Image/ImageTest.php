@@ -50,7 +50,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new Image($location);
     }
@@ -71,7 +71,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsInvalidValue($title)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -87,7 +87,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsEmptyString($title)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -118,7 +118,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCaptionRejectsInvalidValue($caption)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -134,7 +134,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCaptionRejectsEmptyString($caption)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -165,7 +165,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithGeoLocationRejectsInvalidValue($geoLocation)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -181,7 +181,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithGeoLocationRejectsBlankString($geoLocation)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -212,7 +212,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithLicenceRejectsInvalidValue($licence)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -228,7 +228,7 @@ final class ImageTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithLicenceRejectsBlankString($licence)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 

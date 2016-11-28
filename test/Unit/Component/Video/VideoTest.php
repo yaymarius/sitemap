@@ -70,7 +70,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsTitleLongerThanMaxLength()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -86,7 +86,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsDescriptionLongerThanMaxLength()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -102,7 +102,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorRejectsInvalidCombinationOfContentAndPlayerLocation()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -168,7 +168,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithDurationRejectsInvalidValue($duration)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -190,7 +190,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithDurationRejectsOutOfBoundsValue($duration)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -299,7 +299,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithRatingRejectsInvalidValue($rating)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -321,7 +321,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithRatingRejectsOutOfBoundsValue($rating)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -385,7 +385,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithViewCountRejectsInvalidValue($viewCount)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -402,7 +402,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithViewCountRejectsNegativeValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -447,7 +447,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithFamilyFriendlyRejectsInvalidValue($familyFriendly)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -464,7 +464,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithFamilyFriendlyRejectsUnknownValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -509,7 +509,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTagsRejectsInvalidValue($tag)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -532,7 +532,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithTagsRejectsTooManyValues()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -585,7 +585,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithCategoryRejectsInvalidValue($category)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -602,7 +602,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithCategoryRejectsTooLongValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -666,7 +666,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithPricesRejectsInvalidValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -719,7 +719,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithRequiresSubscriptionRejectsInvalidValue($requiresSubscription)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -736,7 +736,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithRequiresSubscriptionRejectsUnknownValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -843,7 +843,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithLiveRejectsInvalidValue($live)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 
@@ -860,7 +860,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
     public function testWithLiveRejectsUnknownValue()
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $faker = $this->getFaker();
 

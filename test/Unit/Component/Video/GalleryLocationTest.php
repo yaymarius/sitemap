@@ -45,7 +45,7 @@ final class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorRejectsInvalidValue($location)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         new GalleryLocation($location);
     }
@@ -68,7 +68,7 @@ final class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsInvalidValue($title)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
@@ -84,7 +84,7 @@ final class GalleryLocationTest extends \PHPUnit_Framework_TestCase
      */
     public function testWithTitleRejectsBlankString($title)
     {
-        $this->setExpectedException(\InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $location = $this->getFaker()->url;
 
