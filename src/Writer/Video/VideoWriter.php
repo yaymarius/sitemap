@@ -204,7 +204,7 @@ class VideoWriter
         }
 
         $xmlWriter->startElement('video:rating');
-        $xmlWriter->text(number_format($rating, 1));
+        $xmlWriter->text(\number_format($rating, 1));
         $xmlWriter->endElement();
     }
 

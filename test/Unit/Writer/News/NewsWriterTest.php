@@ -92,9 +92,9 @@ final class NewsWriterTest extends AbstractTestCase
         $this->expectToWriteElement($xmlWriter, 'news:publication_date', $publicationDate->format('c'));
         $this->expectToWriteElement($xmlWriter, 'news:title', $title);
         $this->expectToWriteElement($xmlWriter, 'news:access', $access);
-        $this->expectToWriteElement($xmlWriter, 'news:genres', implode(', ', $genres));
-        $this->expectToWriteElement($xmlWriter, 'news:keywords', implode(', ', $keywords));
-        $this->expectToWriteElement($xmlWriter, 'news:stock_tickers', implode(', ', $stockTickers));
+        $this->expectToWriteElement($xmlWriter, 'news:genres', \implode(', ', $genres));
+        $this->expectToWriteElement($xmlWriter, 'news:keywords', \implode(', ', $keywords));
+        $this->expectToWriteElement($xmlWriter, 'news:stock_tickers', \implode(', ', $stockTickers));
 
         $this->expectToEndElement($xmlWriter);
 

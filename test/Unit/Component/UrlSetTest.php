@@ -40,7 +40,7 @@ final class UrlSetTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $urls = array_fill(
+        $urls = \array_fill(
             0,
             UrlSetInterface::URL_MAX_COUNT + 1,
             $this->getUrlMock()

@@ -37,7 +37,7 @@ final class RestrictionWriterTest extends AbstractTestCase
 
         $xmlWriter = $this->getXmlWriterMock();
 
-        $this->expectToWriteElement($xmlWriter, 'video:restriction', implode(' ', $countryCodes), [
+        $this->expectToWriteElement($xmlWriter, 'video:restriction', \implode(' ', $countryCodes), [
             'relationship' => $relationship,
         ]);
 

@@ -70,7 +70,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $title = str_repeat('a', VideoInterface::TITLE_MAX_LENGTH + 1);
+        $title = \str_repeat('a', VideoInterface::TITLE_MAX_LENGTH + 1);
 
         new Video(
             $faker->url,
@@ -86,7 +86,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $description = str_repeat('a', VideoInterface::DESCRIPTION_MAX_LENGTH + 1);
+        $description = \str_repeat('a', VideoInterface::DESCRIPTION_MAX_LENGTH + 1);
 
         new Video(
             $faker->url,
@@ -520,7 +520,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $tags = array_fill(
+        $tags = \array_fill(
             0,
             VideoInterface::TAG_MAX_COUNT + 1,
             $this->getTagMock()
@@ -590,7 +590,7 @@ final class VideoTest extends \PHPUnit_Framework_TestCase
 
         $faker = $this->getFaker();
 
-        $category = str_repeat(
+        $category = \str_repeat(
             'a',
             VideoInterface::CATEGORY_MAX_LENGTH + 1
         );

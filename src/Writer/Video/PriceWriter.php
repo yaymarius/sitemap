@@ -31,7 +31,7 @@ class PriceWriter
             $xmlWriter->writeAttribute('resolution', $price->resolution());
         }
 
-        $xmlWriter->text(number_format($price->value(), 2));
+        $xmlWriter->text(\number_format($price->value(), 2));
         $xmlWriter->endElement();
     }
 }

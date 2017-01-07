@@ -69,34 +69,34 @@ class NewsWriter
 
     private function writeGenres(\XMLWriter $xmlWriter, array $genres)
     {
-        if (count($genres) === 0) {
+        if (\count($genres) === 0) {
             return;
         }
 
         $xmlWriter->startElement('news:genres');
-        $xmlWriter->text(implode(', ', $genres));
+        $xmlWriter->text(\implode(', ', $genres));
         $xmlWriter->endElement();
     }
 
     private function writeKeywords(\XMLWriter $xmlWriter, array $keywords)
     {
-        if (count($keywords) === 0) {
+        if (\count($keywords) === 0) {
             return;
         }
 
         $xmlWriter->startElement('news:keywords');
-        $xmlWriter->text(implode(', ', $keywords));
+        $xmlWriter->text(\implode(', ', $keywords));
         $xmlWriter->endElement();
     }
 
     private function writeStockTickers(\XMLWriter $xmlWriter, array $stockTickers)
     {
-        if (count($stockTickers) === 0) {
+        if (\count($stockTickers) === 0) {
             return;
         }
 
         $xmlWriter->startElement('news:stock_tickers');
-        $xmlWriter->text(implode(', ', $stockTickers));
+        $xmlWriter->text(\implode(', ', $stockTickers));
         $xmlWriter->endElement();
     }
 }

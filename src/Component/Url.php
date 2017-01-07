@@ -152,7 +152,7 @@ final class Url implements UrlInterface
         Assertion::float($priority);
         Assertion::greaterOrEqualThan($priority, UrlInterface::PRIORITY_MIN);
         Assertion::lessOrEqualThan($priority, UrlInterface::PRIORITY_MAX);
-        Assertion::same($priority, round($priority, 1));
+        Assertion::same($priority, \round($priority, 1));
 
         $instance = clone $this;
 
@@ -171,7 +171,7 @@ final class Url implements UrlInterface
     public function withImages(array $images)
     {
         Assertion::allIsInstanceOf($images, ImageInterface::class);
-        Assertion::lessOrEqualThan(count($this->images), UrlInterface::IMAGE_MAX_COUNT);
+        Assertion::lessOrEqualThan(\count($this->images), UrlInterface::IMAGE_MAX_COUNT);
 
         $instance = clone $this;
 

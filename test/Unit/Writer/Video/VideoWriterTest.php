@@ -159,7 +159,7 @@ final class VideoWriterTest extends AbstractTestCase
         $this->expectToWriteElement($xmlWriter, 'video:duration', $duration);
         $this->expectToWriteElement($xmlWriter, 'video:publication_date', $publicationDate->format('c'));
         $this->expectToWriteElement($xmlWriter, 'video:expiration_date', $expirationDate->format('c'));
-        $this->expectToWriteElement($xmlWriter, 'video:rating', number_format($rating, 1));
+        $this->expectToWriteElement($xmlWriter, 'video:rating', \number_format($rating, 1));
         $this->expectToWriteElement($xmlWriter, 'video:view_count', $viewCount);
         $this->expectToWriteElement($xmlWriter, 'video:family_friendly', $familyFriendly);
         $this->expectToWriteElement($xmlWriter, 'video:category', $category);

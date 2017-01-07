@@ -144,7 +144,7 @@ final class PlayerLocationTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $autoPlay = implode('=', $faker->words(2));
+        $autoPlay = \implode('=', $faker->words(2));
 
         $playerLocation = new PlayerLocation($faker->url);
 
