@@ -66,7 +66,7 @@ final class Platform implements PlatformInterface
         ];
 
         Assertion::allChoice($types, $choices);
-        Assertion::same($types, array_unique($types));
+        Assertion::same($types, \array_unique($types));
 
         $instance = clone $this;
 

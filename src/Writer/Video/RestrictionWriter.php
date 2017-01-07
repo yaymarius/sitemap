@@ -22,7 +22,7 @@ class RestrictionWriter
     {
         $xmlWriter->startElement('video:restriction');
         $xmlWriter->writeAttribute('relationship', $restriction->relationship());
-        $xmlWriter->text(implode(' ', $restriction->countryCodes()));
+        $xmlWriter->text(\implode(' ', $restriction->countryCodes()));
         $xmlWriter->endElement();
     }
 }

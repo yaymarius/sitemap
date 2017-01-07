@@ -141,7 +141,7 @@ final class News implements NewsInterface
         ];
 
         Assertion::allChoice($genres, $choices);
-        Assertion::same($genres, array_unique($genres));
+        Assertion::same($genres, \array_unique($genres));
 
         $instance = clone $this;
 
@@ -180,7 +180,7 @@ final class News implements NewsInterface
     {
         Assertion::allString($stockTickers);
         Assertion::allNotBlank($stockTickers);
-        Assertion::lessOrEqualThan(count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
+        Assertion::lessOrEqualThan(\count($stockTickers), NewsInterface::STOCK_TICKERS_MAX_COUNT);
 
         $instance = clone $this;
 

@@ -22,7 +22,7 @@ class PlatformWriter
     {
         $xmlWriter->startElement('video:platform');
         $xmlWriter->writeAttribute('relationship', $platform->relationship());
-        $xmlWriter->text(implode(' ', $platform->types()));
+        $xmlWriter->text(\implode(' ', $platform->types()));
         $xmlWriter->endElement();
     }
 }

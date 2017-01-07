@@ -26,7 +26,7 @@ final class UrlSet implements UrlSetInterface
     public function __construct(array $urls)
     {
         Assertion::allIsInstanceOf($urls, UrlInterface::class);
-        Assertion::lessOrEqualThan(count($urls), UrlSetInterface::URL_MAX_COUNT);
+        Assertion::lessOrEqualThan(\count($urls), UrlSetInterface::URL_MAX_COUNT);
 
         $this->urls = $urls;
     }

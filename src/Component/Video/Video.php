@@ -131,9 +131,9 @@ final class Video implements VideoInterface
     ) {
         Assertion::maxLength($title, VideoInterface::TITLE_MAX_LENGTH);
         Assertion::maxLength($description, VideoInterface::DESCRIPTION_MAX_LENGTH);
-        Assertion::false($contentLocation === null && $playerLocation === null, sprintf(
+        Assertion::false($contentLocation === null && $playerLocation === null, \sprintf(
             'At least one of parameters "%s" needs to be specified',
-            implode('", "', [
+            \implode('", "', [
                 'contentLocation',
                 'playerLocation',
             ])
@@ -375,7 +375,7 @@ final class Video implements VideoInterface
     public function withTags(array $tags)
     {
         Assertion::allIsInstanceOf($tags, TagInterface::class);
-        Assertion::lessOrEqualThan(count($tags), VideoInterface::TAG_MAX_COUNT);
+        Assertion::lessOrEqualThan(\count($tags), VideoInterface::TAG_MAX_COUNT);
 
         $instance = clone $this;
 

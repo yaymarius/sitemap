@@ -97,7 +97,7 @@ final class UrlWriterTest extends AbstractTestCase
         $this->expectToWriteElement($xmlWriter, 'loc', $location);
         $this->expectToWriteElement($xmlWriter, 'lastmod', $lastModified->format('c'));
         $this->expectToWriteElement($xmlWriter, 'changefreq', $changeFrequency);
-        $this->expectToWriteElement($xmlWriter, 'priority', number_format($priority, 1));
+        $this->expectToWriteElement($xmlWriter, 'priority', \number_format($priority, 1));
 
         $this->expectToEndElement($xmlWriter);
 
