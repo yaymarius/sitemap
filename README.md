@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/refinery29/sitemap.svg?branch=master)](https://travis-ci.org/refinery29/sitemap)
 [![Code Climate](https://codeclimate.com/github/refinery29/sitemap/badges/gpa.svg)](https://codeclimate.com/github/refinery29/sitemap)
 [![Test Coverage](https://codeclimate.com/github/refinery29/sitemap/badges/coverage.svg)](https://codeclimate.com/github/refinery29/sitemap/coverage)
+[![Latest Stable Version](https://poser.pugx.org/refinery29/sitemap/v/stable)](https://packagist.org/packages/refinery29/sitemap)
+[![Total Downloads](https://poser.pugx.org/refinery29/sitemap/downloads)](https://packagist.org/packages/refinery29/sitemap)
 
 This repository provides components for building and writing XML sitemaps, following Google recommendations.
 
@@ -18,15 +20,15 @@ $ composer require refinery29/sitemap
 
 ### Components
 
-This package provides all of the components we need to build a sitemap or a sitemap index. 
+This package provides all of the components we need to build a sitemap or a sitemap index.
 
 The components are immutable objects, that is, their mutators clone the instance, then set the values. This helps preventing issues with unwillingly modifying a graph of components.
 
 There are two different types of graphs we are interested in building:
 
 * `Component\UrlSet` (represents a set of URLs)
-* `Component\SiteMapIndex` (represents a set of sitemaps) 
- 
+* `Component\SiteMapIndex` (represents a set of sitemaps)
+
 ### Writers
 
 Once a graph of components has been build, they need to passed to a writer so they can be turned into XML.
@@ -55,11 +57,11 @@ $url = $url
 ```
 
 :bulb: Google imposes a limit of 50,000 URLs that can be added to any sitemap.
- 
+
 ### `Image`
 
 We may want to add images to a `Url` so let's create one:
- 
+
 ```php
 use Refinery29\Sitemap\Component;
 
@@ -85,7 +87,7 @@ $url = $url->withImages([
 ### `News`
 
 We may want to add news to a `Url`, if the URL identifies a news article, for example, so let's do this, too:
- 
+
 ```php
 use Refinery29\Sitemap\Component;
 
@@ -110,7 +112,7 @@ $url = $url->withNews([
 ### `Video`
 
 We may want to add video to a `Url`, if the URL identifies a page where you can watch a video, so let's also do this:
- 
+
 ```php
 use Refinery29\Sitemap\Component;
 
@@ -180,7 +182,7 @@ $anotherSitemap = new Component\Sitemap(
 ### `SitemapIndex`
 
 Let's create a `SitemapIndex` using the previously created `Sitemap`s:
- 
+
 ```php
 use Refinery29\Sitemap\Component;
 
