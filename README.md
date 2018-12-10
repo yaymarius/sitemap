@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/refinery29/sitemap.svg?branch=master)](https://travis-ci.org/refinery29/sitemap)
 [![Code Climate](https://codeclimate.com/github/refinery29/sitemap/badges/gpa.svg)](https://codeclimate.com/github/refinery29/sitemap)
-[![Test Coverage](https://codeclimate.com/github/refinery29/sitemap/badges/coverage.svg)](https://codeclimate.com/github/refinery29/sitemap/coverage)
 [![Latest Stable Version](https://poser.pugx.org/refinery29/sitemap/v/stable)](https://packagist.org/packages/refinery29/sitemap)
 [![Total Downloads](https://poser.pugx.org/refinery29/sitemap/downloads)](https://packagist.org/packages/refinery29/sitemap)
 
@@ -168,10 +167,9 @@ use Refinery29\Sitemap\Component;
 
 $lastModified = new DateTime();
 
-$sitemap = new Component\Sitemap(
-    'http://www.example.org/funny.xml',
-    $lastModified
-);
+$sitemap = new Component\Sitemap('http://www.example.org/funny.xml');
+
+$sitemap = $sitemap->withLastModifed($lastModified);
 
 $anotherSitemap = new Component\Sitemap(
     'http://www.example.org/news.xml',
@@ -199,7 +197,7 @@ When we're finished building a `SitemapIndex`, we probably want to write, so let
 ```php
 use Refinery29\Sitemap\Writer;
 
-$sitemapIndexWriter = new Writer\SitemapIndex();
+$sitemapIndexWriter = new Writer\SitemapIndexWriter();
 
 $xml = $sitemapIndexWriter->write($sitemapIndex);
 ```
