@@ -169,7 +169,7 @@ $lastModified = new DateTime();
 
 $sitemap = new Component\Sitemap('http://www.example.org/funny.xml');
 
-$sitemap = $sitemap->withLastModifed($lastModified);
+$sitemap = $sitemap->withLastModified($lastModified);
 
 $anotherSitemap = new Component\Sitemap(
     'http://www.example.org/news.xml',
